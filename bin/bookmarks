@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# -----------------------------------------------------------------------------
+# BOOKMARKS
+#
+# Simple hack for an easy to manage bookmark list. Bookmarks need to be placed
+# as softlinks in the folder configured in `bookmark_dir`. When called, the
+# command displays a list with all bookmarks that can be fuzzy-filtered. The
+# selected link will be opened when confirmed.
+#
+# Requires fzf to be installed: https://github.com/junegunn/fzf
+# If Homebrew is available, it can be installed via: `brew install fzf`
+#
+# Usage: bookmarks [create <location> [<name>]] [delete <name>] [list]
+# -----------------------------------------------------------------------------
+
+bookmarks_dir="${HOME}/.bookmarks"
+
+if [[ "$1" == "create" ]]
+then
+	# Create bookmark
+	# Determine bookmark location. Default to current directory
+	location="$2"
+	if [[ "${location}" == "" ]]
+	then
+		location="$(pwd)"
+	fi
+
+	# Create bookmark
+	printf "Creating bookmark ${location} ... "
+	ln -s "${location}" "${bookmarks_dir}/$3" &&
+		echo -e "\033[0;32mDone.\033[0m"
+elif [[ "$1" == "delete" ]]
+then
+	# Delete bookmark
+	if [[ "$2" != "" ]]
+	then
+		printf "Deleting bookmark $2 ... "
+		rm "${bookmarks_dir}/$2" && echo -e "\033[0;32mDone.\033[0m"
+	fi
+elif  [[ "$1" == "list" ]]
+then
+	# List bookmarks
+	ls -l "${bookmarks_dir}"
+else
+	# Open bookmark
+	selection="$(ls ${bookmarks_dir} | fzf)"
+
+	if [[ $? == 0 ]]
+	then
+		cd "${bookmarks_dir}/$selection"
+	fi
+fi
