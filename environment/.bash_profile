@@ -62,38 +62,38 @@ alias o="open ."
 # node to be installed (obviously).
 function get-npm-package-info
 {
-	node -e "var pack=require('./package.json');
-		console.log(pack.name + ' ' + pack.version);" 2> /dev/null
+  node -e "var pack=require('./package.json');
+  console.log(pack.name + ' ' + pack.version);" 2> /dev/null
 }
 
 # Puts brackets around the package name if not empty.
 function parse-npm-package-info
 {
-	get-npm-package-info | sed -e "s/\(.*\)/(\1)/"
+  get-npm-package-info | sed -e "s/\(.*\)/(\1)/"
 }
 
 # Reads the current Git branch name and wraps it in brackets (if not empty)
 function parse-git-branch-name
 {
-	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
 # Wrap prompt creation in a function to make it easier to read and manage
 function get-prompt
 {
-	# Host name + working directory
-	p="\h:\W"
+  # Host name + working directory
+  p="\h:\W"
 
-	# Git branch name
-	p="${p}\[\033[32m\]\$(parse-git-branch-name)\[\033[00m\]"
+  # Git branch name
+  p="${p}\[\033[32m\]\$(parse-git-branch-name)\[\033[00m\]"
 
-	# NPM package name
-	p="${p}\[\033[0;34m\]\$(parse-npm-package-info)\[\033[00m\]"
+  # NPM package name
+  p="${p}\[\033[0;34m\]\$(parse-npm-package-info)\[\033[00m\]"
 
-	# username + $
-	p="${p} \u\$ "
+  # username + $
+  p="${p} \u\$ "
 
-	echo "$p"
+  echo "$p"
 }
 
 export PS1="$(get-prompt)"
