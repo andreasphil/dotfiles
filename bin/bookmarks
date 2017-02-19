@@ -36,14 +36,14 @@ then
   # Create bookmark
   printf "Creating bookmark ${location} ... "
   ln -s "${location}" "${bookmarks_dir}/$3" &&
-  echo -e "\033[0;32mDone.\033[0m"
+  echo -e "${C_GRN}Done.${C_RST}"
 elif [[ "$1" == "delete" ]]
 then
   # Delete bookmark
   if [[ "$2" != "" ]]
   then
     printf "Deleting bookmark $2 ... "
-    rm "${bookmarks_dir}/$2" && echo -e "\033[0;32mDone.\033[0m"
+    rm "${bookmarks_dir}/$2" && echo -e "${C_GRN}Done.${C_RST}"
   fi
 elif  [[ "$1" == "list" ]]
 then

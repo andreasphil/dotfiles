@@ -9,6 +9,34 @@
 export DOTFILES_ROOT="${HOME}/Documents/Dotfiles"
 
 # -----------------------------------------------------------------------------
+# Variables for colorful console output.
+# Adapted from: http://unix.stackexchange.com/a/124408
+# -----------------------------------------------------------------------------
+
+# Regular
+export C_BLK='\033[0;30m'  # Black
+export C_RED='\033[0;31m'  # Red
+export C_GRN='\033[0;32m'  # Green
+export C_YLW='\033[0;33m'  # Yellow
+export C_BLU='\033[0;34m'  # Blue
+export C_PUR='\033[0;35m'  # Purple
+export C_CYN='\033[0;36m'  # Cyan
+export C_WHT='\033[0;37m'  # White
+
+# Bold
+export C_BBLK='\033[1;30m' # Black
+export C_BRED='\033[1;31m' # Red
+export C_BGRN='\033[1;32m' # Green
+export C_BYLW='\033[1;33m' # Yellow
+export C_BBLU='\033[1;34m' # Blue
+export C_BPUR='\033[1;35m' # Purple
+export C_BCYN='\033[1;36m' # Cyan
+export C_BWHT='\033[1;37m' # White
+
+# Reset
+export C_RST='\033[0m'
+
+# -----------------------------------------------------------------------------
 # Install rbenv
 # -----------------------------------------------------------------------------
 
@@ -85,10 +113,10 @@ function get-prompt
   p="\h:\W"
 
   # Git branch name
-  p="${p}\[\033[32m\]\$(parse-git-branch-name)\[\033[00m\]"
+  p="${p}\[${C_GRN}\]\$(parse-git-branch-name)\[${C_RST}\]"
 
   # NPM package name
-  p="${p}\[\033[0;34m\]\$(parse-npm-package-info)\[\033[00m\]"
+  p="${p}\[${C_BLU}\]\$(parse-npm-package-info)\[${C_RST}\]"
 
   # username + $
   p="${p} \u\$ "
