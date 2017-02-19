@@ -42,7 +42,7 @@ alias ls="ls -G1"
 alias ll="ls -l"
 
 # Shorthands for actions for the bookmarks script
-alias b="bookmarks"
+alias b=". bookmarks"
 alias bl="bookmarks list"
 alias bc="bookmarks create"
 alias bd="bookmarks delete"
