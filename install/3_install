@@ -68,16 +68,29 @@ function atomPackages
 }
 
 # -----------------------------------------------------------------------------
+# Install global NPM packages
+# -----------------------------------------------------------------------------
+
+function npmPackages
+{
+  echo "Installing global NPM packages ..."
+  npm install -g http-server
+}
+
+# -----------------------------------------------------------------------------
 # Run
 # -----------------------------------------------------------------------------
 
 # Add specified tasks to list or default to all
 if [[ "$#" == 0 ]]
 then
-  tasks=( "xcodeCli" "packageManagers" "software" "gems" "atomPackages" )
+  tasks=( "xcodeCli" "packageManagers" "software" "gems" "atomPackages"
+    "npmPackages" )
 else
   tasks=$@
 fi
+
+echo "Running tasks: ${tasks[@]}"
 
 # Run the specified tasks
 for task in ${tasks[@]}
@@ -88,6 +101,7 @@ do
     "software") software;;
     "gems") gems;;
     "atomPackages") atomPackages;;
+    "npmPackages") npmPackages;;
     *) echo "Unknown task '${task}'!";;
   esac
 done
