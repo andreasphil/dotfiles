@@ -1,0 +1,57 @@
+[
+  {
+    title: "Aemilia"
+    group: "Projekte"
+    paths: [
+      "/Users/andreas/Documents/Projekte/Aemilia"
+      "/Users/andreas/Documents/Projekte/Sally"
+    ]
+  }
+  {
+    title: "Make Project"
+    group: "Projekte"
+    paths: [
+      "/Users/andreas/Documents/Projekte/Make-Project"
+    ]
+  }
+  {
+    title: "Studium"
+    paths: [
+      "/Users/andreas/Dropbox/Studium"
+    ]
+  }
+  {
+    title: "Website"
+    group: "Projekte"
+    paths: [
+      "/Users/andreas/Documents/Projekte/Website"
+    ]
+  }
+  {
+    title: "Notizen"
+    paths: [
+      "/Users/andreas/Dropbox/Meine Dateien/Notizen"
+    ]
+  }
+  {
+    title: "Tidely"
+    group: "Projekte"
+    paths: [
+      "/Users/andreas/Documents/Projekte/Tidely"
+    ]
+  }
+  {
+    title: "Wrappl"
+    group: "Projekte"
+    paths: [
+      "/Users/andreas/Documents/Projekte/Wrappl"
+    ]
+  }
+  {
+    title: "Dotfiles"
+    group: "Projekte"
+    paths: [
+      "/Users/andreas/Documents/Projekte/Dotfiles"
+    ]
+  }
+]

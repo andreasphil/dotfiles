@@ -1,0 +1,22 @@
+"*":
+  core:
+    telemetryConsent: "limited"
+    useCustomTitleBar: true
+  editor:
+    fontSize: 13
+    preferredLineLength: 80
+    scrollPastEnd: true
+    softWrap: true
+    softWrapAtPreferredLineLength: true
+  "exception-reporting":
+    userId: "180202cf-27ed-3495-4902-e704f8714f71"
+  pigments:
+    dismissableReloadNotifications: false
+    markerType: "gutter"
+  "tree-view": {}
+  "webbox-color":
+    fillColorAsBackground: false
+  welcome:
+    showOnStartup: false
+  wordcount:
+    hidechars: true
