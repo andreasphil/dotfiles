@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# -----------------------------------------------------------------------------
+# STEP 1: INITIALIZE
+#
+# Performs preparation tasks that are required by other installation steps.
+# Restart shell after running this script.
+# -----------------------------------------------------------------------------
+
+echo "Linking .bash_profile ..."
+ln -s "${DOTFILES_ROOT}/environment/.bash_profile" "${HOME}/.bash_profile"
+
+echo "Done. Please restart the shell before continuing!"

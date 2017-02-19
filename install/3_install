@@ -1,0 +1,93 @@
+#!/bin/bash
+
+# -----------------------------------------------------------------------------
+# STEP 3: INSTALL
+#
+# Sets up command line tools and package managers and downloads all configured
+# applications.
+#
+# Usage: 3_install [tasks...]
+# -----------------------------------------------------------------------------
+
+set -e
+
+# -----------------------------------------------------------------------------
+# Preparation: Install Xcode command line tools
+# -----------------------------------------------------------------------------
+
+function xcodeCli
+{
+  echo "Installing command line developer tools ..."
+  xcode-select --install
+}
+
+# -----------------------------------------------------------------------------
+# Install package managers
+# -----------------------------------------------------------------------------
+
+function packageManagers
+{
+  echo "Installing homebrew ..."
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+  echo "Installing cask ..."
+  brew tap "caskroom/cask"
+
+  echo "Installing homebrew bundle"
+  brew tap "homebrew/bundle"
+}
+
+# -----------------------------------------------------------------------------
+# Install software
+# -----------------------------------------------------------------------------
+
+function software
+{
+  echo "Installing software ..."
+  brew bundle install --file="${DOTFILES_ROOT}/install/Brewfile"
+}
+
+# -----------------------------------------------------------------------------
+# Install gems
+# -----------------------------------------------------------------------------
+
+function gems
+{
+  echo "Installing gems ..."
+  bundle install --gemfile="${DOTFILES_ROOT}/install/Gemfile"
+}
+
+# -----------------------------------------------------------------------------
+# Install Atom packages
+# -----------------------------------------------------------------------------
+
+function atomPackages
+{
+  echo "Installing Atom packages ..."
+  apm install --packages-file "${DOTFILES_ROOT}/install/Apmfile"
+}
+
+# -----------------------------------------------------------------------------
+# Run
+# -----------------------------------------------------------------------------
+
+# Add specified tasks to list or default to all
+if [[ "$#" == 0 ]]
+then
+  tasks=( "xcodeCli" "packageManagers" "software" "gems" "atomPackages" )
+else
+  tasks=$@
+fi
+
+# Run the specified tasks
+for task in ${tasks[@]}
+do
+  case "$task" in
+    "xcodeCli") xcodeCli;;
+    "packageManagers") packageManagers;;
+    "software") software;;
+    "gems") gems;;
+    "atomPackages") atomPackages;;
+    *) echo "Unknown task '${task}'!";;
+  esac
+done

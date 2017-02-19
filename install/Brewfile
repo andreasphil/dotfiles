@@ -1,0 +1,40 @@
+tap 'caskroom/cask'
+tap 'homebrew/bundle'
+tap 'homebrew/core'
+brew 'autoconf'
+brew 'cowsay'
+brew 'fortune'
+brew 'fzf'
+brew 'icu4c'
+brew 'mas'
+brew 'node'
+brew 'openssl'
+brew 'pkg-config'
+brew 'readline'
+brew 'postgresql'
+brew 'ruby-build'
+brew 'rbenv'
+brew 'tag'
+brew 'xz'
+cask 'atom'
+cask 'dropbox'
+cask 'gog-galaxy'
+cask 'goofy'
+cask 'google-chrome'
+cask 'keeweb'
+cask 'liteicon'
+cask 'origami-studio'
+cask 'simplenote'
+cask 'skype'
+cask 'slack'
+cask 'spotify'
+cask 'toggldesktop'
+cask 'vlc'
+cask 'whatsapp'
+mas 'Wunderlist', id: 410628904
+mas 'Affinity Designer', id: 824171161
+mas 'iMovie', id: 408981434
+mas 'Pages', id: 409201541
+mas 'Keynote', id: 409183694
+mas 'The Unarchiver', id: 425424353
+mas 'Numbers', id: 409203825
