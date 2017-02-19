@@ -15,7 +15,13 @@
 # Usage: bookmarks [create <location> [<name>]] [delete <name>] [list]
 # -----------------------------------------------------------------------------
 
-bookmarks_dir="${HOME}/.bookmarks"
+# Read bookmarks_dir from environment variable or default to ~/.bookmarks
+bookmarks_dir="${BOOKMARKS_DIR}"
+
+if [[ "${bookmarks_dir}" == "" ]]
+then
+  bookmarks_dir="${HOME}/.bookmarks";
+fi
 
 if [[ "$1" == "create" ]]
 then
