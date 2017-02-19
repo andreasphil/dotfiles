@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# -----------------------------------------------------------------------------
+# STEP 4: UPDATE
+#
+# Launches updating commands for some of the package managers. Based on Lars
+# Kappert's _Getting Started With Dotfiles_.
+# -----------------------------------------------------------------------------
+
+# App Store
+printf "${C_BLU}App Store:${C_RST}\n"
+sudo softwareupdate --install --all
+
+# Update Homebrew & packages
+printf "\n${C_BLU}Update Homebrew & packages:${C_RST}\n"
+brew update
+brew upgrade
+
+# Update NPM & packages
+printf "\n${C_BLU}Update NPM & packages:${C_RST}\n"
+npm install -g npm
+npm update -g
+
+# Update Ruby gems
+printf "\n${C_BLU}Update Ruby gems:${C_RST}\n"
+gem update
