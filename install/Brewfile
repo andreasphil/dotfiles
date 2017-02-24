@@ -30,7 +30,6 @@ cask 'spotify'
 cask 'toggldesktop'
 cask 'vlc'
 cask 'whatsapp'
-mas 'Wunderlist', id: 410628904
 mas 'Affinity Designer', id: 824171161
 mas 'iMovie', id: 408981434
 mas 'Pages', id: 409201541
@@ -38,3 +37,4 @@ mas 'Keynote', id: 409183694
 mas 'The Unarchiver', id: 425424353
 mas 'Numbers', id: 409203825
 mas 'Simplenote', id: 692867256
+mas 'Todoist: To Do List | Task List', id: 585829637
