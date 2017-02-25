@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# -----------------------------------------------------------------------------
+# COLOR TEST
+#
+# Prints some lines of lorem ipsum in the different shell colors. Requires
+# the color variables to be set as in `environment/bash_profile`.
+# -----------------------------------------------------------------------------
+
+printf "${C_BLK}BLK: Lorem ipsum dolor sit amet, consetetur sadipscing elitr,\n${C_RST}"
+printf "${C_RED}RED: sed diam nonumy eirmod tempor invidunt ut labore et dolore\n${C_RST}"
+printf "${C_GRN}GRN: magna aliquyam erat, sed diam voluptua. At vero eos et\n${C_RST}"
+printf "${C_YLW}YLW: accusam et justo duo dolores et ea rebum. Stet clita kasd\n${C_RST}"
+printf "${C_BLU}BLU: gubergren, no sea takimata sanctus est Lorem ipsum dolor\n${C_RST}"
+printf "${C_PUR}PUR: sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing\n${C_RST}"
+printf "${C_CYN}CYN: elitr, sed diam nonumy eirmod tempor invidunt ut labore et\n${C_RST}"
+printf "${C_WHT}WHT: dolore magna aliquyam erat, sed diam voluptua. At vero eos\n${C_RST}"
+printf "${C_BBL}BBL: et accusam et justo duo dolores et ea rebum. Stet clita\n${C_RST}"
+printf "${C_BRE}BRE: kasd gubergren, no sea takimata sanctus est Lorem ipsum\n${C_RST}"
+printf "${C_BGR}BGR: dolor sit amet. Lorem ipsum dolor sit amet, consetetur\n${C_RST}"
+printf "${C_BYL}BYL: sed diam nonumy eirmod tempor invidunt ut labore et dolore\n${C_RST}"
+printf "${C_BBL}BBL: magna aliquyam erat, sed diam voluptua. At vero eos et\n${C_RST}"
+printf "${C_BPU}BPU: accusam et justo duo dolores et ea rebum. Stet clita kasd\n${C_RST}"
+printf "${C_BCY}BCY: gubergren, no sea takimata sanctus est Lorem ipsum dolor\n${C_RST}"
+printf "${C_BWH}BWH: sit amet. Lorem ipsum dolor sit amet, consetetur sad.\n${C_RST}"

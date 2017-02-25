@@ -24,14 +24,14 @@ export C_CYN='\033[0;36m'  # Cyan
 export C_WHT='\033[0;37m'  # White
 
 # Bold
-export C_BBLK='\033[1;30m' # Black
-export C_BRED='\033[1;31m' # Red
-export C_BGRN='\033[1;32m' # Green
-export C_BYLW='\033[1;33m' # Yellow
-export C_BBLU='\033[1;34m' # Blue
-export C_BPUR='\033[1;35m' # Purple
-export C_BCYN='\033[1;36m' # Cyan
-export C_BWHT='\033[1;37m' # White
+export C_BBL='\033[1;30m' # Black
+export C_BRE='\033[1;31m' # Red
+export C_BGR='\033[1;32m' # Green
+export C_BYL='\033[1;33m' # Yellow
+export C_BBL='\033[1;34m' # Blue
+export C_BPU='\033[1;35m' # Purple
+export C_BCY='\033[1;36m' # Cyan
+export C_BWH='\033[1;37m' # White
 
 # Reset
 export C_RST='\033[0m'
