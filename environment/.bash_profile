@@ -79,6 +79,16 @@ alias bd="bookmarks delete"
 alias o="open ."
 
 # -----------------------------------------------------------------------------
+# Functions – everything too much for an alias and to little for a script
+# -----------------------------------------------------------------------------
+
+# Creates an executable file in the current directory
+function new-script
+{
+  touch "$1" && chmod +x "$1" && echo "#!/bin/bash" > "$1"
+}
+
+# -----------------------------------------------------------------------------
 # Prompt configuration
 # -----------------------------------------------------------------------------
 
