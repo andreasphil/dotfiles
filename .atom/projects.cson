@@ -4,7 +4,6 @@
     group: "Projekte"
     paths: [
       "/Users/andreas/Documents/Projekte/Aemilia"
-      "/Users/andreas/Documents/Projekte/Sally"
     ]
   }
   {
@@ -30,7 +29,7 @@
   {
     title: "Notizen"
     paths: [
-      "/Users/andreas/Dropbox/Meine Dateien/Notizen"
+      "/Users/andreas/Documents/Notizen"
     ]
   }
   {
@@ -51,7 +50,7 @@
     title: "Dotfiles"
     group: "Projekte"
     paths: [
-      "/Users/andreas/Documents/Projekte/Dotfiles"
+      "/Users/andreas/Documents/Dotfiles"
     ]
   }
 ]
