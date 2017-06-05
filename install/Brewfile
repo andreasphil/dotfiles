@@ -28,7 +28,6 @@ cask 'liteicon'
 cask 'origami-studio'
 cask 'simplenote'
 cask 'skype'
-cask 'spotify'
 cask 'toggldesktop'
 cask 'whatsapp'
 mas 'Affinity Designer', id: 824171161
