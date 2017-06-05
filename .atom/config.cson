@@ -11,13 +11,15 @@
     userId: "180202cf-27ed-3495-4902-e704f8714f71"
   "markdown-preview": {}
   "one-dark-ui":
-    layoutMode: "Spacious"
+    tabSizing: "Maximum"
   pigments:
     dismissableReloadNotifications: false
     markerType: "gutter"
   "project-manager":
     sortBy: "title"
-  "tree-view": {}
+  "status-bar": {}
+  "tree-view":
+    squashDirectoryNames: true
   "webbox-color":
     fillColorAsBackground: false
   welcome:

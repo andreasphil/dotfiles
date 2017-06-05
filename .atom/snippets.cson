@@ -28,10 +28,10 @@
 '.source.js':
   'Initialize Namespace':
     'prefix': 'init-namespace'
-    'body': '$1 = $1 || {};\n$2'
+    'body': '$1 = $1 || {}$2'
   'Closure':
     'prefix': 'closure'
-    'body': '(function($1)\n{\n  $2\n})(window);'
+    'body': '(function($1)\n{\n  $2\n})(window)'
 
 '.source.shell':
   'Section':

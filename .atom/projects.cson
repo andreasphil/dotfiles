@@ -53,4 +53,25 @@
       "/Users/andreas/Documents/Dotfiles"
     ]
   }
+  {
+    title: "Tidely JS"
+    group: "Projekte"
+    paths: [
+      "/Users/andreas/Documents/Projekte/Tidely-JS"
+    ]
+  }
+  {
+    title: "Climate Quest"
+    group: "Projekte"
+    paths: [
+      "/Users/andreas/Documents/Projekte/ClimateQuest"
+    ]
+  }
+  {
+    title: "Movilizer Variable Test"
+    group: "Arbeit"
+    paths: [
+      "/Users/andreas/Downloads/MovilizerVariableTest"
+    ]
+  }
 ]
