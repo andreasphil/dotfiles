@@ -88,6 +88,12 @@ function new-script
   touch "$1" && chmod +x "$1" && echo "#!/bin/bash" > "$1"
 }
 
+# Creates a new directory and cd into it
+function cdnew
+{
+  mkdir "$1" && cd "$1"
+}
+
 # -----------------------------------------------------------------------------
 # Prompt configuration
 # -----------------------------------------------------------------------------
