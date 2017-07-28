@@ -1,29 +1,8 @@
 [
   {
-    title: "Aemilia"
-    group: "Projekte"
-    paths: [
-      "/Users/andreas/Documents/Projekte/Aemilia"
-    ]
-  }
-  {
-    title: "Make Project"
-    group: "Projekte"
-    paths: [
-      "/Users/andreas/Documents/Projekte/Make-Project"
-    ]
-  }
-  {
     title: "Studium"
     paths: [
       "/Users/andreas/Dropbox/Studium"
-    ]
-  }
-  {
-    title: "Website"
-    group: "Projekte"
-    paths: [
-      "/Users/andreas/Documents/Projekte/Website"
     ]
   }
   {
@@ -33,10 +12,17 @@
     ]
   }
   {
-    title: "Tidely"
+    title: "Aemilia"
     group: "Projekte"
     paths: [
-      "/Users/andreas/Documents/Projekte/Tidely"
+      "/Users/andreas/Documents/Projekte/Aemilia"
+    ]
+  }
+  {
+    title: "Website"
+    group: "Projekte"
+    paths: [
+      "/Users/andreas/Documents/Projekte/Website"
     ]
   }
   {
@@ -54,10 +40,11 @@
     ]
   }
   {
-    title: "Tidely JS"
+    title: "Tidely"
     group: "Projekte"
     paths: [
       "/Users/andreas/Documents/Projekte/Tidely-JS"
+      "/Users/andreas/Documents/Projekte/Tidely"
     ]
   }
   {
@@ -68,10 +55,11 @@
     ]
   }
   {
-    title: "Movilizer Variable Test"
-    group: "Arbeit"
+    title: "Boilerplate"
+    group: "Projekte"
     paths: [
-      "/Users/andreas/Downloads/MovilizerVariableTest"
+      "/Users/andreas/Documents/Projekte/Boilerplate/webapp"
+      "/Users/andreas/Documents/Projekte/Boilerplate/movilizer-webapp"
     ]
   }
 ]
