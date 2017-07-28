@@ -12,7 +12,7 @@
 # Requires fzf to be installed: https://github.com/junegunn/fzf
 # If Homebrew is available, it can be installed via: `brew install fzf`
 #
-# Usage: bookmarks [create <location> [<name>]] [delete <name>] [list]
+# Usage: bookmarks [create <location> [<name>]] [delete <name>] [list] [help]
 # -----------------------------------------------------------------------------
 
 # Read bookmarks_dir from environment variable or default to ~/.bookmarks
@@ -49,6 +49,10 @@ elif  [[ "$1" == "list" ]]
 then
   # List bookmarks
   ls -l "${bookmarks_dir}"
+elif [[ "$1" == "help" ]]
+then
+  # Show usage information
+  echo "bookmarks [create <location> [<name>]] [delete <name>] [list] [help]"
 else
   # Open bookmark
   selection="$(ls ${bookmarks_dir} | fzf)"
