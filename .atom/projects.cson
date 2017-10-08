@@ -15,21 +15,21 @@
     title: "Aemilia"
     group: "Projekte"
     paths: [
-      "/Users/andreas/Documents/Projekte/Aemilia"
+      "/Users/andreas/Projekte/Aemilia"
     ]
   }
   {
     title: "Website"
     group: "Projekte"
     paths: [
-      "/Users/andreas/Documents/Projekte/Website"
+      "/Users/andreas/Projekte/Website"
     ]
   }
   {
     title: "Wrappl"
     group: "Projekte"
     paths: [
-      "/Users/andreas/Documents/Projekte/Wrappl"
+      "/Users/andreas/Projekte/Wrappl"
     ]
   }
   {
@@ -43,23 +43,22 @@
     title: "Tidely"
     group: "Projekte"
     paths: [
-      "/Users/andreas/Documents/Projekte/Tidely-JS"
-      "/Users/andreas/Documents/Projekte/Tidely"
+      "/Users/andreas/Projekte/Tidely"
     ]
   }
   {
     title: "Climate Quest"
     group: "Projekte"
     paths: [
-      "/Users/andreas/Documents/Projekte/ClimateQuest"
+      "/Users/andreas/Projekte/ClimateQuest"
     ]
   }
   {
     title: "Boilerplate"
     group: "Projekte"
     paths: [
-      "/Users/andreas/Documents/Projekte/Boilerplate/webapp"
-      "/Users/andreas/Documents/Projekte/Boilerplate/movilizer-webapp"
+      "/Users/andreas/Projekte/Boilerplate/webapp"
+      "/Users/andreas/Projekte/Boilerplate/movilizer-webapp"
     ]
   }
 ]
