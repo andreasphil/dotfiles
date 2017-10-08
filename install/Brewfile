@@ -25,11 +25,9 @@ cask 'gog-galaxy'
 cask 'goofy'
 cask 'google-chrome'
 cask 'keeweb'
-cask 'liteicon'
 cask 'origami-studio'
 cask 'simplenote'
 cask 'skype'
-cask 'toggldesktop'
 cask 'whatsapp'
 mas 'Affinity Designer', id: 824171161
 mas 'Affinity Photo', id: 824183456
@@ -41,3 +39,4 @@ mas 'Numbers', id: 409203825
 mas 'Pages', id: 409201541
 mas 'The Unarchiver', id: 425424353
 mas 'Todoist: To Do List | Task List', id: 585829637
+mas 'Toggl Desktop', id: 957734279
