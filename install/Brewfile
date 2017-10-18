@@ -27,6 +27,7 @@ cask 'google-chrome'
 cask 'keeweb'
 cask 'origami-studio'
 cask 'simplenote'
+cask 'sip'
 cask 'skype'
 cask 'whatsapp'
 mas 'Affinity Designer', id: 824171161
