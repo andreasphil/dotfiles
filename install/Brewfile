@@ -22,16 +22,15 @@ cask 'atom'
 cask 'backblaze'
 cask 'dropbox'
 cask 'gog-galaxy'
-cask 'goofy'
 cask 'google-chrome'
 cask 'keeweb'
 cask 'liteicon'
 cask 'origami-studio'
 cask 'sip'
 cask 'skype'
+cask 'toggldesktop'
 cask 'whatsapp'
 mas 'Affinity Designer', id: 824171161
-mas 'Affinity Photo', id: 824183456
 mas 'Bear', id: 1091189122
 mas 'iMovie', id: 408981434
 mas 'Keynote', id: 409183694
@@ -41,4 +40,3 @@ mas 'Numbers', id: 409203825
 mas 'Pages', id: 409201541
 mas 'The Unarchiver', id: 425424353
 mas 'Todoist: To Do List | Task List', id: 585829637
-mas 'Toggl Desktop', id: 957734279
