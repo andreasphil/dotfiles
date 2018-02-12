@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# -----------------------------------------------------------------------------
+# NOTIFY
+#
+# Uses a pre-made Apple script to display a notification on macOS.
+#
+# Usage: notify <message> [<title>]
+#
+# Acknowledgements
+# https://apple.stackexchange.com/a/115373
+# -----------------------------------------------------------------------------
+
+osascript -e "display notification \"$1\" with title \"$2\""
