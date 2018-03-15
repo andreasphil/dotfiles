@@ -28,7 +28,6 @@ cask 'liteicon'
 cask 'origami-studio'
 cask 'sip'
 cask 'skype'
-cask 'toggldesktop'
 cask 'whatsapp'
 mas 'Affinity Designer', id: 824171161
 mas 'Bear', id: 1091189122
