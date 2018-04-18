@@ -54,7 +54,7 @@ function software
 function gems
 {
   echo "Installing gems ..."
-  bundle install --gemfile="${DOTFILES_ROOT}/install/Gemfile"
+  gem install bundler && bundle install --gemfile="${DOTFILES_ROOT}/install/Gemfile"
 }
 
 # -----------------------------------------------------------------------------
