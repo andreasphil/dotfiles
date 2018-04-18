@@ -78,6 +78,9 @@ alias bd="bookmarks delete"
 # Shorthand to open the current directiory in finder
 alias o="open ."
 
+# Shorthand for running bin/rails
+alias r="bin/rails"
+
 # Shorthands for various timers
 alias pom="timer 1500 'Session finished!' 'Pomodoro' && timer 300 'Break finished!' 'Pomorodo'"
 alias blacktea="timer 180 'Teatime!'"
