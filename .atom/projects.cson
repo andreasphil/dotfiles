@@ -1,35 +1,16 @@
 [
   {
-    title: "Studium"
-    paths: [
-      "/Users/andreas/Dropbox/Studium"
-    ]
-  }
-  {
-    title: "Notizen"
-    paths: [
-      "/Users/andreas/Documents/Notizen"
-    ]
-  }
-  {
     title: "Aemilia"
     group: "Projekte"
     paths: [
-      "/Users/andreas/Projekte/Aemilia"
+      "/Users/andreas/Documents/Projekte/Aemilia"
     ]
   }
   {
     title: "Website"
     group: "Projekte"
     paths: [
-      "/Users/andreas/Projekte/Website"
-    ]
-  }
-  {
-    title: "Wrappl"
-    group: "Projekte"
-    paths: [
-      "/Users/andreas/Projekte/Wrappl"
+      "/Users/andreas/Documents/Projekte/Website"
     ]
   }
   {
@@ -40,25 +21,25 @@
     ]
   }
   {
-    title: "Tidely"
-    group: "Projekte"
-    paths: [
-      "/Users/andreas/Projekte/Tidely"
-    ]
-  }
-  {
     title: "Climate Quest"
     group: "Projekte"
     paths: [
-      "/Users/andreas/Projekte/ClimateQuest"
+      "/Users/andreas/Documents/Projekte/ClimateQuest"
     ]
   }
   {
     title: "Boilerplate"
     group: "Projekte"
     paths: [
-      "/Users/andreas/Projekte/Boilerplate/webapp"
-      "/Users/andreas/Projekte/Boilerplate/movilizer-webapp"
+      "/Users/andreas/Documents/Projekte/Boilerplate/webapp"
+      "/Users/andreas/Documents/Projekte/Boilerplate/movilizer-webapp"
+    ]
+  }
+  {
+    title: "Skriva"
+    group: "Projekte"
+    paths: [
+      "/Users/andreas/Documents/Projekte/Skriva"
     ]
   }
 ]

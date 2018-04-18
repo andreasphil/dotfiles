@@ -10,8 +10,7 @@
   "exception-reporting":
     userId: "180202cf-27ed-3495-4902-e704f8714f71"
   "markdown-preview": {}
-  "one-dark-ui":
-    tabSizing: "Maximum"
+  "one-dark-ui": {}
   pigments:
     dismissableReloadNotifications: false
     markerType: "gutter"
