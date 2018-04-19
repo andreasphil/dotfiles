@@ -1,21 +1,30 @@
+# Taps
 tap 'caskroom/cask'
 tap 'homebrew/bundle'
 tap 'homebrew/core'
+
+# Brew packages
 brew 'autoconf'
 brew 'cowsay'
 brew 'fortune'
 brew 'fzf'
+brew 'gdbm'
 brew 'icu4c'
 brew 'mas'
 brew 'node'
 brew 'openssl'
 brew 'pkg-config'
-brew 'readline'
 brew 'postgresql'
-brew 'ruby-build'
+brew 'python@2'
 brew 'rbenv'
+brew 'readline'
+brew 'ruby-build'
+brew 'sqlite'
 brew 'tag'
 brew 'xz'
+brew 'yarn'
+
+# Software via cask
 cask 'adobe-creative-cloud'
 cask 'atom'
 cask 'backblaze'
@@ -28,9 +37,10 @@ cask 'sip'
 cask 'sketch'
 cask 'skype'
 cask 'whatsapp'
+
+# App Store installations
 mas 'Affinity Designer', id: 824171161
 mas 'Bear', id: 1091189122
-mas 'iMovie', id: 408981434
 mas 'Keynote', id: 409183694
 mas 'Kindle', id: 405399194
 mas 'Numbers', id: 409203825
