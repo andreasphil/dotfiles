@@ -31,7 +31,6 @@ cask 'backblaze'
 cask 'dropbox'
 cask 'gog-galaxy'
 cask 'google-chrome'
-cask 'keeweb'
 cask 'liteicon'
 cask 'sip'
 cask 'sketch'
@@ -39,6 +38,7 @@ cask 'skype'
 cask 'whatsapp'
 
 # App Store installations
+mas '1Password', id: 443987910
 mas 'Affinity Designer', id: 824171161
 mas 'Bear', id: 1091189122
 mas 'Keynote', id: 409183694
