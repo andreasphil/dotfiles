@@ -8,6 +8,8 @@
 
 export DOTFILES_ROOT="${HOME}/Documents/Dotfiles"
 
+export PGDATA="${HOME}/.psql/data"
+
 # -----------------------------------------------------------------------------
 # Variables for colorful console output.
 # Adapted from: http://unix.stackexchange.com/a/124408
