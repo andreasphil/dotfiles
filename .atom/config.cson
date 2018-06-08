@@ -1,6 +1,10 @@
 "*":
   core:
     telemetryConsent: "limited"
+    themes: [
+      "one-dark-ui"
+      "material-palenight-syntax"
+    ]
   editor:
     fontSize: 13
     preferredLineLength: 100
