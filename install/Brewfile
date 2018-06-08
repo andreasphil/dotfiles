@@ -8,16 +8,12 @@ brew 'autoconf'
 brew 'cowsay'
 brew 'fortune'
 brew 'fzf'
-brew 'gdbm'
-brew 'icu4c'
+brew 'heroku'
 brew 'mas'
 brew 'node'
-brew 'openssl'
-brew 'pkg-config'
 brew 'postgresql'
 brew 'python@2'
 brew 'rbenv'
-brew 'readline'
 brew 'ruby-build'
 brew 'sqlite'
 brew 'tag'
@@ -32,6 +28,7 @@ cask 'dropbox'
 cask 'gog-galaxy'
 cask 'google-chrome'
 cask 'liteicon'
+cask 'notion'
 cask 'sip'
 cask 'sketch'
 cask 'skype'
@@ -39,10 +36,10 @@ cask 'whatsapp'
 
 # App Store installations
 mas '1Password', id: 443987910
-mas 'Affinity Designer', id: 824171161
 mas 'Bear', id: 1091189122
 mas 'Keynote', id: 409183694
 mas 'Kindle', id: 405399194
+mas 'NepTunes', id: 1006739057
 mas 'Numbers', id: 409203825
 mas 'Pages', id: 409201541
 mas 'The Unarchiver', id: 425424353
