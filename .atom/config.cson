@@ -1,5 +1,12 @@
 "*":
   core:
+    debugLSP: true
+    disabledPackages: [
+      "xatom-debug-chrome"
+      "xatom-debug"
+      "xatom-debug-nodejs"
+    ]
+    openEmptyEditorOnStart: false
     telemetryConsent: "limited"
     themes: [
       "one-dark-ui"
@@ -15,17 +22,22 @@
     userId: "180202cf-27ed-3495-4902-e704f8714f71"
   "markdown-preview": {}
   "one-dark-ui": {}
-  pigments:
-    dismissableReloadNotifications: false
-    markerType: "gutter"
-  "project-manager":
-    sortBy: "title"
   "status-bar": {}
+  "linter-js-standard":
+    checkStyleDevDependencies: true
+  "linter-js-standard-engine":
+    enabledProjects: 3
+  "linter-ui-default":
+    panelHeight: 200
   "tree-view":
     squashDirectoryNames: true
   "webbox-color":
     fillColorAsBackground: false
   welcome:
     showOnStartup: false
-  wordcount:
-    hidechars: true
+".gemfile.ruby.source":
+  editor:
+    preferredLineLength: 80
+".ruby.source":
+  editor:
+    preferredLineLength: 80
