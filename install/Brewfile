@@ -1,46 +1,38 @@
-# Taps
-tap 'caskroom/cask'
+tap 'heroku/brew'
 tap 'homebrew/bundle'
+tap 'homebrew/cask'
 tap 'homebrew/core'
-
-# Brew packages
 brew 'autoconf'
 brew 'cowsay'
 brew 'fortune'
 brew 'fzf'
-brew 'heroku'
 brew 'mas'
 brew 'node'
+brew 'openssl'
+brew 'pkg-config'
+brew 'readline'
 brew 'postgresql'
-brew 'python@2'
-brew 'rbenv'
 brew 'ruby-build'
-brew 'sqlite'
+brew 'rbenv'
 brew 'tag'
 brew 'xz'
 brew 'yarn'
-
-# Software via cask
+brew 'heroku/brew/heroku'
 cask 'adobe-creative-cloud'
 cask 'atom'
 cask 'backblaze'
 cask 'dropbox'
 cask 'gog-galaxy'
 cask 'google-chrome'
+cask 'keeweb'
 cask 'liteicon'
-cask 'notion'
-cask 'sip'
-cask 'sketch'
 cask 'skype'
 cask 'whatsapp'
-
-# App Store installations
 mas '1Password', id: 443987910
 mas 'Bear', id: 1091189122
 mas 'Keynote', id: 409183694
 mas 'Kindle', id: 405399194
-mas 'NepTunes', id: 1006739057
 mas 'Numbers', id: 409203825
 mas 'Pages', id: 409201541
 mas 'The Unarchiver', id: 425424353
-mas 'Todoist: To Do List | Task List', id: 585829637
+mas 'Todoist', id: 585829637
