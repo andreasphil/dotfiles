@@ -31,7 +31,7 @@ function packageManagers
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
   echo "Installing cask ..."
-  brew tap "caskroom/cask"
+  brew tap "homebrew/cask"
 
   echo "Installing homebrew bundle"
   brew tap "homebrew/bundle"
@@ -68,16 +68,6 @@ function atomPackages
 }
 
 # -----------------------------------------------------------------------------
-# Install global NPM packages
-# -----------------------------------------------------------------------------
-
-function npmPackages
-{
-  echo "Installing global NPM packages ..."
-  npm install -g http-server
-}
-
-# -----------------------------------------------------------------------------
 # Run
 # -----------------------------------------------------------------------------
 
@@ -101,7 +91,6 @@ do
     "software") software;;
     "gems") gems;;
     "atomPackages") atomPackages;;
-    "npmPackages") npmPackages;;
     *) echo "Unknown task '${task}'!";;
   esac
 done

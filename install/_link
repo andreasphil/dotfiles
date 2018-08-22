@@ -24,3 +24,9 @@ ln -s "${DOTFILES_ROOT}/.atom/style.less" "${HOME}/.atom/style.less"
 
 ln -s "${DOTFILES_ROOT}/git/.gitconfig" "${HOME}/.gitconfig"
 ln -s "${DOTFILES_ROOT}/git/.gitignore_global" "${HOME}/.gitignore_global"
+
+# -----------------------------------------------------------------------------
+# Command line bookmarks
+# -----------------------------------------------------------------------------
+
+mkdir "${HOME}/.bookmarks"

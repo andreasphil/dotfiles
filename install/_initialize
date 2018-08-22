@@ -5,11 +5,15 @@
 #
 # Performs preparation tasks that are required by other installation steps.
 # Restart shell after running this script. Before running, set the environment
-# variable DOTFILES_ROOT to the dotfiles folder. Later, this will be done
-# automatically.
+# variable DOTFILES_ROOT to the dotfiles folder:
+#
+#   export DOTFILES_ROOT=/path/to/dotfiles
+#
+# Later, this will be done automatically.
 # -----------------------------------------------------------------------------
 
 echo "Linking .bash_profile ..."
 ln -s "${DOTFILES_ROOT}/environment/.bash_profile" "${HOME}/.bash_profile"
 
-echo "Done. Please restart the shell before continuing!"
+echo "Done. Please restart the shell before continuing."
+echo "Remember to change the DOTFILES_ROOT in you .bash_profile to point to the right folder!"
