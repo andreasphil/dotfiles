@@ -59,7 +59,6 @@ eval "$(rbenv init -)"
 PATH="${PATH}:."
 PATH="./node_modules/.bin:${PATH}"
 PATH="${DOTFILES_ROOT}/bin:${PATH}"
-PATH="/Users/andreas/Documents/Projekte/Make-Project:${PATH}"
 
 export PATH
 
