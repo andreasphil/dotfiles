@@ -20,15 +20,15 @@
     softWrapAtPreferredLineLength: true
   "exception-reporting":
     userId: "180202cf-27ed-3495-4902-e704f8714f71"
-  "markdown-preview": {}
-  "one-dark-ui": {}
-  "status-bar": {}
   "linter-js-standard":
     checkStyleDevDependencies: true
   "linter-js-standard-engine":
     enabledProjects: 3
   "linter-ui-default":
     panelHeight: 200
+  "markdown-preview": {}
+  "one-dark-ui": {}
+  "status-bar": {}
   "tree-view":
     squashDirectoryNames: true
   "webbox-color":
