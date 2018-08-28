@@ -25,6 +25,7 @@ cask 'dropbox'
 cask 'gog-galaxy'
 cask 'google-chrome'
 cask 'liteicon'
+cask 'numi'
 cask 'skype'
 cask 'whatsapp'
 mas '1Password', id: 443987910
