@@ -27,7 +27,7 @@
   "linter-ui-default":
     hidePanelWhenEmpty: false
     panelHeight: 200
-    showPanel: true
+    showPanel: false
   "markdown-preview": {}
   "one-dark-ui": {}
   "status-bar": {}
