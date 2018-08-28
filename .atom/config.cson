@@ -25,7 +25,9 @@
   "linter-js-standard-engine":
     enabledProjects: 3
   "linter-ui-default":
+    hidePanelWhenEmpty: false
     panelHeight: 200
+    showPanel: true
   "markdown-preview": {}
   "one-dark-ui": {}
   "status-bar": {}
