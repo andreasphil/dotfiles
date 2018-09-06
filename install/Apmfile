@@ -1,8 +1,7 @@
 autoclose-html
-autocomplete-js-import
 busy-signal
 emmet
-expose
+file-icons
 intentions
 jumpy
 language-vue
@@ -16,6 +15,3 @@ material-palenight-syntax
 sort-lines
 standard-formatter
 todo
-xatom-debug
-xatom-debug-chrome
-xatom-debug-nodejs

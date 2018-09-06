@@ -1,11 +1,6 @@
 "*":
   core:
     debugLSP: true
-    disabledPackages: [
-      "xatom-debug-chrome"
-      "xatom-debug"
-      "xatom-debug-nodejs"
-    ]
     openEmptyEditorOnStart: false
     telemetryConsent: "limited"
     themes: [
@@ -20,6 +15,8 @@
     softWrapAtPreferredLineLength: true
   "exception-reporting":
     userId: "180202cf-27ed-3495-4902-e704f8714f71"
+  "file-icons":
+    coloured: false
   "linter-js-standard":
     checkStyleDevDependencies: true
   "linter-js-standard-engine":
