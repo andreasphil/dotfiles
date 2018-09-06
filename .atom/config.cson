@@ -1,7 +1,9 @@
 "*":
   core:
+    closeDeletedFileTabs: true
     debugLSP: true
     openEmptyEditorOnStart: false
+    restorePreviousWindowsOnStart: "no"
     telemetryConsent: "limited"
     themes: [
       "one-dark-ui"
