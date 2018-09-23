@@ -1,38 +1,37 @@
-tap 'heroku/brew'
-tap 'homebrew/bundle'
-tap 'homebrew/cask'
-tap 'homebrew/core'
-brew 'autoconf'
-brew 'cowsay'
-brew 'fortune'
-brew 'fzf'
-brew 'mas'
-brew 'node'
-brew 'openssl'
-brew 'pkg-config'
-brew 'readline'
-brew 'postgresql'
-brew 'ruby-build'
-brew 'rbenv'
-brew 'tag'
-brew 'xz'
-brew 'yarn'
-brew 'heroku/brew/heroku'
-cask 'adobe-creative-cloud'
-cask 'atom'
-cask 'backblaze'
-cask 'dropbox'
-cask 'gog-galaxy'
-cask 'google-chrome'
-cask 'liteicon'
-cask 'numi'
-cask 'skype'
-cask 'whatsapp'
-mas '1Password', id: 443987910
-mas 'Bear', id: 1091189122
-mas 'Keynote', id: 409183694
-mas 'Kindle', id: 405399194
-mas 'Numbers', id: 409203825
-mas 'Pages', id: 409201541
-mas 'The Unarchiver', id: 425424353
-mas 'Todoist', id: 585829637
+tap "heroku/brew"
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/core"
+brew "autoconf"
+brew "cowsay"
+brew "fortune"
+brew "fzf"
+brew "mas"
+brew "node"
+brew "openssl"
+brew "pkg-config"
+brew "readline"
+brew "postgresql"
+brew "ruby-build"
+brew "rbenv"
+brew "tag"
+brew "xz"
+brew "yarn"
+brew "heroku/brew/heroku"
+cask "adobe-creative-cloud"
+cask "atom"
+cask "backblaze"
+cask "dropbox"
+cask "gog-galaxy"
+cask "google-chrome"
+cask "liteicon"
+cask "skype"
+cask "whatsapp"
+mas "1Password", id: 443987910
+mas "Bear", id: 1091189122
+mas "Keynote", id: 409183694
+mas "Kindle", id: 405399194
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "The Unarchiver", id: 425424353
+mas "Todoist", id: 585829637
