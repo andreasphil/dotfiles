@@ -10,7 +10,6 @@
       "material-palenight-syntax"
     ]
   editor:
-    fontSize: 13
     preferredLineLength: 100
     scrollPastEnd: true
     softWrap: true
@@ -26,7 +25,6 @@
   "linter-ui-default":
     hidePanelWhenEmpty: false
     panelHeight: 200
-    showPanel: false
   "markdown-preview": {}
   "one-dark-ui": {}
   "status-bar": {}
