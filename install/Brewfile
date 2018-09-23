@@ -28,6 +28,7 @@ cask "liteicon"
 cask "skype"
 cask "whatsapp"
 mas "1Password", id: 443987910
+mas "Adblock Plus", id: 1432731683
 mas "Bear", id: 1091189122
 mas "Keynote", id: 409183694
 mas "Kindle", id: 405399194
