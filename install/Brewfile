@@ -22,12 +22,11 @@ cask "adobe-creative-cloud"
 cask "atom"
 cask "backblaze"
 cask "dropbox"
-cask "gog-galaxy"
 cask "google-chrome"
 cask "liteicon"
-cask "skype"
+cask "sketch"
 cask "whatsapp"
-mas "1Password", id: 443987910
+mas "1Password 7", id: 1333542190
 mas "Adblock Plus", id: 1432731683
 mas "Bear", id: 1091189122
 mas "Keynote", id: 409183694
