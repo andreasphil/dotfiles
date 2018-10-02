@@ -1,0 +1,27 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+  {
+    "key": "shift+enter",
+    "command": "extension.jumpy-word"
+  },
+  {
+    "key": "ctrl+shift+enter",
+    "command": "extension.jumpy-line"
+  },
+  {
+    "key": "cmd+[BracketRight]",
+    "command": "editor.action.fontZoomIn"
+  },
+  {
+    "key": "cmd+-",
+    "command": "-workbench.action.zoomOut"
+  },
+  {
+    "key": "cmd+-",
+    "command": "editor.action.fontZoomOut"
+  },
+  {
+    "key": "shift+f5",
+    "command": "editor.action.sortLinesAscending"
+  }
+]

@@ -25,6 +25,7 @@ cask "dropbox"
 cask "google-chrome"
 cask "liteicon"
 cask "sketch"
+cask "visual-studio-code"
 cask "whatsapp"
 mas "1Password 7", id: 1333542190
 mas "Adblock Plus", id: 1432731683

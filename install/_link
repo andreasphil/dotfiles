@@ -19,6 +19,15 @@ ln -s "${DOTFILES_ROOT}/.atom/snippets.cson" "${HOME}/.atom/snippets.cson"
 ln -s "${DOTFILES_ROOT}/.atom/style.less" "${HOME}/.atom/style.less"
 
 # -----------------------------------------------------------------------------
+# Code
+# -----------------------------------------------------------------------------
+
+mkdir "${HOME}/Library/Application Support/Code/User"
+ln -s "${DOTFILES_ROOT}/vscode/keybindings.json" "${HOME}/Library/Application Support/Code/User/keybindings.json"
+ln -s "${DOTFILES_ROOT}/vscode/settings.json" "${HOME}/Library/Application Support/Code/User/settings.json"
+ln -s "${DOTFILES_ROOT}/vscode/snippets" "${HOME}/Library/Application Support/Code/User/snippets"
+
+# -----------------------------------------------------------------------------
 # Git
 # -----------------------------------------------------------------------------
 

@@ -68,6 +68,19 @@ function atomPackages
 }
 
 # -----------------------------------------------------------------------------
+# Install Code extensions
+# -----------------------------------------------------------------------------
+
+function codeExtensions
+{
+  echo "Installing Code extensions ..."
+  while read -r extension
+  do
+    code --install-extension "$extension"
+  done < "$DOTFILES_ROOT/install/Codefile"
+}
+
+# -----------------------------------------------------------------------------
 # Run
 # -----------------------------------------------------------------------------
 
@@ -75,7 +88,7 @@ function atomPackages
 if [[ "$#" == 0 ]]
 then
   tasks=( "xcodeCli" "packageManagers" "software" "gems" "atomPackages"
-    "npmPackages" )
+    "codeExtensions" )
 else
   tasks=$@
 fi
@@ -91,6 +104,7 @@ do
     "software") software;;
     "gems") gems;;
     "atomPackages") atomPackages;;
+    "codeExtensions") codeExtensions;;
     *) echo "Unknown task '${task}'!";;
   esac
 done
