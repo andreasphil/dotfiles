@@ -7,18 +7,6 @@
 # -----------------------------------------------------------------------------
 
 # -----------------------------------------------------------------------------
-# Atom
-# -----------------------------------------------------------------------------
-
-mkdir "${HOME}/.atom"
-ln -s "${DOTFILES_ROOT}/.atom/config.cson" "${HOME}/.atom/config.cson"
-ln -s "${DOTFILES_ROOT}/.atom/init.coffee" "${HOME}/.atom/init.coffee"
-ln -s "${DOTFILES_ROOT}/.atom/keymap.cson" "${HOME}/.atom/keymap.cson"
-ln -s "${DOTFILES_ROOT}/.atom/projects.cson" "${HOME}/.atom/projects.cson"
-ln -s "${DOTFILES_ROOT}/.atom/snippets.cson" "${HOME}/.atom/snippets.cson"
-ln -s "${DOTFILES_ROOT}/.atom/style.less" "${HOME}/.atom/style.less"
-
-# -----------------------------------------------------------------------------
 # Code
 # -----------------------------------------------------------------------------
 
