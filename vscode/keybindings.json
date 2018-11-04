@@ -23,5 +23,9 @@
   {
     "key": "shift+f5",
     "command": "editor.action.sortLinesAscending"
+  },
+  {
+    "key": "shift+cmd+m",
+    "command": "workbench.action.toggleMaximizedPanel"
   }
 ]

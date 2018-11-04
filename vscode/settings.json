@@ -54,6 +54,13 @@
             "menu.selectionForeground": "#5C6BC0",
             "menubar.selectionForeground": "#5C6BC0",
             "editorRuler.foreground": "#212532"
+        },
+        "[Ayu Mirage]": {
+            "activityBar.background": "#1a202b",
+            "focusBorder": "#212733",
+            "statusBar.background": "#1a202b",
+            "statusBar.border": "#1a202b",
+            "titleBar.border": "#1A202B"
         }
     },
     "telemetry.enableTelemetry": false,
