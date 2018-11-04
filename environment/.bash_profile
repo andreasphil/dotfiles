@@ -127,7 +127,7 @@ function get-npm-package-info
 # Puts brackets around the package name if not empty.
 function parse-npm-package-info
 {
-  get-npm-package-info | sed -e "s/\(.*\)/(\1)/"
+  get-npm-package-info | sed -e "s/\(.*\)/ (\1)/"
 }
 
 # Reads the current Git branch name and wraps it in brackets (if not empty)
@@ -136,20 +136,33 @@ function parse-git-branch-name
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
+# Determines whether
+function git-changed
+{
+  changedLines=$(git status -s 2> /dev/null | wc -l)
+  if [[ $changedLines -gt 0 ]]
+  then
+    echo " has changes"
+  fi
+}
+
 # Wrap prompt creation in a function to make it easier to read and manage
 function get-prompt
 {
   # Host name + working directory
-  p="\h:\W"
-
-  # Git branch name
-  p="${p}\[${C_GRN}\]\$(parse-git-branch-name)\[${C_RST}\]"
+  p="\u@\h:\W"
 
   # NPM package name
   p="${p}\[${C_BLU}\]\$(parse-npm-package-info)\[${C_RST}\]"
 
+  # Git branch name
+  p="${p}\[${C_GRN}\]\$(parse-git-branch-name)\[${C_RST}\]"
+
+  # Git branch status
+  p="${p}\[${C_RED}\]\$(git-changed)\[${C_RST}\]"
+
   # username + $
-  p="${p} \u\$ "
+  p="${p} → "
 
   echo "$p"
 }
