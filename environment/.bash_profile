@@ -108,6 +108,12 @@ function cdnew
   mkdir "$1" && cd "$1"
 }
 
+# Strips the argument of any file:// prefix and opens the remaining path inR
+# VS Code.
+function code-file {
+  code "${1/file:\/\//}"
+}
+
 # -----------------------------------------------------------------------------
 # Prompt configuration
 # -----------------------------------------------------------------------------
