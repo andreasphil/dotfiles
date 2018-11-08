@@ -1,0 +1,7 @@
+{
+	"task": {
+		"prefix": "task",
+		"body": "- [ ] ",
+		"description": "A new task list item."
+	}
+}
