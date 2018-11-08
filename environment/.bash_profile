@@ -6,7 +6,7 @@
 # If you find something useful, do whatever you want with it!
 # -----------------------------------------------------------------------------
 
-export DOTFILES_ROOT="${HOME}/Documents/Dotfiles"
+. "${HOME}/.local_dotfiles"
 export PGDATA="${HOME}/.psql/data"
 
 # -----------------------------------------------------------------------------

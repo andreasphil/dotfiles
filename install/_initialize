@@ -1,19 +1,41 @@
 #!/bin/bash
 
 # -----------------------------------------------------------------------------
-# STEP 1: INITIALIZE
+# INITIALIZE
 #
-# Performs preparation tasks that are required by other installation steps.
-# Restart shell after running this script. Before running, set the environment
-# variable DOTFILES_ROOT to the dotfiles folder:
-#
-#   export DOTFILES_ROOT=/path/to/dotfiles
-#
-# Later, this will be done automatically.
+# Sets up the dotfiles on the current machine. You'll first be prompted for
+# the path of the dotfiles folder. The script adds file containing that path
+# to your home folder, which will be referenced in the future. Afterwards
+# the different configuration files will be softlinked.
 # -----------------------------------------------------------------------------
 
-echo "Linking .bash_profile ..."
-ln -s "${DOTFILES_ROOT}/environment/.bash_profile" "${HOME}/.bash_profile"
+echo "What's the path of your dotfiles folder?"
+read path
 
-echo "Done. Please restart the shell before continuing."
-echo "Remember to change the DOTFILES_ROOT in you .bash_profile to point to the right folder!"
+if [[ $path != ""  && $? ]]
+then
+  # Create a .local_dotfiles file in the home folder pointing to the selected
+  # path. The file will be
+  echo "#!/bin/bash
+  export DOTFILES_ROOT=\"${path}\"" > "${HOME}/.local_dotfiles"
+  . "${HOME}/.local_dotfiles"
+
+  # Link bash profile from the dotfiles folder to the home folder.
+  echo "Linking .bash_profile ..."
+  ln -s "${DOTFILES_ROOT}/environment/.bash_profile" "${HOME}/.bash_profile"
+
+  # Link VS Code configuration
+  mkdir -p "${HOME}/Library/Application Support/Code/User"
+  ln -s "${DOTFILES_ROOT}/vscode/keybindings.json" "${HOME}/Library/Application Support/Code/User/keybindings.json"
+  ln -s "${DOTFILES_ROOT}/vscode/settings.json" "${HOME}/Library/Application Support/Code/User/settings.json"
+  ln -s "${DOTFILES_ROOT}/vscode/snippets" "${HOME}/Library/Application Support/Code/User/snippets"
+
+  # Link global git configuration
+  ln -s "${DOTFILES_ROOT}/git/.gitconfig" "${HOME}/.gitconfig"
+  ln -s "${DOTFILES_ROOT}/git/.gitignore_global" "${HOME}/.gitignore_global"
+
+  # Create command line bookmarks folder
+  mkdir "${HOME}/.bookmarks"
+else
+  echo "Please provide a path."
+fi

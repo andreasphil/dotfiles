@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # -----------------------------------------------------------------------------
-# STEP 3: INSTALL
+# INSTALL
 #
 # Sets up command line tools and package managers and downloads all configured
 # applications.
 #
-# Usage: 3_install [tasks...]
+# Usage: _install [tasks...]
 # -----------------------------------------------------------------------------
 
 set -e

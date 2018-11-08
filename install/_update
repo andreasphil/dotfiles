@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # -----------------------------------------------------------------------------
-# STEP 4: UPDATE
+# UPDATE
 #
 # Launches updating commands for some of the package managers. Based on Lars
 # Kappert's _Getting Started With Dotfiles_.
