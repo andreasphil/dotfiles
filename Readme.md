@@ -8,3 +8,4 @@ Almost all software I use is managed using [Homebrew](https://brew.sh) in combin
 
 * Re-create Brewfile from currently installed packages: `brew bundle dump [--force]`
 * Reset installed Homebrew packages to Brewfile: `brew bundle cleanup`
+* Create a "Codefile" from currently installed VS Code extensions `code --list-extensions > install/Codefile`
