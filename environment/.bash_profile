@@ -97,14 +97,12 @@ alias herbtea="timer 480 'Teatime!'"
 # -----------------------------------------------------------------------------
 
 # Creates an executable file in the current directory
-function new-script
-{
+function new-script {
   touch "$1" && chmod +x "$1" && echo "#!/bin/bash" > "$1"
 }
 
 # Creates a new directory and cd into it
-function cdnew
-{
+function cdnew {
   mkdir "$1" && cd "$1"
 }
 
@@ -118,33 +116,29 @@ function code-file {
 # Prompt configuration
 # -----------------------------------------------------------------------------
 
-# Awkwardly formatting of NPM package info and Git branch name. But this way,
+# Awkwardly formatting NPM package info and Git branch name. But this way,
 # we avoid unnecessary spaces between the previous and following prompt
 # segments in case we're not in a package, a repository or neither of both.
 
 # Reads name and version of the NPM package (in case we're in one). Requires
 # node to be installed (obviously).
-function get-npm-package-info
-{
+function get-npm-package-info {
   node -e "var pack=require('./package.json');
   console.log(pack.name + ' ' + pack.version);" 2> /dev/null
 }
 
 # Puts brackets around the package name if not empty.
-function parse-npm-package-info
-{
+function parse-npm-package-info {
   get-npm-package-info | sed -e "s/\(.*\)/ (\1)/"
 }
 
 # Reads the current Git branch name and wraps it in brackets (if not empty)
-function parse-git-branch-name
-{
+function parse-git-branch-name {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
 # Determines whether
-function git-changed
-{
+function git-changed {
   changedLines=$(git status -s 2> /dev/null | wc -l)
   if [[ $changedLines -gt 0 ]]
   then
@@ -153,8 +147,7 @@ function git-changed
 }
 
 # Wrap prompt creation in a function to make it easier to read and manage
-function get-prompt
-{
+function get-prompt {
   # Host name + working directory
   p="\u@\h:\W"
 
