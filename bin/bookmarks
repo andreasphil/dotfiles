@@ -37,6 +37,10 @@ then
   printf "Creating bookmark ${location} ... "
   ln -s "${location}" "${bookmarks_dir}/$3" &&
   echo -e "${C_GRN}Done.${C_RST}"
+elif [[ "$1" == "this" ]]
+then
+  # Bookmark the current folder
+  bookmarks create "$(pwd)"
 elif [[ "$1" == "delete" ]]
 then
   # Delete bookmark
