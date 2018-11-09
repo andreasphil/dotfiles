@@ -25,12 +25,14 @@ then
   ln -s "${DOTFILES_ROOT}/environment/.bash_profile" "${HOME}/.bash_profile"
 
   # Link VS Code configuration
+  echo "Linking VS Code configuration ..."
   mkdir -p "${HOME}/Library/Application Support/Code/User"
   ln -s "${DOTFILES_ROOT}/vscode/keybindings.json" "${HOME}/Library/Application Support/Code/User/keybindings.json"
   ln -s "${DOTFILES_ROOT}/vscode/settings.json" "${HOME}/Library/Application Support/Code/User/settings.json"
   ln -s "${DOTFILES_ROOT}/vscode/snippets" "${HOME}/Library/Application Support/Code/User/snippets"
 
   # Link global git configuration
+  echo "Linking global Git configuration ..."
   ln -s "${DOTFILES_ROOT}/git/.gitconfig" "${HOME}/.gitconfig"
   ln -s "${DOTFILES_ROOT}/git/.gitignore_global" "${HOME}/.gitignore_global"
 
