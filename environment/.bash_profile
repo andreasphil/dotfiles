@@ -87,6 +87,10 @@ alias o="open ."
 # Shorthand for running bin/rails
 alias r="bin/rails"
 
+# Shorthand for running Chrome with remote debugging enabled
+alias chrome-debug="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222"
+alias chrome-unsafe="chrome-debug --disable-web-security --user-data-dir=/Users/andreas.philippi/Downloads/TempUserData"
+
 # Shorthands for various timers
 alias pom="timer 1500 'Session finished!' 'Pomodoro' && timer 300 'Break finished!' 'Pomorodo'"
 alias blacktea="timer 180 'Teatime!'"
