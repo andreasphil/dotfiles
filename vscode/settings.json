@@ -71,12 +71,13 @@
         },
         "[Ayu Mirage]": {
             "activityBar.background": "#1a202b",
-            "editorRuler.foreground": "#1a202b",
+            "editorGroupHeader.tabsBorder": "#1a202b",
+            "editorRuler.foreground": "#353b47",
             "focusBorder": "#212733",
             "sideBar.border": "#1a202b",
             "statusBar.background": "#1a202b",
             "statusBar.border": "#1a202b",
-            "titleBar.border": "#1A202B",
+            "titleBar.border": "#1a202b",
         }
     },
 }
