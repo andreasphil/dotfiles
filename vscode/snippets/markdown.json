@@ -3,5 +3,13 @@
 		"prefix": "task",
 		"body": "- [ ] ",
 		"description": "A new task list item."
+	},
+	"Arrow right": {
+		"prefix": "->",
+		"body": "→"
+	},
+	"Arrow left": {
+		"prefix": "<-",
+		"body": "←"
 	}
 }
