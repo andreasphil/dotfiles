@@ -3,7 +3,6 @@
 #
 # Andreas Philippi
 # https://github.com/anphil
-# If you find something useful, do whatever you want with it!
 # -----------------------------------------------------------------------------
 
 . "${HOME}/.local_dotfiles"
@@ -63,7 +62,7 @@ PATH="${DOTFILES_ROOT}/bin:${PATH}"
 export PATH
 
 # -----------------------------------------------------------------------------
-# Alias laziness
+# Aliases
 # -----------------------------------------------------------------------------
 
 # Spare me three characters when going up one level
@@ -92,7 +91,7 @@ alias chrome-debug="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chro
 alias chrome-unsafe="chrome-debug --disable-web-security --user-data-dir=/Users/andreas.philippi/Downloads/TempUserData"
 
 # Shorthands for various timers
-alias pom="timer 1500 'Session finished!' 'Pomodoro' && timer 300 'Break finished!' 'Pomorodo'"
+alias pom="timer 1500 'Session finished!' 'Pomodoro' && timer 300 'Break finished!' 'Pomodoro'"
 alias blacktea="timer 180 'Teatime!'"
 alias herbtea="timer 480 'Teatime!'"
 
@@ -119,10 +118,6 @@ function code-file {
 # -----------------------------------------------------------------------------
 # Prompt configuration
 # -----------------------------------------------------------------------------
-
-# Awkwardly formatting NPM package info and Git branch name. But this way,
-# we avoid unnecessary spaces between the previous and following prompt
-# segments in case we're not in a package, a repository or neither of both.
 
 # Reads name and version of the NPM package (in case we're in one). Requires
 # node to be installed (obviously).
