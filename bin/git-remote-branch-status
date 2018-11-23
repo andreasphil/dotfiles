@@ -1,0 +1,17 @@
+#!/bin/bash
+
+padding=12
+
+for i in $(git branch | cut -c 3-)
+do
+  finds=$(git ls-remote --heads origin "$i" | wc -l | tr -d " ")
+
+  if [[ $finds == 0 ]]
+  then
+    printf "${C_RED}%-*s${C_RST}" $padding "not found"
+  else
+    printf "${C_GRN}%-*s${C_RST}" $padding "exists"
+  fi
+
+  printf "%s\n" "$i"
+done
