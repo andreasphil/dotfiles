@@ -21,6 +21,9 @@
     "materialTheme.accent": "Indigo",
     "materialTheme.autoApplyIcons": true,
     "rest-client.enableTelemetry": false,
+    "ruby.codeCompletion": "rcodetools",
+    "ruby.format": "rubocop",
+    "ruby.intellisense": "rubyLocate",
     "telemetry.enableTelemetry": false,
     "window.newWindowDimensions": "maximized",
     "window.zoomLevel": 0,
@@ -29,6 +32,9 @@
     "workbench.settings.editor": "ui",
     "workbench.startupEditor": "newUntitledFile",
     "workbench.statusBar.feedback.visible": false,
+    "ruby.lint": {
+        "rubocop": true
+    },
     "[markdown]": {
         "editor.quickSuggestions": false,
         "editor.rulers": [],
