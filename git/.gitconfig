@@ -4,3 +4,5 @@
 	name = Andreas Philippi
 [core]
 	excludesfile = /Users/andreas/.gitignore_global
+[alias]
+	remote-branch-status = !git-remote-branch-status
