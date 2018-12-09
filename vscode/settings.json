@@ -24,6 +24,7 @@
     "ruby.codeCompletion": "rcodetools",
     "ruby.format": "rubocop",
     "ruby.intellisense": "rubyLocate",
+    "scss.validate": false,
     "telemetry.enableTelemetry": false,
     "window.newWindowDimensions": "maximized",
     "window.zoomLevel": 0,
