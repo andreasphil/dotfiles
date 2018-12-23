@@ -17,6 +17,7 @@
     "files.hotExit": "onExitAndWindowClose",
     "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
+    "javascript.validate.enable": false,
     "markdown.extension.italic.indicator": "_",
     "materialTheme.accent": "Indigo",
     "materialTheme.autoApplyIcons": true,
@@ -33,6 +34,9 @@
     "workbench.settings.editor": "ui",
     "workbench.startupEditor": "newUntitledFile",
     "workbench.statusBar.feedback.visible": false,
+    "emmet.includeLanguages": {
+        "erb": "html"
+    },
     "ruby.lint": {
         "rubocop": true
     },
@@ -86,5 +90,5 @@
             "statusBar.border": "#1a202b",
             "titleBar.border": "#1a202b",
         }
-    },
+    }
 }
