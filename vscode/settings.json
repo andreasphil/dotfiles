@@ -21,6 +21,7 @@
     "markdown.extension.italic.indicator": "_",
     "materialTheme.accent": "Indigo",
     "materialTheme.autoApplyIcons": true,
+    "prettier.singleQuote": true,
     "rest-client.enableTelemetry": false,
     "ruby.codeCompletion": "rcodetools",
     "ruby.format": "rubocop",
@@ -37,6 +38,9 @@
     "emmet.includeLanguages": {
         "erb": "html"
     },
+    "prettier.disableLanguages": [
+        "javascript"
+    ],
     "ruby.lint": {
         "rubocop": true
     },
