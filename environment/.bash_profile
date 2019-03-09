@@ -37,10 +37,11 @@ export C_BWH='\033[1;37m' # White
 export C_RST='\033[0m'
 
 # -----------------------------------------------------------------------------
-# Install git completion
+# Install completions
 # -----------------------------------------------------------------------------
 
 source "${DOTFILES_ROOT}/git/git-completion.bash"
+source "${DOTFILES_ROOT}/environment/npm-completion.sh"
 
 # -----------------------------------------------------------------------------
 # Install rbenv
