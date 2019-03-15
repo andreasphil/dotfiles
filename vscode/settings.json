@@ -94,5 +94,6 @@
             "statusBar.border": "#1a202b",
             "titleBar.border": "#1a202b",
         }
-    }
+    },
+    "eslint.enable": false
 }
