@@ -25,16 +25,17 @@ cask "backblaze"
 cask "dropbox"
 cask "google-chrome"
 cask "liteicon"
+cask "notion"
 cask "sketch"
 cask "visual-studio-code"
 cask "whatsapp"
 mas "1Password 7", id: 1333542190
 mas "Adblock Plus", id: 1432731683
 mas "Bear", id: 1091189122
+mas "Gestimer", id: 990588172
 mas "Keynote", id: 409183694
 mas "Kindle", id: 405399194
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "The Unarchiver", id: 425424353
 mas "Todoist", id: 585829637
-mas "Unsplash Wallpapers", id: 1284863847
