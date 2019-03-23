@@ -76,13 +76,22 @@ function codeExtensions
 }
 
 # -----------------------------------------------------------------------------
+# Install global npm packages
+# -----------------------------------------------------------------------------
+
+function npmPackages
+{
+  npm i -g '@vue/cli'
+}
+
+# -----------------------------------------------------------------------------
 # Run
 # -----------------------------------------------------------------------------
 
 # Add specified tasks to list or default to all
 if [[ "$#" == 0 ]]
 then
-  tasks=( "xcodeCli" "packageManagers" "software" "gems" "codeExtensions" )
+  tasks=( "xcodeCli" "packageManagers" "software" "gems" "codeExtensions" "npmPackages" )
 else
   tasks=$@
 fi
@@ -98,6 +107,7 @@ do
     "software") software;;
     "gems") gems;;
     "codeExtensions") codeExtensions;;
+    "npmPackages") npmPackages;;
     *) echo "Unknown task '${task}'!";;
   esac
 done
