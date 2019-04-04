@@ -1,5 +1,4 @@
 bungcip.better-toml
-chenxsan.vscode-standardjs
 dbaeumer.vscode-eslint
 EditorConfig.EditorConfig
 Equinusocio.vsc-material-theme
@@ -8,6 +7,7 @@ esbenp.prettier-vscode
 glen-84.sass-lint
 humao.rest-client
 konstantin.wrapSelection
+mrmlnc.vscode-scss
 ms-vscode.atom-keybindings
 msjsdiag.debugger-for-chrome
 octref.vetur
