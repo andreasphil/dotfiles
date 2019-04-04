@@ -1,5 +1,7 @@
 {
     "atomKeymap.promptV3Features": true,
+    "debug.toolBarLocation": "docked",
+    "debug.showInStatusBar": "never",
     "editor.fontSize": 14,
     "editor.formatOnPaste": true,
     "editor.lineHeight": 21,
@@ -17,10 +19,11 @@
     "files.hotExit": "onExitAndWindowClose",
     "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
+    "javascript.preferences.importModuleSpecifier": "non-relative",
+    "javascript.preferences.quoteStyle": "single",
     "javascript.validate.enable": false,
     "markdown.extension.italic.indicator": "_",
     "materialTheme.accent": "Indigo",
-    "materialTheme.autoApplyIcons": true,
     "prettier.singleQuote": true,
     "rest-client.enableTelemetry": false,
     "ruby.codeCompletion": "rcodetools",
@@ -28,6 +31,9 @@
     "ruby.intellisense": "rubyLocate",
     "scss.validate": false,
     "telemetry.enableTelemetry": false,
+    "typescript.preferences.importModuleSpecifier": "non-relative",
+    "typescript.preferences.quoteStyle": "single",
+    "vetur.format.enable": false,
     "window.newWindowDimensions": "maximized",
     "window.zoomLevel": 0,
     "workbench.colorTheme": "Ayu Mirage",
@@ -94,5 +100,10 @@
             "statusBar.border": "#1a202b",
             "titleBar.border": "#1a202b",
         }
-    }
+    },
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "vue"
+    ]
 }
