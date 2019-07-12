@@ -1,5 +1,6 @@
 {
   "atomKeymap.promptV3Features": true,
+  "breadcrumbs.enabled": false,
   "debug.showInStatusBar": "never",
   "debug.toolBarLocation": "docked",
   "editor.fontFamily": "FiraCode-Retina, Menlo, Monaco, 'Courier New', monospace",
@@ -29,7 +30,7 @@
   "materialTheme.accent": "Indigo",
   "prettier.disableLanguages": ["javascript"],
   "prettier.eslintIntegration": true,
-  "prettier.semi": false,
+  "prettier.printWidth": 100,
   "prettier.singleQuote": true,
   "prettier.stylelintIntegration": true,
   "ruby.codeCompletion": "rcodetools",
@@ -46,6 +47,7 @@
   "workbench.settings.editor": "ui",
   "workbench.startupEditor": "newUntitledFile",
   "workbench.statusBar.feedback.visible": false,
+  "workbench.tree.renderIndentGuides": "none",
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -84,6 +86,7 @@
       "activityBar.background": "#212532",
       "activityBarBadge.background": "#5C6BC0",
       "breadcrumb.activeSelectionForeground": "#5C6BC0",
+      "editor.findMatchBorder": "#5C6BC0",
       "editor.lineHighlightBackground": "#212532",
       "editorGroupHeader.tabsBorder": "#212532",
       "editorRuler.foreground": "#212532",
@@ -102,6 +105,7 @@
       "pickerGroup.foreground": "#5C6BC0",
       "progressBar.background": "#5C6BC0",
       "scrollbarSlider.activeBackground": "#5C6BC050",
+      "selection.background": "#5C6BC040",
       "settings.headerForeground": "#5C6BC0",
       "settings.modifiedItemIndicator": "#5C6BC0",
       "sideBar.border": "#212532",
@@ -113,6 +117,6 @@
       "tab.activeBorder": "#5C6BC0",
       "textLink.foreground": "#5C6BC0",
       "titleBar.border": "#212532"
-    }
+    },
   }
 }
