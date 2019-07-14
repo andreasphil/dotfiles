@@ -1,4 +1,3 @@
-tap "heroku/brew"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
@@ -17,24 +16,21 @@ brew "rbenv"
 brew "tag"
 brew "xz"
 brew "yarn"
-brew "heroku/brew/heroku"
 cask "adobe-creative-cloud"
 cask "appcleaner"
 cask "backblaze"
-cask "dropbox"
-cask "google-chrome"
+cask "firefox"
 cask "liteicon"
 cask "notion"
 cask "sketch"
 cask "visual-studio-code"
 cask "whatsapp"
-mas "", id: 405399194
-mas "", id: 1432731683
-mas "", id: 409203825
-mas "", id: 1333542190
-mas "", id: 409201541
-mas "", id: 1091189122
-mas "", id: 409183694
-mas "", id: 585829637
-mas "", id: 425424353
-mas "", id: 990588172
+mas "1Password 7", id: 1333542190
+mas "Adblock Plus", id: 1432731683
+mas "Gestimer", id: 990588172
+mas "Keynote", id: 409183694
+mas "Kindle", id: 405399194
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "The Unarchiver", id: 425424353
+mas "Todoist", id: 585829637
