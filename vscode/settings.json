@@ -1,5 +1,6 @@
 {
   "atomKeymap.promptV3Features": true,
+  "breadcrumbs.enabled": false,
   "debug.showInStatusBar": "never",
   "debug.toolBarLocation": "docked",
   "editor.fontFamily": "FiraCode-Retina, Menlo, Monaco, 'Courier New', monospace",
@@ -13,7 +14,6 @@
   "editor.renderWhitespace": "none",
   "editor.rulers": [100],
   "editor.tabSize": 2,
-  "editor.wordWrap": "bounded",
   "editor.wordWrapColumn": 120,
   "editor.wrappingIndent": "indent",
   "eslint.validate": ["javascript", "vue"],
@@ -46,6 +46,7 @@
   "workbench.settings.editor": "ui",
   "workbench.startupEditor": "newUntitledFile",
   "workbench.statusBar.feedback.visible": false,
+  "workbench.tree.renderIndentGuides": "none",
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
