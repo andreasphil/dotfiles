@@ -29,6 +29,7 @@
   "materialTheme.accent": "Indigo",
   "prettier.disableLanguages": ["javascript"],
   "prettier.eslintIntegration": true,
+  "prettier.printWidth": 100,
   "prettier.semi": false,
   "prettier.singleQuote": true,
   "prettier.stylelintIntegration": true,
@@ -61,6 +62,9 @@
     "editor.rulers": [],
     "editor.wordWrap": "bounded"
   },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "emmet.includeLanguages": {
     "erb": "html"
   },
@@ -85,6 +89,7 @@
       "activityBar.background": "#212532",
       "activityBarBadge.background": "#5C6BC0",
       "breadcrumb.activeSelectionForeground": "#5C6BC0",
+      "editor.findMatchBorder": "#5C6BC0",
       "editor.lineHighlightBackground": "#212532",
       "editorGroupHeader.tabsBorder": "#212532",
       "editorRuler.foreground": "#212532",
@@ -103,6 +108,7 @@
       "pickerGroup.foreground": "#5C6BC0",
       "progressBar.background": "#5C6BC0",
       "scrollbarSlider.activeBackground": "#5C6BC050",
+      "selection.background": "#5C6BC040",
       "settings.headerForeground": "#5C6BC0",
       "settings.modifiedItemIndicator": "#5C6BC0",
       "sideBar.border": "#212532",
