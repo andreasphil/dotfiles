@@ -30,7 +30,6 @@
   "prettier.disableLanguages": ["javascript"],
   "prettier.eslintIntegration": true,
   "prettier.printWidth": 100,
-  "prettier.semi": false,
   "prettier.singleQuote": true,
   "prettier.stylelintIntegration": true,
   "ruby.codeCompletion": "rcodetools",
