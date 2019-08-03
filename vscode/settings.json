@@ -1,52 +1,4 @@
 {
-  "atomKeymap.promptV3Features": true,
-  "breadcrumbs.enabled": false,
-  "debug.showInStatusBar": "never",
-  "debug.toolBarLocation": "docked",
-  "editor.fontFamily": "FiraCode-Retina, Menlo, Monaco, 'Courier New', monospace",
-  "editor.fontLigatures": true,
-  "editor.fontSize": 14,
-  "editor.formatOnPaste": true,
-  "editor.lineHeight": 24,
-  "editor.minimap.enabled": false,
-  "editor.multiCursorModifier": "ctrlCmd",
-  "editor.renderIndentGuides": false,
-  "editor.renderWhitespace": "none",
-  "editor.rulers": [100],
-  "editor.tabSize": 2,
-  "editor.wordWrapColumn": 120,
-  "editor.wrappingIndent": "indent",
-  "eslint.validate": ["javascript", "vue"],
-  "extensions.ignoreRecommendations": true,
-  "extensions.showRecommendationsOnlyOnDemand": true,
-  "files.hotExit": "onExitAndWindowClose",
-  "files.insertFinalNewline": true,
-  "files.trimTrailingWhitespace": true,
-  "javascript.preferences.importModuleSpecifier": "non-relative",
-  "javascript.preferences.quoteStyle": "single",
-  "javascript.validate.enable": false,
-  "markdown.extension.italic.indicator": "_",
-  "materialTheme.accent": "Indigo",
-  "prettier.disableLanguages": ["javascript"],
-  "prettier.eslintIntegration": true,
-  "prettier.printWidth": 100,
-  "prettier.singleQuote": true,
-  "prettier.stylelintIntegration": true,
-  "ruby.codeCompletion": "rcodetools",
-  "ruby.format": "rubocop",
-  "ruby.intellisense": "rubyLocate",
-  "telemetry.enableTelemetry": false,
-  "typescript.preferences.importModuleSpecifier": "non-relative",
-  "typescript.preferences.quoteStyle": "single",
-  "vetur.format.enable": false,
-  "window.newWindowDimensions": "maximized",
-  "window.zoomLevel": 0,
-  "workbench.colorTheme": "Material Theme Palenight",
-  "workbench.iconTheme": "eq-material-theme-icons-palenight",
-  "workbench.settings.editor": "ui",
-  "workbench.startupEditor": "newUntitledFile",
-  "workbench.statusBar.feedback.visible": false,
-  "workbench.tree.renderIndentGuides": "none",
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -64,15 +16,64 @@
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "atomKeymap.promptV3Features": true,
+  "breadcrumbs.enabled": false,
+  "debug.showInStatusBar": "never",
+  "debug.toolBarLocation": "docked",
+  "editor.fontFamily": "FiraCode-Retina, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 14,
+  "editor.formatOnPaste": true,
+  "editor.lineHeight": 24,
+  "editor.minimap.enabled": false,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.renderIndentGuides": false,
+  "editor.renderWhitespace": "none",
+  "editor.rulers": [
+    100
+  ],
+  "editor.tabSize": 2,
+  "editor.wordWrapColumn": 120,
+  "editor.wrappingIndent": "indent",
   "emmet.includeLanguages": {
     "erb": "html"
   },
+  "eslint.validate": [
+    "javascript",
+    "vue"
+  ],
+  "extensions.ignoreRecommendations": true,
+  "extensions.showRecommendationsOnlyOnDemand": true,
   "files.associations": {
     "*.liquid": "html"
   },
+  "files.hotExit": "onExitAndWindowClose",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "javascript.preferences.importModuleSpecifier": "non-relative",
+  "javascript.preferences.quoteStyle": "single",
+  "javascript.validate.enable": false,
+  "markdown.extension.italic.indicator": "_",
+  "materialTheme.accent": "Indigo",
+  "prettier.disableLanguages": [
+    "javascript"
+  ],
+  "prettier.eslintIntegration": true,
+  "prettier.printWidth": 100,
+  "prettier.singleQuote": true,
+  "prettier.stylelintIntegration": true,
+  "ruby.codeCompletion": "rcodetools",
+  "ruby.format": "rubocop",
+  "ruby.intellisense": "rubyLocate",
   "ruby.lint": {
     "rubocop": true
   },
+  "telemetry.enableTelemetry": false,
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.preferences.quoteStyle": "single",
+  "vetur.format.enable": false,
+  "window.newWindowDimensions": "maximized",
+  "window.zoomLevel": 0,
   "workbench.colorCustomizations": {
     "[Ayu Mirage]": {
       "activityBar.background": "#1a202b",
@@ -119,6 +120,12 @@
       "tab.activeBorder": "#5C6BC0",
       "textLink.foreground": "#5C6BC0",
       "titleBar.border": "#212532"
-    },
-  }
+    }
+  },
+  "workbench.colorTheme": "Material Theme Palenight",
+  "workbench.iconTheme": "eq-material-theme-icons-palenight",
+  "workbench.settings.editor": "ui",
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.statusBar.feedback.visible": false,
+  "workbench.tree.renderIndentGuides": "none"
 }
