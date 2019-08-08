@@ -20,6 +20,7 @@
   "breadcrumbs.enabled": false,
   "debug.showInStatusBar": "never",
   "debug.toolBarLocation": "docked",
+  "diffEditor.ignoreTrimWhitespace": true,
   "editor.fontFamily": "FiraCode-Retina, Menlo, Monaco, 'Courier New', monospace",
   "editor.fontLigatures": true,
   "editor.fontSize": 14,
@@ -32,6 +33,7 @@
   "editor.rulers": [
     100
   ],
+  "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "editor.wordWrapColumn": 120,
   "editor.wrappingIndent": "indent",
@@ -72,21 +74,23 @@
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "typescript.preferences.quoteStyle": "single",
   "vetur.format.enable": false,
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.newWindowDimensions": "maximized",
   "window.zoomLevel": 0,
   "workbench.colorCustomizations": {
     "[Ayu Mirage]": {
-      "activityBar.background": "#1a202b",
-      "editorGroupHeader.tabsBorder": "#1a202b",
-      "editorRuler.foreground": "#353b47",
+      "activityBar.background": "#191e2a",
+      "editorGroupHeader.tabsBorder": "#191e2a",
+      "editorRuler.foreground": "#191e2a",
       "focusBorder": "#212733",
-      "sideBar.border": "#1a202b",
-      "statusBar.background": "#1a202b",
-      "statusBar.border": "#1a202b",
-      "titleBar.border": "#1a202b"
+      "sideBar.border": "#191e2a",
+      "statusBar.background": "#191e2a",
+      "statusBar.border": "#191e2a",
+      "titleBar.border": "#191e2a"
     },
     "[Material Theme Palenight]": {
       "activityBar.background": "#212532",
+      "activityBar.border": "#191e2a",
       "activityBarBadge.background": "#5C6BC0",
       "breadcrumb.activeSelectionForeground": "#5C6BC0",
       "editor.findMatchBorder": "#5C6BC0",
@@ -122,10 +126,9 @@
       "titleBar.border": "#212532"
     }
   },
-  "workbench.colorTheme": "Material Theme Palenight",
-  "workbench.iconTheme": "eq-material-theme-icons-palenight",
+  "workbench.colorTheme": "Ayu Mirage",
+  "workbench.iconTheme": "ayu",
   "workbench.settings.editor": "ui",
   "workbench.startupEditor": "newUntitledFile",
-  "workbench.statusBar.feedback.visible": false,
   "workbench.tree.renderIndentGuides": "none"
 }
