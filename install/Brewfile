@@ -20,16 +20,15 @@ brew "yarn"
 cask "appcleaner"
 cask "backblaze"
 cask "firefox"
-cask "liteicon"
 cask "netnewswire"
 cask "sketch"
 cask "visual-studio-code"
 cask "whatsapp"
 mas "1Password 7", id: 1333542190
 mas "Adblock Plus", id: 1432731683
+mas "Adobe Lightroom", id: 1451544217
 mas "Keynote", id: 409183694
 mas "Kindle", id: 405399194
-mas "Lightroom", id: 1451544217
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "The Unarchiver", id: 425424353
