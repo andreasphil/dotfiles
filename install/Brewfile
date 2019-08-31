@@ -25,8 +25,8 @@ cask "sketch"
 cask "visual-studio-code"
 cask "whatsapp"
 mas "1Password 7", id: 1333542190
-mas "Adblock Plus", id: 1432731683
 mas "Adobe Lightroom", id: 1451544217
+mas "Better", id: 1121192229
 mas "Keynote", id: 409183694
 mas "Kindle", id: 405399194
 mas "Numbers", id: 409203825
