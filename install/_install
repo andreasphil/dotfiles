@@ -22,6 +22,18 @@ function xcodeCli
 }
 
 # -----------------------------------------------------------------------------
+# Install shell
+# -----------------------------------------------------------------------------
+
+function shell
+{
+  echo "Installing shell ..."
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+}
+
+# -----------------------------------------------------------------------------
 # Install package managers
 # -----------------------------------------------------------------------------
 
@@ -81,7 +93,7 @@ function codeExtensions
 
 function npmPackages
 {
-  npm i -g '@vue/cli'
+  npm i -g '@vue/cli spaceship-prompt'
 }
 
 # -----------------------------------------------------------------------------
@@ -91,7 +103,7 @@ function npmPackages
 # Add specified tasks to list or default to all
 if [[ "$#" == 0 ]]
 then
-  tasks=( "xcodeCli" "packageManagers" "software" "gems" "codeExtensions" "npmPackages" )
+  tasks=( "xcodeCli" "shell" "packageManagers" "software" "gems" "codeExtensions" "npmPackages" )
 else
   tasks=$@
 fi
@@ -103,6 +115,7 @@ for task in ${tasks[@]}
 do
   case "$task" in
     "xcodeCli") xcodeCli;;
+    "shell") shell;;
     "packageManagers") packageManagers;;
     "software") software;;
     "gems") gems;;

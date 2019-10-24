@@ -18,9 +18,9 @@ do
 
   if [[ $finds == 0 ]]
   then
-    printf "${C_RED}%-*s${C_RST}" $padding "not found"
+    printf "%-*s" $padding "not found"
   else
-    printf "${C_GRN}%-*s${C_RST}" $padding "exists"
+    printf "%-*s" $padding "exists"
   fi
 
   printf "%s\n" "$i"

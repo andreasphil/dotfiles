@@ -10,19 +10,19 @@
 # -----------------------------------------------------------------------------
 
 echo "What's the path of your dotfiles folder?"
-read path
+read dotfilesPath
 
-if [[ $path != ""  && $? ]]
+if [[ $dotfilesPath != ""  && $? ]]
 then
   # Create a .local_dotfiles file in the home folder pointing to the selected
   # path. The file will be
   echo "#!/bin/bash
-  export DOTFILES_ROOT=\"${path}\"" > "${HOME}/.local_dotfiles"
+  export DOTFILES_ROOT=\"${dotfilesPath}\"" > "${HOME}/.local_dotfiles"
   . "${HOME}/.local_dotfiles"
 
   # Link bash profile from the dotfiles folder to the home folder.
-  echo "Linking .bash_profile ..."
-  ln -s "${DOTFILES_ROOT}/environment/.bash_profile" "${HOME}/.bash_profile"
+  echo "Linking .zshrc ..."
+  ln -s "${DOTFILES_ROOT}/environment/.zshrc" "${HOME}/.zshrc"
 
   # Link VS Code configuration
   echo "Linking VS Code configuration ..."

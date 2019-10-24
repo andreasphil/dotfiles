@@ -8,19 +8,19 @@
 # -----------------------------------------------------------------------------
 
 # App Store
-printf "${C_BLU}App Store:${C_RST}\n"
+printf "App Store:\n"
 sudo softwareupdate --install --all
 
 # Update Homebrew & packages
-printf "\n${C_BLU}Update Homebrew & packages:${C_RST}\n"
+printf "\nUpdate Homebrew & packages:\n"
 brew update
 brew upgrade
 
 # Update NPM & packages
-printf "\n${C_BLU}Update NPM & packages:${C_RST}\n"
+printf "\nUpdate NPM & packages:\n"
 npm install -g npm
 npm update -g
 
 # Update Ruby gems
-printf "\n${C_BLU}Update Ruby gems:${C_RST}\n"
+printf "\nUpdate Ruby gems:\n"
 gem update
