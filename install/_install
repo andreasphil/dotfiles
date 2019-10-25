@@ -88,36 +88,56 @@ function codeExtensions {
 # Install global npm packages
 # -----------------------------------------------------------------------------
 
+function nvm {
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh | bash
+  echo "Please restart the shell for nvm to take effect."
+}
+
+function node {
+  nvm install 'lts/*'
+  nvm alias default 'lts/*'
+}
+
 function npmPackages {
-  npm i -g '@vue/cli spaceship-prompt'
+  packages=(
+    "@vue/cli"
+    "spaceship-prompt"
+  )
+  npm i -g "${packages[@]}"
 }
 
 # -----------------------------------------------------------------------------
 # Run
 # -----------------------------------------------------------------------------
 
-# Add specified tasks to list or default to all
-if [[ "$#" == 0 ]]
-then
-  tasks=( "xcodeCli" "shell" "shellExtensions" "packageManagers" "software" "gems" "codeExtensions" "npmPackages" )
-else
-  tasks=$@
-fi
+tasks=(
+  "Xcode CLI"
+  "Shell"
+  "Shell extensions"
+  "Brew, cask, bundle"
+  "Software in brewfile"
+  "Gems"
+  "VS Code extensions"
+  "Node version manager"
+  "Node LTS"
+  "Global npm packages"
+  "Quit"
+)
 
-echo "Running tasks: ${tasks[@]}"
-
-# Run the specified tasks
-for task in ${tasks[@]}
+select task in "${tasks[@]}"
 do
   case "$task" in
-    "xcodeCli") xcodeCli;;
-    "shell") shell;;
-    "shellExtensions") shellExtensions;;
-    "packageManagers") packageManagers;;
-    "software") software;;
-    "gems") gems;;
-    "codeExtensions") codeExtensions;;
-    "npmPackages") npmPackages;;
-    *) echo "Unknown task '${task}'!";;
+    "Xcode CLI") xcodeCli;;
+    "Shell") shell;;
+    "Shell extensions") shellExtensions;;
+    "Brew, cask, bundle") packageManagers;;
+    "Software in brewfile") software;;
+    "Gems") gems;;
+    "VS Code extensions") codeExtensions;;
+    "Node version manager") nvm;;
+    "Node LTS") node;;
+    "Global npm packages") npmPackages;;
+    "Quit") break;;
+    *) "$task is not a valid option"
   esac
 done
