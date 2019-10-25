@@ -13,8 +13,7 @@ PATH="${DOTFILES_ROOT}/bin:${PATH}"
 export PATH
 
 # Oh my ZSH settings
-export ZSH="/Users/andreas/.oh-my-zsh"
-ZSH_THEME="robbyrussell"
+export ZSH="${HOME}/.oh-my-zsh"
 DISABLE_AUTO_TITLE="true"
 
 # Plugins
@@ -27,7 +26,6 @@ source $ZSH/oh-my-zsh.sh
 SPACESHIP_CHAR_SYMBOL="▲ "
 SPACESHIP_CHAR_COLOR_SUCCESS=white
 SPACESHIP_TIME_SHOW=true
-SPACESHIP_USER_SHOW=always
 SPACESHIP_BATTERY_THRESHOLD=30
 autoload -U promptinit; promptinit
 prompt spaceship
@@ -45,7 +43,6 @@ eval "$(rbenv init -)"
 # node version manager
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
-# [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"
 
 # aliases
 alias ..="cd .."

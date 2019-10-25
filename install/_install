@@ -15,8 +15,7 @@ set -e
 # Preparation: Install Xcode command line tools
 # -----------------------------------------------------------------------------
 
-function xcodeCli
-{
+function xcodeCli {
   echo "Installing command line developer tools ..."
   xcode-select --install
 }
@@ -25,10 +24,12 @@ function xcodeCli
 # Install shell
 # -----------------------------------------------------------------------------
 
-function shell
-{
+function shell {
   echo "Installing shell ..."
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+}
+
+function shellExtensions {
   git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 }
@@ -37,8 +38,7 @@ function shell
 # Install package managers
 # -----------------------------------------------------------------------------
 
-function packageManagers
-{
+function packageManagers {
   echo "Installing homebrew ..."
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
@@ -53,8 +53,7 @@ function packageManagers
 # Install software
 # -----------------------------------------------------------------------------
 
-function software
-{
+function software {
   echo "Installing software ..."
   brew bundle install --file="${DOTFILES_ROOT}/install/Brewfile"
 }
@@ -63,8 +62,7 @@ function software
 # Install gems
 # -----------------------------------------------------------------------------
 
-function gems
-{
+function gems {
   echo "Installing gems ..."
   gem install bundler && bundle install --gemfile="${DOTFILES_ROOT}/install/Gemfile"
 }
@@ -73,8 +71,7 @@ function gems
 # Install Code extensions
 # -----------------------------------------------------------------------------
 
-function codeExtensions
-{
+function codeExtensions {
   echo "Installing Code extensions ..."
   while read -r extension
   do
@@ -91,8 +88,7 @@ function codeExtensions
 # Install global npm packages
 # -----------------------------------------------------------------------------
 
-function npmPackages
-{
+function npmPackages {
   npm i -g '@vue/cli spaceship-prompt'
 }
 
@@ -103,7 +99,7 @@ function npmPackages
 # Add specified tasks to list or default to all
 if [[ "$#" == 0 ]]
 then
-  tasks=( "xcodeCli" "shell" "packageManagers" "software" "gems" "codeExtensions" "npmPackages" )
+  tasks=( "xcodeCli" "shell" "shellExtensions" "packageManagers" "software" "gems" "codeExtensions" "npmPackages" )
 else
   tasks=$@
 fi
@@ -116,6 +112,7 @@ do
   case "$task" in
     "xcodeCli") xcodeCli;;
     "shell") shell;;
+    "shellExtensions") shellExtensions;;
     "packageManagers") packageManagers;;
     "software") software;;
     "gems") gems;;
