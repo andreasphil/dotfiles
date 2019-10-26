@@ -7,7 +7,6 @@
 
 . "${HOME}/.local_dotfiles"
 
-PATH="${PATH}:."
 PATH="./node_modules/.bin:${PATH}"
 PATH="${DOTFILES_ROOT}/bin:${PATH}"
 export PATH
@@ -53,6 +52,10 @@ alias ls="ls -1"
 alias myip="ipconfig getifaddr en0"
 alias o="open ."
 alias safari="open /Applications/Safari.app"
+
+# Prepent current folder to path
+PATH=".:${PATH}"
+export PATH
 
 # say hello
 fortune|cowsay|lolcat
