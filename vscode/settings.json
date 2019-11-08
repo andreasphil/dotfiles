@@ -21,6 +21,7 @@
   "debug.showInStatusBar": "never",
   "debug.toolBarLocation": "docked",
   "diffEditor.ignoreTrimWhitespace": true,
+  "diffEditor.renderSideBySide": true,
   "editor.fontFamily": "FiraCode-Retina, Menlo, Monaco, 'Courier New', monospace",
   "editor.fontLigatures": true,
   "editor.fontSize": 14,
@@ -52,6 +53,7 @@
   "files.hotExit": "onExitAndWindowClose",
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
+  "git.untrackedChanges": "separate",
   "javascript.preferences.importModuleSpecifier": "non-relative",
   "javascript.preferences.quoteStyle": "single",
   "javascript.validate.enable": false,
@@ -60,10 +62,8 @@
   "prettier.disableLanguages": [
     "javascript"
   ],
-  "prettier.eslintIntegration": true,
   "prettier.printWidth": 100,
   "prettier.singleQuote": true,
-  "prettier.stylelintIntegration": true,
   "ruby.codeCompletion": "rcodetools",
   "ruby.format": "rubocop",
   "ruby.intellisense": "rubyLocate",
@@ -71,6 +71,7 @@
     "rubocop": true
   },
   "telemetry.enableTelemetry": false,
+  "terminal.integrated.shell.osx": "/bin/zsh",
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "typescript.preferences.quoteStyle": "single",
   "vetur.format.enable": false,
@@ -79,6 +80,7 @@
   "window.zoomLevel": 0,
   "workbench.colorCustomizations": {
     "[Ayu Mirage]": {
+      "activityBar.activeBackground": "#252A36",
       "activityBar.background": "#191e2a",
       "editorGroupHeader.tabsBorder": "#191e2a",
       "editorRuler.foreground": "#191e2a",
