@@ -18,6 +18,7 @@
   },
   "atomKeymap.promptV3Features": true,
   "breadcrumbs.enabled": false,
+  "css.lint.unknownAtRules": "ignore",
   "debug.showInStatusBar": "never",
   "debug.toolBarLocation": "docked",
   "diffEditor.ignoreTrimWhitespace": true,
@@ -70,6 +71,7 @@
   "ruby.lint": {
     "rubocop": true
   },
+  "tailwindCSS.emmetCompletions": true,
   "telemetry.enableTelemetry": false,
   "terminal.integrated.shell.osx": "/bin/zsh",
   "typescript.preferences.importModuleSpecifier": "non-relative",
