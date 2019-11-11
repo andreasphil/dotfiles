@@ -84,6 +84,7 @@
     "[Ayu Mirage]": {
       "activityBar.activeBackground": "#252A36",
       "activityBar.background": "#191e2a",
+      "activityBar.activeBorder": "#fdc354",
       "editorGroupHeader.tabsBorder": "#191e2a",
       "editorRuler.foreground": "#191e2a",
       "focusBorder": "#212733",
