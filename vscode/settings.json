@@ -60,9 +60,6 @@
   "javascript.validate.enable": false,
   "markdown.extension.italic.indicator": "_",
   "materialTheme.accent": "Indigo",
-  "prettier.disableLanguages": [
-    "javascript"
-  ],
   "prettier.printWidth": 100,
   "prettier.singleQuote": true,
   "ruby.codeCompletion": "rcodetools",
@@ -135,5 +132,8 @@
   "workbench.iconTheme": "ayu",
   "workbench.settings.editor": "ui",
   "workbench.startupEditor": "newUntitledFile",
-  "workbench.tree.renderIndentGuides": "none"
+  "workbench.tree.renderIndentGuides": "none",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
