@@ -2,6 +2,9 @@
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -9,6 +12,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.quickSuggestions": false,
     "editor.rulers": [],
     "editor.wordWrap": "bounded"
@@ -80,8 +84,8 @@
   "workbench.colorCustomizations": {
     "[Ayu Mirage]": {
       "activityBar.activeBackground": "#252A36",
-      "activityBar.background": "#191e2a",
       "activityBar.activeBorder": "#fdc354",
+      "activityBar.background": "#191e2a",
       "editorGroupHeader.tabsBorder": "#191e2a",
       "editorRuler.foreground": "#191e2a",
       "focusBorder": "#212733",
@@ -132,8 +136,5 @@
   "workbench.iconTheme": "ayu",
   "workbench.settings.editor": "ui",
   "workbench.startupEditor": "newUntitledFile",
-  "workbench.tree.renderIndentGuides": "none",
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  "workbench.tree.renderIndentGuides": "none"
 }
