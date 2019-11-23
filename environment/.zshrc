@@ -78,6 +78,3 @@ alias safari="open /Applications/Safari.app"
 PATH=".:${PATH}"
 export PATH
 
-# say hello
-fortune|cowsay|lolcat
-echo ""
