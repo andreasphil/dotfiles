@@ -19,6 +19,7 @@ cask "appcleaner"
 cask "backblaze"
 cask "firefox"
 cask "netnewswire"
+cask "principle"
 cask "sketch"
 cask "visual-studio-code"
 cask "whatsapp"
@@ -26,7 +27,6 @@ mas "1Password 7", id: 1333542190
 mas "Adobe Lightroom", id: 1451544217
 mas "Better", id: 1121192229
 mas "Keynote", id: 409183694
-mas "Kindle", id: 405399194
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "The Unarchiver", id: 425424353
