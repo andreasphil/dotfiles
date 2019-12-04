@@ -47,6 +47,7 @@
     "erb": "html"
   },
   "eslint.validate": [
+    "typescript",
     "javascript",
     "vue"
   ],
@@ -64,8 +65,6 @@
   "javascript.validate.enable": false,
   "markdown.extension.italic.indicator": "_",
   "materialTheme.accent": "Indigo",
-  "prettier.printWidth": 100,
-  "prettier.singleQuote": true,
   "ruby.codeCompletion": "rcodetools",
   "ruby.format": "rubocop",
   "ruby.intellisense": "rubyLocate",

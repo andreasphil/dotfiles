@@ -25,6 +25,8 @@ source $ZSH/oh-my-zsh.sh
 SPACESHIP_CHAR_SYMBOL="▲ "
 SPACESHIP_CHAR_COLOR_SUCCESS=white
 SPACESHIP_TIME_SHOW=true
+SPACESHIP_DOCKER_SHOW=false
+SPACESHIP_PACKAGE_SHOW=false
 SPACESHIP_BATTERY_THRESHOLD=30
 autoload -U promptinit; promptinit
 prompt spaceship
