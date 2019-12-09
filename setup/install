@@ -55,7 +55,7 @@ function packageManagers {
 
 function software {
   echo "Installing software ..."
-  brew bundle install --file="${DOTFILES_ROOT}/install/Brewfile"
+  brew bundle install --file="${DOTFILES_ROOT}/setup/Brewfile"
 }
 
 # -----------------------------------------------------------------------------
@@ -64,7 +64,7 @@ function software {
 
 function gems {
   echo "Installing gems ..."
-  gem install bundler && bundle install --gemfile="${DOTFILES_ROOT}/install/Gemfile"
+  gem install bundler && bundle install --gemfile="${DOTFILES_ROOT}/setup/Gemfile"
 }
 
 # -----------------------------------------------------------------------------
@@ -81,7 +81,7 @@ function codeExtensions {
     else
       code --install-extension "$extension"
     fi
-  done < "$DOTFILES_ROOT/install/Codefile"
+  done < "$DOTFILES_ROOT/setup/Codefile"
 }
 
 # -----------------------------------------------------------------------------
