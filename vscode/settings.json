@@ -46,11 +46,6 @@
   "emmet.includeLanguages": {
     "erb": "html"
   },
-  "eslint.validate": [
-    "typescript",
-    "javascript",
-    "vue"
-  ],
   "extensions.ignoreRecommendations": true,
   "extensions.showRecommendationsOnlyOnDemand": true,
   "files.associations": {
