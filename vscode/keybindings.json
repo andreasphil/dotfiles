@@ -35,5 +35,10 @@
   {
     "key": "cmd+k cmd+f",
     "command": "editor.action.formatDocument"
+  },
+  {
+    "key": "shift+cmd+d",
+    "command": "editor.action.duplicateSelection",
+    "when": "editorTextFocus"
   }
 ]
