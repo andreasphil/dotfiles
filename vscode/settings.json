@@ -5,6 +5,9 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -46,6 +49,7 @@
   "emmet.includeLanguages": {
     "erb": "html"
   },
+  "explorer.confirmDragAndDrop": false,
   "extensions.ignoreRecommendations": true,
   "extensions.showRecommendationsOnlyOnDemand": true,
   "files.associations": {
@@ -54,6 +58,7 @@
   "files.hotExit": "onExitAndWindowClose",
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
+  "git.confirmSync": false,
   "git.untrackedChanges": "separate",
   "javascript.preferences.importModuleSpecifier": "non-relative",
   "javascript.preferences.quoteStyle": "single",
