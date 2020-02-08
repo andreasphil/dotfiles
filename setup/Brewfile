@@ -5,7 +5,6 @@ tap "thoughtbot/formulae"
 brew "autoconf"
 brew "fzf"
 brew "mas"
-brew "openssl@1.1"
 brew "pkg-config"
 brew "readline"
 brew "postgresql"
@@ -17,7 +16,7 @@ brew "yarn"
 brew "thoughtbot/formulae/gitsh"
 cask "appcleaner"
 cask "backblaze"
-cask "firefox"
+cask "google-chrome"
 cask "netnewswire"
 cask "sketch"
 cask "visual-studio-code"
@@ -25,8 +24,5 @@ cask "whatsapp"
 mas "1Password 7", id: 1333542190
 mas "Adobe Lightroom", id: 1451544217
 mas "Better", id: 1121192229
-mas "Keynote", id: 409183694
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
 mas "The Unarchiver", id: 425424353
 mas "Todoist", id: 585829637
