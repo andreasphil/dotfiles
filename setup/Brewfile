@@ -18,7 +18,6 @@ cask "appcleaner"
 cask "backblaze"
 cask "google-chrome"
 cask "netnewswire"
-cask "sketch"
 cask "visual-studio-code"
 cask "whatsapp"
 mas "1Password 7", id: 1333542190
