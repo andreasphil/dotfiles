@@ -25,10 +25,6 @@
     "command": "workbench.action.zoomOut"
   },
   {
-    "key": "shift+f5",
-    "command": "editor.action.sortLinesAscending"
-  },
-  {
     "key": "shift+cmd+m",
     "command": "workbench.action.toggleMaximizedPanel"
   },
@@ -40,5 +36,19 @@
     "key": "shift+cmd+d",
     "command": "editor.action.duplicateSelection",
     "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+cmd+down",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "alt+cmd+up",
+    "command": "workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "shift+cmd+c",
+    "command": "workbench.action.terminal.newInActiveWorkspace",
   }
 ]
