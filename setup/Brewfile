@@ -4,6 +4,7 @@ tap "homebrew/core"
 tap "thoughtbot/formulae"
 brew "autoconf"
 brew "fzf"
+brew "icu4c"
 brew "mas"
 brew "pkg-config"
 brew "readline"
@@ -25,3 +26,4 @@ mas "Adobe Lightroom", id: 1451544217
 mas "Better", id: 1121192229
 mas "The Unarchiver", id: 425424353
 mas "Todoist", id: 585829637
+mas "Tot", id: 1491071483
