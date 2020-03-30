@@ -3,7 +3,7 @@
 	email = 18646892+andrsphil@users.noreply.github.com
 	name = Andreas Philippi
 [core]
-	excludesfile = /Users/andreas/.gitignore_global
+	excludesfile = /Users/andreas.home/.gitignore_global
 [alias]
 	remote-branch-status = !git-remote-branch-status
 
