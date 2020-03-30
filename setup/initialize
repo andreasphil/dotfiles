@@ -15,7 +15,8 @@ read dotfilesPath
 if [[ $dotfilesPath != ""  && $? ]]
 then
   # Create a .local_dotfiles file in the home folder pointing to the selected
-  # path. The file will be
+  # path. The file will be read by the shell, so it can also contain local
+  # customizations that you don't want to add to the dotfiles repository.
   echo "#!/bin/bash
   export DOTFILES_ROOT=\"${dotfilesPath}\"" > "${HOME}/.local_dotfiles"
   . "${HOME}/.local_dotfiles"
