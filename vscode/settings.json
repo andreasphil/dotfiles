@@ -59,6 +59,7 @@
   "files.hotExit": "onExitAndWindowClose",
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
+  "html.mirrorCursorOnMatchingTag": true,
   "git.confirmSync": false,
   "git.untrackedChanges": "separate",
   "javascript.preferences.importModuleSpecifier": "non-relative",
