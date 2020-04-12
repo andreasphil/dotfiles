@@ -69,7 +69,7 @@ load-nvmrc
 
 # aliases
 alias ..="cd .."
-alias b=". bookmarks"
+alias b=". bookmark"
 alias ll="ls -l"
 alias ls="ls -1"
 alias myip="ipconfig getifaddr en0"
