@@ -38,6 +38,7 @@
   "editor.lineHeight": 24,
   "editor.minimap.enabled": true,
   "editor.multiCursorModifier": "ctrlCmd",
+  "editor.renameOnType": true,
   "editor.renderIndentGuides": false,
   "editor.renderWhitespace": "none",
   "editor.rulers": [
@@ -59,7 +60,6 @@
   "files.hotExit": "onExitAndWindowClose",
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
-  "html.mirrorCursorOnMatchingTag": true,
   "git.confirmSync": false,
   "git.untrackedChanges": "separate",
   "javascript.preferences.importModuleSpecifier": "non-relative",
@@ -78,6 +78,7 @@
   "terminal.integrated.shell.osx": "/bin/zsh",
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "typescript.preferences.quoteStyle": "single",
+  "vetur.format.defaultFormatter.html": "prettier",
   "vetur.format.enable": false,
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.newWindowDimensions": "inherit",
