@@ -45,7 +45,7 @@ then
 elif [[ "$1" == "this" ]]
 then
   # Bookmark the current folder
-  bookmarks create "$(pwd)"
+  bookmark create "$(pwd)"
 elif [[ "$1" == "delete" ]]
 then
   # Delete bookmark
