@@ -49,7 +49,7 @@
   },
   {
     "key": "shift+cmd+c",
-    "command": "workbench.action.terminal.newInActiveWorkspace",
+    "command": "workbench.action.terminal.newInActiveWorkspace"
   },
   {
     "key": "shift+cmd+b",
