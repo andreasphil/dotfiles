@@ -82,6 +82,7 @@
   "vetur.format.enable": false,
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.newWindowDimensions": "inherit",
+  "window.restoreWindows": "one",
   "window.zoomLevel": 0,
   "workbench.colorCustomizations": {
     "[Ayu Light]": {
