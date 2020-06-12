@@ -67,6 +67,13 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
+# fzf
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+ --color=fg:#cbccc6,hl:#bae67e
+ --color=fg+:#ffffff,bg+:#1f2430,hl+:#bae67e
+ --color=info:#686868,prompt:#73d0ff,pointer:#ffd580
+ --color=marker:#f28779,spinner:#686868,header:#ffffff'
+
 # aliases
 alias ..="cd .."
 alias b=". bookmark"

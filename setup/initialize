@@ -26,8 +26,9 @@ then
   ln -s "${DOTFILES_ROOT}/environment/.zshrc" "${HOME}/.zshrc"
 
   # Link vim configuration
-  echo "Linking .vimrc ..."
-  ln -s "${DOTFILES_ROOT}/environment/.vimrc" "${HOME}/.vimrc"
+  echo "Linking nvim config ..."
+  mkdir -p "${HOME}/.config"
+  ln -s "${DOTFILES_ROOT}/nvim" "${HOME}/.config/nvim"
 
   # Link VS Code configuration
   echo "Linking VS Code configuration ..."
