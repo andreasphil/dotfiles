@@ -35,6 +35,10 @@ set wildmenu       " enable better completion
 set nobackup
 set noswapfile
 
+" COC
+set shortmess+=c   " Don't pass messages to ins-completion-menu
+set signcolumn=yes " Show extra column for diagnostics
+
 " -----------------------------------------------------------------------------
 " PLUG
 " -----------------------------------------------------------------------------
@@ -54,10 +58,21 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'itchyny/lightline.vim'
   Plug 'maxbrunsfeld/vim-yankstack'
-  Plug 'preservim/nerdtree'
   Plug 'terryma/vim-expand-region'
   Plug 'terryma/vim-multiple-cursors'
   Plug 'terryma/vim-smooth-scroll'
+  
+  " Languages
+  Plug 'alexlafroscia/postcss-syntax.vim'
+  Plug 'leafgarland/typescript-vim'
+  Plug 'pangloss/vim-javascript'
+  Plug 'plasticboy/vim-markdown'
+  Plug 'posva/vim-vue'
+  Plug 'mattn/emmet-vim'
+
+  " COC
+  " Install ":CocInstall coc-marketplace" for managing langugage servers  
+  Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
   " Color schemes
   Plug 'ayu-theme/ayu-vim'
@@ -65,10 +80,13 @@ call plug#begin(stdpath('data') . '/plugged')
 call plug#end()
 
 " Color scheme
-set termguicolors
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+set background=dark
 let g:ayucolor = 'mirage'
 let g:material_theme_style = 'palenight'
-let g:material_terminal_italics = 1
 let g:lightline = { 'colorscheme': 'material_vim' }
 colorscheme material
 
@@ -76,6 +94,9 @@ colorscheme material
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrl_p_show_hidden = 1
 let g:ctrlp_working_path_mode = 'ra'
+
+" Languages
+let g:vue_pre_processors = 'detect_on_enter'
 
 " -----------------------------------------------------------------------------
 " KEY MAPPINGS
@@ -101,3 +122,23 @@ noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 10, 2)<cr>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 10, 2)<cr>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 10, 4)<cr>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 10, 4)<cr>
+
+" COC
+inoremap <silent><expr> <c-space> coc#refresh()
+nmap gd <Plug>(coc-definition)
+nmap gy <Plug>(coc-type-definition)
+nmap gi <Plug>(coc-implementation)
+nmap gr <Plug>(coc-references)
+nmap <leader>di <Plug>(coc-diagnostic-next)
+nmap <leader>DI :CocDiagnostics<cr>
+nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>fi <Plug>(coc-fix-current)
+nmap <leader>FI :CocAction('format')<cr>
+
+" -----------------------------------------------------------------------------
+" COMMANDS
+" -----------------------------------------------------------------------------
+
+" COC
+command! -nargs=0 OrganizeImports :call CocAction('runCommand', 'editor.action.organizeImport')
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
