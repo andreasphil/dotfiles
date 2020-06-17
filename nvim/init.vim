@@ -55,12 +55,14 @@ endif
 
 call plug#begin(stdpath('data') . '/plugged')
   " General
+  Plug 'airblade/vim-gitgutter'
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'itchyny/lightline.vim'
   Plug 'maxbrunsfeld/vim-yankstack'
+  Plug 'mileszs/ack.vim'
   Plug 'terryma/vim-expand-region'
   Plug 'terryma/vim-multiple-cursors'
-  Plug 'terryma/vim-smooth-scroll'
+  Plug 'tpope/vim-commentary'
   
   " Languages
   Plug 'alexlafroscia/postcss-syntax.vim'
@@ -69,10 +71,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'plasticboy/vim-markdown'
   Plug 'posva/vim-vue'
   Plug 'mattn/emmet-vim'
-
-  " COC
-  " Install ":CocInstall coc-marketplace" for managing langugage servers  
-  Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
   " Color schemes
   Plug 'ayu-theme/ayu-vim'
@@ -97,6 +95,11 @@ let g:ctrlp_working_path_mode = 'ra'
 
 " Languages
 let g:vue_pre_processors = 'detect_on_enter'
+let g:javascript_plugin_jsdoc = 1
+let g:vim_markdown_folding_disabled = 1
+
+" Other
+let g:ackprg = 'ag --vimgrep'
 
 " -----------------------------------------------------------------------------
 " KEY MAPPINGS
@@ -116,29 +119,3 @@ nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-h> <C-w>h
 nmap <C-l> <C-w>l
-
-" Smooth scrolling
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 10, 2)<cr>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 10, 2)<cr>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 10, 4)<cr>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 10, 4)<cr>
-
-" COC
-inoremap <silent><expr> <c-space> coc#refresh()
-nmap gd <Plug>(coc-definition)
-nmap gy <Plug>(coc-type-definition)
-nmap gi <Plug>(coc-implementation)
-nmap gr <Plug>(coc-references)
-nmap <leader>di <Plug>(coc-diagnostic-next)
-nmap <leader>DI :CocDiagnostics<cr>
-nmap <leader>rn <Plug>(coc-rename)
-nmap <leader>fi <Plug>(coc-fix-current)
-nmap <leader>FI :CocAction('format')<cr>
-
-" -----------------------------------------------------------------------------
-" COMMANDS
-" -----------------------------------------------------------------------------
-
-" COC
-command! -nargs=0 OrganizeImports :call CocAction('runCommand', 'editor.action.organizeImport')
-command! -nargs=0 Prettier :CocCommand prettier.formatFile

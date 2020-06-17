@@ -1,8 +1,5 @@
 # -----------------------------------------------------------------------------
 # ZSH CONFIG
-#
-# Andreas Philippi
-# https://github.com/andrsphil
 # -----------------------------------------------------------------------------
 
 . "${HOME}/.local_dotfiles"
@@ -18,15 +15,14 @@ DISABLE_AUTO_TITLE="true"
 # Plugins
 plugins=(git npm gem zsh-completions zsh-syntax-highlighting)
 autoload -U compinit && compinit
+autoload -U add-zsh-hook
 
 source $ZSH/oh-my-zsh.sh
 
 # Prompt
 SPACESHIP_CHAR_SYMBOL="▲ "
-SPACESHIP_CHAR_COLOR_SUCCESS=white
+SPACESHIP_CHAR_COLOR_SUCCESS=
 SPACESHIP_TIME_SHOW=true
-SPACESHIP_DOCKER_SHOW=false
-SPACESHIP_PACKAGE_SHOW=false
 SPACESHIP_BATTERY_THRESHOLD=30
 autoload -U promptinit; promptinit
 prompt spaceship
@@ -43,11 +39,8 @@ eval "$(rbenv init -)"
 
 # node version manager
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-autoload -U add-zsh-hook
-load-nvmrc() {
+loadnvmrc() {
   local node_version="$(nvm version)"
   local nvmrc_path="$(nvm_find_nvmrc)"
 
@@ -64,8 +57,25 @@ load-nvmrc() {
     nvm use default
   fi
 }
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
+
+loadnvm() {
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+  add-zsh-hook chpwd loadnvmrc
+  loadnvmrc
+}
+
+lazynvm() {
+  if ! which nvm > /dev/null 2>&1; then
+    if [ -f "package.json" -o -f ".nvmrc" ]; then
+      loadnvm
+    fi
+  fi
+}
+
+add-zsh-hook chpwd lazynvm
+lazynvm
 
 # fzf ayu
 # export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
