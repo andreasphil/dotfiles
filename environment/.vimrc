@@ -98,7 +98,7 @@ let g:ackprg = 'ag --vimgrep'
 let mapleader = '-'
 
 " Quick access to settings
-nmap <leader>; :tabnew ~/.config/nvim/init.vim<cr>
+nmap <leader>; :tabnew ~/.vimrc<cr>
 
 " Yankstack access
 nmap <leader>p <Plug>yankstack_substitute_older_paste
