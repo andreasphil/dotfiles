@@ -21,14 +21,13 @@ then
   export DOTFILES_ROOT=\"${dotfilesPath}\"" > "${HOME}/.local_dotfiles"
   . "${HOME}/.local_dotfiles"
 
-  # Link bash profile from the dotfiles folder to the home folder
+  # Link terminal profile from the dotfiles folder to the home folder
   echo "Linking .zshrc ..."
   ln -s "${DOTFILES_ROOT}/environment/.zshrc" "${HOME}/.zshrc"
 
   # Link vim configuration
-  echo "Linking nvim config ..."
-  mkdir -p "${HOME}/.config"
-  ln -s "${DOTFILES_ROOT}/nvim" "${HOME}/.config/nvim"
+  echo "Linking vim config ..."
+  ln -s "${DOTFILES_ROOT}/environment/.vimrc" "${HOME}/.vimrc"
 
   # Link VS Code configuration
   echo "Linking VS Code configuration ..."

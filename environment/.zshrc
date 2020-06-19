@@ -58,38 +58,11 @@ loadnvmrc() {
   fi
 }
 
-loadnvm() {
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-  add-zsh-hook chpwd loadnvmrc
-  loadnvmrc
-}
-
-lazynvm() {
-  if ! which nvm > /dev/null 2>&1; then
-    if [ -f "package.json" -o -f ".nvmrc" ]; then
-      loadnvm
-    fi
-  fi
-}
-
-add-zsh-hook chpwd lazynvm
-lazynvm
-
-# fzf ayu
-# export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
-#   --color=fg:#cbccc6,hl:#bae67e
-#   --color=fg+:#ffffff,bg+:#1f2430,hl+:#bae67e
-#   --color=info:#686868,prompt:#73d0ff,pointer:#ffd580
-#   --color=marker:#f28779,spinner:#686868,header:#ffffff'
-
-# fzf material
-export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
-  --color=fg:#959dcb,bg:-1,hl:#c3e88d
-  --color=fg+:#d0d0d0,bg+:#292d3e,hl+:#c3e88d
-  --color=info:#607c8b,prompt:#c792ea,pointer:#ffcb6b
-  --color=marker:#f07178,spinner:#607c8b,header:#82aaff'
+add-zsh-hook chpwd loadnvmrc
+loadnvmrc
 
 # aliases
 alias ..="cd .."

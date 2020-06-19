@@ -5,10 +5,12 @@
 " Editor layout
 set breakindent    " indent lines when they're softwrapped
 set breakindentopt=shift:2,min:20 " settings for breakindent
+set laststatus=2   " always show the status line 
 set linebreak      " don't break within words
 set noshowmode     " disable showing mode because lightline does that
 set number         " show line numbers
 set ruler          " show ruler
+set signcolumn=yes " always show status column next to line numbers
 set wrap           " softwrap when the text runs longer than the window
 
 " Search
@@ -27,24 +29,18 @@ set tabstop=2      " set width of a tabstop
 
 " Behavior
 set autoread       " refresh files when they change
-set mouse=a        " let me click on stuff if i want to
-set switchbuf=usetab,newtab " open buffers in new tabs or focus exisiting tab
 set wildmenu       " enable better completion
 
 " Disable backups because it's stored in git anyway
 set nobackup
 set noswapfile
 
-" COC
-set shortmess+=c   " Don't pass messages to ins-completion-menu
-set signcolumn=yes " Show extra column for diagnostics
-
 " -----------------------------------------------------------------------------
 " PLUG
 " -----------------------------------------------------------------------------
 
-if empty(glob(stdpath('data') . '/site/autoload/plug.vim'))
-  silent !curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
@@ -53,7 +49,7 @@ endif
 " PLUGINS
 " -----------------------------------------------------------------------------
 
-call plug#begin(stdpath('data') . '/plugged')
+call plug#begin('~/.vim/plugged')
   " General
   Plug 'airblade/vim-gitgutter'
   Plug 'ctrlpvim/ctrlp.vim'
@@ -73,20 +69,14 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'mattn/emmet-vim'
 
   " Color schemes
-  Plug 'ayu-theme/ayu-vim'
   Plug 'kaicataldo/material.vim'
+  Plug 'cocopon/iceberg.vim'
 call plug#end()
 
-" Color scheme
-if (has("termguicolors"))
-  set termguicolors
-endif
-
 set background=dark
-let g:ayucolor = 'mirage'
 let g:material_theme_style = 'palenight'
-let g:lightline = { 'colorscheme': 'material_vim' }
-colorscheme material
+let g:lightline = { 'colorscheme': 'iceberg' }
+colorscheme iceberg
 
 " CTRLP
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
