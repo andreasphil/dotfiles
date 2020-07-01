@@ -14,7 +14,7 @@
 #
 # Usage: bookmarks
 #   - this (create a bookmark for the current folder)
-#   - create <location> [<name>] (create a bookmark with <name> for <location>
+#   - create <location> [<name>] (create a bookmark with <name> for <location>)
 #   - delete <name> (delete <name>)
 #   - list (show all bookmarks)
 #   - help (display this help)
@@ -63,7 +63,7 @@ then
   # Show usage information
   echo "Usage: bookmarks"
   echo "  - this (create a bookmark for the current folder)"
-  echo "  - create <location> [<name>] (create a bookmark with <name> for <location>"
+  echo "  - create <location> [<name>] (create a bookmark with <name> for <location>)"
   echo "  - delete <name> (delete <name>)"
   echo "  - list (show all bookmarks)"
   echo "  - help (display this help)"
