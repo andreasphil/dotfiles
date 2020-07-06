@@ -1,5 +1,7 @@
 " -----------------------------------------------------------------------------
-" GENERAL SETTINGS
+" VIM SETTINGS
+"
+" Much of this is based on https://github.com/amix/vimrc
 " -----------------------------------------------------------------------------
 
 " Editor layout
@@ -73,6 +75,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'cocopon/iceberg.vim'
 call plug#end()
 
+" Theme
 set background=dark
 let g:material_theme_style = 'palenight'
 let g:lightline = { 'colorscheme': 'iceberg' }

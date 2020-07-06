@@ -12,20 +12,19 @@ export PATH
 export ZSH="${HOME}/.oh-my-zsh"
 DISABLE_AUTO_TITLE="true"
 
+# Prompt
+ZSH_THEME="spaceship"
+SPACESHIP_CHAR_SYMBOL="▲ "
+SPACESHIP_CHAR_COLOR_SUCCESS=
+SPACESHIP_TIME_SHOW=true
+SPACESHIP_BATTERY_THRESHOLD=30
+
 # Plugins
 plugins=(git npm gem zsh-completions zsh-syntax-highlighting)
 autoload -U compinit && compinit
 autoload -U add-zsh-hook
 
 source $ZSH/oh-my-zsh.sh
-
-# Prompt
-SPACESHIP_CHAR_SYMBOL="▲ "
-SPACESHIP_CHAR_COLOR_SUCCESS=
-SPACESHIP_TIME_SHOW=true
-SPACESHIP_BATTERY_THRESHOLD=30
-autoload -U promptinit; promptinit
-prompt spaceship
 
 # -----------------------------------------------------------------------------
 # User configuration
