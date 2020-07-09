@@ -14,6 +14,7 @@ set number         " show line numbers
 set ruler          " show ruler
 set signcolumn=yes " always show status column next to line numbers
 set wrap           " softwrap when the text runs longer than the window
+set colorcolumn=80 " show guide for limiting line length
 
 " Search
 set hlsearch       " highlight search results
@@ -32,9 +33,11 @@ set tabstop=2      " set width of a tabstop
 " Behavior
 set autoread       " refresh files when they change
 set wildmenu       " enable better completion
+set updatetime=400 " snappier updates
 
 " Disable backups because it's stored in git anyway
 set nobackup
+set nowritebackup
 set noswapfile
 
 " -----------------------------------------------------------------------------
@@ -58,6 +61,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'itchyny/lightline.vim'
   Plug 'maxbrunsfeld/vim-yankstack'
   Plug 'mileszs/ack.vim'
+  Plug 'preservim/nerdtree'
+  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
   Plug 'terryma/vim-expand-region'
   Plug 'terryma/vim-multiple-cursors'
   Plug 'tpope/vim-commentary'
@@ -90,6 +95,7 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:vue_pre_processors = 'detect_on_enter'
 let g:javascript_plugin_jsdoc = 1
 let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_frontmatter = 1
 
 " Other
 let g:ackprg = 'ag --vimgrep'
@@ -112,3 +118,7 @@ nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-h> <C-w>h
 nmap <C-l> <C-w>l
+
+" NERDTree
+nmap <leader>e :NERDTreeToggle<cr>
+nmap <leader>E :NERDTreeFocus<cr>
