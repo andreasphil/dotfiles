@@ -99,6 +99,7 @@ let g:vim_markdown_frontmatter = 1
 
 " Other
 let g:ackprg = 'ag --vimgrep'
+let NERDTreeShowHidden = 1
 
 " -----------------------------------------------------------------------------
 " KEY MAPPINGS
