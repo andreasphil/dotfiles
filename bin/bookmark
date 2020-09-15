@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # -----------------------------------------------------------------------------
-# BOOKMARKS
+# BOOKMARK
 #
-# Simple hack for an easy to manage bookmark list. Bookmarks need to be placed
+# An easy to manage bookmark list for the terminal. Bookmarks need to be placed
 # as softlinks in the folder configured in `bookmark_dir`. When called, the
 # command displays a list with all bookmarks that can be fuzzy-filtered. The
 # selected link will be opened when confirmed. Note that this requires you to
@@ -12,7 +12,7 @@
 # Requires fzf to be installed: https://github.com/junegunn/fzf
 # If Homebrew is available, it can be installed via: `brew install fzf`
 #
-# Usage: bookmarks
+# Usage: bookmark
 #   - this (create a bookmark for the current folder)
 #   - create <location> [<name>] (create a bookmark with <name> for <location>)
 #   - delete <name> (delete <name>)
@@ -61,7 +61,7 @@ then
 elif [[ "$1" == "help" ]]
 then
   # Show usage information
-  echo "Usage: bookmarks"
+  echo "Usage: bookmark"
   echo "  - this (create a bookmark for the current folder)"
   echo "  - create <location> [<name>] (create a bookmark with <name> for <location>)"
   echo "  - delete <name> (delete <name>)"

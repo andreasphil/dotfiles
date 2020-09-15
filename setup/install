@@ -3,73 +3,45 @@
 # -----------------------------------------------------------------------------
 # INSTALL
 #
-# Sets up command line tools and package managers and downloads all configured
-# applications.
+# Functions for setting up command line tools, package managers and other
+# software.
 #
-# Usage: _install [tasks...]
+# Usage: Run `. install` to get access to the functions below. 
 # -----------------------------------------------------------------------------
 
-set -e
-
-# -----------------------------------------------------------------------------
-# Preparation: Install Xcode command line tools
-# -----------------------------------------------------------------------------
-
-function xcodeCli {
-  echo "Installing command line developer tools ..."
+function df_installXcodeCli {
   xcode-select --install
 }
 
-# -----------------------------------------------------------------------------
-# ZSH
-# -----------------------------------------------------------------------------
-
-function shell {
-  echo "Installing shell ..."
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+function df_uninstallXcodeCli {
+  # https://developer.apple.com/library/archive/technotes/tn2339/_index.html
+  rm -rf /Library/Developer/CommandLineTools
 }
 
-function shellExtensions {
+function df_installZsh {
+  echo "Installing ZSH ..."
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  
+  # Plugins
   git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-  
-  # Spaceship prompt
-  git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
-  ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
 }
 
-# -----------------------------------------------------------------------------
-# Applications 
-# -----------------------------------------------------------------------------
-
-function packageManagers {
-  echo "Installing homebrew ..."
+function df_installHomebrew {
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-
-  echo "Installing cask ..."
-  brew tap "homebrew/cask"
-
-  echo "Installing homebrew bundle"
   brew tap "homebrew/bundle"
 }
 
-function software {
-  echo "Installing software ..."
+function df_installBrewfile {
   brew bundle install --file="${DOTFILES_ROOT}/setup/Brewfile"
 }
 
-function nvm {
+function df_installNvm {
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh | bash
   echo "Please restart the shell for nvm to take effect."
 }
 
-function gems {
-  echo "Installing gems ..."
-  gem install bundler && bundle install --gemfile="${DOTFILES_ROOT}/setup/Gemfile"
-}
-
-function codeExtensions {
-  echo "Installing Code extensions ..."
+function df_installCodeExtensions {
   set +e
 
   while read -r extension
@@ -84,35 +56,3 @@ function codeExtensions {
 
   set -e
 }
-
-# -----------------------------------------------------------------------------
-# Prompt 
-# -----------------------------------------------------------------------------
-
-tasks=(
-  "Xcode CLI"
-  "Shell"
-  "Shell extensions"
-  "Homebrew"
-  "Software in brewfile"
-  "Gems"
-  "VS Code extensions"
-  "Node version manager"
-  "Quit"
-)
-
-select task in "${tasks[@]}"
-do
-  case "$task" in
-    "Xcode CLI") xcodeCli;;
-    "Shell") shell;;
-    "Shell extensions") shellExtensions;;
-    "Homebrew") packageManagers;;
-    "Software in brewfile") software;;
-    "Gems") gems;;
-    "VS Code extensions") codeExtensions;;
-    "Node version manager") nvm;;
-    "Quit") break;;
-    *) "$task is not a valid option"
-  esac
-done

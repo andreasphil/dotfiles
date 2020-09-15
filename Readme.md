@@ -3,15 +3,14 @@
 A collection of configurations, installation scripts and handy tools I use on my Mac:
 
 * ZSH
-* Packages through [Homebrew](https://brew.sh), [Brew Bundle](https://github.com/Homebrew/homebrew-bundle), `gem` & `npm`
+* Packages through [Homebrew](https://brew.sh), [Brew Bundle](https://github.com/Homebrew/homebrew-bundle) and `npm`
 * Other software installed via [Cask](https://github.com/Homebrew/homebrew-cask)
 * Terminal themes are based on [palenight-iterm2](https://github.com/JonathanSpeek/palenight-iterm2) and [ayu-iTerm](https://github.com/hwyncho/ayu-iTerm)
 
 ## Setup
 
-1. `install/_initialize` prompts you to enter the path where this repository is located on your machine and softlinks the configuration files to your home directory based on that.
-2. `install/_install` downloads the Xcode command line tools, Homebrew and all the rest.
-3. `install/_update` keeps everything up-to-date.
+1. `setup/initialize` prompts you to enter the path where this repository is located on your machine and softlinks the configuration files to your home directory based on that
+2. `setup/install` has functions for installing CLI tools and applications 
 
 ## Useful commands
 
