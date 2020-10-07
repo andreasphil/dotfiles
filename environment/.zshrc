@@ -7,7 +7,7 @@
 # Oh my ZSH settings
 export ZSH="${HOME}/.oh-my-zsh"
 DISABLE_AUTO_TITLE="true"
-ZSH_THEME="af-magic" # other good ones are: frisk norm theunraveler
+ZSH_THEME="frisk" # other good ones are: frisk norm theunraveler
 plugins=(git npm gem zsh-completions zsh-syntax-highlighting)
 autoload -U compinit && compinit
 autoload -U add-zsh-hook
