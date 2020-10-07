@@ -66,12 +66,14 @@
   "javascript.preferences.quoteStyle": "single",
   "javascript.validate.enable": false,
   "markdown.extension.italic.indicator": "_",
-  "ruby.codeCompletion": "rcodetools",
   "ruby.format": "rubocop",
-  "ruby.intellisense": "rubyLocate",
   "ruby.lint": {
-    "rubocop": true
+    "rubocop": {
+      "useBundler": true
+    }
   },
+  "ruby.useBundler": true,
+  "ruby.useLanguageServer": true,
   "tailwindCSS.emmetCompletions": true,
   "telemetry.enableTelemetry": false,
   "terminal.integrated.fontSize": 14,
