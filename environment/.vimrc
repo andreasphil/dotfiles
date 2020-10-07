@@ -66,6 +66,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'terryma/vim-expand-region'
   Plug 'terryma/vim-multiple-cursors'
   Plug 'tpope/vim-commentary'
+  Plug 'wfxr/minimap.vim'
   
   " Languages
   Plug 'alexlafroscia/postcss-syntax.vim'
@@ -98,14 +99,15 @@ let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_frontmatter = 1
 
 " Other
-let g:ackprg = 'ag --vimgrep'
 let NERDTreeShowHidden = 1
+let g:ackprg = 'ag --vimgrep'
+let g:minimap_auto_start = 1
 
 " -----------------------------------------------------------------------------
 " KEY MAPPINGS
 " -----------------------------------------------------------------------------
 
-let mapleader = '-'
+let mapleader = '.'
 
 " Quick access to settings
 nmap <leader>; :tabnew ~/.vimrc<cr>
