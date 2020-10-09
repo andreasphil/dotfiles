@@ -41,9 +41,7 @@
   "editor.renameOnType": true,
   "editor.renderIndentGuides": false,
   "editor.renderWhitespace": "none",
-  "editor.rulers": [
-    100
-  ],
+  "editor.rulers": [100],
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "editor.wordWrapColumn": 120,
@@ -87,46 +85,26 @@
   "window.restoreWindows": "one",
   "window.zoomLevel": 0,
   "workbench.colorCustomizations": {
-    "[Ayu Light]": {
+    "[Ayu Light Bordered]": {
       "activityBar.activeBorder": "#ff9940",
       "activityBar.background": "#f0f1f2",
       "activityBar.border": "#dee8f1",
-      "editorGroup.border": "#dee8f1",
-      "editorGroupHeader.tabsBorder": "#dee8f1",
       "editorOverviewRuler.border": "#fafafa",
       "editorRuler.foreground": "#dee8f1",
       "focusBorder": "#ff9940",
-      "input.border": "#dee8f1",
-      "panel.border": "#dee8f1",
-      "quickInput.background": "#fafafa",
-      "sideBar.background": "#fafafa",
-      "sideBar.border": "#dee8f1",
-      "sideBarSectionHeader.background": "#fafafa",
-      "statusBar.background": "#f0f1f2",
-      "statusBar.border": "#dee8f1",
-      "titleBar.border": "#dee8f1"
+      "input.border": "#dee8f1"
     },
-    "[Ayu Mirage]": {
+    "[Ayu Mirage Bordered]": {
       "activityBar.activeBorder": "#fdc354",
       "activityBar.background": "#191e2a",
       "activityBar.border": "#141822",
-      "editorGroup.border": "#141822",
-      "editorGroupHeader.tabsBorder": "#141822",
-      "editorOverviewRuler.border": "#1f2430",
+      "editorOverviewRuler.border": "#232834",
       "editorRuler.foreground": "#141822",
       "focusBorder": "#fdc354",
-      "input.border": "#141822",
-      "panel.border": "#141822",
-      "quickInput.background": "#1f2430",
-      "sideBar.background": "#1f2430",
-      "sideBar.border": "#141822",
-      "sideBarSectionHeader.background": "#1f2430",
-      "statusBar.background": "#191e2a",
-      "statusBar.border": "#141822",
-      "titleBar.border": "#141822"
+      "input.border": "#141822"
     }
   },
-  "workbench.colorTheme": "Ayu Mirage",
+  "workbench.colorTheme": "Ayu Mirage Bordered",
   "workbench.iconTheme": "ayu",
   "workbench.settings.editor": "ui",
   "workbench.tree.renderIndentGuides": "none"
