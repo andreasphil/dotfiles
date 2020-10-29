@@ -1,12 +1,8 @@
 // Place your key bindings in this file to overwrite the defaults
 [
   {
-    "key": "shift+enter",
-    "command": "extension.jumpy-word"
-  },
-  {
     "key": "ctrl+shift+enter",
-    "command": "extension.jumpy-line"
+    "command": "extension.jumpy-word"
   },
   {
     "key": "shift+cmd+m",
@@ -31,10 +27,6 @@
     "key": "alt+cmd+up",
     "command": "workbench.action.terminal.focusPrevious",
     "when": "terminalFocus"
-  },
-  {
-    "key": "shift+cmd+c",
-    "command": "workbench.action.terminal.newInActiveWorkspace"
   },
   {
     "key": "shift+cmd+b",
