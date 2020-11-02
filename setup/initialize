@@ -23,11 +23,13 @@ then
 
   # Link terminal profile from the dotfiles folder to the home folder
   echo "Linking .zshrc ..."
-  ln -s "${DOTFILES_ROOT}/environment/.zshrc" "${HOME}/.zshrc"
+  ln -s "${DOTFILES_ROOT}/environment/zshrc" "${HOME}/.zshrc"
 
   # Link vim configuration
   echo "Linking vim config ..."
-  ln -s "${DOTFILES_ROOT}/environment/.vimrc" "${HOME}/.vimrc"
+  ln -s "${DOTFILES_ROOT}/environment/vimrc" "${HOME}/.vimrc"
+  mkdir -p "${HOME}/.config/nvim"
+  ln -s "${DOTFILES_ROOT}/environment/init.vim" "${HOME}/.config/nvim/init.vim"
 
   # Link VS Code configuration
   echo "Linking VS Code configuration ..."
@@ -38,8 +40,8 @@ then
 
   # Link global git configuration
   echo "Linking global Git configuration ..."
-  ln -s "${DOTFILES_ROOT}/git/.gitconfig" "${HOME}/.gitconfig"
-  ln -s "${DOTFILES_ROOT}/git/.gitignore_global" "${HOME}/.gitignore_global"
+  ln -s "${DOTFILES_ROOT}/git/gitconfig" "${HOME}/.gitconfig"
+  ln -s "${DOTFILES_ROOT}/git/gitignore_global" "${HOME}/.gitignore_global"
 
   # Create command line bookmarks folder
   mkdir "${HOME}/.bookmarks"
