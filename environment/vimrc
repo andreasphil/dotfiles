@@ -44,9 +44,6 @@ set noswapfile
 " PLUG
 " -----------------------------------------------------------------------------
 
-if has('nvim')
-endif
-
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -65,7 +62,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'maxbrunsfeld/vim-yankstack'
   Plug 'mileszs/ack.vim'
   Plug 'preservim/nerdtree'
-  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
   Plug 'terryma/vim-expand-region'
   Plug 'terryma/vim-multiple-cursors'
   Plug 'tpope/vim-commentary'
@@ -77,20 +73,28 @@ call plug#begin('~/.vim/plugged')
   endif
 
   " Languages
+  " TODO: Load on demand
   Plug 'alexlafroscia/postcss-syntax.vim'
+  Plug 'elixir-editors/vim-elixir'
   Plug 'leafgarland/typescript-vim'
+  Plug 'mattn/emmet-vim'
   Plug 'pangloss/vim-javascript'
   Plug 'plasticboy/vim-markdown'
   Plug 'posva/vim-vue'
-  Plug 'mattn/emmet-vim'
+  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+  Plug 'slashmili/alchemist.vim'
+  Plug 'tpope/vim-rails'
+  Plug 'vim-ruby/vim-ruby'
+
+  "COC
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
   " Color schemes
   Plug 'cocopon/iceberg.vim'
   Plug 'gkeep/iceberg-dark'
+  Plug 'morhetz/gruvbox'
 call plug#end()
 
-" Theme
-set termguicolors
 set background=dark
 colorscheme iceberg
 
@@ -104,9 +108,7 @@ let g:lightline = {
 \     ['mode', 'paste'],
 \     ['gitbranch', 'filename', 'modified']
 \   ]
-\ },
-\ 'separator': { 'left': '', 'right' : '' },
-\ 'subseparator': { 'left': '', 'right': '' } }
+\ } }
 
 " CTRLP
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
@@ -121,7 +123,8 @@ let g:vim_markdown_frontmatter = 1
 
 " Other
 let NERDTreeShowHidden = 1
-let g:ackprg = 'ag --vimgrep'
+let g:ackprg = 'rg --vimgrep --smart-case'
+let g:ack_use_cword_for_empty_search = 1
 let g:minimap_auto_start = 1
 
 " -----------------------------------------------------------------------------
@@ -146,3 +149,9 @@ nmap <C-l> <C-w>l
 " NERDTree
 nmap <leader>e :NERDTreeToggle<cr>
 nmap <leader>E :NERDTreeFocus<cr>
+
+" -----------------------------------------------------------------------------
+" COC SETTINGS
+" -----------------------------------------------------------------------------
+
+inoremap <silent><expr> <c-space> coc#refresh()
