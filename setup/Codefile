@@ -8,12 +8,13 @@ esbenp.prettier-vscode
 JakeBecker.elixir-ls
 mrmlnc.vscode-scss
 ms-python.python
+ms-toolsai.jupyter
 msjsdiag.debugger-for-chrome
 octref.vetur
 pnp.polacode
 rebornix.ruby
 richie5um2.vscode-sort-json
-stylelint.vscode-stylelint
+svelte.svelte-vscode
 teabyii.ayu
 VisualStudioExptTeam.vscodeintellicode
 wayou.vscode-todo-highlight
