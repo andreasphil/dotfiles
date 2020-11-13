@@ -50,6 +50,9 @@ loadnvmrc() {
 add-zsh-hook chpwd loadnvmrc
 loadnvmrc
 
+# homebrew
+export HOMEBREW_NO_AUTO_UPDATE=1
+
 # aliases
 alias ..="cd .."
 alias b=". bookmark"
