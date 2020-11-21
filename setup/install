@@ -9,17 +9,7 @@
 # Usage: Run `. install` to get access to the functions below. 
 # -----------------------------------------------------------------------------
 
-function df_installXcodeCli {
-  xcode-select --install
-}
-
-function df_uninstallXcodeCli {
-  # https://developer.apple.com/library/archive/technotes/tn2339/_index.html
-  rm -rf /Library/Developer/CommandLineTools
-}
-
-function df_installZsh {
-  echo "Installing ZSH ..."
+function installZsh {
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   
   # Plugins
@@ -27,21 +17,16 @@ function df_installZsh {
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 }
 
-function df_installHomebrew {
+function installHomebrew {
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
   brew tap "homebrew/bundle"
 }
 
-function df_installBrewfile {
-  brew bundle install --file="${DOTFILES_ROOT}/setup/Brewfile"
-}
-
-function df_installNvm {
+function installNvm {
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh | bash
-  echo "Please restart the shell for nvm to take effect."
 }
 
-function df_installCodeExtensions {
+function installCodeExtensions {
   set +e
 
   while read -r extension

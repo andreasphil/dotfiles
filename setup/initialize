@@ -18,7 +18,7 @@ then
   # path. The file will be read by the shell, so it can also contain local
   # customizations that you don't want to add to the dotfiles repository.
   echo "#!/bin/bash
-  export DOTFILES_ROOT=\"${dotfilesPath}\"" > "${HOME}/.local_dotfiles"
+export DOTFILES_ROOT=\"${dotfilesPath}\"" > "${HOME}/.local_dotfiles"
   . "${HOME}/.local_dotfiles"
 
   # Link terminal profile from the dotfiles folder to the home folder
@@ -42,6 +42,7 @@ then
   echo "Linking global Git configuration ..."
   ln -s "${DOTFILES_ROOT}/git/gitconfig" "${HOME}/.gitconfig"
   ln -s "${DOTFILES_ROOT}/git/gitignore_global" "${HOME}/.gitignore_global"
+  echo "# Add system specific git config to this file" > "${HOME}/.gitconfig_local"
 
   # Create command line bookmarks folder
   mkdir "${HOME}/.bookmarks"

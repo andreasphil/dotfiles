@@ -1,0 +1,14 @@
+# This is Git's per-user configuration file.
+[user]
+  email = 18646892+andreasphil@users.noreply.github.com
+  name = Andreas Philippi
+
+[alias]
+  remote-branch-status = !git-remote-branch-status
+
+[core]
+  excludesfile = ~/.gitignore_global
+
+[include]
+  path = ~/.gitconfig_local
+

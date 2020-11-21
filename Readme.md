@@ -5,7 +5,7 @@ A collection of configurations, installation scripts and handy tools I use on my
 * ZSH
 * Packages through [Homebrew](https://brew.sh), [Brew Bundle](https://github.com/Homebrew/homebrew-bundle) and `npm`
 * Other software installed via [Cask](https://github.com/Homebrew/homebrew-cask)
-* Terminal themes are based on [palenight-iterm2](https://github.com/JonathanSpeek/palenight-iterm2) and [ayu-iTerm](https://github.com/hwyncho/ayu-iTerm)
+* Terminal theme based [ayu-iTerm](https://github.com/hwyncho/ayu-iTerm)
 
 ## Setup
 
