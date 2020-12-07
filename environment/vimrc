@@ -70,6 +70,7 @@ call plug#begin('~/.vim/plugged')
   " Languages
   " TODO: Load on demand
   Plug 'alexlafroscia/postcss-syntax.vim'
+  Plug 'cakebaker/scss-syntax.vim'
   Plug 'elixir-editors/vim-elixir'
   Plug 'leafgarland/typescript-vim'
   Plug 'mattn/emmet-vim'
@@ -80,9 +81,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'slashmili/alchemist.vim'
   Plug 'tpope/vim-rails'
   Plug 'vim-ruby/vim-ruby'
-
-  "COC
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
   " Color schemes
   Plug 'cocopon/iceberg.vim'
@@ -134,8 +132,3 @@ nmap <C-l> <C-w>l
 nmap <leader>e :NERDTreeToggle<cr>
 nmap <leader>E :NERDTreeFocus<cr>
 
-" -----------------------------------------------------------------------------
-" COC SETTINGS
-" -----------------------------------------------------------------------------
-
-inoremap <silent><expr> <c-space> coc#refresh()
