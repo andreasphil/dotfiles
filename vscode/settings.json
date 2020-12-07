@@ -47,7 +47,12 @@
   "editor.wordWrapColumn": 120,
   "editor.wrappingIndent": "indent",
   "emmet.includeLanguages": {
-    "erb": "html"
+    "erb": "html",
+    "vue": "html",
+    "vue-html": "html"
+  },
+  "emmet.preferences": {
+    "profile.allowCompactBoolean": true
   },
   "explorer.confirmDragAndDrop": false,
   "extensions.ignoreRecommendations": true,
