@@ -40,8 +40,8 @@ export DOTFILES_ROOT=\"${dotfilesPath}\"" > "${HOME}/.local_dotfiles"
 
   # Link global git configuration
   echo "Linking global Git configuration ..."
-  ln -s "${DOTFILES_ROOT}/git/gitconfig" "${HOME}/.gitconfig"
-  ln -s "${DOTFILES_ROOT}/git/gitignore_global" "${HOME}/.gitignore_global"
+  ln -s "${DOTFILES_ROOT}/environment/gitconfig" "${HOME}/.gitconfig"
+  ln -s "${DOTFILES_ROOT}/environment/gitignore_global" "${HOME}/.gitignore_global"
   echo "# Add system specific git config to this file" > "${HOME}/.gitconfig_local"
 
   # Create command line bookmarks folder
