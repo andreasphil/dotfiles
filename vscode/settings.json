@@ -31,6 +31,9 @@
   "debug.toolBarLocation": "docked",
   "diffEditor.ignoreTrimWhitespace": true,
   "diffEditor.renderSideBySide": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
   "editor.fontFamily": "\"Dank Mono\", FiraCode-Retina, Menlo, monospace",
   "editor.fontLigatures": true,
   "editor.fontSize": 16,
@@ -72,7 +75,6 @@
   "editor.wrappingIndent": "indent",
   "emmet.includeLanguages": {
     "erb": "html",
-    "vue": "html",
     "vue-html": "html"
   },
   "emmet.preferences": {
