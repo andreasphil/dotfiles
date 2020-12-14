@@ -31,19 +31,43 @@
   "debug.toolBarLocation": "docked",
   "diffEditor.ignoreTrimWhitespace": true,
   "diffEditor.renderSideBySide": false,
-  "editor.fontFamily": "FiraCode-Retina, Menlo, monospace",
+  "editor.fontFamily": "\"Dank Mono\", FiraCode-Retina, Menlo, monospace",
   "editor.fontLigatures": true,
-  "editor.fontSize": 14,
+  "editor.fontSize": 16,
+  "editor.fontWeight": 600,
   "editor.formatOnPaste": true,
   "editor.lineHeight": 24,
+  "editor.linkedEditing": true,
   "editor.minimap.enabled": true,
   "editor.multiCursorModifier": "ctrlCmd",
-  "editor.renameOnType": true,
   "editor.renderIndentGuides": false,
   "editor.renderWhitespace": "none",
   "editor.rulers": [100],
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
+  "editor.tokenColorCustomizations": {
+    "[Ayu Mirage Bordered]": {
+      "textMateRules": [
+        {
+          "scope": [
+            "storage",
+            "keyword.control",
+            "keyword.other",
+            "variable.language",
+            "entity.name.method.js",
+            "text.html.basic entity.other.attribute-name.html",
+            "text.html.basic entity.other.attribute-name",
+            "tag.decorator.js entity.name.tag.js",
+            "tag.decorator.js punctuation.definition.tag.js",
+            "source.js constant.other.object.key.js string.unquoted.label.js"
+          ],
+          "settings": {
+            "fontStyle": "italic"
+          }
+        }
+      ]
+    }
+  },
   "editor.wordWrapColumn": 120,
   "editor.wrappingIndent": "indent",
   "emmet.includeLanguages": {
@@ -56,7 +80,6 @@
   },
   "explorer.confirmDragAndDrop": false,
   "extensions.ignoreRecommendations": true,
-  "extensions.showRecommendationsOnlyOnDemand": true,
   "files.associations": {
     "*.liquid": "html"
   },
