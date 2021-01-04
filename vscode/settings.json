@@ -103,8 +103,9 @@
   "ruby.useLanguageServer": true,
   "tailwindCSS.emmetCompletions": true,
   "telemetry.enableTelemetry": false,
-  "terminal.integrated.fontSize": 16,
-  "terminal.integrated.fontWeight": 600,
+  "terminal.integrated.cursorStyle": "underline",
+  "terminal.integrated.fontFamily": "FiraCode-Retina, Menlo, monospace",
+  "terminal.integrated.fontSize": 14,
   "terminal.integrated.shell.osx": "/bin/zsh",
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "typescript.preferences.quoteStyle": "single",
@@ -137,6 +138,5 @@
   "workbench.colorTheme": "Ayu Mirage Bordered",
   "workbench.iconTheme": "ayu",
   "workbench.settings.editor": "ui",
-  "workbench.tree.renderIndentGuides": "none",
-  "terminal.integrated.cursorStyle": "underline"
+  "workbench.tree.renderIndentGuides": "none"
 }
