@@ -1,54 +1,68 @@
-# -----------------------------------------------------------------------------
+# ============================================================================= 
 # ZSH CONFIG
-# -----------------------------------------------------------------------------
+# ============================================================================= 
 
 . "${HOME}/.local_dotfiles"
 
-# Oh my ZSH settings
+# -----------------------------------------------------------------------------
+# Custom prompt
+# -----------------------------------------------------------------------------
+
+prompt_char() {
+  echo "%(?.✼.%F{red}✕%f)"
+}
+
+current_time() {
+  echo "%F{yellow}%*%f"
+}
+
+working_dir() {
+  echo "%F{blue}%B%0~%b%f"
+}
+
+git_info() {
+  ZSH_THEME_GIT_PROMPT_PREFIX="\ue0a0 "
+  ZSH_THEME_GIT_PROMPT_SUFFIX=""
+  ZSH_THEME_GIT_PROMPT_DIRTY=""
+  ZSH_THEME_GIT_PROMPT_CLEAN=""
+
+  ZSH_THEME_GIT_PROMPT_UNTRACKED="?"
+  ZSH_THEME_GIT_PROMPT_ADDED="+"
+  ZSH_THEME_GIT_PROMPT_MODIFIED="*"
+  ZSH_THEME_GIT_PROMPT_RENAMED="→"
+  ZSH_THEME_GIT_PROMPT_DELETED="-"
+  ZSH_THEME_GIT_PROMPT_STASHED="$"
+  ZSH_THEME_GIT_PROMPT_UNMERGED="⇞"
+  ZSH_THEME_GIT_PROMPT_AHEAD="↑"
+  ZSH_THEME_GIT_PROMPT_BEHIND="↓"
+  ZSH_THEME_GIT_PROMPT_DIVERGED="⇟"
+
+  echo "%F{008}$(git_prompt_info) $(git_prompt_status)%f"
+}
+
+PROMPT='
+$(current_time) $(working_dir) $(git_info)
+$(prompt_char) '
+
+# -----------------------------------------------------------------------------
+# Oh my ZSH
+# -----------------------------------------------------------------------------
+
 export ZSH="${HOME}/.oh-my-zsh"
-DISABLE_AUTO_TITLE="true"
-ZSH_THEME="frisk" # other good ones are: frisk norm theunraveler
-plugins=(git npm gem zsh-completions zsh-syntax-highlighting)
+export NVM_AUTOLOAD=1
+
+plugins=(npm nvm rbenv gem pyenv fzf zsh-completions zsh-syntax-highlighting)
 autoload -U compinit && compinit
 autoload -U add-zsh-hook
 
 source $ZSH/oh-my-zsh.sh
 
+# -----------------------------------------------------------------------------
+# Applications
+# -----------------------------------------------------------------------------
+
 # postgres
 export PGDATA="${HOME}/.psql/data"
-
-# rbenv
-eval "$(rbenv init -)"
-
-# pyenv
-eval "$(pyenv init -)"
-
-# nvm
-export NVM_DIR="$HOME/.nvm"
-
-loadnvmrc() {
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
-
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install
-    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use
-    fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
-    nvm use default
-  fi
-}
-
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
-add-zsh-hook chpwd loadnvmrc
-loadnvmrc
 
 # homebrew
 export HOMEBREW_NO_AUTO_UPDATE=1
