@@ -26,7 +26,6 @@
   },
   "breadcrumbs.enabled": false,
   "css.lint.unknownAtRules": "ignore",
-  "debug.console.fontSize": 14,
   "debug.showInStatusBar": "never",
   "debug.toolBarLocation": "docked",
   "diffEditor.ignoreTrimWhitespace": true,
@@ -138,5 +137,6 @@
   "workbench.colorTheme": "Ayu Mirage Bordered",
   "workbench.iconTheme": "ayu",
   "workbench.settings.editor": "ui",
-  "workbench.tree.renderIndentGuides": "none"
+  "workbench.tree.renderIndentGuides": "none",
+  "terminal.integrated.cursorStyle": "underline"
 }
