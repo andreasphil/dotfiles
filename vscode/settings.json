@@ -38,7 +38,7 @@
   "editor.fontSize": 16,
   "editor.fontWeight": 600,
   "editor.formatOnPaste": true,
-  "editor.lineHeight": 24,
+  "editor.formatOnSave": true,
   "editor.linkedEditing": true,
   "editor.minimap.enabled": true,
   "editor.multiCursorModifier": "ctrlCmd",
