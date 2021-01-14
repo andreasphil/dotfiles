@@ -49,9 +49,8 @@ $(prompt_char) '
 # -----------------------------------------------------------------------------
 
 export ZSH="${HOME}/.oh-my-zsh"
-export NVM_AUTOLOAD=1
 
-plugins=(npm nvm rbenv gem pyenv fzf zsh-completions zsh-syntax-highlighting)
+plugins=(npm rbenv gem pyenv fzf zsh-completions zsh-syntax-highlighting)
 autoload -U compinit && compinit
 autoload -U add-zsh-hook
 
@@ -66,6 +65,9 @@ export PGDATA="${HOME}/.psql/data"
 
 # homebrew
 export HOMEBREW_NO_AUTO_UPDATE=1
+
+# fnm
+eval "$(fnm env --use-on-cd)"
 
 # aliases
 alias ..="cd .."
