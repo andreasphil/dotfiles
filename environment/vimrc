@@ -7,7 +7,7 @@
 " Editor layout
 set breakindent    " indent lines when they're softwrapped
 set breakindentopt=shift:2,min:20 " settings for breakindent
-set laststatus=2   " always show the status line 
+set laststatus=2   " always show the status line
 set linebreak      " don't break within words
 set noshowmode     " disable showing mode because lightline does that
 set number         " show line numbers
@@ -60,7 +60,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'itchyny/lightline.vim'
   Plug 'maxbrunsfeld/vim-yankstack'
-  Plug 'mileszs/ack.vim'
   Plug 'preservim/nerdtree'
   Plug 'terryma/vim-expand-region'
   Plug 'terryma/vim-multiple-cursors'
@@ -71,21 +70,18 @@ call plug#begin('~/.vim/plugged')
   " TODO: Load on demand
   Plug 'alexlafroscia/postcss-syntax.vim'
   Plug 'cakebaker/scss-syntax.vim'
-  Plug 'elixir-editors/vim-elixir'
   Plug 'leafgarland/typescript-vim'
   Plug 'mattn/emmet-vim'
   Plug 'pangloss/vim-javascript'
   Plug 'plasticboy/vim-markdown'
   Plug 'posva/vim-vue'
   Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-  Plug 'slashmili/alchemist.vim'
   Plug 'tpope/vim-rails'
   Plug 'vim-ruby/vim-ruby'
 
   " Color schemes
   Plug 'cocopon/iceberg.vim'
   Plug 'gkeep/iceberg-dark'
-  Plug 'morhetz/gruvbox'
 call plug#end()
 
 set background=dark
@@ -106,8 +102,6 @@ let g:vim_markdown_frontmatter = 1
 
 " Other
 let NERDTreeShowHidden = 1
-let g:ackprg = 'rg --vimgrep --smart-case'
-let g:ack_use_cword_for_empty_search = 1
 
 " -----------------------------------------------------------------------------
 " KEY MAPPINGS

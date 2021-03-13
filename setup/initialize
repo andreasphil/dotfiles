@@ -24,6 +24,7 @@ export DOTFILES_ROOT=\"${dotfilesPath}\"" > "${HOME}/.local_dotfiles"
   # Link terminal profile from the dotfiles folder to the home folder
   echo "Linking .zshrc ..."
   ln -s "${DOTFILES_ROOT}/environment/zshrc" "${HOME}/.zshrc"
+  ln -s "$DOTFILES_ROOT/environment/zprofile" "${HOME}/.zprofile"
 
   # Link vim configuration
   echo "Linking vim config ..."

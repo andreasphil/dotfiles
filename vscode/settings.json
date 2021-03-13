@@ -103,7 +103,6 @@
   "ruby.useLanguageServer": true,
   "tailwindCSS.emmetCompletions": true,
   "telemetry.enableTelemetry": false,
-  "terminal.integrated.cursorStyle": "underline",
   "terminal.integrated.fontFamily": "FiraCode-Retina, Menlo, monospace",
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.shell.osx": "/bin/zsh",
@@ -114,7 +113,6 @@
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.newWindowDimensions": "inherit",
   "window.restoreWindows": "one",
-  "window.zoomLevel": 0,
   "workbench.colorCustomizations": {
     "[Ayu Light Bordered]": {
       "activityBar.activeBorder": "#ff9940",

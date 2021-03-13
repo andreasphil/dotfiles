@@ -1,17 +1,12 @@
 Angular.ng-template
 bradlc.vscode-tailwindcss
 bungcip.better-toml
-csstools.postcss
 dbaeumer.vscode-eslint
 EditorConfig.EditorConfig
 esbenp.prettier-vscode
-JakeBecker.elixir-ls
 mrmlnc.vscode-scss
-ms-python.python
-ms-toolsai.jupyter
 msjsdiag.debugger-for-chrome
 octref.vetur
-pnp.polacode
 rebornix.ruby
 richie5um2.vscode-sort-json
 svelte.svelte-vscode
@@ -19,5 +14,3 @@ teabyii.ayu
 VisualStudioExptTeam.vscodeintellicode
 wayou.vscode-todo-highlight
 wingrunr21.vscode-ruby
-wmaurer.vscode-jumpy
-yzhang.markdown-all-in-one
