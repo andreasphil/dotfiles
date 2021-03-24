@@ -24,11 +24,14 @@
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "angular.enable-experimental-ivy-prompt": false,
   "breadcrumbs.enabled": false,
   "css.lint.unknownAtRules": "ignore",
   "debug.showInStatusBar": "never",
   "debug.toolBarLocation": "docked",
-  "diffEditor.ignoreTrimWhitespace": true,
   "diffEditor.renderSideBySide": false,
   "editor.codeActionsOnSave": {
     "source.fixAll": true
@@ -115,19 +118,11 @@
   "window.restoreWindows": "one",
   "workbench.colorCustomizations": {
     "[Ayu Light Bordered]": {
-      "activityBar.activeBorder": "#ff9940",
-      "activityBar.background": "#f0f1f2",
-      "activityBar.border": "#dee8f1",
-      "editorOverviewRuler.border": "#fafafa",
       "editorRuler.foreground": "#dee8f1",
       "focusBorder": "#ff9940",
       "input.border": "#dee8f1"
     },
     "[Ayu Mirage Bordered]": {
-      "activityBar.activeBorder": "#fdc354",
-      "activityBar.background": "#191e2a",
-      "activityBar.border": "#151a24",
-      "editorOverviewRuler.border": "#232834",
       "editorRuler.foreground": "#191e2a",
       "focusBorder": "#fdc354",
       "input.border": "#191e2a"
