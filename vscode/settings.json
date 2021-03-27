@@ -47,7 +47,7 @@
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.renderIndentGuides": false,
   "editor.renderWhitespace": "none",
-  "editor.rulers": [100],
+  "editor.rulers": [80, 100],
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "editor.tokenColorCustomizations": {
@@ -95,7 +95,6 @@
   "javascript.preferences.importModuleSpecifier": "non-relative",
   "javascript.preferences.quoteStyle": "single",
   "javascript.validate.enable": false,
-  "markdown.extension.italic.indicator": "_",
   "ruby.format": "rubocop",
   "ruby.lint": {
     "rubocop": {
