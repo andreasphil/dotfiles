@@ -34,7 +34,8 @@
   "debug.toolBarLocation": "docked",
   "diffEditor.renderSideBySide": false,
   "editor.codeActionsOnSave": {
-    "source.fixAll": true
+    "source.fixAll": true,
+    "source.fixAll.sortJSON": false
   },
   "editor.fontFamily": "\"Dank Mono\", FiraCode-Retina, Menlo, monospace",
   "editor.fontLigatures": true,
