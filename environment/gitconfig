@@ -15,3 +15,8 @@
 [include]
   path = ~/.gitconfig_local
 
+[init]
+	defaultBranch = main
+
+[pull]
+	ff = only
