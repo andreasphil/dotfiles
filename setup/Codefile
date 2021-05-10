@@ -4,12 +4,12 @@ bungcip.better-toml
 dbaeumer.vscode-eslint
 EditorConfig.EditorConfig
 esbenp.prettier-vscode
+golang.go
 mrmlnc.vscode-scss
 msjsdiag.debugger-for-chrome
 octref.vetur
 rebornix.ruby
 richie5um2.vscode-sort-json
-svelte.svelte-vscode
 teabyii.ayu
 VisualStudioExptTeam.vscodeintellicode
 wayou.vscode-todo-highlight
