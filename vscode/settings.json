@@ -93,6 +93,7 @@
   "files.trimTrailingWhitespace": true,
   "git.confirmSync": false,
   "git.untrackedChanges": "separate",
+  "go.toolsManagement.autoUpdate": true,
   "javascript.preferences.importModuleSpecifier": "non-relative",
   "javascript.preferences.quoteStyle": "single",
   "javascript.validate.enable": false,
