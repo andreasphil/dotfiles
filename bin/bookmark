@@ -23,7 +23,7 @@
 # Read bookmarks_dir from environment variable or default to ~/.bookmarks
 bookmarks_dir="${BOOKMARKS_DIR}"
 
-if [[ "${bookmarks_dir}" == "" ]]
+if [[ "$bookmarks_dir" == "" ]]
 then
   bookmarks_dir="${HOME}/.bookmarks";
 fi
@@ -33,14 +33,14 @@ then
   # Create bookmark
   # Determine bookmark location. Default to current directory
   location="$2"
-  if [[ "${location}" == "" ]]
+  if [[ "$location" == "" ]]
   then
     location="$(pwd)"
   fi
 
   # Create bookmark
   printf "Creating bookmark ${location} ... "
-  ln -s "${location}" "${bookmarks_dir}/$3" &&
+  ln -s "$location" "${bookmarks_dir}/$3" &&
   echo -e "Done."
 elif [[ "$1" == "this" ]]
 then
@@ -57,7 +57,7 @@ then
 elif  [[ "$1" == "list" ]]
 then
   # List bookmarks
-  ls -l "${bookmarks_dir}"
+  ls -l "$bookmarks_dir"
 elif [[ "$1" == "help" ]]
 then
   # Show usage information
@@ -69,10 +69,11 @@ then
   echo "  - help (display this help)"
 else
   # Open bookmark
-  selection="$(ls ${bookmarks_dir} | fzf)"
+  selection=$(ls "${bookmarks_dir}" | fzf)
 
   if [[ $? == 0 ]]
   then
-    cd "${bookmarks_dir}/$selection"
+    target=$(readlink "${bookmarks_dir}/${selection}")
+    cd "$target"
   fi
 fi
