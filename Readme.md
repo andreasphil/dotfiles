@@ -5,12 +5,12 @@ A collection of configurations, installation scripts and handy tools I use on my
 * ZSH
 * Packages through [Homebrew](https://brew.sh), [Brew Bundle](https://github.com/Homebrew/homebrew-bundle) and `npm`
 * Other software installed via [Cask](https://github.com/Homebrew/homebrew-cask)
-* Terminal theme based [ayu-iTerm](https://github.com/hwyncho/ayu-iTerm)
+* Terminal theme based on [ayu-iTerm](https://github.com/hwyncho/ayu-iTerm)
 
 ## Setup
 
-1. `setup/initialize` prompts you to enter the path where this repository is located on your machine and softlinks the configuration files to your home directory based on that
-2. `setup/install` has functions for installing CLI tools and applications 
+- `setup/initialize` prompts you to enter the path where this repository is located on your machine and softlinks the configuration files to your home directory based on that
+- `setup/install` has functions for installing CLI tools and applications
 
 ## Useful commands
 
