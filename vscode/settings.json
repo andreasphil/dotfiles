@@ -17,9 +17,7 @@
   "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.quickSuggestions": false,
-    "editor.rulers": [],
-    "editor.wordWrap": "bounded",
-    "editor.wordWrapColumn": 80
+    "editor.wordWrap": "bounded"
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -27,12 +25,12 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "angular.enable-experimental-ivy-prompt": false,
   "breadcrumbs.enabled": false,
   "css.lint.unknownAtRules": "ignore",
-  "debug.showInStatusBar": "never",
-  "debug.toolBarLocation": "docked",
-  "diffEditor.renderSideBySide": false,
   "editor.codeActionsOnSave": {
     "source.fixAll": true,
     "source.fixAll.sortJSON": false
@@ -40,83 +38,37 @@
   "editor.fontFamily": "\"Dank Mono\", FiraCode-Retina, Menlo, monospace",
   "editor.fontLigatures": true,
   "editor.fontSize": 16,
-  "editor.fontWeight": 600,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
-  "editor.linkedEditing": true,
-  "editor.minimap.enabled": true,
-  "editor.multiCursorModifier": "ctrlCmd",
   "editor.renderIndentGuides": false,
-  "editor.renderWhitespace": "none",
-  "editor.rulers": [80, 100],
-  "editor.suggestSelection": "first",
+  "editor.rulers": [80],
   "editor.tabSize": 2,
   "editor.tokenColorCustomizations": {
-    "[Ayu Mirage Bordered]": {
-      "textMateRules": [
-        {
-          "scope": [
-            "storage",
-            "keyword.control",
-            "keyword.other",
-            "variable.language",
-            "entity.name.method.js",
-            "text.html.basic entity.other.attribute-name.html",
-            "text.html.basic entity.other.attribute-name",
-            "tag.decorator.js entity.name.tag.js",
-            "tag.decorator.js punctuation.definition.tag.js",
-            "source.js constant.other.object.key.js string.unquoted.label.js"
-          ],
-          "settings": {
-            "fontStyle": "italic"
-          }
+    "textMateRules": [
+      {
+        "scope": ["storage", "keyword.control", "keyword.other"],
+        "settings": {
+          "fontStyle": "italic"
         }
-      ]
-    }
+      }
+    ]
   },
-  "editor.wordWrapColumn": 120,
-  "editor.wrappingIndent": "indent",
   "emmet.includeLanguages": {
-    "erb": "html",
     "vue-html": "html"
   },
   "emmet.preferences": {
     "profile.allowCompactBoolean": true
   },
-  "explorer.confirmDragAndDrop": false,
   "extensions.ignoreRecommendations": true,
   "files.associations": {
-    "*.liquid": "html"
+    "*.liquid": "html",
+    "*.txt": "markdown"
   },
-  "files.hotExit": "onExitAndWindowClose",
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
-  "git.confirmSync": false,
-  "git.untrackedChanges": "separate",
   "go.toolsManagement.autoUpdate": true,
-  "javascript.preferences.importModuleSpecifier": "non-relative",
-  "javascript.preferences.quoteStyle": "single",
-  "javascript.validate.enable": false,
-  "ruby.format": "rubocop",
-  "ruby.lint": {
-    "rubocop": {
-      "useBundler": true
-    }
-  },
-  "ruby.useBundler": true,
-  "ruby.useLanguageServer": true,
   "tailwindCSS.emmetCompletions": true,
-  "telemetry.enableTelemetry": false,
-  "terminal.integrated.fontFamily": "FiraCode-Retina, Menlo, monospace",
-  "terminal.integrated.fontSize": 14,
-  "terminal.integrated.shell.osx": "/bin/zsh",
-  "typescript.preferences.importModuleSpecifier": "non-relative",
-  "typescript.preferences.quoteStyle": "single",
-  "vetur.format.defaultFormatter.html": "prettier",
-  "vetur.format.enable": false,
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-  "window.newWindowDimensions": "inherit",
-  "window.restoreWindows": "one",
+  "terminal.integrated.fontSize": 16,
   "workbench.colorCustomizations": {
     "[Ayu Light Bordered]": {
       "editorRuler.foreground": "#dee8f1",
@@ -131,6 +83,5 @@
   },
   "workbench.colorTheme": "Ayu Mirage Bordered",
   "workbench.iconTheme": "ayu",
-  "workbench.settings.editor": "ui",
   "workbench.tree.renderIndentGuides": "none"
 }
