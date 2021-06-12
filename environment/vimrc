@@ -32,8 +32,9 @@ set tabstop=2      " set width of a tabstop
 
 " Behavior
 set autoread       " refresh files when they change
+set mouse=a        " it's 2021 and I want to click on stuff
+set updatetime=300 " snappier updates
 set wildmenu       " enable better completion
-set updatetime=400 " snappier updates
 
 " Disable backups because it's stored in git anyway
 set nobackup
@@ -58,7 +59,9 @@ call plug#begin('~/.vim/plugged')
   " General
   Plug 'airblade/vim-gitgutter'
   Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
   Plug 'itchyny/lightline.vim'
+  Plug 'jremmen/vim-ripgrep'
   Plug 'maxbrunsfeld/vim-yankstack'
   Plug 'preservim/nerdtree'
   Plug 'terryma/vim-expand-region'
@@ -76,32 +79,75 @@ call plug#begin('~/.vim/plugged')
   Plug 'plasticboy/vim-markdown'
   Plug 'posva/vim-vue'
   Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-  Plug 'tpope/vim-rails'
-  Plug 'vim-ruby/vim-ruby'
 
   " Color schemes
+  Plug 'arcticicestudio/nord-vim'
   Plug 'cocopon/iceberg.vim'
   Plug 'gkeep/iceberg-dark'
 call plug#end()
 
-set background=dark
-colorscheme iceberg
+let NERDTreeShowHidden = 1
 
-let g:lightline = { 'colorscheme': 'icebergDark' }
-
-" CTRLP
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrl_p_show_hidden = 1
 let g:ctrlp_working_path_mode = 'ra'
 
-" Languages
-let g:vue_pre_processors = 'detect_on_enter'
+" Make plugin defaults consistent with prettier defaults
+let g:prettier#config#arrow_parens = 'always'
+let g:prettier#config#autoformat_config_present = 1
+let g:prettier#config#print_width = 80
+let g:prettier#config#tab_width = 2
+let g:prettier#config#trailing_comma = 'es5'
+let g:prettier#config#use_tabs = 'false'
+
 let g:javascript_plugin_jsdoc = 1
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_frontmatter = 1
+let g:vue_pre_processors = 'detect_on_enter'
 
-" Other
-let NERDTreeShowHidden = 1
+" Color scheme
+if (has('termguicolors'))
+  set termguicolors
+endif
+
+let g:nord_bold = 1
+let g:nord_bold_vertical_split_line = 1
+
+colorscheme iceberg
+
+hi Comment gui=italic cterm=italic term=italic
+hi Conditional gui=italic cterm=italic term=italic
+hi Repeat gui=italic cterm=italic term=italic
+hi Label gui=italic cterm=italic term=italic
+hi Keyword gui=italic cterm=italic term=italic
+hi Exception gui=italic cterm=italic term=italic
+hi StorageClass gui=italic cterm=italic term=italic
+
+" Lightline
+let g:lightline = {
+  \ 'colorscheme': 'icebergDark',
+  \ 'active': {
+  \   'left': [['mode', 'paste'], ['fugitive', 'readonly', 'filename', 'modified']]
+  \ },
+  \ 'component_function': {
+  \   'readonly': 'LightlineReadonly',
+  \   'fugitive': 'LightlineFugitive'
+  \ },
+  \ 'separator': { 'left': '', 'right': '' },
+  \ 'subseparator': { 'left': '', 'right': '' }
+  \ }
+
+function! LightlineReadonly()
+  return &readonly ? '' : ''
+endfunction
+
+function! LightlineFugitive()
+	if exists('*FugitiveHead')
+		let branch = FugitiveHead()
+		return branch !=# '' ? ' '.branch : ''
+	endif
+	return ''
+endfunction
 
 " -----------------------------------------------------------------------------
 " KEY MAPPINGS
@@ -109,20 +155,21 @@ let NERDTreeShowHidden = 1
 
 let mapleader = '.'
 
-" Quick access to settings
 nmap <leader>; :tabnew ~/.vimrc<cr>
 
-" Yankstack access
+nmap <leader>e :NERDTreeToggle<cr>
+nmap <leader>E :NERDTreeFocus<cr>
+
 nmap <leader>p <Plug>yankstack_substitute_older_paste
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
+
+nmap <leader>py <Plug>(PrettierAsync)
+
+nmap <leader><C-t> :tabnew<cr>
 
 " Window navigation
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-h> <C-w>h
 nmap <C-l> <C-w>l
-
-" NERDTree
-nmap <leader>e :NERDTreeToggle<cr>
-nmap <leader>E :NERDTreeFocus<cr>
 
