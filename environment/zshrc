@@ -4,6 +4,9 @@
 
 . "${HOME}/.local_dotfiles"
 
+# Set language and encoding for kitty to display characters correctly
+export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
+
 # -----------------------------------------------------------------------------
 # Custom prompt
 # -----------------------------------------------------------------------------
