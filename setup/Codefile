@@ -5,8 +5,8 @@ denoland.vscode-deno
 EditorConfig.EditorConfig
 esbenp.prettier-vscode
 golang.go
-jgclark.vscode-todo-highlight
 mrmlnc.vscode-scss
 octref.vetur
 richie5um2.vscode-sort-json
 teabyii.ayu
+wayou.vscode-todo-highlight
