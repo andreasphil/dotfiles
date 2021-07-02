@@ -35,6 +35,8 @@ set autoread       " refresh files when they change
 set mouse=a        " it's 2021 and I want to click on stuff
 set updatetime=300 " snappier updates
 set wildmenu       " enable better completion
+set splitright     " create new vertical splits on the right side
+set splitbelow     " create new horizontal splits at the bottom
 
 " Disable backups because it's stored in git anyway
 set nobackup
@@ -60,6 +62,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'airblade/vim-gitgutter'
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  Plug 'godlygeek/tabular'
   Plug 'itchyny/lightline.vim'
   Plug 'jremmen/vim-ripgrep'
   Plug 'maxbrunsfeld/vim-yankstack'
