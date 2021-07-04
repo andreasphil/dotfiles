@@ -37,6 +37,7 @@ set updatetime=300 " snappier updates
 set wildmenu       " enable better completion
 set splitright     " create new vertical splits on the right side
 set splitbelow     " create new horizontal splits at the bottom
+set completeopt=menuone,noinsert " always show the menu, no automatic inserting
 
 " Disable backups because it's stored in git anyway
 set nobackup
@@ -44,7 +45,7 @@ set nowritebackup
 set noswapfile
 
 " -----------------------------------------------------------------------------
-" PLUG
+" PLUGINS
 " -----------------------------------------------------------------------------
 
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -53,24 +54,28 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" -----------------------------------------------------------------------------
-" PLUGINS
-" -----------------------------------------------------------------------------
-
 call plug#begin('~/.vim/plugged')
   " General
   Plug 'airblade/vim-gitgutter'
-  Plug 'ctrlpvim/ctrlp.vim'
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
   Plug 'godlygeek/tabular'
   Plug 'itchyny/lightline.vim'
   Plug 'jremmen/vim-ripgrep'
   Plug 'maxbrunsfeld/vim-yankstack'
+  Plug 'ntpeters/vim-better-whitespace'
   Plug 'preservim/nerdtree'
   Plug 'terryma/vim-expand-region'
   Plug 'terryma/vim-multiple-cursors'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-surround'
+
+  " NVIM only
+  " TODO: Load only if on nvim?
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-lua/popup.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
 
   " Languages
   " TODO: Load on demand
@@ -89,11 +94,12 @@ call plug#begin('~/.vim/plugged')
   Plug 'gkeep/iceberg-dark'
 call plug#end()
 
-let NERDTreeShowHidden = 1
-
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrl_p_show_hidden = 1
 let g:ctrlp_working_path_mode = 'ra'
+
+let g:better_whitespace_enabled = 1
+let g:strip_whitespace_on_save = 1
 
 " Make plugin defaults consistent with prettier defaults
 let g:prettier#config#arrow_parens = 'always'
@@ -108,7 +114,67 @@ let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_frontmatter = 1
 let g:vue_pre_processors = 'detect_on_enter'
 
-" Color scheme
+" -----------------------------------------------------------------------------
+" LANGUAGE SERVERS
+" -----------------------------------------------------------------------------
+
+" See: https://github.com/neovim/nvim-lspconfig#keybindings-and-completion
+if (has('nvim'))
+lua << EOF
+  local nvim_lsp = require('lspconfig')
+
+  -- Use an on_attach function to only map the following keys
+  -- after the language server attaches to the current buffer
+  local on_attach = function(client, bufnr)
+    local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+    local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+    --Enable completion triggered by <c-x><c-o>
+    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+    -- Mappings.
+    local opts = { noremap=true, silent=true }
+
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+    buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+    buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+    buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+    buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+    buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+    buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+    buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+    buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+    buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+    buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+    buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+    buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+    buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+    buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+    buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  end
+
+  -- Use a loop to conveniently call 'setup' on multiple servers and
+  -- map buffer local keybindings when the language server attaches
+  -- TODO: Fix deno conflicting with tsserver
+  -- local servers = { "tsserver", "html", "cssls", "jsonls", "denols" }
+  local servers = { "tsserver", "html", "cssls", "jsonls" }
+  for _, lsp in ipairs(servers) do
+    nvim_lsp[lsp].setup {
+      on_attach = on_attach,
+      flags = {
+        debounce_text_changes = 150,
+      }
+    }
+  end
+EOF
+endif
+
+" -----------------------------------------------------------------------------
+" COLOR SCHEME
+" -----------------------------------------------------------------------------
+
 if (has('termguicolors'))
   set termguicolors
 endif
@@ -126,7 +192,10 @@ hi Keyword gui=italic cterm=italic term=italic
 hi Exception gui=italic cterm=italic term=italic
 hi StorageClass gui=italic cterm=italic term=italic
 
-" Lightline
+" -----------------------------------------------------------------------------
+" LIGHTLINE
+" -----------------------------------------------------------------------------
+
 let g:lightline = {
   \ 'colorscheme': 'icebergDark',
   \ 'active': {
@@ -156,9 +225,10 @@ endfunction
 " KEY MAPPINGS
 " -----------------------------------------------------------------------------
 
-let mapleader = '.'
+let mapleader = ','
 
 nmap <leader>; :tabnew ~/.vimrc<cr>
+nmap <leader><C-t> :tabnew<cr>
 
 nmap <leader>e :NERDTreeToggle<cr>
 nmap <leader>E :NERDTreeFocus<cr>
@@ -168,7 +238,11 @@ nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
 nmap <leader>py <Plug>(PrettierAsync)
 
-nmap <leader><C-t> :tabnew<cr>
+nmap <C-p> :Telescope fd<cr>
+nmap <leader>t :Telescope<cr>
+nmap <leader>ff :Telescope current_buffer_fuzzy_find<cr>
+nmap <leader>fg :Telescope live_grep<cr>
+nmap <leader>fo :Telescope lsp_document_symbols<cr>
 
 " Window navigation
 nmap <C-j> <C-w>j
