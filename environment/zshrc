@@ -94,6 +94,7 @@ PATH="./node_modules/.bin:${PATH}"
 PATH="${GOPATH}/bin:${PATH}"
 PATH="${HOME}/.deno/bin:$PATH"
 PATH="${DOTFILES_ROOT}/bin:${PATH}"
+PATH="${DOTFILES_ROOT}/npm/node_modules/.bin:${PATH}"
 PATH=".:${PATH}"
 export PATH
 

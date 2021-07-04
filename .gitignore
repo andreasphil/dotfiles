@@ -1,3 +1,5 @@
 setup/Gemfile.lock
 setup/Brewfile.lock.json
 nvim/.netrwhist
+npm/node_modules
+npm/package-lock.json
