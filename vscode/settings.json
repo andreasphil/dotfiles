@@ -1,67 +1,21 @@
 {
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.quickSuggestions": false,
-    "editor.wordWrap": "bounded"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[vue]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "angular.enable-experimental-ivy-prompt": false,
   "breadcrumbs.enabled": false,
   "css.lint.unknownAtRules": "ignore",
-  "editor.codeActionsOnSave": {
-    "source.fixAll": true,
-    "source.fixAll.sortJSON": false
-  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.fontFamily": "\"Dank Mono\", FiraCode-Retina, Menlo, monospace",
   "editor.fontLigatures": true,
   "editor.fontSize": 16,
-  "editor.formatOnPaste": true,
-  "editor.formatOnSave": true,
   "editor.renderIndentGuides": false,
-  "editor.rulers": [80],
   "editor.tabSize": 2,
-  "editor.tokenColorCustomizations": {
-    "textMateRules": [
-      {
-        "scope": ["storage", "keyword.control", "keyword.other"],
-        "settings": {
-          "fontStyle": "italic"
-        }
-      }
-    ]
-  },
   "emmet.includeLanguages": {
-    "vue-html": "html"
+    "vue": "html"
   },
   "emmet.preferences": {
     "profile.allowCompactBoolean": true
   },
   "extensions.ignoreRecommendations": true,
   "files.associations": {
-    "*.liquid": "html",
     "*.txt": "markdown"
   },
   "files.insertFinalNewline": true,
@@ -71,12 +25,10 @@
   "terminal.integrated.fontSize": 16,
   "workbench.colorCustomizations": {
     "[Ayu Light Bordered]": {
-      "editorRuler.foreground": "#dee8f1",
       "focusBorder": "#ff9940",
       "input.border": "#dee8f1"
     },
     "[Ayu Mirage Bordered]": {
-      "editorRuler.foreground": "#191e2a",
       "focusBorder": "#fdc354",
       "input.border": "#191e2a"
     }

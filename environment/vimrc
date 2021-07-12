@@ -1,7 +1,5 @@
 " -----------------------------------------------------------------------------
 " VIM SETTINGS
-"
-" Much of this is based on https://github.com/amix/vimrc
 " -----------------------------------------------------------------------------
 
 " Editor layout
@@ -61,14 +59,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'cocopon/iceberg.vim'
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
   Plug 'gkeep/iceberg-dark'
-  Plug 'godlygeek/tabular'
   Plug 'itchyny/lightline.vim'
-  Plug 'jkramer/vim-checkbox'
-  Plug 'jremmen/vim-ripgrep'
   Plug 'leafgarland/typescript-vim'
   Plug 'mattn/emmet-vim'
-  Plug 'maxbrunsfeld/vim-yankstack'
-  Plug 'neovim/nvim-lspconfig'
   Plug 'ntpeters/vim-better-whitespace'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-lua/popup.nvim'
@@ -76,13 +69,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'pangloss/vim-javascript'
   Plug 'plasticboy/vim-markdown'
   Plug 'posva/vim-vue'
-  Plug 'preservim/nerdtree'
   Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-  Plug 'terryma/vim-expand-region'
-  Plug 'terryma/vim-multiple-cursors'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-surround'
 call plug#end()
 
 let g:better_whitespace_enabled = 1
@@ -101,23 +90,15 @@ let g:prettier#config#tab_width = 2
 let g:prettier#config#trailing_comma = 'es5'
 let g:prettier#config#use_tabs = 'false'
 
-" -----------------------------------------------------------------------------
+" ---------------------------------------------------------------------------
 " UI
-" -----------------------------------------------------------------------------
+" ---------------------------------------------------------------------------
 
 if (has('termguicolors'))
   set termguicolors
 endif
 
 colorscheme iceberg
-
-hi Comment gui=italic cterm=italic term=italic
-hi Conditional gui=italic cterm=italic term=italic
-hi Exception gui=italic cterm=italic term=italic
-hi Keyword gui=italic cterm=italic term=italic
-hi Label gui=italic cterm=italic term=italic
-hi Repeat gui=italic cterm=italic term=italic
-hi StorageClass gui=italic cterm=italic term=italic
 
 let g:lightline = {
   \ 'colorscheme': 'icebergDark',
@@ -138,26 +119,20 @@ endfunction
 
 function! LightlineFugitive()
   if exists('*FugitiveHead')
-  	let branch = FugitiveHead()
-  	return branch !=# '' ? ' '.branch : ''
+    let branch = FugitiveHead()
+    return branch !=# '' ? ' '.branch : ''
   endif
   return ''
 endfunction
 
-" -----------------------------------------------------------------------------
+" ---------------------------------------------------------------------------
 " KEY MAPPINGS
-" -----------------------------------------------------------------------------
+" ---------------------------------------------------------------------------
 
 let mapleader = ','
 
-nmap <leader><C-t> :tabnew<cr>
-nmap <C-;>; :tabnew ~/.vimrc<cr>
-
-nmap <leader>e :NERDTreeToggle<cr>
-nmap <leader>E :NERDTreeFocus<cr>
-
-nmap <leader>p <Plug>yankstack_substitute_older_paste
-nmap <leader>P <Plug>yankstack_substitute_newer_paste
+nmap <leader><C-n> :tabnew<cr>
+nmap <leader>; :tabnew ~/.vimrc<cr>
 
 vmap <leader>c "*y
 vmap <leader>x "*d
@@ -170,54 +145,4 @@ nmap T :Telescope<cr>
 nmap <C-p> :Telescope fd<cr>
 nmap <leader>ff :Telescope current_buffer_fuzzy_find<cr>
 nmap <leader>fg :Telescope live_grep<cr>
-nmap <leader>fo :Telescope lsp_document_symbols<cr>
-nmap <leader>fr :Telescope lsp_references<cr>
-
-" -----------------------------------------------------------------------------
-" LANGUAGE SERVERS
-" See: https://github.com/neovim/nvim-lspconfig#keybindings-and-completion
-" -----------------------------------------------------------------------------
-
-lua << EOF
-local nvim_lsp = require('lspconfig')
-
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-  --Enable completion triggered by <c-x><c-o>
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  -- Mappings.
-  local opts = { noremap=true, silent=true }
-
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-end
-
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
--- TODO: Fix deno conflicting with tsserver
--- local servers = { "tsserver", "html", "cssls", "jsonls", "denols" }
-local servers = { "tsserver", "html", "cssls", "jsonls" }
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-    on_attach = on_attach,
-    flags = {
-      debounce_text_changes = 150,
-    }
-  }
-end
-EOF
-
+nmap <leader>fe :Telescope file_browser<cr>
