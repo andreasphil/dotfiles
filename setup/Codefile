@@ -4,10 +4,12 @@ dbaeumer.vscode-eslint
 denoland.vscode-deno
 EditorConfig.EditorConfig
 esbenp.prettier-vscode
+GitLab.gitlab-workflow
 golang.go
 jgclark.vscode-todo-highlight
 johnsoncodehk.volar
 mrmlnc.vscode-scss
 richie5um2.vscode-sort-json
+sastan.twind-intellisense
 sleistner.vscode-fileutils
 teabyii.ayu
