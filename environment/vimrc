@@ -53,42 +53,60 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+  " Editor features
   Plug 'airblade/vim-gitgutter'
+  Plug 'itchyny/lightline.vim'
+  Plug 'jremmen/vim-ripgrep'
+  Plug 'maxbrunsfeld/vim-yankstack'
+  Plug 'ntpeters/vim-better-whitespace'
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-surround'
+
+  " Language syntax & integration
   Plug 'alexlafroscia/postcss-syntax.vim'
   Plug 'cakebaker/scss-syntax.vim'
-  Plug 'cocopon/iceberg.vim'
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-  Plug 'gkeep/iceberg-dark'
-  Plug 'itchyny/lightline.vim'
   Plug 'leafgarland/typescript-vim'
   Plug 'mattn/emmet-vim'
-  Plug 'ntpeters/vim-better-whitespace'
-  Plug 'nvim-lua/plenary.nvim'
-  Plug 'nvim-lua/popup.nvim'
-  Plug 'nvim-telescope/telescope.nvim'
   Plug 'pangloss/vim-javascript'
   Plug 'plasticboy/vim-markdown'
   Plug 'posva/vim-vue'
   Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-  Plug 'tpope/vim-commentary'
-  Plug 'tpope/vim-fugitive'
+
+  " Color schemes
+  Plug 'cocopon/iceberg.vim'
+  Plug 'gkeep/iceberg-dark'
+
+  " Neovim only
+  Plug 'neovim/nvim-lspconfig', has('nvim') ? {} : { 'on': [] }
+  Plug 'nvim-lua/plenary.nvim', has('nvim') ? {} : { 'on': [] }
+  Plug 'nvim-lua/popup.nvim', has('nvim') ? {} : { 'on': [] }
+  Plug 'nvim-telescope/telescope.nvim', has('nvim') ? {} : { 'on': [] }
 call plug#end()
 
+" Cleanup trailing whitespace automatically
 let g:better_whitespace_enabled = 1
 let g:strip_whitespace_on_save = 1
 
+" We'll set our own key mappings later on
+let g:yankstack_map_keys = 0
+
+" Various other language plugin options
 let g:javascript_plugin_jsdoc = 1
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_frontmatter = 1
 let g:vue_pre_processors = 'detect_on_enter'
 
 " Make plugin defaults consistent with prettier defaults
+let g:prettier#autoformat_require_pragma = 0
 let g:prettier#config#arrow_parens = 'always'
 let g:prettier#config#autoformat_config_present = 1
 let g:prettier#config#print_width = 80
 let g:prettier#config#tab_width = 2
 let g:prettier#config#trailing_comma = 'es5'
 let g:prettier#config#use_tabs = 'false'
+let g:prettier#exec_cmd_async = 1
 
 " ---------------------------------------------------------------------------
 " UI
@@ -131,7 +149,7 @@ endfunction
 
 let mapleader = ','
 
-nmap <leader><C-n> :tabnew<cr>
+nmap <leader><C-t> :tabnew<cr>
 nmap <leader>; :tabnew ~/.vimrc<cr>
 
 vmap <leader>c "*y
@@ -139,7 +157,19 @@ vmap <leader>x "*d
 nmap <leader>v "*p
 nmap <leader>V "*P
 
-nmap <leader>py <Plug>(PrettierAsync)
+nmap <leader>p <Plug>yankstack_substitute_older_paste
+nmap <leader>P <Plug>yankstack_substitute_newer_paste
+
+nmap <leader>F <Plug>PrettierAsync
+
+" Neovim only
+if (has('nvim'))
+  nmap T :Telescope<cr>
+  nmap <C-p> :Telescope fd<cr>
+  nmap <leader>ff :Telescope current_buffer_fuzzy_find<cr>
+  nmap <leader>fg :Telescope live_grep<cr>
+  nmap <leader>fe :Telescope file_browser<cr>
+endif
 
 nmap T :Telescope<cr>
 nmap <C-p> :Telescope fd<cr>
