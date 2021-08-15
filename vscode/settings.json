@@ -24,6 +24,7 @@
   "go.toolsManagement.autoUpdate": true,
   "tailwindCSS.emmetCompletions": true,
   "terminal.integrated.fontSize": 16,
+  "vscode-neovim.neovimExecutablePaths.darwin": "nvim",
   "workbench.colorCustomizations": {
     "[Ayu Light Bordered]": {
       "focusBorder": "#ff9940",

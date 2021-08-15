@@ -34,6 +34,7 @@ set completeopt=menuone,noinsert " always show the menu, no automatic inserting
 set mouse=a        " it's 2021 and I want to click on stuff
 set splitbelow     " create new horizontal splits at the bottom
 set splitright     " create new vertical splits on the right side
+set switchbuf+=usetab,newtab " use tabs for switching buffers, reuse existing
 set updatetime=300 " snappier updates
 set wildmenu       " enable better completion
 
@@ -87,6 +88,7 @@ call plug#end()
 
 " Cleanup trailing whitespace automatically
 let g:better_whitespace_enabled = 1
+let g:strip_whitespace_confirm = 0
 let g:strip_whitespace_on_save = 1
 
 " We'll set our own key mappings later on
@@ -106,7 +108,6 @@ let g:prettier#config#print_width = 80
 let g:prettier#config#tab_width = 2
 let g:prettier#config#trailing_comma = 'es5'
 let g:prettier#config#use_tabs = 'false'
-let g:prettier#exec_cmd_async = 1
 
 " ---------------------------------------------------------------------------
 " UI
@@ -117,6 +118,14 @@ if (has('termguicolors'))
 endif
 
 colorscheme iceberg
+
+hi Comment gui=italic cterm=italic term=italic
+hi Conditional gui=italic cterm=italic term=italic
+hi Exception gui=italic cterm=italic term=italic
+hi Keyword gui=italic cterm=italic term=italic
+hi Label gui=italic cterm=italic term=italic
+hi Repeat gui=italic cterm=italic term=italic
+hi StorageClass gui=italic cterm=italic term=italic
 
 let g:lightline = {
   \ 'colorscheme': 'icebergDark',
