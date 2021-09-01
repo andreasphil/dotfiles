@@ -37,6 +37,11 @@ export DOTFILES_ROOT=\"${dotfilesPath}\"" > "${HOME}/.local_dotfiles"
   mkdir -p "${HOME}/.config/kitty"
   ln -s "${DOTFILES_ROOT}/environment/kitty.conf" "${HOME}/.config/kitty/kitty.conf"
 
+  # Link broot configuration
+  echo "Linking broot configuration ..."
+  mkdir -p "${HOME}/.config/broot"
+  ln -s "${DOTFILES_ROOT}/environment/broot.hjson" "${HOME}/.config/broot/conf.hjson"
+
   # Link VS Code configuration
   echo "Linking VS Code configuration ..."
   mkdir -p "${HOME}/Library/Application Support/Code/User"
