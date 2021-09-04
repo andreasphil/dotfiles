@@ -207,6 +207,12 @@ nmap <leader>N :nohlsearch<cr>
 nmap <leader>p <Plug>yankstack_substitute_older_paste
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
+" Faster window switching
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
+
 " System clipboard access
 vmap <leader>c "*y
 vmap <leader>C "*yy
