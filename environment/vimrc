@@ -34,7 +34,7 @@ set completeopt=menuone,noinsert " always show the menu, no automatic inserting
 set mouse=a        " it's 2021 and I want to click on stuff
 set splitbelow     " create new horizontal splits at the bottom
 set splitright     " create new vertical splits on the right side
-set switchbuf+=usetab,newtab " use tabs for switching buffers, reuse existing
+set switchbuf=useopen,usetab,uselast " use tabs for switching buffers, reuse existing
 set updatetime=300 " snappier updates
 set wildmenu       " enable better completion
 
@@ -60,7 +60,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'jremmen/vim-ripgrep'
   Plug 'maxbrunsfeld/vim-yankstack'
   Plug 'ntpeters/vim-better-whitespace'
-  Plug 'preservim/nerdtree'
   Plug 'terryma/vim-expand-region'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-fugitive'
@@ -127,21 +126,6 @@ endif
 
 colorscheme iceberg
 
-hi! LspDiagnosticsDefaultHint ctermfg=242 guifg=#6b7089
-hi! LspDiagnosticsUnderlineHint cterm=underline gui=undercurl guisp=#6b7089
-hi! LspDiagnosticsSignHint ctermfg=242 guifg=#6b7089 guibg=#1e2132
-hi! LspDiagnosticsDefaultError ctermfg=203 guifg=#e27878
-hi! LspDiagnosticsUnderlineError cterm=underline gui=undercurl guisp=#e27878
-hi! LspDiagnosticsSignError ctermfg=203 guifg=#e27878 guibg=#442424
-hi! LspDiagnosticsDefaultWarning ctermfg=216 guifg=#e2a478
-hi! LspDiagnosticsUnderlineWarning cterm=underline gui=undercurl guisp=#e2a478
-hi! LspDiagnosticsSignWarning ctermfg=216 guifg=#e2a478 guibg=#443124
-hi! LspDiagnosticsUnderlineInformation cterm=underline gui=undercurl guisp=#a093c7
-hi! LspDiagnosticsSignInformation ctermfg=140 guifg=#a093c7 guibg=#302c3c
-
-hi! ExtraWhitespace ctermbg=216 guibg=#443124
-hi! Search ctermfg=234 ctermbg=216 guifg=#ffcc66 guibg=#443124
-
 hi Comment gui=italic cterm=italic term=italic
 hi Conditional gui=italic cterm=italic term=italic
 hi Exception gui=italic cterm=italic term=italic
@@ -149,6 +133,8 @@ hi Keyword gui=italic cterm=italic term=italic
 hi Label gui=italic cterm=italic term=italic
 hi Repeat gui=italic cterm=italic term=italic
 hi StorageClass gui=italic cterm=italic term=italic
+hi! ExtraWhitespace ctermbg=216 guibg=#443124
+hi! Search ctermfg=234 ctermbg=216 guifg=#ffcc66 guibg=#443124
 
 let g:lightline = {
   \ 'colorscheme': 'icebergDark',
@@ -200,11 +186,7 @@ endfunction
 let mapleader = ','
 
 nmap <leader>; :tabnew ~/.vimrc<cr>
-nmap <leader><C-t> :tabnew<cr>
-nmap <leader>e :NERDTreeFocus<cr>
-nmap <leader>E :NERDTreeToggle<cr>
 nmap <leader>F :PrettierAsync<cr>
-nmap <leader>ht :GitGutterSignsToggle<cr>
 nmap <leader>N :nohlsearch<cr>
 nmap <leader>p <Plug>yankstack_substitute_older_paste
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
@@ -217,9 +199,7 @@ nmap <C-l> <C-w>l
 
 " System clipboard access
 vmap <leader>c "*y
-vmap <leader>C "*yy
 vmap <leader>x "*d
-vmap <leader>X "*dd
 nmap <leader>v "*p
 nmap <leader>V "*P
 
@@ -245,6 +225,18 @@ endif
 " ---------------------------------------------------------------------------
 
 if (has('nvim'))
+  hi! LspDiagnosticsDefaultHint ctermfg=242 guifg=#6b7089
+  hi! LspDiagnosticsUnderlineHint cterm=underline gui=undercurl guisp=#6b7089
+  hi! LspDiagnosticsSignHint ctermfg=242 guifg=#6b7089 guibg=#1e2132
+  hi! LspDiagnosticsDefaultError ctermfg=203 guifg=#e27878
+  hi! LspDiagnosticsUnderlineError cterm=underline gui=undercurl guisp=#e27878
+  hi! LspDiagnosticsSignError ctermfg=203 guifg=#e27878 guibg=#442424
+  hi! LspDiagnosticsDefaultWarning ctermfg=216 guifg=#e2a478
+  hi! LspDiagnosticsUnderlineWarning cterm=underline gui=undercurl guisp=#e2a478
+  hi! LspDiagnosticsSignWarning ctermfg=216 guifg=#e2a478 guibg=#443124
+  hi! LspDiagnosticsUnderlineInformation cterm=underline gui=undercurl guisp=#a093c7
+  hi! LspDiagnosticsSignInformation ctermfg=140 guifg=#a093c7 guibg=#302c3c
+
 lua << EOF
   local on_attach = function(client, bufnr)
     local function set_opt(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -261,11 +253,11 @@ lua << EOF
     map_key('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
     map_key('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
     map_key('n', 'gs', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+    map_key('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
     map_key('n', '<leader>fo', '<cmd>Telescope lsp_document_symbols<cr>', opts)
     map_key('n', 'gl', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
     map_key('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
     map_key('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-    map_key('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
     map_key('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
     map_key('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
     map_key('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)

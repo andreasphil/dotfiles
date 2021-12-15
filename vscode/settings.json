@@ -2,12 +2,13 @@
   "angular.enable-experimental-ivy-prompt": false,
   "breadcrumbs.enabled": false,
   "css.lint.unknownAtRules": "ignore",
+  "editor.accessibilitySupport": "off",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.fontFamily": "\"Dank Mono\", FiraCode-Retina, Menlo, monospace",
   "editor.fontLigatures": true,
   "editor.fontSize": 16,
+  "editor.guides.indentation": false,
   "editor.inlineSuggest.enabled": true,
-  "editor.renderIndentGuides": false,
   "editor.tabSize": 2,
   "emmet.includeLanguages": {
     "vue": "html"
@@ -31,6 +32,7 @@
       "input.border": "#dee8f1"
     },
     "[Ayu Mirage Bordered]": {
+      "activityBar.background": "#1F2430",
       "focusBorder": "#fdc354",
       "input.border": "#191e2a"
     }
