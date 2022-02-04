@@ -287,8 +287,7 @@ lua << EOF
     'html',
     'cssls',
     'jsonls',
-    'tailwindcss',
-    'vuels',
+    'volar',
     -- TODO: Fix Denols clashing with Tsserver
     -- 'denols'
   }

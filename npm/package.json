@@ -3,12 +3,11 @@
   "description": "Portable global npm packages",
   "private": true,
   "dependencies": {
-    "@tailwindcss/language-server": "0.0.5",
+    "@volar/server": "^0.31.1",
     "servor": "^4.0.2",
-    "typescript": "^4.5.4",
-    "typescript-language-server": "^0.8.1",
-    "vls": "^0.7.6",
-    "vscode-langservers-extracted": "^3.0.2",
+    "typescript": "^4.5.5",
+    "typescript-language-server": "^0.9.6",
+    "vscode-langservers-extracted": "^4.0.0",
     "yarn": "^1.22.17"
   }
 }
