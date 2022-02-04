@@ -73,14 +73,12 @@ call plug#begin('~/.vim/plugged')
   Plug 'neoclide/jsonc.vim'
   Plug 'pangloss/vim-javascript'
   Plug 'posva/vim-vue'
-  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
   " Color schemes
   Plug 'cocopon/iceberg.vim'
   Plug 'gkeep/iceberg-dark'
 
   " Neovim only
-  Plug 'neovim/nvim-lspconfig', has('nvim') ? {} : { 'on': [] }
   Plug 'nvim-lua/plenary.nvim', has('nvim') ? {} : { 'on': [] }
   Plug 'nvim-lua/popup.nvim', has('nvim') ? {} : { 'on': [] }
   Plug 'nvim-telescope/telescope.nvim', has('nvim') ? {} : { 'on': [] }
@@ -100,15 +98,6 @@ let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_frontmatter = 1
 let g:vue_pre_processors = 'detect_on_enter'
 
-" Make plugin defaults consistent with prettier defaults
-let g:prettier#autoformat_require_pragma = 0
-let g:prettier#config#arrow_parens = 'always'
-let g:prettier#config#autoformat_config_present = 1
-let g:prettier#config#print_width = 80
-let g:prettier#config#tab_width = 2
-let g:prettier#config#trailing_comma = 'es5'
-let g:prettier#config#use_tabs = 'false'
-
 let g:gitgutter_sign_added = '+'
 let g:gitgutter_sign_modified = '~'
 let g:gitgutter_sign_modified_removed = '~-'
@@ -120,64 +109,11 @@ let g:gitgutter_sign_removed_first_line = '-↕'
 " UI
 " ---------------------------------------------------------------------------
 
-if (has('termguicolors'))
-  set termguicolors
-endif
-
 colorscheme iceberg
+let g:lightline = { 'colorscheme': 'icebergDark' }
 
-hi Comment gui=italic cterm=italic term=italic
-hi Conditional gui=italic cterm=italic term=italic
-hi Exception gui=italic cterm=italic term=italic
-hi Keyword gui=italic cterm=italic term=italic
-hi Label gui=italic cterm=italic term=italic
-hi Repeat gui=italic cterm=italic term=italic
-hi StorageClass gui=italic cterm=italic term=italic
 hi! ExtraWhitespace ctermbg=216 guibg=#443124
 hi! Search ctermfg=234 ctermbg=216 guifg=#ffcc66 guibg=#443124
-
-let g:lightline = {
-  \ 'colorscheme': 'icebergDark',
-  \ 'active': {
-  \   'left': [['mode', 'paste'], ['fugitive', 'gitstatus', 'readonly', 'filename', 'modified']]
-  \ },
-  \ 'component_function': {
-  \   'readonly': 'LightlineReadonly',
-  \   'fugitive': 'LightlineFugitive',
-  \   'gitstatus': 'LightlineGitStatus'
-  \ },
-  \ }
-
-function! LightlineReadonly()
-  return &readonly ? '' : ''
-endfunction
-
-function! LightlineFugitive()
-  if exists('*FugitiveHead')
-    let branch = FugitiveHead()
-    return branch !=# '' ? ' '.branch : ''
-  endif
-  return ''
-endfunction
-
-function! LightlineGitStatus()
-  let out = ''
-
-  if exists('*GitGutterGetHunkSummary')
-    let [a, m, r] = GitGutterGetHunkSummary()
-    if (a > 0)
-      let out = join([out, g:gitgutter_sign_added], '')
-    endif
-    if (m > 0)
-      let out = join([out, g:gitgutter_sign_modified], '')
-    endif
-    if (r > 0)
-      let out = join([out, g:gitgutter_sign_removed], '')
-    endif
-  endif
-
-  return out
-endfunction
 
 " ---------------------------------------------------------------------------
 " KEY MAPPINGS
@@ -186,7 +122,6 @@ endfunction
 let mapleader = ','
 
 nmap <leader>; :tabnew ~/.vimrc<cr>
-nmap <leader>F :PrettierAsync<cr>
 nmap <leader>N :nohlsearch<cr>
 nmap <leader>p <Plug>yankstack_substitute_older_paste
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
@@ -220,80 +155,3 @@ if (has('nvim'))
   nmap <leader>fb :Telescope buffers<cr>
 endif
 
-" ---------------------------------------------------------------------------
-" LSP
-" ---------------------------------------------------------------------------
-
-if (has('nvim'))
-  hi! LspDiagnosticsDefaultHint ctermfg=242 guifg=#6b7089
-  hi! LspDiagnosticsUnderlineHint cterm=underline gui=undercurl guisp=#6b7089
-  hi! LspDiagnosticsSignHint ctermfg=242 guifg=#6b7089 guibg=#1e2132
-  hi! LspDiagnosticsDefaultError ctermfg=203 guifg=#e27878
-  hi! LspDiagnosticsUnderlineError cterm=underline gui=undercurl guisp=#e27878
-  hi! LspDiagnosticsSignError ctermfg=203 guifg=#e27878 guibg=#442424
-  hi! LspDiagnosticsDefaultWarning ctermfg=216 guifg=#e2a478
-  hi! LspDiagnosticsUnderlineWarning cterm=underline gui=undercurl guisp=#e2a478
-  hi! LspDiagnosticsSignWarning ctermfg=216 guifg=#e2a478 guibg=#443124
-  hi! LspDiagnosticsUnderlineInformation cterm=underline gui=undercurl guisp=#a093c7
-  hi! LspDiagnosticsSignInformation ctermfg=140 guifg=#a093c7 guibg=#302c3c
-
-lua << EOF
-  local on_attach = function(client, bufnr)
-    local function set_opt(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-    set_opt('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-    local function map_key(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-    local opts = {
-      noremap = true,
-      silent = true
-    }
-
-    map_key('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-    map_key('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-    map_key('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-    map_key('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    map_key('n', 'gs', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-    map_key('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-    map_key('n', '<leader>fo', '<cmd>Telescope lsp_document_symbols<cr>', opts)
-    map_key('n', 'gl', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-    map_key('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-    map_key('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-    map_key('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-    map_key('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-    map_key('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-  end
-
-  vim.fn.sign_define('LspDiagnosticsSignHint', { text = '●', texthl = 'LspDiagnosticsSignHint' })
-  vim.fn.sign_define('LspDiagnosticsSignError', { text = '●', texthl = 'LspDiagnosticsSignError' })
-  vim.fn.sign_define('LspDiagnosticsSignWarning', { text = '●', texthl = 'LspDiagnosticsSignWarning' })
-  vim.fn.sign_define('LspDiagnosticsSignInformation', { text = '●', texthl = 'LspDiagnosticsSignInformation' })
-
-  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = {
-      prefix = "●",
-      spacing = 0,
-    },
-    signs = true,
-    underline = true,
-  })
-
-  local opts = {
-    on_attach = on_attach,
-    flags = { debounce_text_changes = 150 }
-  }
-
-  local servers = {
-    'tsserver',
-    'html',
-    'cssls',
-    'jsonls',
-    'volar',
-    -- TODO: Fix Denols clashing with Tsserver
-    -- 'denols'
-  }
-
-  for _, server in pairs(servers) do
-    require'lspconfig'[server].setup(opts)
-  end
-EOF
-endif
