@@ -32,11 +32,6 @@ export DOTFILES_ROOT=\"${dotfilesPath}\"" > "${HOME}/.local_dotfiles"
   mkdir -p "${HOME}/.config/nvim"
   ln -s "${DOTFILES_ROOT}/environment/init.vim" "${HOME}/.config/nvim/init.vim"
 
-  # Link kitty configuration
-  echo "Linking kitty configuration ..."
-  mkdir -p "${HOME}/.config/kitty"
-  ln -s "${DOTFILES_ROOT}/environment/kitty.conf" "${HOME}/.config/kitty/kitty.conf"
-
   # Link broot configuration
   echo "Linking broot configuration ..."
   mkdir -p "${HOME}/.config/broot"
