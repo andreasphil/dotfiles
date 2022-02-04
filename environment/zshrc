@@ -84,13 +84,6 @@ source "${HOME}/.config/broot/launcher/bash/br"
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 
-# fzf
-export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
- --color=fg:#c7c8d0,bg:-1,hl:#9e95c4
- --color=fg+:#ffffff,bg+:#1e2131,hl+:#9e95c4
- --color=info:#6b7087,prompt:#d9a67f,pointer:#9e95c4
- --color=marker:#b6bd89,spinner:#6b7087,header:#ffffff'
-
 # aliases
 alias ..="cd .."
 alias b=". bookmark"
