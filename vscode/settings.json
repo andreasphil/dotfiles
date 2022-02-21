@@ -12,6 +12,7 @@
   "editor.fontSize": 16,
   "editor.guides.indentation": false,
   "editor.inlineSuggest.enabled": true,
+  "editor.minimap.enabled": false,
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "editor.wordWrap": "wordWrapColumn",

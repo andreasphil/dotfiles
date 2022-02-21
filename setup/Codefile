@@ -1,6 +1,5 @@
 Angular.ng-template
 asvetliakov.vscode-neovim
-bradlc.vscode-tailwindcss
 dbaeumer.vscode-eslint
 denoland.vscode-deno
 EditorConfig.EditorConfig
@@ -13,3 +12,4 @@ mrmlnc.vscode-scss
 richie5um2.vscode-sort-json
 sleistner.vscode-fileutils
 teabyii.ayu
+voorjaar.windicss-intellisense
