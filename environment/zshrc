@@ -91,10 +91,10 @@ alias o="open ."
 alias safari="open /Applications/Safari.app"
 
 # path
-PATH="./node_modules/.bin:${PATH}"
-PATH="${GOPATH}/bin:${PATH}"
-PATH="${HOME}/.deno/bin:$PATH"
-PATH="${DOTFILES_ROOT}/bin:${PATH}"
-PATH="${DOTFILES_ROOT}/npm/node_modules/.bin:${PATH}"
-PATH=".:${PATH}"
+PATH="./node_modules/.bin:${PATH}"                    # Current folder node_modules
+PATH="${GOPATH}/bin:${PATH}"                          # Go
+PATH="${HOME}/.deno/bin:$PATH"                        # Installed deno scripts
+PATH="${DOTFILES_ROOT}/bin:${PATH}"                   # Dotfiles scripts
+PATH="${DOTFILES_ROOT}/npm/node_modules/.bin:${PATH}" # node_modules from dotfiles
+PATH=".:${PATH}"                                      # Current folder scripts
 export PATH
