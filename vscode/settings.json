@@ -16,6 +16,7 @@
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "editor.wordWrap": "wordWrapColumn",
+  "editor.wordWrapColumn": 100,
   "editor.wrappingIndent": "indent",
   "emmet.includeLanguages": {
     "vue": "html"
@@ -30,21 +31,13 @@
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
   "go.toolsManagement.autoUpdate": true,
-  "tailwindCSS.emmetCompletions": true,
   "terminal.integrated.fontSize": 16,
+  "terminal.integrated.showExitAlert": false,
   "vscode-neovim.neovimExecutablePaths.darwin": "nvim",
-  "workbench.colorCustomizations": {
-    "[Ayu Light Bordered]": {
-      "focusBorder": "#ff9940",
-      "input.border": "#dee8f1"
-    },
-    "[Ayu Mirage Bordered]": {
-      "activityBar.background": "#1F2430",
-      "focusBorder": "#fdc354",
-      "input.border": "#191e2a"
-    }
-  },
+  "window.autoDetectColorScheme": true,
   "workbench.colorTheme": "Ayu Mirage Bordered",
   "workbench.iconTheme": "ayu",
+  "workbench.preferredDarkColorTheme": "Ayu Mirage Bordered",
+  "workbench.preferredLightColorTheme": "Ayu Light Bordered",
   "workbench.tree.renderIndentGuides": "none"
 }
