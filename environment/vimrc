@@ -112,9 +112,6 @@ let g:gitgutter_sign_removed_first_line = '-↕'
 colorscheme iceberg
 let g:lightline = { 'colorscheme': 'icebergDark' }
 
-hi! ExtraWhitespace ctermbg=216 guibg=#443124
-hi! Search ctermfg=234 ctermbg=216 guifg=#ffcc66 guibg=#443124
-
 " ---------------------------------------------------------------------------
 " KEY MAPPINGS
 " ---------------------------------------------------------------------------

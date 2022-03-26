@@ -74,9 +74,6 @@ eval "$(fnm env --use-on-cd)"
 # go
 export GOPATH="${HOME}/Projects/go"
 
-# broot
-source "${HOME}/.config/broot/launcher/bash/br"
-
 # Use nvim for editing
 export VISUAL=nvim
 export EDITOR="$VISUAL"

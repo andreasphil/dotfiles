@@ -12,7 +12,7 @@
 echo "What's the path of your dotfiles folder?"
 read dotfilesPath
 
-if [[ $dotfilesPath != ""  && $? ]]
+if [[ $dotfilesPath != "" && $? ]]
 then
   # Create a .local_dotfiles file in the home folder pointing to the selected
   # path. The file will be read by the shell, so it can also contain local
@@ -31,11 +31,6 @@ export DOTFILES_ROOT=\"${dotfilesPath}\"" > "${HOME}/.local_dotfiles"
   ln -s "${DOTFILES_ROOT}/environment/vimrc" "${HOME}/.vimrc"
   mkdir -p "${HOME}/.config/nvim"
   ln -s "${DOTFILES_ROOT}/environment/init.vim" "${HOME}/.config/nvim/init.vim"
-
-  # Link broot configuration
-  echo "Linking broot configuration ..."
-  mkdir -p "${HOME}/.config/broot"
-  ln -s "${DOTFILES_ROOT}/environment/broot.hjson" "${HOME}/.config/broot/conf.hjson"
 
   # Link VS Code configuration
   echo "Linking VS Code configuration ..."
