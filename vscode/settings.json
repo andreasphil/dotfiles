@@ -2,6 +2,11 @@
   "[go]": {
     "editor.defaultFormatter": "golang.go"
   },
+  "[markdown]": {
+    "editor.quickSuggestions": false,
+    "editor.wordWrap": "bounded",
+    "editor.wrappingIndent": "same"
+  },
   "angular.enable-experimental-ivy-prompt": false,
   "breadcrumbs.enabled": false,
   "css.lint.unknownAtRules": "ignore",
