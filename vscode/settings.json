@@ -3,7 +3,6 @@
     "editor.defaultFormatter": "golang.go"
   },
   "[markdown]": {
-    "editor.quickSuggestions": false,
     "editor.wordWrap": "bounded",
     "editor.wrappingIndent": "same"
   },
@@ -35,11 +34,19 @@
   },
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
+  "git.mergeEditor": true,
   "go.toolsManagement.autoUpdate": true,
   "terminal.integrated.fontSize": 16,
   "terminal.integrated.showExitAlert": false,
+  "timeline.excludeSources": [
+    "timeline.localHistory"
+  ],
+  "volar.codeLens.references": false,
+  "volar.icon.preview": false,
+  "volar.icon.splitEditors": false,
   "vscode-neovim.neovimExecutablePaths.darwin": "nvim",
   "window.autoDetectColorScheme": true,
+  "window.commandCenter": true,
   "workbench.colorTheme": "Ayu Mirage Bordered",
   "workbench.iconTheme": "ayu",
   "workbench.preferredDarkColorTheme": "Ayu Mirage Bordered",
