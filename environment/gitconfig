@@ -3,11 +3,10 @@
   email = 18646892+andreasphil@users.noreply.github.com
   name = Andreas Philippi
 [alias]
-  remote-branch-status = !git-remote-branch-status
+  rbs = !git-remote-branch-status
 [core]
   excludesfile = ~/.gitignore_global
 [merge]
-  conflictStyle = diff3
 	ff = only
 [include]
   path = ~/.gitconfig_local
@@ -15,5 +14,3 @@
 	defaultBranch = main
 [pull]
 	ff = only
-[diff]
-	tool = nvimdiff
