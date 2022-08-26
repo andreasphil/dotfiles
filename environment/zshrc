@@ -74,12 +74,7 @@ eval "$(fnm env --use-on-cd)"
 # go
 export GOPATH="${HOME}/Projects/go"
 
-# Use nvim for editing
-export VISUAL=nvim
-export EDITOR="$VISUAL"
-
 # aliases
-alias ..="cd .."
 alias b=". bookmark"
 alias ll="ls -l"
 alias ls="ls -1"

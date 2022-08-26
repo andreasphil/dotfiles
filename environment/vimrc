@@ -57,18 +57,14 @@ call plug#begin('~/.vim/plugged')
   " Editor features
   Plug 'airblade/vim-gitgutter'
   Plug 'itchyny/lightline.vim'
-  Plug 'jremmen/vim-ripgrep'
   Plug 'maxbrunsfeld/vim-yankstack'
   Plug 'ntpeters/vim-better-whitespace'
   Plug 'terryma/vim-expand-region'
-  Plug 'tpope/vim-commentary'
-  Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-surround'
 
   " Language syntax & integration
   Plug 'alexlafroscia/postcss-syntax.vim'
   Plug 'cakebaker/scss-syntax.vim'
-  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
   Plug 'mattn/emmet-vim'
   Plug 'neoclide/jsonc.vim'
   Plug 'pangloss/vim-javascript'
@@ -77,11 +73,6 @@ call plug#begin('~/.vim/plugged')
   " Color schemes
   Plug 'cocopon/iceberg.vim'
   Plug 'gkeep/iceberg-dark'
-
-  " Neovim only
-  Plug 'nvim-lua/plenary.nvim', has('nvim') ? {} : { 'on': [] }
-  Plug 'nvim-lua/popup.nvim', has('nvim') ? {} : { 'on': [] }
-  Plug 'nvim-telescope/telescope.nvim', has('nvim') ? {} : { 'on': [] }
 call plug#end()
 
 " Cleanup trailing whitespace automatically
@@ -97,13 +88,6 @@ let g:javascript_plugin_jsdoc = 1
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_frontmatter = 1
 let g:vue_pre_processors = 'detect_on_enter'
-
-let g:gitgutter_sign_added = '+'
-let g:gitgutter_sign_modified = '~'
-let g:gitgutter_sign_modified_removed = '~-'
-let g:gitgutter_sign_removed = '-'
-let g:gitgutter_sign_removed_above_and_below = '-↕'
-let g:gitgutter_sign_removed_first_line = '-↕'
 
 " ---------------------------------------------------------------------------
 " UI
@@ -134,21 +118,3 @@ vmap <leader>c "*y
 vmap <leader>x "*d
 nmap <leader>v "*p
 nmap <leader>V "*P
-
-" Fix gx, see https://github.com/vim/vim/issues/4738#issuecomment-856925080
-nnoremap <silent> gx :execute 'silent! !open ' . shellescape(expand('<cWORD>'), 1)<cr>
-
-" Toggle checkboxes in markdown files
-autocmd FileType markdown nmap <silent> <C-k>k :s/- \[ ]/- [x]/<cr>:nohlsearch<cr>
-autocmd FileType markdown nmap <silent> <C-k>u :s/- \[x]/- [ ]/<cr>:nohlsearch<cr>
-
-" Neovim only
-if (has('nvim'))
-  nmap T :Telescope<cr>
-  nmap <C-p> :Telescope fd<cr>
-  nmap <leader>ff :Telescope current_buffer_fuzzy_find<cr>
-  nmap <leader>fg :Telescope live_grep<cr>
-  nmap <leader>fe :Telescope file_browser<cr>
-  nmap <leader>fb :Telescope buffers<cr>
-endif
-

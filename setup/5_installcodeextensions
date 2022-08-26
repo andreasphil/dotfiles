@@ -1,7 +1,5 @@
 #!/bin/bash
-
 set +e
-
 while read -r extension
 do
   if [[ "$extension" =~ \#.+ ]]
@@ -11,5 +9,4 @@ do
     code --install-extension "$extension"
   fi
 done < "$DOTFILES_ROOT/setup/Codefile"
-
 set -e
