@@ -38,17 +38,18 @@
   "go.toolsManagement.autoUpdate": true,
   "terminal.integrated.fontSize": 16,
   "terminal.integrated.showExitAlert": false,
-  "timeline.excludeSources": [
-    "timeline.localHistory"
-  ],
+  "timeline.excludeSources": ["timeline.localHistory"],
   "volar.codeLens.references": false,
   "volar.icon.preview": false,
   "volar.icon.splitEditors": false,
   "vscode-neovim.neovimExecutablePaths.darwin": "nvim",
   "window.autoDetectColorScheme": true,
   "window.commandCenter": true,
+  "window.dialogStyle": "custom",
+  "window.newWindowDimensions": "offset",
   "workbench.colorTheme": "Ayu Mirage Bordered",
   "workbench.iconTheme": "ayu",
+  "workbench.layoutControl.enabled": false,
   "workbench.preferredDarkColorTheme": "Ayu Mirage Bordered",
   "workbench.preferredLightColorTheme": "Ayu Light Bordered",
   "workbench.tree.renderIndentGuides": "none"
