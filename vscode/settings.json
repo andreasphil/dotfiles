@@ -38,7 +38,6 @@
   "go.toolsManagement.autoUpdate": true,
   "terminal.integrated.fontSize": 16,
   "terminal.integrated.showExitAlert": false,
-  "timeline.excludeSources": ["timeline.localHistory"],
   "volar.codeLens.references": false,
   "volar.icon.preview": false,
   "volar.icon.splitEditors": false,
