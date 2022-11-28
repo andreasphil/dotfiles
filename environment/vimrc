@@ -2,46 +2,37 @@
 " VIM SETTINGS
 " -----------------------------------------------------------------------------
 
-" Editor layout
+set autoindent     " copy indent from current line when starting a new line
+set autoread       " refresh files when they change
 set breakindent    " indent lines when they're softwrapped
 set breakindentopt=shift:2,min:20 " settings for breakindent
-set laststatus=2   " always show the status line
-set linebreak      " don't break within words
-set noshowmode     " disable showing mode because lightline does that
-set number         " show line numbers
-set ruler          " show ruler
-set signcolumn=yes " always show status column next to line numbers
-set wrap           " softwrap when the text runs longer than the window
 set colorcolumn=80 " show guide for limiting line length
-
-" Search
+set completeopt=menuone,noinsert " always show the menu, no automatic inserting
+set expandtab      " insert spaces instead of tabs
 set hlsearch       " highlight search results
 set ignorecase     " ignore case when searching for lowercase terms
 set incsearch      " make search results more browser-y
-set smartcase      " don't ignore case when searching for uppercase terms
-
-" Indenting and tabs
-set autoindent     " copy indent from current line when starting a new line
-set expandtab      " insert spaces instead of tabs
+set laststatus=2   " always show the status line
+set linebreak      " don't break within words
+set mouse=a        " it's 2021 and I want to click on stuff
+set nobackup       " Disable backups
+set noshowmode     " disable showing mode because lightline does that
+set noswapfile     " Disable backups
+set nowritebackup  " Disable backups
+set number         " show line numbers
+set ruler          " show ruler
 set shiftwidth=2   " set width of a tabstop when shifting lines
+set signcolumn=yes " always show status column next to line numbers
+set smartcase      " don't ignore case when searching for uppercase terms
 set smartindent    " smart autoindenting for programming (e.g. after {)
 set smarttab       " insert `shiftwidth` tabs at the beginning of a line
-set tabstop=2      " set width of a tabstop
-
-" Behavior
-set autoread       " refresh files when they change
-set completeopt=menuone,noinsert " always show the menu, no automatic inserting
-set mouse=a        " it's 2021 and I want to click on stuff
 set splitbelow     " create new horizontal splits at the bottom
 set splitright     " create new vertical splits on the right side
 set switchbuf=useopen,usetab,uselast " use tabs for switching buffers, reuse existing
+set tabstop=2      " set width of a tabstop
 set updatetime=300 " snappier updates
 set wildmenu       " enable better completion
-
-" Disable backups because it's stored in git anyway
-set nobackup
-set nowritebackup
-set noswapfile
+set wrap           " softwrap when the text runs longer than the window
 
 " -----------------------------------------------------------------------------
 " PLUGINS
@@ -80,41 +71,12 @@ let g:better_whitespace_enabled = 1
 let g:strip_whitespace_confirm = 0
 let g:strip_whitespace_on_save = 1
 
-" We'll set our own key mappings later on
-let g:yankstack_map_keys = 0
-
 " Various other language plugin options
 let g:javascript_plugin_jsdoc = 1
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_frontmatter = 1
 let g:vue_pre_processors = 'detect_on_enter'
 
-" ---------------------------------------------------------------------------
-" UI
-" ---------------------------------------------------------------------------
-
+" Theme
 colorscheme iceberg
 let g:lightline = { 'colorscheme': 'icebergDark' }
-
-" ---------------------------------------------------------------------------
-" KEY MAPPINGS
-" ---------------------------------------------------------------------------
-
-let mapleader = ','
-
-nmap <leader>; :tabnew ~/.vimrc<cr>
-nmap <leader>N :nohlsearch<cr>
-nmap <leader>p <Plug>yankstack_substitute_older_paste
-nmap <leader>P <Plug>yankstack_substitute_newer_paste
-
-" Faster window switching
-nmap <C-h> <C-w>h
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-l> <C-w>l
-
-" System clipboard access
-vmap <leader>c "*y
-vmap <leader>x "*d
-nmap <leader>v "*p
-nmap <leader>V "*P

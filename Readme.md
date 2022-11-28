@@ -1,19 +1,25 @@
 # Dotfiles
 
-A collection of configurations, installation scripts and handy tools I use on my Mac:
-
-* ZSH
-* Packages through [Homebrew](https://brew.sh), [Brew Bundle](https://github.com/Homebrew/homebrew-bundle) and `npm`
-* Other software installed via [Cask](https://github.com/Homebrew/homebrew-cask)
-* Terminal theme based on [ayu-iTerm](https://github.com/hwyncho/ayu-iTerm)
+A collection of configurations, installation scripts and handy tools I use on my Mac.
 
 ## Setup
 
-- `setup/initialize` prompts you to enter the path where this repository is located on your machine and softlinks the configuration files to your home directory based on that
-- `setup/install` has functions for installing CLI tools and applications
+- `setup/init` to softlink configuration files to your home directory
+- Install:
+  - [ ] [Homebrew](https://brew.sh)
+  - [ ] [Oh My ZSH](https://github.com/ohmyzsh/ohmyzsh#basic-installation)
+  - [ ] [ZSH Completions](https://github.com/zsh-users/zsh-completions#oh-my-zsh)
+  - [ ] [ZSH Syntax Highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 
 ## Useful commands
 
-* Re-create Brewfile from currently installed packages: `brew bundle dump [--force]`
-* Reset installed Homebrew packages to Brewfile: `brew bundle cleanup`
-* Create a "Codefile" from currently installed VS Code extensions `code --list-extensions > install/Codefile`
+```sh
+# Install from Brewfile
+brew bundle install
+
+# Re-create Brewfile from currently installed packages:
+brew bundle dump [--force]
+
+# Reset installed Homebrew packages to Brewfile:
+brew bundle cleanup
+```
