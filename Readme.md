@@ -9,7 +9,7 @@ A collection of configurations, installation scripts and handy tools I use on my
   - [ ] [Homebrew](https://brew.sh)
   - [ ] [Oh My ZSH](https://github.com/ohmyzsh/ohmyzsh#basic-installation)
   - [ ] [ZSH Completions](https://github.com/zsh-users/zsh-completions#oh-my-zsh)
-  - [ ] [ZSH Syntax Highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+  - [ ] [ZSH Syntax Highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md)
 
 ## Useful commands
 
