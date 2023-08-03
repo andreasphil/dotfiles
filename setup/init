@@ -21,6 +21,10 @@ then
   echo "export DOTFILES_ROOT=\"${dotfilesPath}\"" >> "${HOME}/.dotfiles_local"
   . "${HOME}/.dotfiles_local"
 
+  # Add link to the local dotfiles to the dotfiles folder to it can all be
+  # edited in one place.
+  ln -s "${HOME}/.dotfiles_local" "${DOTFILES_ROOT}/environment/dotfiles_local"
+
   # This file will be included by your git config and can be used to set local
   # users, aliases and other configuration that you don't want to add to the
   # dotfiles repository.
