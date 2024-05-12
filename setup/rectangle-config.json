@@ -85,6 +85,9 @@
     "gapSize" : {
       "float" : 8
     },
+    "hapticFeedbackOnSnap" : {
+      "int" : 0
+    },
     "hideMenubarIcon" : {
       "bool" : false
     },
@@ -95,7 +98,7 @@
       "int" : 0
     },
     "landscapeSnapAreas" : {
-      "string" : "[1,{\"action\":21},7,{\"action\":22},3,{\"action\":23},5,{\"action\":1},6,{\"action\":20},8,{\"action\":24},2,{\"action\":2},4,{\"action\":0}]"
+      "string" : "[8,{\"action\":24},6,{\"action\":20},7,{\"action\":22},3,{\"action\":23},4,{\"action\":0},2,{\"action\":2},1,{\"action\":21},5,{\"action\":1}]"
     },
     "launchOnLogin" : {
       "bool" : true
@@ -278,5 +281,5 @@
       "modifierFlags" : 786432
     }
   },
-  "version" : "82"
+  "version" : "85"
 }
