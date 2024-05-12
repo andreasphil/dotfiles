@@ -44,6 +44,10 @@ PROMPT='
 $(current_time) $(working_dir) $(git_info)
 $(prompt_char) '
 
+# Need to disable the async git prompt for now because it doesn't support
+# custom git info: https://github.com/ohmyzsh/ohmyzsh/issues/12328
+zstyle ':omz:alpha:lib:git' async-prompt no
+
 # -----------------------------------------------------------------------------
 # Oh my ZSH
 # -----------------------------------------------------------------------------
