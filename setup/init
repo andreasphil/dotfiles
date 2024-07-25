@@ -17,29 +17,28 @@ then
   # Create a .dotfiles_local file in the home folder pointing to the selected
   # path. The file will be read by the shell, so it can also contain local
   # customizations that you don't want to add to the dotfiles repository.
-  echo "#!/bin/bash" > "${HOME}/.dotfiles_local"
-  echo "export DOTFILES_ROOT=\"${dotfilesPath}\"" >> "${HOME}/.dotfiles_local"
-  . "${HOME}/.dotfiles_local"
-
-  # Add link to the local dotfiles to the dotfiles folder to it can all be
-  # edited in one place.
-  ln -s "${HOME}/.dotfiles_local" "${DOTFILES_ROOT}/environment/dotfiles_local"
+  echo "#!/bin/bash" > "${dotfilesPath}/environment/dotfiles_local"
+  echo "export DOTFILES_ROOT=\"${dotfilesPath}\"" >> "${dotfilesPath}/environment/dotfiles_local"
 
   # This file will be included by your git config and can be used to set local
   # users, aliases and other configuration that you don't want to add to the
   # dotfiles repository.
-  echo "# Add system specific git config to this file" > "${DOTFILES_ROOT}/environment/gitconfig_local"
+  echo "# Add system specific git config to this file" > "${dotfilesPath}/environment/gitconfig_local"
 
   # Create command line bookmarks folder
   mkdir "${HOME}/.bookmarks"
 
   # Link terminal profile from the dotfiles folder to the home folder
-  ln -s "${DOTFILES_ROOT}/environment/gitconfig" "${HOME}/.gitconfig"
-  ln -s "${DOTFILES_ROOT}/environment/gitconfig_local" "${HOME}/.gitconfig_local"
-  ln -s "${DOTFILES_ROOT}/environment/gitignore_global" "${HOME}/.gitignore_global"
-  ln -s "${DOTFILES_ROOT}/environment/vimrc" "${HOME}/.vimrc"
-  ln -s "${DOTFILES_ROOT}/environment/zprofile" "${HOME}/.zprofile"
-  ln -s "${DOTFILES_ROOT}/environment/zshrc" "${HOME}/.zshrc"
+  ln -s "${dotfilesPath}/environment/dotfiles_local" "${HOME}/.dotfiles_local"
+  ln -s "${dotfilesPath}/environment/gitconfig" "${HOME}/.gitconfig"
+  ln -s "${dotfilesPath}/environment/gitconfig_local" "${HOME}/.gitconfig_local"
+  ln -s "${dotfilesPath}/environment/gitignore_global" "${HOME}/.gitignore_global"
+  ln -s "${dotfilesPath}/environment/zprofile" "${HOME}/.zprofile"
+  ln -s "${dotfilesPath}/environment/zshrc" "${HOME}/.zshrc"
+
+  # Link nvim config
+  mkdir -p "${HOME}/.config/nvim"
+  ln -s "${dotfilesPath}/environment/init.lua" "${HOME}/.config/nvim/init.lua"
 else
   echo "Please provide a path."
 fi
