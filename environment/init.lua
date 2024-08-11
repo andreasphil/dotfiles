@@ -155,7 +155,12 @@ vim.api.nvim_create_autocmd('ModeChanged', {
 })
 
 vim.api.nvim_create_autocmd('ModeChanged', {
-  pattern = { '[vV]*:*' },
+  pattern = { '[vV]*:[^n]' },
+  callback = function() set_statusline_color(vim.v.insertmode) end
+})
+
+vim.api.nvim_create_autocmd('ModeChanged', {
+  pattern = { '[vV]*:n' },
   callback = function() set_statusline_color('n') end
 })
 
