@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-  <strong>Configurations and scripts I use on my Mac.</strong>
+  <strong>Configurations and scripts I use on my Mac</strong>
 </p>
 
 ## Usage
