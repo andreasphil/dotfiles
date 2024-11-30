@@ -70,6 +70,7 @@ eval "$(fnm env --use-on-cd)"
 # aliases
 alias b=". bookmark"
 alias ls="ls -1"
+alias cru="code . --reuse-window"
 
 # nvim
 export VISUAL=nvim
