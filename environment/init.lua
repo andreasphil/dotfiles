@@ -2,6 +2,10 @@
 -- Global configuration
 -- ----------------------------------------------------------------------------
 
+-- Disable netrw (needed for nvim-tree)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 vim.opt.autoindent = true       -- copy indent from current line when starting a new line
 vim.opt.autoread = true         -- refresh files when they change
 vim.opt.breakindent = true       -- indent lines when they're softwrapped
@@ -40,14 +44,15 @@ local Plug = vim.fn['plug#']
 
 vim.call('plug#begin')
   -- Editor features
-  Plug('mattn/emmet-vim')
   Plug('airblade/vim-gitgutter')
   Plug('itchyny/vim-gitbranch')
+  Plug('mattn/emmet-vim')
   Plug('maxbrunsfeld/vim-yankstack')
   Plug('ntpeters/vim-better-whitespace')
   Plug('nvim-lua/plenary.nvim')
   Plug('nvim-lua/popup.nvim')
   Plug('nvim-telescope/telescope.nvim')
+  Plug('nvim-tree/nvim-tree.lua')
   Plug('terryma/vim-expand-region')
   Plug('tpope/vim-commentary')
   Plug('tpope/vim-surround')
@@ -59,6 +64,8 @@ vim.call('plug#begin')
   -- Color schemes
   Plug('rose-pine/neovim', { ['as'] = 'rose-pine' })
 vim.call('plug#end')
+
+require("nvim-tree").setup()
 
 -- ----------------------------------------------------------------------------
 -- Color scheme and UI
@@ -198,3 +205,6 @@ vim.keymap.set('n', '<leader>ff', telescope.find_files, {})
 vim.keymap.set('n', '<leader>fr', telescope.live_grep, {})
 vim.keymap.set('n', '<leader>fb', telescope.buffers, {})
 vim.keymap.set('n', '<leader>ft', telescope.builtin, {})
+
+-- Terminal
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
