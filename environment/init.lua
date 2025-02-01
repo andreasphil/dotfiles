@@ -206,5 +206,9 @@ vim.keymap.set('n', '<leader>fr', telescope.live_grep, {})
 vim.keymap.set('n', '<leader>fb', telescope.buffers, {})
 vim.keymap.set('n', '<leader>ft', telescope.builtin, {})
 
+-- Tree
+local tree = require("nvim-tree.api")
+vim.keymap.set('n', '<leader>e', tree.tree.toggle)
+
 -- Terminal
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
