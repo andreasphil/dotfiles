@@ -39,6 +39,10 @@ then
   # Link nvim config
   mkdir -p "${HOME}/.config/nvim"
   ln -s "${dotfilesPath}/environment/init.lua" "${HOME}/.config/nvim/init.lua"
+
+  # Link ghostty config
+  mkdir -p "${HOME}/.config/ghostty"
+  ln -s "${dotfilesPath}/environment/ghostty" "${HOME}/.config/ghostty/config"
 else
   echo "Please provide a path."
 fi
