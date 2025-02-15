@@ -1,4 +1,3 @@
-keybind = global:cmd+option+t=toggle_quick_terminal
 theme = tokyonight_night
 window-height = 40
 window-width = 140
