@@ -1,8 +1,6 @@
 . "${HOME}/.dotfiles_local"
 
-# -----------------------------------------------------------------------------
-# Custom prompt
-# -----------------------------------------------------------------------------
+# Custom prompt -------------------------------------------
 
 prompt_char() {
   echo "%(?.✼.%F{red}✕%f)"
@@ -44,9 +42,7 @@ $(prompt_char) '
 # custom git info: https://github.com/ohmyzsh/ohmyzsh/issues/12328
 zstyle ':omz:alpha:lib:git' async-prompt no
 
-# -----------------------------------------------------------------------------
-# Oh my ZSH
-# -----------------------------------------------------------------------------
+# OMZ -----------------------------------------------------
 
 export ZSH="${HOME}/.oh-my-zsh"
 
@@ -60,12 +56,7 @@ source $ZSH/oh-my-zsh.sh
 
 zstyle ':completion:*:*:git*:*' ignored-patterns '*ORIG_HEAD'
 
-# -----------------------------------------------------------------------------
-# Applications
-# -----------------------------------------------------------------------------
-
-# fnm
-eval "$(fnm env --use-on-cd)"
+# Applications --------------------------------------------
 
 # aliases
 alias b=". bookmark"
@@ -76,6 +67,9 @@ alias lg="lazygit"
 # nvim
 export VISUAL=nvim
 export EDITOR="$VISUAL"
+
+# config
+export XDG_CONFIG_HOME="${HOME}/.config"
 
 # path
 PATH="$(brew --prefix openssh)/bin:${PATH}"           # Custom open ssh
