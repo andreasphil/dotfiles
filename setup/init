@@ -43,6 +43,10 @@ then
   # Link ghostty config
   mkdir -p "${HOME}/.config/ghostty"
   ln -s "${dotfilesPath}/environment/ghostty" "${HOME}/.config/ghostty/config"
+
+  # Link lazygit config
+  mkdir -p "${HOME}/.config/lazygit"
+  ln -s "${dotfilesPath}/environment/lazygit.yml" "${HOME}/.config/lazygit/config.yml"
 else
   echo "Please provide a path."
 fi

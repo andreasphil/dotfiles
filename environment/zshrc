@@ -71,6 +71,7 @@ eval "$(fnm env --use-on-cd)"
 alias b=". bookmark"
 alias ls="ls -1"
 alias cru="code . --reuse-window"
+alias lg="lazygit"
 
 # nvim
 export VISUAL=nvim
