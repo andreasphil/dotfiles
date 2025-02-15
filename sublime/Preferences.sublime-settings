@@ -1,18 +1,22 @@
 {
-  "ignored_packages": [
-    "Vintage",
-  ],
   "caret_extra_bottom": 2,
   "caret_extra_top": 2,
   "caret_style": "smooth",
   "color_scheme": "Packages/ayu/ayu-dark.sublime-color-scheme",
   "ensure_newline_at_eof_on_save": true,
   "font_face": "Dank Mono",
+  "font_options": [
+    "no_round"
+  ],
   "font_size": 15,
-  "font_options": "no_round",
   "highlight_line": true,
+  "ignored_packages": [
+    "Vintage",
+  ],
   "inactive_sheet_dimming": false,
-  "indent_guide_options": ["draw_active_single"],
+  "indent_guide_options": [
+    "draw_active_single"
+  ],
   "index_files": true,
   "line_padding_bottom": 3,
   "line_padding_top": 3,
@@ -20,5 +24,5 @@
   "tab_size": 2,
   "theme": "ayu-dark.sublime-theme",
   "translate_tabs_to_spaces": true,
-  "ui_separator": true,
+  "ui_separator": true
 }

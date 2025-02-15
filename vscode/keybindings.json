@@ -24,14 +24,6 @@
     "when": "terminalFocus"
   },
   {
-    "key": "shift+cmd+b",
-    "command": "-workbench.action.tasks.build"
-  },
-  {
-    "key": "shift+cmd+b",
-    "command": "workbench.action.tasks.runTask"
-  },
-  {
     "key": "ctrl+shift+t",
     "command": "workbench.action.terminal.sendSequence",
     "args": { "text": "'${file}'" },

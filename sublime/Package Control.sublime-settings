@@ -1,16 +1,19 @@
 {
 	"bootstrapped": true,
-	"in_process_packages":
-	[
+	"in_process_packages": [
 	],
-	"installed_packages":
-	[
+	"installed_packages": [
 		"A File Icon",
 		"ayu",
 		"LSP",
+		"LSP-css",
+		"LSP-html",
+		"LSP-json",
+		"LSP-tailwindcss",
 		"LSP-typescript",
+		"LSP-vue",
+		"LSP-yaml",
 		"Package Control",
-		"Theme - Rose Pine",
 		"Vue",
-	],
+	]
 }
