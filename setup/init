@@ -53,6 +53,10 @@ then
   ln -s "${dotfilesPath}/vscode/keybindings.json" "${HOME}/Library/Application Support/Code/User/keybindings.json"
   ln -s "${dotfilesPath}/vscode/settings.json" "${HOME}/Library/Application Support/Code/User/settings.json"
   ln -s "${dotfilesPath}/vscode/snippets" "${HOME}/Library/Application Support/Code/User/snippets"
+
+  # Link Sublime Text config
+  mkdir -p "${HOME}/Library/Application Support/Sublime Text/Packages"
+  ln -s "${dotfilesPath}/sublime" "${HOME}/Library/Application Support/Sublime Text/Packages/User"
 else
   echo "Please provide a path."
 fi
