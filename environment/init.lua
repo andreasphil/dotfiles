@@ -1,14 +1,8 @@
--- ----------------------------------------------------------------------------
--- Global configuration
--- ----------------------------------------------------------------------------
-
--- Disable netrw (needed for nvim-tree)
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- Global configuration -----------------------------------
 
 vim.opt.autoindent = true       -- copy indent from current line when starting a new line
 vim.opt.autoread = true         -- refresh files when they change
-vim.opt.breakindent = true       -- indent lines when they're softwrapped
+vim.opt.breakindent = true      -- indent lines when they're softwrapped
 vim.opt.breakindentopt = { shift = 2, min = 20 } -- settings for breakindent
 vim.opt.colorcolumn = '80'      -- show guide for limiting line length
 vim.opt.completeopt = { 'menuone' , 'noinsert' } -- always show the menu, no automatic inserting
@@ -18,8 +12,8 @@ vim.opt.ignorecase = true       -- ignore case when searching for lowercase term
 vim.opt.incsearch = true        -- make search results more browser-y
 vim.opt.laststatus = 2          -- always show the status line
 vim.opt.linebreak = true        -- don't break within words
-vim.opt.mouse = 'a'             -- it's 2021 and I want to click on stuff
-vim.opt.swapfile = false        -- Disable backups
+vim.opt.mouse = 'a'             -- allow clicking on stuff
+vim.opt.swapfile = false        -- disable backups
 vim.opt.number = true           -- show line numbers
 vim.opt.ruler = true            -- show ruler
 vim.opt.showmode = false        -- hide default mode label
@@ -36,9 +30,7 @@ vim.opt.updatetime = 300        -- snappier updates
 vim.opt.wildmenu = true         -- enable better completion
 vim.opt.wrap = true             -- softwrap when the text runs longer than the window
 
--- ----------------------------------------------------------------------------
--- Plugins
--- ----------------------------------------------------------------------------
+-- Plugins ------------------------------------------------
 
 local Plug = vim.fn['plug#']
 
@@ -46,16 +38,9 @@ vim.call('plug#begin')
   -- Editor features
   Plug('airblade/vim-gitgutter')
   Plug('itchyny/vim-gitbranch')
-  Plug('mattn/emmet-vim')
   Plug('maxbrunsfeld/vim-yankstack')
   Plug('ntpeters/vim-better-whitespace')
-  Plug('nvim-lua/plenary.nvim')
-  Plug('nvim-lua/popup.nvim')
-  Plug('nvim-telescope/telescope.nvim')
-  Plug('nvim-tree/nvim-tree.lua')
   Plug('terryma/vim-expand-region')
-  Plug('tpope/vim-commentary')
-  Plug('tpope/vim-surround')
 
   -- Languages
   Plug('neoclide/jsonc.vim')
@@ -65,39 +50,16 @@ vim.call('plug#begin')
   Plug('rose-pine/neovim', { ['as'] = 'rose-pine' })
 vim.call('plug#end')
 
-require("nvim-tree").setup()
-
--- ----------------------------------------------------------------------------
--- Color scheme and UI
--- ----------------------------------------------------------------------------
+-- Color scheme and UI ------------------------------------
 
 vim.opt.laststatus = 3
 vim.opt.statusline = "%1* %{mode()} %* %f %M \u{e0a0} %{gitbranch#name()} %= %l:%c %p%% ♥ "
 
 require("rose-pine").setup({
-  styles = {
-    italic = false
-  },
-
 	highlight_groups = {
 		StatusLineNC = { fg = "subtle", bg = "surface" },
     ExtraWhitespace = { bg = "love", blend = 40 },
     Search = { fg = 'gold', bg = "gold", blend = 20 },
-
-		TelescopeNormal = { bg = "none" },
-		TelescopePromptNormal = { bg = "base" },
-		TelescopeResultsNormal = { fg = "subtle", bg = "none" },
-		TelescopeSelection = { fg = "text", bg = "base" },
-		TelescopeSelectionCaret = { fg = "rose", bg = "rose" },
-    TelescopeBorder = { fg = "highlight_high", bg = "none" },
-
-    Comment = { italic = true },
-    Conditional = { italic = true },
-    Exception = { italic = true },
-    Keyword = { italic = true },
-    Label = { italic = true },
-    Repeat = { italic = true },
-    StorageClass = { italic = true },
 	},
 })
 
@@ -173,9 +135,7 @@ vim.api.nvim_create_autocmd('ModeChanged', {
 
 set_statusline_color('n')
 
--- ----------------------------------------------------------------------------
--- Key mappings
--- ----------------------------------------------------------------------------
+-- Key mappings -------------------------------------------
 
 vim.g.mapleader = ','
 
@@ -198,17 +158,6 @@ vim.keymap.set('v', '<leader>c', '\"*y')
 vim.keymap.set('v', '<leader>x', '\"*d')
 vim.keymap.set('n', '<leader>v', '\"*p')
 vim.keymap.set('n', '<leader>V', '\"*P')
-
--- Telescope
-local telescope = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', telescope.find_files, {})
-vim.keymap.set('n', '<leader>fr', telescope.live_grep, {})
-vim.keymap.set('n', '<leader>fb', telescope.buffers, {})
-vim.keymap.set('n', '<leader>ft', telescope.builtin, {})
-
--- Tree
-local tree = require("nvim-tree.api")
-vim.keymap.set('n', '<leader>e', tree.tree.toggle)
 
 -- Terminal
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
