@@ -1,0 +1,98 @@
+{
+  "[java]": {
+    "editor.defaultFormatter": "redhat.java"
+  },
+  "[markdown]": {
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 80,
+    "editor.wrappingIndent": "same"
+  },
+  "breadcrumbs.enabled": false,
+  "chat.commandCenter.enabled": false,
+  "css.lint.unknownAtRules": "ignore",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.accessibilitySupport": "off",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.fontFamily": "\"Dank Mono\", FiraCode-Retina, Menlo, monospace",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 16,
+  "editor.guides.indentation": false,
+  "editor.inlayHints.enabled": "offUnlessPressed",
+  "editor.inlineSuggest.enabled": true,
+  "editor.lineHeight": 1.6,
+  "editor.minimap.enabled": false,
+  "editor.stickyScroll.enabled": false,
+  "editor.suggestSelection": "first",
+  "editor.tabSize": 2,
+  "editor.wordWrap": "off",
+  "editor.wordWrapColumn": 100,
+  "editor.wrappingIndent": "indent",
+  "emmet.preferences": {
+    "profile.allowCompactBoolean": true
+  },
+  "extensions.ignoreRecommendations": true,
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "git.openRepositoryInParentFolders": "always",
+  "git.timeline.showUncommitted": true,
+  "settingsSync.ignoredExtensions": [
+    "vmware.vscode-spring-boot",
+    "redhat.java"
+  ],
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    "ngClass",
+    "class:list",
+    "pt"
+  ],
+  "tailwindCSS.experimental.classRegex": [
+    "tw`([^`]*)`"
+  ],
+  "terminal.integrated.fontSize": 16,
+  "terminal.integrated.lineHeight": 1.3,
+  "terminal.integrated.showExitAlert": false,
+  "window.dialogStyle": "custom",
+  "workbench.colorCustomizations": {
+    "[Ayu Dark]": {
+      "editor.background": "#11151C",
+      "editor.lineHighlightBackground": "#00000025",
+      "editorGroup.dropBackground": "#47526640",
+      "editorGroupHeader.border": "#11151C",
+      "editorGroupHeader.tabsBackground": "#11151C",
+      "editorOverviewRuler.border": "#11151C",
+      "panel.border": "#00000025",
+      "quickInput.background": "#11151C",
+      "tab.activeBackground": "#11151C",
+      "tab.activeBorder": "#11151C",
+      "tab.activeBorderTop": "#FFCC66",
+      "tab.border": "#11151C",
+      "tab.inactiveBackground": "#11151C",
+      "tab.unfocusedActiveBorder": "#11151C",
+      "tab.unfocusedActiveBorderTop": "#FFCC66",
+      "widget.shadow": "#00000025"
+    },
+    "[Ayu Light]": {
+      "editor.background": "#FDFDFD",
+      "editor.lineHighlightBackground": "#F3F4F5",
+      "editorGroupHeader.border": "#FDFDFD",
+      "editorGroupHeader.tabsBackground": "#FDFDFD",
+      "editorOverviewRuler.border": "#FDFDFD",
+      "panel.border": "#F3F4F5",
+      "quickInput.background": "#FDFDFD",
+      "tab.activeBackground": "#FDFDFD",
+      "tab.activeBorder": "#FDFDFD",
+      "tab.activeBorderTop": "#FFAA33",
+      "tab.border": "#FDFDFD",
+      "tab.inactiveBackground": "#FDFDFD",
+      "tab.unfocusedActiveBorder": "#FDFDFD",
+      "tab.unfocusedActiveBorderTop": "#FFAA33",
+      "widget.shadow": "#F3F4F5"
+    }
+  },
+  "workbench.colorTheme": "Ayu Dark",
+  "workbench.iconTheme": "ayu",
+  "workbench.tree.enableStickyScroll": false,
+  "workbench.tree.renderIndentGuides": "none",
+  "telemetry.telemetryLevel": "off"
+}

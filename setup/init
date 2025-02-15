@@ -47,6 +47,12 @@ then
   # Link lazygit config
   mkdir -p "${HOME}/.config/lazygit"
   ln -s "${dotfilesPath}/environment/lazygit.yml" "${HOME}/.config/lazygit/config.yml"
+
+  # Link VS Code config
+  mkdir -p "${HOME}/Library/Application Support/Code/User"
+  ln -s "${dotfilesPath}/vscode/keybindings.json" "${HOME}/Library/Application Support/Code/User/keybindings.json"
+  ln -s "${dotfilesPath}/vscode/settings.json" "${HOME}/Library/Application Support/Code/User/settings.json"
+  ln -s "${dotfilesPath}/vscode/snippets" "${HOME}/Library/Application Support/Code/User/snippets"
 else
   echo "Please provide a path."
 fi
