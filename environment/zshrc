@@ -14,33 +14,9 @@ working_dir() {
   echo "%F{blue}%B%0~%b%f"
 }
 
-git_info() {
-  ZSH_THEME_GIT_PROMPT_PREFIX="\ue0a0 "
-  ZSH_THEME_GIT_PROMPT_SUFFIX=""
-  ZSH_THEME_GIT_PROMPT_DIRTY=""
-  ZSH_THEME_GIT_PROMPT_CLEAN=""
-
-  ZSH_THEME_GIT_PROMPT_UNTRACKED="?"
-  ZSH_THEME_GIT_PROMPT_ADDED="+"
-  ZSH_THEME_GIT_PROMPT_MODIFIED="*"
-  ZSH_THEME_GIT_PROMPT_RENAMED="→"
-  ZSH_THEME_GIT_PROMPT_DELETED="-"
-  ZSH_THEME_GIT_PROMPT_STASHED="$"
-  ZSH_THEME_GIT_PROMPT_UNMERGED="⇞"
-  ZSH_THEME_GIT_PROMPT_AHEAD="↑"
-  ZSH_THEME_GIT_PROMPT_BEHIND="↓"
-  ZSH_THEME_GIT_PROMPT_DIVERGED="⇟"
-
-  echo "%F{008}$(git_prompt_info) $(git_prompt_status)%f"
-}
-
 PROMPT='
-$(current_time) $(working_dir) $(git_info)
+$(current_time) $(working_dir) %F{008}$(git_prompt_info)%f
 $(prompt_char) '
-
-# Need to disable the async git prompt for now because it doesn't support
-# custom git info: https://github.com/ohmyzsh/ohmyzsh/issues/12328
-zstyle ':omz:alpha:lib:git' async-prompt no
 
 # OMZ -----------------------------------------------------
 
@@ -49,7 +25,7 @@ export ZSH="${HOME}/.oh-my-zsh"
 fpath+="${ZSH_CUSTOM:-"$ZSH/custom"}/plugins/zsh-completions/src"
 source "$ZSH/oh-my-zsh.sh"
 
-plugins=(npm fzf git zsh-syntax-highlighting)
+plugins=(brew fnm fzf gh git httpie npm zsh-syntax-highlighting zsh-autosuggestions)
 autoload -U add-zsh-hook
 
 source $ZSH/oh-my-zsh.sh
