@@ -1,0 +1,7 @@
+// These settings override both User and Default settings for the Markdown syntax
+{
+  "draw_centered": true,
+  "word_wrap": true,
+  "wrap_width": 100,
+  "wrap_width_style": "min"
+}
