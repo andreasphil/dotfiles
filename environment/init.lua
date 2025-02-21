@@ -43,6 +43,7 @@ vim.call('plug#begin')
   Plug('terryma/vim-expand-region')
 
   -- Languages
+  Plug('NoahTheDuke/vim-just')
   Plug('neoclide/jsonc.vim')
   Plug('pangloss/vim-javascript')
 
