@@ -8,11 +8,11 @@
   },
   {
     "command": "swap_line_up",
-    "keys": ["ctrl+up"]
+    "keys": ["alt+up"]
   },
   {
     "command": "swap_line_down",
-    "keys": ["ctrl+down"]
+    "keys": ["alt+down"]
   },
   {
     "args": {
