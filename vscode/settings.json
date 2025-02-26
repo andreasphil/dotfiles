@@ -21,6 +21,7 @@
   "editor.inlineSuggest.enabled": true,
   "editor.lineHeight": 1.6,
   "editor.minimap.enabled": false,
+  "editor.multiCursorModifier": "ctrlCmd",
   "editor.stickyScroll.enabled": false,
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
@@ -35,20 +36,6 @@
   "files.trimTrailingWhitespace": true,
   "git.openRepositoryInParentFolders": "always",
   "git.timeline.showUncommitted": true,
-  "settingsSync.ignoredExtensions": [
-    "vmware.vscode-spring-boot",
-    "redhat.java"
-  ],
-  "tailwindCSS.classAttributes": [
-    "class",
-    "className",
-    "ngClass",
-    "class:list",
-    "pt"
-  ],
-  "tailwindCSS.experimental.classRegex": [
-    "tw`([^`]*)`"
-  ],
   "telemetry.telemetryLevel": "off",
   "terminal.integrated.fontSize": 16,
   "terminal.integrated.lineHeight": 1.3,
@@ -103,10 +90,12 @@
       "editorGroupHeader.tabsBackground": "#1a1b26",
       "editorOverviewRuler.border": "#1a1b26",
       "focusBorder": "#7aa2f7",
+      "list.hoverBackground": "#00000015",
       "panel.border": "#16161e",
       "quickInput.background": "#1a1b26",
       "sideBar.border": "#16161e",
       "sideBarSectionHeader.border": "#16161e",
+      "sideBarSectionHeader.foreground": "#9aa5ce90",
       "statusBar.border": "#16161e",
       "tab.activeBackground": "#1a1b26",
       "tab.activeBorder": "#1a1b26",
@@ -120,7 +109,6 @@
     }
   },
   "workbench.colorTheme": "Tokyo Night",
-  "workbench.iconTheme": "ayu",
   "workbench.tree.enableStickyScroll": false,
   "workbench.tree.renderIndentGuides": "none"
 }
