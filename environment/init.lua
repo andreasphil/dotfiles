@@ -48,7 +48,7 @@ vim.call('plug#begin')
   Plug('pangloss/vim-javascript')
 
   -- Color schemes
-  Plug('rose-pine/neovim', { ['as'] = 'rose-pine' })
+  Plug('folke/tokyonight.nvim')
 vim.call('plug#end')
 
 -- Color scheme and UI ------------------------------------
@@ -56,55 +56,56 @@ vim.call('plug#end')
 vim.opt.laststatus = 3
 vim.opt.statusline = "%1* %{mode()} %* %f %M \u{e0a0} %{gitbranch#name()} %= %l:%c %p%% ♥ "
 
-require("rose-pine").setup({
-	highlight_groups = {
-		StatusLineNC = { fg = "subtle", bg = "surface" },
-    ExtraWhitespace = { bg = "love", blend = 40 },
-    Search = { fg = 'gold', bg = "gold", blend = 20 },
-	},
+local utils = require("tokyonight.util")
+local colors = require("tokyonight.colors").setup()
+
+require("tokyonight").setup({
+  style = "night",
+
+  on_highlights = function(hl, colors)
+    hl.Search = { fg = colors.orange, bg = utils.blend_bg(colors.orange, 0.15) }
+    hl.ExtraWhitespace = { bg = utils.blend_bg(colors.red, 0.25) }
+  end
 })
 
-vim.cmd('colorscheme rose-pine-main')
+vim.cmd('colorscheme tokyonight-night')
 
 function set_statusline_color(mode)
-  local utils = require("rose-pine.utilities")
-  local bg = utils.parse_color('base')
-
   if mode == 'i' then
     vim.api.nvim_set_hl(0, 'statusline', {
-      bg = utils.blend(utils.parse_color('iris'), bg, 0.2),
-      fg = utils.parse_color('iris')
+      bg = utils.blend_bg(colors.magenta, 0.15),
+      fg = colors.magenta
     })
     vim.api.nvim_set_hl(0, 'user1', {
-      bg = utils.parse_color('iris'),
-      fg = utils.parse_color('text')
+      bg = colors.magenta,
+      fg = colors.bg
     })
   elseif mode == 'r' then
     vim.api.nvim_set_hl(0, 'statusline', {
-      bg = utils.blend(utils.parse_color('love'), bg, 0.2),
-      fg = utils.parse_color('love')
+      bg = utils.blend_bg(colors.red, 0.15),
+      fg = colors.red
     })
     vim.api.nvim_set_hl(0, 'user1', {
-      bg = utils.parse_color('love'),
-      fg = utils.parse_color('text')
+      bg = colors.red,
+      fg = colors.bg
     })
   elseif mode == 'v' then
     vim.api.nvim_set_hl(0, 'statusline', {
-      bg = utils.blend(utils.parse_color('gold'), bg, 0.2),
-      fg = utils.parse_color('gold')
+      bg = utils.blend_bg(colors.yellow, 0.15),
+      fg = colors.yellow
     })
     vim.api.nvim_set_hl(0, 'user1', {
-      bg = utils.parse_color('gold'),
-      fg = utils.parse_color('text')
+      bg = colors.yellow,
+      fg = colors.bg
     })
   elseif mode == 'n' then
     vim.api.nvim_set_hl(0, 'statusline', {
-      bg = utils.blend(utils.parse_color('pine'), bg, 0.2),
-      fg = utils.parse_color('pine')
+      bg = utils.blend_bg(colors.teal, 0.1),
+      fg = colors.teal
     })
     vim.api.nvim_set_hl(0, 'user1', {
-      bg = utils.parse_color('pine'),
-      fg = utils.parse_color('text')
+      bg = colors.teal,
+      fg = colors.bg
     })
   else
     print(string.format('Unstyled mode "%s"', mode))
