@@ -1,39 +1,42 @@
 [
   {
-    "args": {
-      "file": "res://Packages/Default/Delete Line.sublime-macro"
-    },
+    "args": { "file": "res://Packages/Default/Delete Line.sublime-macro" },
     "command": "run_macro_file",
-    "keys": ["super+shift+k"]
+    "keys": ["super+shift+k"],
   },
   {
     "command": "swap_line_up",
-    "keys": ["alt+up"]
+    "keys": ["alt+up"],
   },
   {
     "command": "swap_line_down",
-    "keys": ["alt+down"]
+    "keys": ["alt+down"],
   },
   {
-    "args": {
-      "forward": false
-    },
+    "args": { "forward": false },
     "command": "select_lines",
-    "keys": ["super+alt+up"]
+    "keys": ["super+alt+up"],
   },
   {
-    "args": {
-      "forward": true
-    },
+    "args": { "forward": true },
     "command": "select_lines",
-    "keys": ["super+alt+down"]
+    "keys": ["super+alt+down"],
   },
   {
     "command": "jump_forward",
-    "keys": ["super+]"]
+    "keys": ["super+]"],
   },
   {
     "command": "jump_back",
-    "keys": ["super+["]
+    "keys": ["super+["],
+  },
+  {
+    "command": "lsp_document_symbols",
+    "keys": ["super+shift+o"],
+  },
+  {
+    "args": { "add_to_selection": true },
+    "command": "clone_file",
+    "keys": ["super+\\"],
   },
 ]
