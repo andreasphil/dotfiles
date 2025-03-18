@@ -15,6 +15,6 @@
 	},
 	"Timestamp": {
 		"prefix": "timestamp",
-		"body": ["\"$CURRENT_YEAR-$CURRENT_MONTH-${CURRENT_DATE}T${CURRENT_HOUR}:00:00.0Z\""]
+		"body": ["\"$CURRENT_YEAR-$CURRENT_MONTH-${CURRENT_DATE}T${CURRENT_HOUR}:00:00Z\""]
 	}
 }
