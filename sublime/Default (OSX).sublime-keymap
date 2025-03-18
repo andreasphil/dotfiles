@@ -39,4 +39,9 @@
     "command": "clone_file",
     "keys": ["super+\\"],
   },
+  {
+    "command": "toggle_setting",
+    "args": { "setting": "word_wrap" },
+    "keys": ["alt+z"],
+  },
 ]
