@@ -47,6 +47,9 @@ export EDITOR="$VISUAL"
 # config
 export XDG_CONFIG_HOME="${HOME}/.config"
 
+# go
+export GOPATH="${HOME}/Projects/go"
+
 # path
 PATH="$(brew --prefix openssh)/bin:${PATH}"           # Custom open ssh
 PATH="${GOPATH}/bin:${PATH}"                          # Go
