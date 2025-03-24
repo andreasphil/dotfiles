@@ -7,6 +7,9 @@
     "editor.wordWrapColumn": 80,
     "editor.wrappingIndent": "same"
   },
+  "[yaml]": {
+    "editor.guides.indentation": true
+  },
   "breadcrumbs.enabled": false,
   "chat.commandCenter.enabled": false,
   "css.lint.unknownAtRules": "ignore",
