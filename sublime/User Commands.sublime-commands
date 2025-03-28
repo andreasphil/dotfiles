@@ -1,6 +1,6 @@
 [
   {
-    "caption": "Insert current date",
+    "caption": "Insert Current Date",
     "command": "insert_date",
   },
 ]
