@@ -48,5 +48,10 @@
     "key": "ctrl+shift+-",
     "command": "-workbench.action.navigateForward",
     "when": "canNavigateForward"
+  },
+  {
+    "key": "alt+cmd+o",
+    "command": "editor.action.toggleOvertypeInsertMode",
+    "when": "editorFocus"
   }
 ]
