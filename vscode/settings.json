@@ -1,4 +1,7 @@
 {
+  "[go]": {
+    "editor.defaultFormatter": "golang.go"
+  },
   "[java]": {
     "editor.defaultFormatter": "redhat.java"
   },
