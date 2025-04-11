@@ -1,36 +1,6 @@
 {
-	"Task": {
-		"prefix": "task",
-		"body": "- [ ] ",
-		"description": "A new task list item."
-	},
-	"Local image": {
-		"prefix": "localimage",
-		"body": "![$1]($2)",
-		"description": "A local image reference."
-	},
-	"Arrow right": {
-		"prefix": "->",
-		"body": "→"
-	},
-	"Arrow left": {
-		"prefix": "<-",
-		"body": "←"
-	},
-	"Table row with 2 columns": {
-		"prefix": "tr2",
-		"body": "|||"
-	},
-	"Table row with 3 columns": {
-		"prefix": "tr3",
-		"body": "||||"
-	},
-	"Table row with 4 columns": {
-		"prefix": "tr4",
-		"body": "|||||"
-	},
-	"Table row with 5 columns": {
-		"prefix": "tr5",
-		"body": "||||||"
+	"Current Date": {
+		"prefix": "date",
+		"body": "${CURRENT_DATE}.${CURRENT_MONTH}.${CURRENT_YEAR}"
 	}
 }
