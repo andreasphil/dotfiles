@@ -116,5 +116,6 @@
   },
   "workbench.colorTheme": "Tokyo Night",
   "workbench.tree.enableStickyScroll": false,
-  "workbench.tree.renderIndentGuides": "none"
+  "workbench.tree.renderIndentGuides": "none",
+  "workbench.iconTheme": "eyecons"
 }
