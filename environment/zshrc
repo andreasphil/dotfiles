@@ -40,6 +40,9 @@ alias ls="ls -1"
 alias cru="code . --reuse-window"
 alias lg="lazygit"
 
+# shortcuts
+bindkey -s '^B' 'b\n'
+
 # nvim
 export VISUAL=nvim
 export EDITOR="$VISUAL"
