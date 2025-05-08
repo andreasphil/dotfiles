@@ -1,5 +1,5 @@
+background-blur-radius = 20
+background-opacity = 0.9
 theme = tokyonight_night
 window-height = 40
 window-width = 150
-background-opacity = 0.9
-background-blur-radius = 20

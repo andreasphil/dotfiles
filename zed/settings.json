@@ -1,0 +1,58 @@
+{
+  "agent_font_size": 15,
+  "buffer_font_family": "Dank Mono",
+  "buffer_font_size": 15,
+  "buffer_line_height": { "custom": 1.7 },
+  "collaboration_panel": { "button": false },
+  "git": { "inline_blame": { "enabled": false } },
+  "git_panel": { "default_width": 320 },
+  "hide_mouse": "never",
+  "indent_guides": { "enabled": false },
+  "multi_cursor_modifier": "cmd_or_ctrl",
+  "notification_panel": { "button": false },
+  "tab_size": 2,
+  "telemetry": { "metrics": false },
+  "theme": { "mode": "dark", "light": "Tokyo Night", "dark": "Tokyo Night" },
+  "ui_font_family": ".SystemUIFont",
+  "ui_font_size": 15,
+  "vim_mode": false,
+  "wrap_guides": [80],
+  "auto_install_extensions": {
+    "emmet": true,
+    "html": true,
+    "tokyo-night": true,
+    "toml": true,
+    "vue": true
+  },
+  "outline_panel": {
+    "indent_guides": { "show": "never" },
+    "default_width": 320
+  },
+  "project_panel": {
+    "indent_guides": { "show": "never" },
+    "default_width": 320
+  },
+  "tabs": {
+    "file_icons": true,
+    "git_status": true,
+    "show_close_button": "always",
+    "show_diagnostics": "errors"
+  },
+  "languages": {
+    "Markdown": {
+      "preferred_line_length": 100,
+      "show_wrap_guides": false,
+      "soft_wrap": "bounded"
+    }
+  },
+  "experimental.theme_overrides": {
+    "element.hover": "#1e202e",
+    "element.active": "#1e202e",
+    "element.selected": "#1e202e",
+    "ghost_element.hover": "#1e202e",
+    "ghost_element.active": "#1e202e",
+    "ghost_element.selected": "#1e202e",
+    "search.match_background": "#1e202e",
+    "tab.active_background": "#1e202e"
+  }
+}

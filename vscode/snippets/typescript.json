@@ -1,14 +1,14 @@
 {
-	"Section": {
-		"prefix": "section",
-		"body": ["// $1--------------------------------------------------------"]
-	},
-	"Test suite": {
-		"prefix": "describe",
-		"body": ["describe(\"${TM_FILENAME_BASE/([^\\.]+).*$/$1/}\", () => {$2})"]
-	},
-	"Test (it)": {
-		"prefix": "it",
-		"body": ["it(\"$1\", ${2:async} () => {", "  $3", "});"]
-	}
+  "Section": {
+    "body": ["// $1--------------------------------------------------------"],
+    "description": "Divider"
+  },
+  "Test suite": {
+    "prefix": "describe",
+    "body": ["describe(\"${TM_FILENAME_BASE/([^\\.]+).*$/$1/}\", () => {$2})"]
+  },
+  "Test (it)": {
+    "prefix": "it",
+    "body": ["it(\"$1\", ${2:async} () => {", "  $3", "});"]
+  }
 }

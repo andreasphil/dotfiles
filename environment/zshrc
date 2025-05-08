@@ -56,6 +56,5 @@ export GOPATH="${HOME}/Projects/go"
 # path
 PATH="$(brew --prefix openssh)/bin:${PATH}"           # Custom open ssh
 PATH="${GOPATH}/bin:${PATH}"                          # Go
-PATH="${HOME}/.deno/bin:$PATH"                        # Installed deno scripts
 PATH="${DOTFILES_ROOT}/bin:${PATH}"                   # Dotfiles scripts
 export PATH

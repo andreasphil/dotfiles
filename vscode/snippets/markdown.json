@@ -1,6 +1,0 @@
-{
-	"Current Date": {
-		"prefix": "date",
-		"body": "${CURRENT_DATE}.${CURRENT_MONTH}.${CURRENT_YEAR}"
-	}
-}

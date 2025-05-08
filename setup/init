@@ -54,9 +54,12 @@ then
   ln -s "${dotfilesPath}/vscode/settings.json" "${HOME}/Library/Application Support/Code/User/settings.json"
   ln -s "${dotfilesPath}/vscode/snippets" "${HOME}/Library/Application Support/Code/User/snippets"
 
-  # Link Sublime Text config
-  mkdir -p "${HOME}/Library/Application Support/Sublime Text/Packages"
-  ln -s "${dotfilesPath}/sublime" "${HOME}/Library/Application Support/Sublime Text/Packages/User"
+  # Link Zed config
+  mkdir -p "${HOME}/.config/zed"
+  ln -s "${dotfilesPath}/zed/keymap.json" "${HOME}/.config/zed/keymap.json"
+  ln -s "${dotfilesPath}/zed/settings.json" "${HOME}/.config/zed/settings.json"
+  ln -s "${dotfilesPath}/zed/tasks.json" "${HOME}/.config/zed/tasks.json"
+  ln -s "${dotfilesPath}/zed/snippets" "${HOME}/.config/zed/snippets"
 else
   echo "Please provide a path."
 fi

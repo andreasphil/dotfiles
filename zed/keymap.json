@@ -1,0 +1,19 @@
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-r": "projects::OpenRecent"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "alt-shift-f": "editor::Format",
+      "cmd-[": "pane::GoBack",
+      "cmd-]": "pane::GoForward",
+      "cmd-alt-v": "workspace::ToggleVimMode",
+      "cmd-enter": "pane::TogglePreviewTab",
+      "cmd-shift-d": "editor::DuplicateLineDown"
+    }
+  }
+]
