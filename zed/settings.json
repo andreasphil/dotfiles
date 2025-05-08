@@ -41,6 +41,7 @@
   "languages": {
     "Markdown": {
       "preferred_line_length": 100,
+      "show_completions_on_input": false,
       "show_wrap_guides": false,
       "soft_wrap": "bounded"
     }
