@@ -15,7 +15,7 @@
   "theme": { "mode": "dark", "light": "Tokyo Night", "dark": "Tokyo Night" },
   "ui_font_family": ".SystemUIFont",
   "ui_font_size": 15,
-  "vim_mode": false,
+  "vim_mode": true,
   "wrap_guides": [80],
   "auto_install_extensions": {
     "emmet": true,
