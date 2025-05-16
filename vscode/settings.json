@@ -46,6 +46,7 @@
   "terminal.integrated.fontSize": 16,
   "terminal.integrated.lineHeight": 1.3,
   "terminal.integrated.showExitAlert": false,
+  "vim.useSystemClipboard": true,
   "window.dialogStyle": "custom",
   "workbench.colorCustomizations": {
     "[Ayu Dark]": {
@@ -115,7 +116,7 @@
     }
   },
   "workbench.colorTheme": "Tokyo Night",
+  "workbench.iconTheme": "eyecons",
   "workbench.tree.enableStickyScroll": false,
-  "workbench.tree.renderIndentGuides": "none",
-  "workbench.iconTheme": "eyecons"
+  "workbench.tree.renderIndentGuides": "none"
 }

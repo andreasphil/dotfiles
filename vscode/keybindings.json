@@ -27,5 +27,10 @@
     "key": "alt+cmd+o",
     "command": "editor.action.toggleOvertypeInsertMode",
     "when": "editorFocus"
+  },
+  {
+    "key": "alt+cmd+v",
+    "command": "toggleVim",
+    "when": "editorFocus"
   }
 ]
