@@ -1,9 +1,7 @@
 [
   {
     "context": "Workspace",
-    "bindings": {
-      "ctrl-r": "projects::OpenRecent"
-    }
+    "bindings": {}
   },
   {
     "context": "Editor",
