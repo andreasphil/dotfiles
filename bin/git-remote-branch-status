@@ -1,27 +1,74 @@
 #!/bin/bash
 
-# -----------------------------------------------------------------------------
 # GIT REMOTE BRANCH STATUS
 #
-# Prints a list of all local branches and checks if they exist at origin.
-# Useful if you work with a lot of branches and want to see which ones are
-# still needed.
-# -----------------------------------------------------------------------------
+# Goes through all local branches and checks if they exist at
+# origin (marked with a checkmark). If you set the `--clean`
+# option, you will see a menu allowing you to delete local
+# branches afterwards.
 
-padding=12
+# Strict mode ---------------------------------------------
 
-# Iterate over local branches (cut out the margin/asterisk printed by git)
-for i in $(git branch | cut -c 3-)
-do
-  # Count how often the branch is found at origin (number needs to be trimmed on macOS)
-  finds=$(git ls-remote --heads origin "$i" | wc -l | tr -d " ")
+set -u            # no unset variables
+set -e            # exit immediately on error
+set -E            # inherit -e in functions
+set -o pipefail   # return value of pipeline is rightmost return
 
-  if [[ $finds == 0 ]]
-  then
-    printf "%-*s" $padding "not found"
-  else
-    printf "%-*s" $padding "exists"
+# Utilities -----------------------------------------------
+
+# Exit if the specified command does not exist.
+#
+# Usage:
+#   _require <command>
+_require() {
+  if ! type "$1" &>/dev/null; then
+    printf "\033[0;31m\033[1mERROR\033[0m required dependency %s is missing\n" "$1"
+    exit 1
   fi
+}
 
-  printf "%s\n" "$i"
-done
+# Internal ------------------------------------------------
+
+_check_branches() {
+  local results=""
+
+  for i in $(git branch | cut -c 3-); do
+    local finds=$(git ls-remote --heads origin "$i" | wc -l | tr -d " ")
+    local status=" "
+
+    if [[ "$finds" -gt 0 ]]; then
+      status="✓"
+    fi
+
+    results="$results|$(printf "[%s] %s" "$status" "$i")"
+  done
+
+  echo "${results#|}"
+}
+
+# Init ----------------------------------------------------
+
+_require "gum"
+
+results="$(_check_branches)"
+
+if [[ $# -eq 1 && "$1" == "--clean" ]]; then
+  to_delete=$(echo "$results" | gum choose \
+    --header "Choose branches to delete:" \
+    --input-delimiter="|" \
+    --output-delimiter="|" \
+    --no-limit \
+    --selected-prefix="x "
+  )
+
+  to_delete=$(echo "$to_delete" | sed -e 's/|*\[.\] / /g' -e 's/^ //')
+
+  if gum confirm "Delete the following branches? $to_delete"; then
+    git branch -D $to_delete
+  else
+    echo "ok"
+  fi
+else
+  printf "${results//|/\n}\n"
+fi
+
