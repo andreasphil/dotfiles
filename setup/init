@@ -1,65 +1,61 @@
 #!/bin/bash
 
-# -----------------------------------------------------------------------------
-# INITIALIZE
-#
-# Sets up the dotfiles on the current machine. You'll first be prompted for
-# the path of the dotfiles folder. The script adds file containing that path
-# to your home folder, which will be referenced in the future. Afterwards
-# the different configuration files will be softlinked.
-# -----------------------------------------------------------------------------
-
 echo "What's the path of your dotfiles folder?"
-read dotfilesPath
+read DOTFILES_ROOT
 
-if [[ $dotfilesPath != "" && $? ]]
-then
-  # Create a .dotfiles_local file in the home folder pointing to the selected
-  # path. The file will be read by the shell, so it can also contain local
-  # customizations that you don't want to add to the dotfiles repository.
-  echo "#!/bin/bash" > "${dotfilesPath}/environment/dotfiles_local"
-  echo "export DOTFILES_ROOT=\"${dotfilesPath}\"" >> "${dotfilesPath}/environment/dotfiles_local"
-
-  # This file will be included by your git config and can be used to set local
-  # users, aliases and other configuration that you don't want to add to the
-  # dotfiles repository.
-  echo "# Add system specific git config to this file" > "${dotfilesPath}/environment/gitconfig_local"
-
-  # Create command line bookmarks folder
-  mkdir "${HOME}/.bookmarks"
-
-  # Link terminal profile from the dotfiles folder to the home folder
-  ln -s "${dotfilesPath}/environment/dotfiles_local" "${HOME}/.dotfiles_local"
-  ln -s "${dotfilesPath}/environment/gitconfig" "${HOME}/.gitconfig"
-  ln -s "${dotfilesPath}/environment/gitconfig_local" "${HOME}/.gitconfig_local"
-  ln -s "${dotfilesPath}/environment/gitignore_global" "${HOME}/.gitignore_global"
-  ln -s "${dotfilesPath}/environment/zprofile" "${HOME}/.zprofile"
-  ln -s "${dotfilesPath}/environment/zshrc" "${HOME}/.zshrc"
-
-  # Link nvim config
-  mkdir -p "${HOME}/.config/nvim"
-  ln -s "${dotfilesPath}/environment/init.lua" "${HOME}/.config/nvim/init.lua"
-
-  # Link ghostty config
-  mkdir -p "${HOME}/.config/ghostty"
-  ln -s "${dotfilesPath}/environment/ghostty" "${HOME}/.config/ghostty/config"
-
-  # Link lazygit config
-  mkdir -p "${HOME}/.config/lazygit"
-  ln -s "${dotfilesPath}/environment/lazygit.yml" "${HOME}/.config/lazygit/config.yml"
-
-  # Link VS Code config
-  mkdir -p "${HOME}/Library/Application Support/Code/User"
-  ln -s "${dotfilesPath}/vscode/keybindings.json" "${HOME}/Library/Application Support/Code/User/keybindings.json"
-  ln -s "${dotfilesPath}/vscode/settings.json" "${HOME}/Library/Application Support/Code/User/settings.json"
-  ln -s "${dotfilesPath}/vscode/snippets" "${HOME}/Library/Application Support/Code/User/snippets"
-
-  # Link Zed config
-  mkdir -p "${HOME}/.config/zed"
-  ln -s "${dotfilesPath}/zed/keymap.json" "${HOME}/.config/zed/keymap.json"
-  ln -s "${dotfilesPath}/zed/settings.json" "${HOME}/.config/zed/settings.json"
-  ln -s "${dotfilesPath}/zed/tasks.json" "${HOME}/.config/zed/tasks.json"
-  ln -s "${dotfilesPath}/zed/snippets" "${HOME}/.config/zed/snippets"
-else
-  echo "Please provide a path."
+if [[ "$DOTFILES_ROOT" == "" || ! $? ]]; then
+  echo "[error] please provide a path"
+  exit 1
 fi
+
+# Create a .dotfiles_local file in the home folder pointing to the selected
+# path. The file will be read by the shell, so it can also contain local
+# customizations that you don't want to add to the dotfiles repository.
+dotfiles_local_path="${DOTFILES_ROOT}/environment/dotfiles_local"
+if [[ ! -e "$dotfiles_local_path" ]]; then
+  echo "#!/bin/bash" > "$dotfiles_local_path"
+  echo "export DOTFILES_ROOT=\"${DOTFILES_ROOT}\"" >> "$dotfiles_local_path"
+else
+  echo "$dotfiles_local_path: File exists"
+fi
+
+# This file will be included by your git config and can be used to set local
+# users, aliases and other configuration that you don't want to add to the
+# dotfiles repository.
+touch "${DOTFILES_ROOT}/environment/gitconfig_local"
+
+# Create command line bookmarks folder
+mkdir -p "${HOME}/.bookmarks"
+
+# Link terminal profile from the dotfiles folder to the home folder
+ln -s "${DOTFILES_ROOT}/environment/dotfiles_local" "${HOME}/.dotfiles_local"
+ln -s "${DOTFILES_ROOT}/environment/gitconfig" "${HOME}/.gitconfig"
+ln -s "${DOTFILES_ROOT}/environment/gitconfig_local" "${HOME}/.gitconfig_local"
+ln -s "${DOTFILES_ROOT}/environment/gitignore_global" "${HOME}/.gitignore_global"
+ln -s "${DOTFILES_ROOT}/environment/zprofile" "${HOME}/.zprofile"
+ln -s "${DOTFILES_ROOT}/environment/zshrc" "${HOME}/.zshrc"
+
+# Link nvim config
+mkdir -p "${HOME}/.config/nvim"
+ln -s "${DOTFILES_ROOT}/environment/init.lua" "${HOME}/.config/nvim/init.lua"
+
+# Link ghostty config
+mkdir -p "${HOME}/.config/ghostty"
+ln -s "${DOTFILES_ROOT}/environment/ghostty" "${HOME}/.config/ghostty/config"
+
+# Link lazygit config
+mkdir -p "${HOME}/.config/lazygit"
+ln -s "${DOTFILES_ROOT}/environment/lazygit.yml" "${HOME}/.config/lazygit/config.yml"
+
+# Link VS Code config
+mkdir -p "${HOME}/Library/Application Support/Code/User"
+ln -s "${DOTFILES_ROOT}/vscode/keybindings.json" "${HOME}/Library/Application Support/Code/User/keybindings.json"
+ln -s "${DOTFILES_ROOT}/vscode/settings.json" "${HOME}/Library/Application Support/Code/User/settings.json"
+ln -s "${DOTFILES_ROOT}/vscode/snippets" "${HOME}/Library/Application Support/Code/User/"
+
+# Link Zed config
+mkdir -p "${HOME}/.config/zed"
+ln -s "${DOTFILES_ROOT}/zed/keymap.json" "${HOME}/.config/zed/keymap.json"
+ln -s "${DOTFILES_ROOT}/zed/settings.json" "${HOME}/.config/zed/settings.json"
+ln -s "${DOTFILES_ROOT}/zed/tasks.json" "${HOME}/.config/zed/tasks.json"
+ln -s "${DOTFILES_ROOT}/zed/snippets" "${HOME}/.config/zed/"
