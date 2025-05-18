@@ -40,7 +40,10 @@ vim.call('plug#begin')
   Plug('itchyny/vim-gitbranch')
   Plug('maxbrunsfeld/vim-yankstack')
   Plug('ntpeters/vim-better-whitespace')
+  Plug('nvim-lua/plenary.nvim')
+  Plug('nvim-telescope/telescope.nvim')
   Plug('terryma/vim-expand-region')
+  Plug('tpope/vim-surround')
 
   -- Languages
   Plug('NoahTheDuke/vim-just')
@@ -160,6 +163,12 @@ vim.keymap.set('v', '<leader>c', '\"*y')
 vim.keymap.set('v', '<leader>x', '\"*d')
 vim.keymap.set('n', '<leader>v', '\"*p')
 vim.keymap.set('n', '<leader>V', '\"*P')
+
+-- Telescope
+local telescope = require('telescope.builtin')
+vim.keymap.set('n', '<leader>fc', telescope.commands)
+vim.keymap.set('n', '<leader>ff', telescope.find_files)
+vim.keymap.set('n', '<leader>fg', telescope.live_grep)
 
 -- Terminal
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
