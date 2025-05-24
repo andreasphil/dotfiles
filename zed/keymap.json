@@ -7,6 +7,7 @@
     "context": "Editor",
     "bindings": {
       "alt-shift-f": "editor::Format",
+      "alt-shift-i": "editor::SplitSelectionIntoLines",
       "cmd-[": "pane::GoBack",
       "cmd-]": "pane::GoForward",
       "cmd-alt-v": "workspace::ToggleVimMode",
