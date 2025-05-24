@@ -1,18 +1,13 @@
 #!/bin/bash
 
+set -ueEo pipefail
+
 # GIT REMOTE BRANCH STATUS
 #
 # Goes through all local branches and checks if they exist at
 # origin (marked with a checkmark). If you set the `--clean`
 # option, you will see a menu allowing you to delete local
 # branches afterwards.
-
-# Strict mode ---------------------------------------------
-
-set -u            # no unset variables
-set -e            # exit immediately on error
-set -E            # inherit -e in functions
-set -o pipefail   # return value of pipeline is rightmost return
 
 # Utilities -----------------------------------------------
 
@@ -71,4 +66,3 @@ if [[ $# -eq 1 && "$1" == "--clean" ]]; then
 else
   printf "${results//|/\n}\n"
 fi
-

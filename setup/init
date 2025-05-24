@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -ueEo pipefail
+IFS=$'\n\t'
+
 echo "What's the path of your dotfiles folder?"
 read DOTFILES_ROOT
 
