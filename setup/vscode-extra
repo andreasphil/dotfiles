@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -ueEo pipefail
+IFS=$'\n\t'
+
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false

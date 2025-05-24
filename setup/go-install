@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -ueEo pipefail
+IFS=$'\n\t'
+
+go install github.com/andreasphil/peek@latest
+go install github.com/air-verse/air@latest
