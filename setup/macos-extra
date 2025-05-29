@@ -53,7 +53,7 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 # Dock & desktop, mission control, ... --------------------
 
 # Dock icon size
-defaults write com.apple.dock "tilesize" -int "48"
+defaults write com.apple.dock "tilesize" -int "64"
 
 # Hide recent apps
 defaults write com.apple.dock show-recents -bool false
