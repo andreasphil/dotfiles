@@ -1,0 +1,81 @@
+#!/bin/bash
+
+# Strict mode ---------------------------------------------
+
+set -ueEo pipefail
+IFS=$'\n\t'
+
+# Utilities -----------------------------------------------
+
+# Log an error message and exit the script.
+#
+# Usage:
+#   _fatal <message>
+_fatal() {
+  _log error "$@"
+  exit 1
+}
+
+# Log a message with the specified level. Allowed levels are "none", "debug",
+# "info", "warn", and "error".
+#
+# Usage:
+#   _log <level> <message>
+_log() {
+  level="$1"
+  shift
+
+  gum log --level="$level" "$@"
+}
+
+# Exit if the specified command does not exist.
+#
+# Usage:
+#   _require <command>
+_require() {
+  if ! type "$1" &>/dev/null; then
+    printf "\033[0;31m\033[1mERROR\033[0m required dependency %s is missing\n" "$1"
+    exit 1
+  fi
+}
+
+# Init ----------------------------------------------------
+
+_require "gum"
+
+if git status &>/dev/null; then
+  _fatal "Current folder is a git repository"
+fi
+
+output="Name,Branch,Has changes,Has stash\n"
+
+for i in */; do
+  # Check if it is a repository
+  if ! git -C "$i" status &>/dev/null; then
+    output+="$i (not a repository),-,-,-\n"
+    continue
+  fi
+
+  # Branches
+  branch=$(git -C "$i" branch --show-current)
+  branch_count=$(git -C "$i" branch | wc -l | tr -d " ")
+
+  # Uncommitted changes
+  has_changes="✅ no"
+  if ! git -C "$i" diff --quiet || ! git -C "$i" diff --cached --quiet; then
+    has_changes="⚠️ yes"
+  fi
+
+  # Stash
+  has_stash="✅ no"
+  stash_count=$(git -C "$i" stash list | wc -l | tr -d " ")
+  if [[ "$stash_count" -gt 0 ]]; then
+    has_stash="⚠️ yes"
+  fi
+
+  output+="$i,$branch ($branch_count),$has_changes,$has_stash\n"
+done
+
+result=$(printf "$output" | gum table | cut -d "," -f1)
+
+echo "$result"
