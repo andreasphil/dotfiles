@@ -26,7 +26,6 @@
   "editor.inlayHints.enabled": "offUnlessPressed",
   "editor.inlineSuggest.enabled": true,
   "editor.lineHeight": 1.6,
-  "editor.minimap.enabled": false,
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.stickyScroll.enabled": false,
   "editor.suggestSelection": "first",
@@ -42,6 +41,14 @@
   "files.trimTrailingWhitespace": true,
   "git.openRepositoryInParentFolders": "always",
   "git.timeline.showUncommitted": true,
+  "github.copilot.enable": {
+    "*": false,
+    "markdown": false,
+    "plaintext": false,
+    "scminput": false
+  },
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "gradle.nestedProjects": true,
   "telemetry.telemetryLevel": "off",
   "terminal.integrated.fontSize": 16,
   "terminal.integrated.lineHeight": 1.3,
