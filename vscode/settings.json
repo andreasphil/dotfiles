@@ -14,7 +14,6 @@
     "editor.guides.indentation": true
   },
   "breadcrumbs.enabled": false,
-  "chat.commandCenter.enabled": false,
   "css.lint.unknownAtRules": "ignore",
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.accessibilitySupport": "off",
@@ -48,6 +47,7 @@
     "scminput": false
   },
   "github.copilot.nextEditSuggestions.enabled": true,
+  "go.toolsManagement.autoUpdate": true,
   "gradle.nestedProjects": true,
   "telemetry.telemetryLevel": "off",
   "terminal.integrated.fontSize": 16,
@@ -123,6 +123,7 @@
     }
   },
   "workbench.colorTheme": "Tokyo Night",
+  "workbench.editor.empty.hint": "hidden",
   "workbench.iconTheme": "eyecons",
   "workbench.tree.enableStickyScroll": false,
   "workbench.tree.renderIndentGuides": "none"
