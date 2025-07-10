@@ -30,6 +30,15 @@ vim.opt.updatetime = 300        -- snappier updates
 vim.opt.wildmenu = true         -- enable better completion
 vim.opt.wrap = true             -- softwrap when the text runs longer than the window
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.opt_local.expandtab = true
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.tabstop = 2
+  end
+})
+
 -- Plugins ------------------------------------------------
 
 local Plug = vim.fn['plug#']
