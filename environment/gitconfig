@@ -16,3 +16,5 @@
 	ff = only
 [submodule]
   recurse = true
+[push]
+	followTags = true
