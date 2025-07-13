@@ -65,6 +65,7 @@
       "show": "never"
     }
   },
+  "show_edit_predictions": false,
   "tab_size": 2,
   "tabs": {
     "file_icons": true,
