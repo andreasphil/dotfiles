@@ -1,5 +1,4 @@
 {
-  "agent_font_size": 15,
   "auto_install_extensions": {
     "emmet": true,
     "html": true,
@@ -16,8 +15,7 @@
     "button": false
   },
   "edit_predictions": {
-    "enabled_in_text_threads": false,
-    "mode": "subtle"
+    "mode": "eager"
   },
   "experimental.theme_overrides": {
     "element.active": "#1e202e",
@@ -37,19 +35,16 @@
   "git_panel": {
     "default_width": 320
   },
-  "hide_mouse": "never",
   "indent_guides": {
     "enabled": false
   },
   "languages": {
     "Markdown": {
       "preferred_line_length": 100,
-      "show_completions_on_input": false,
       "show_wrap_guides": false,
       "soft_wrap": "bounded"
     }
   },
-  "multi_cursor_modifier": "cmd_or_ctrl",
   "notification_panel": {
     "button": false
   },
@@ -71,14 +66,14 @@
     "file_icons": true,
     "git_status": true,
     "show_close_button": "always",
-    "show_diagnostics": "errors"
+    "show_diagnostics": "all"
   },
   "telemetry": {
     "metrics": false
   },
   "theme": {
     "dark": "Tokyo Night",
-    "light": "Tokyo Night",
+    "light": "Tokyo Night Light",
     "mode": "dark"
   },
   "ui_font_family": ".SystemUIFont",
