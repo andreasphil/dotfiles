@@ -13,6 +13,7 @@
     "editor.guides.indentation": true
   },
   "breadcrumbs.enabled": false,
+  "chat.commandCenter.enabled": false,
   "css.lint.unknownAtRules": "ignore",
   "diffEditor.ignoreTrimWhitespace": true,
   "editor.accessibilitySupport": "off",
@@ -42,12 +43,20 @@
   "files.trimTrailingWhitespace": true,
   "git.openRepositoryInParentFolders": "always",
   "git.timeline.showUncommitted": true,
+  "github.copilot.enable": {
+    "*": false,
+    "markdown": false,
+    "plaintext": false,
+    "scminput": false
+  },
   "go.toolsManagement.autoUpdate": true,
   "gradle.nestedProjects": true,
+  "inlineChat.lineNaturalLanguageHint": false,
   "telemetry.telemetryLevel": "off",
   "terminal.integrated.fontSize": 15,
   "terminal.integrated.lineHeight": 1.4,
   "terminal.integrated.showExitAlert": false,
+  "vim.foldfix": true,
   "vim.useSystemClipboard": true,
   "window.dialogStyle": "custom",
   "workbench.colorCustomizations": {
@@ -79,8 +88,12 @@
     }
   },
   "workbench.colorTheme": "Tokyo Night",
+  "workbench.commandPalette.experimental.enableNaturalLanguageSearch": false,
+  "workbench.editor.editorActionsLocation": "hidden",
   "workbench.editor.empty.hint": "hidden",
   "workbench.iconTheme": "eyecons",
+  "workbench.layoutControl.enabled": false,
+  "workbench.settings.editor": "json",
   "workbench.startupEditor": "none",
   "workbench.tree.enableStickyScroll": false,
   "workbench.tree.renderIndentGuides": "none"
