@@ -50,6 +50,10 @@ ln -s "${DOTFILES_ROOT}/environment/ghostty" "${HOME}/.config/ghostty/config"
 mkdir -p "${HOME}/.config/lazygit"
 ln -s "${DOTFILES_ROOT}/environment/lazygit.yml" "${HOME}/.config/lazygit/config.yml"
 
+# Link helix config
+mkdir -p "${HOME}/.config/helix"
+ln -s "${DOTFILES_ROOT}/environment/helix.toml" "${HOME}/.config/helix/config.toml"
+
 # Link VS Code config
 mkdir -p "${HOME}/Library/Application Support/Code/User"
 ln -s "${DOTFILES_ROOT}/vscode/keybindings.json" "${HOME}/Library/Application Support/Code/User/keybindings.json"
