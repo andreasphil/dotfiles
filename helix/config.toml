@@ -1,0 +1,10 @@
+theme = "tokyonight"
+
+[editor]
+color-modes = true
+
+[editor.soft-wrap]
+wrap-indicator = ""
+
+[keys.normal.","]
+"A-d" = ":insert-output date \"+%%d.%%m.%%Y\""

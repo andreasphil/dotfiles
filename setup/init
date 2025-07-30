@@ -52,7 +52,8 @@ ln -s "${DOTFILES_ROOT}/environment/lazygit.yml" "${HOME}/.config/lazygit/config
 
 # Link helix config
 mkdir -p "${HOME}/.config/helix"
-ln -s "${DOTFILES_ROOT}/environment/helix.toml" "${HOME}/.config/helix/config.toml"
+ln -s "${DOTFILES_ROOT}/helix/config.toml" "${HOME}/.config/helix/config.toml"
+ln -s "${DOTFILES_ROOT}/helix/languages.toml" "${HOME}/.config/helix/languages.toml"
 
 # Link VS Code config
 mkdir -p "${HOME}/Library/Application Support/Code/User"
