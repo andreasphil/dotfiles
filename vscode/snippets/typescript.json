@@ -1,15 +1,39 @@
 {
   "Section": {
     "prefix": "section",
-    "body": ["// $1--------------------------------------------------------"],
+    "body": [
+      "// $1--------------------------------------------------------"
+    ],
     "description": "Divider"
   },
-  "Test suite": {
+  "Test suite (Vitest)": {
     "prefix": "describe",
-    "body": ["describe(\"${TM_FILENAME_BASE/([^\\.]+).*$/$1/}\", () => {$2})"]
+    "body": [
+      "describe(\"${TM_FILENAME_BASE/([^\\.]+).*$/$1/}\", () => {$2})"
+    ]
   },
-  "Test (it)": {
+  "Test (Vitest)": {
     "prefix": "it",
-    "body": ["it(\"$1\", ${2:async} () => {", "  $3", "});"]
+    "body": [
+      "it(\"$1\", ${2:async} () => {",
+      "  $3",
+      "});"
+    ]
+  },
+  "Test (Playwright)": {
+    "prefix": "test",
+    "body": [
+      "test(\"$1\", async ({ page }) => {",
+      "  $3",
+      "});"
+    ]
+  },
+  "Test suite (Playwright)": {
+    "prefix": "describe",
+    "body": [
+      "test.describe(\"$1\", { tag: [\"@$2\"] }, () => {",
+      "  $3",
+      "});"
+    ]
   }
 }
