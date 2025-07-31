@@ -6,5 +6,5 @@ color-modes = true
 [editor.soft-wrap]
 wrap-indicator = ""
 
-[keys.normal.","]
+[keys.normal."+"]
 "A-d" = ":insert-output date \"+%%d.%%m.%%Y\""
