@@ -76,4 +76,10 @@ defaults write com.apple.TextEdit PlainTextEncoding -int 4
 defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
 defaults write com.apple.TextEdit TabWidth '2'
 
+# Shortcuts -----------------------------------------------
+
+defaults write -g NSUserKeyEquivalents -dict-add "Fenster aus Satz entfernen" "^\\U008b"
+defaults write -g NSUserKeyEquivalents -dict-add "Remove Window from Set" "^\\U008b"
+defaults write -g NSUserKeyEquivalents -dict-add "Neuer Tab rechts" "^t"
+
 echo "Done. Note that some of these changes require a logout/restart of your OS to take effect."
