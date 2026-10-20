@@ -1,0 +1,30 @@
+[alias]
+	remote-branch = !git-remote-branch-status
+	batch-status = !git-batch-status
+[core]
+	pager = delta
+[delta]
+	navigate = true
+[diff]
+	algorithm = histogram
+[fetch]
+	prune = true
+[user]
+	email = 18646892+andreasphil@users.noreply.github.com
+	name = Andreas Philippi
+[include]
+	path = ~/.gitconfig_local
+[init]
+	defaultBranch = main
+[interactive]
+	diffFilter = delta --color-only
+[merge]
+	ff = only
+	conflictStyle = zdiff3
+[pull]
+	ff = only
+[push]
+	followTags = true
+	autoSetupRemote = true
+[submodule]
+	recurse = true

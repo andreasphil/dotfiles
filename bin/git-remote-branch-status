@@ -1,0 +1,82 @@
+#!/bin/bash
+
+set -ueEo pipefail
+
+# GIT REMOTE BRANCH STATUS
+#
+# Goes through all local branches and checks their upstream tracking status:
+# 
+# ✓ - Upstream exists and is reachable
+# ✗ - Upstream is configured but gone (deleted from remote)
+# ? - No upstream configured (new/local-only branch)
+# 
+# If you set the `--clean` option, you will see a menu allowing you to delete
+# local branches afterwards.
+
+# Utilities -----------------------------------------------
+
+# Exit if the specified command does not exist.
+#
+# Usage:
+#   _require <command>
+_require() {
+  if ! type "$1" &>/dev/null; then
+    printf "\033[0;31m\033[1mERROR\033[0m required dependency %s is missing\n" "$1"
+    exit 1
+  fi
+}
+
+# Internal ------------------------------------------------
+
+_check_branches() {
+  local results=""
+
+  # Get branch info: branch name, upstream name, and tracking status
+  while IFS= read -r line; do
+    local branch=$(echo "$line" | awk '{print $1}')
+    local upstream=$(echo "$line" | awk '{print $2}')
+    local track=$(echo "$line" | awk '{print $3}')
+    local status
+
+    if [[ -z "$upstream" ]]; then
+      # No upstream configured
+      status="?"
+    elif [[ "$track" == "[gone]" ]]; then
+      # Upstream is gone (deleted from remote)
+      status="✗"
+    else
+      # Upstream exists
+      status="✓"
+    fi
+
+    results="$results|$(printf "[%s] %s" "$status" "$branch")"
+  done < <(git for-each-ref --format='%(refname:short) %(upstream:short) %(upstream:track)' refs/heads/)
+
+  echo "${results#|}"
+}
+
+# Init ----------------------------------------------------
+
+_require "gum"
+
+results="$(_check_branches)"
+
+if [[ $# -eq 1 && "$1" == "--clean" ]]; then
+  to_delete=$(echo "$results" | gum choose \
+    --header "Choose branches to delete:" \
+    --input-delimiter="|" \
+    --output-delimiter="|" \
+    --no-limit \
+    --selected-prefix="x "
+  )
+
+  to_delete=$(echo "$to_delete" | sed -e 's/|*\[.\] / /g' -e 's/^ //')
+
+  if gum confirm "Delete the following branches? $to_delete"; then
+    git branch -D $to_delete
+  else
+    echo "ok"
+  fi
+else
+  printf "${results//|/\n}\n"
+fi

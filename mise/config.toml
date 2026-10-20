@@ -1,0 +1,3 @@
+[settings]
+disable_backends = ["asdf"]
+not_found_auto_install = false # prevent addings shims to path

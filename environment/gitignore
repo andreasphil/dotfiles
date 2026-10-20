@@ -1,0 +1,13 @@
+.DS_Store
+.agents
+.claude
+.claude/settings.local.json
+.helix
+.ignore
+.justfile
+.playwright-cli
+.zed
+AGENTS.md
+CLAUDE.md
+mise.local.toml
+**/.claude/.cc-writes/

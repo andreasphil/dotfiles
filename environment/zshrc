@@ -1,0 +1,156 @@
+. "${HOME}/.dotfiles_local"
+
+# Custom prompt -------------------------------------------
+
+autoload -Uz vcs_info
+
+precmd() {
+  vcs_info
+}
+
+setopt prompt_subst
+
+zstyle ":vcs_info:*" enable git
+zstyle ":vcs_info:*" check-for-changes true
+zstyle ":vcs_info:*" check-for-staged-changes true
+zstyle ":vcs_info:git*" formats "(%b) %u%c"
+zstyle ":vcs_info:git*" actionformats "(%b) %u%c (%a)"
+
+PROMPT='
+%F{yellow}%*%f %F{blue}%B%0~%b%f %F{008}${vcs_info_msg_0_}%f
+%(?.✼.%F{red}✕%f) '
+
+# Environment ---------------------------------------------
+
+# Keep PATH free of duplicates (first occurrence wins)
+typeset -U path PATH
+
+# config
+export XDG_CONFIG_HOME="${HOME}/.config"
+
+# homebrew
+export HOMEBREW_BUNDLE_NO_DESCRIBE=1
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# antidote
+source $(brew --prefix antidote)/share/antidote/antidote.zsh
+antidote load
+
+# History -------------------------------------------------
+
+setopt share_history
+setopt hist_find_no_dups
+setopt hist_ignore_all_dups
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_save_no_dups
+
+autoload -U up-line-or-beginning-search
+zle -N up-line-or-beginning-search
+bindkey -M emacs "^[[A" up-line-or-beginning-search
+
+autoload -U down-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey -M emacs "^[[B" down-line-or-beginning-search
+
+# Completions ---------------------------------------------
+
+setopt autocd
+setopt auto_menu
+setopt always_to_end
+setopt complete_in_word
+
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' menu select
+
+bindkey -M emacs "${terminfo[kcbt]}" reverse-menu-complete
+
+# Misc settings -------------------------------------------
+
+bindkey -e
+
+autoload -Uz zmv
+
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '\C-x\C-e' edit-command-line
+
+# Aliases & shortcuts -------------------------------------
+
+alias gbs="git batch-status"
+alias gc="git commit"
+alias grs="git remote-branch --clean"
+alias gst="git status"
+alias gsw="git switch"
+alias lg="lazygit"
+alias la="ls -la"
+alias ls="ls -1 --color=auto"
+
+alias -g C="| pbcopy"
+
+alias -s md=mdp
+
+function gcd() {
+  cd "$(git batch-status)"
+}
+
+function mdp() {
+  cat "$@" | gum format -t markdown | gum pager
+}
+
+bindkey -s '^B' 'zi\n'          # Zoxide
+bindkey -s '^K' 'mise run\n'    # Mise tasks
+
+# Applications --------------------------------------------
+
+# bat
+export BAT_THEME="Catppuccin Mocha"
+
+# fzf
+eval "$(fzf --zsh)"
+export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git/*"'
+export FZF_DEFAULT_OPTS='
+  --color=fg:#979ec2,fg+:#c0caf5,bg:-1,bg+:#1a1b26
+  --color=hl:#4f94cd,hl+:#63b8ff,info:#7a67ee,marker:#4eee94
+  --color=prompt:#ff6eb4,spinner:#7a67ee,pointer:#7a67ee,header:#c7d1ff
+  --color=border:#34364d,label:#7a67ee,query:#c0caf5
+  --border="rounded" --border-label="" --preview-window="border-rounded"
+'
+
+# go
+export GOPATH="${HOME}/Projects/go"
+export GOTOOLCHAIN=local
+
+# helix
+export VISUAL=hx
+export EDITOR=hx
+
+# pnpm
+export PNPM_HOME="/Users/andreas/Library/pnpm"
+
+# rg
+export RIPGREP_CONFIG_PATH="${DOTFILES_ROOT}/environment/ripgreprc"
+
+# # superfile
+s() {
+  local -x SPF_LAST_DIR="$HOME/Library/Application Support/superfile/lastdir"
+  command spf "$@"
+  if [[ -f $SPF_LAST_DIR ]]; then
+    source "$SPF_LAST_DIR"
+    rm -f -- "$SPF_LAST_DIR"
+  fi
+}
+
+# zoxide
+eval "$(zoxide init zsh)"
+
+# path
+PATH="${GOPATH}/bin:${PATH}"            # Go
+PATH="${PNPM_HOME}/bin:${PATH}"         # pnpm
+PATH="${HOME}/.local/bin:${PATH}"       # Local shims
+PATH="${DOTFILES_ROOT}/bin:${PATH}"     # Dotfiles scripts
+
+export PATH
+
+# mise
+eval "$(mise activate zsh)"

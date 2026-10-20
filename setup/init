@@ -1,0 +1,250 @@
+#!/bin/bash
+
+set -ueEo pipefail
+IFS=$'\n\t'
+
+# ---------------------------------------------------------
+# USAGE
+#
+# Modes:
+#   (no args)   Interactive install — prompts for dotfiles path, then links
+#   --verify    Check all symlinks are valid; report broken/missing ones
+#   --cleanup   Remove orphaned symlinks (links that point to missing targets)
+# ---------------------------------------------------------
+
+MODE="${1:-install}"
+
+# ---------------------------------------------------------
+# Symlink map: "source (relative to DOTFILES_ROOT)" ->
+# "target (absolute)" Add new configs here — no need to
+# touch anything else.
+# ---------------------------------------------------------
+
+declare_links() {
+  local root="$1"
+
+  # environment
+  link "${root}/environment/dotfiles_local"   "${HOME}/.dotfiles_local"
+  link "${root}/environment/npmrc"            "${HOME}/.npmrc"
+  link "${root}/environment/zsh_plugins.txt"  "${HOME}/.zsh_plugins.txt"
+  link "${root}/environment/zshrc"            "${HOME}/.zshrc"
+
+  # claude
+  link "${root}/claude/settings.json"         "${HOME}/.claude/settings.json"
+  link "${root}/claude/skills/proofread-edit" "${HOME}/.claude/skills/proofread-edit"
+  link "${root}/claude/skills/simple-english" "${HOME}/.claude/skills/simple-english"
+  link "${root}/claude/skills/unslop"         "${HOME}/.claude/skills/unslop"
+
+  # ghostty
+  link "${root}/ghostty/config"               "${HOME}/.config/ghostty/config"
+
+  # git
+  link "${root}/environment/gitconfig"        "${HOME}/.gitconfig"
+  link "${root}/environment/gitconfig_local"  "${HOME}/.gitconfig_local"
+  link "${root}/environment/gitignore"        "${HOME}/.config/git/ignore"
+
+  # helix
+  link "${root}/helix/config.toml"            "${HOME}/.config/helix/config.toml"
+  link "${root}/helix/languages.toml"         "${HOME}/.config/helix/languages.toml"
+
+  # lazygit
+  link "${root}/lazygit/config.yml"           "${HOME}/.config/lazygit/config.yml"
+
+  # mise
+  link "${root}/mise/config.toml"             "${HOME}/.config/mise/config.toml"
+  link "${root}/mise/config.local.toml"       "${HOME}/.config/mise/config.local.toml"
+
+  # nvim
+  link "${root}/nvim/init.lua"                "${HOME}/.config/nvim/init.lua"
+
+  # superfile
+  link "${root}/superfile/config.toml"        "${HOME}/.config/superfile/config.toml"
+  link "${root}/superfile/hotkeys.toml"       "${HOME}/.config/superfile/hotkeys.toml"
+
+  # zed
+  link "${root}/zed/keymap.json"              "${HOME}/.config/zed/keymap.json"
+  link "${root}/zed/settings.json"            "${HOME}/.config/zed/settings.json"
+  link "${root}/zed/tasks.json"               "${HOME}/.config/zed/tasks.json"
+  link "${root}/zed/snippets"                 "${HOME}/.config/zed/snippets"
+}
+
+# ---------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------
+
+# Accumulator used by each mode
+LINKS_SRC=()
+LINKS_DST=()
+
+link() {
+  LINKS_SRC+=("$1")
+  LINKS_DST+=("$2")
+}
+
+color_red()    { printf '\033[0;31m%s\033[0m' "$*"; }
+color_green()  { printf '\033[0;32m%s\033[0m' "$*"; }
+color_yellow() { printf '\033[0;33m%s\033[0m' "$*"; }
+
+# ---------------------------------------------------------
+# Install mode
+# ---------------------------------------------------------
+
+do_install() {
+  if [[ -n "${DOTFILES_ROOT:-}" ]]; then
+    echo "What's the path of your dotfiles folder? [${DOTFILES_ROOT}]"
+  else
+    echo "What's the path of your dotfiles folder?"
+  fi
+  read -r input
+  DOTFILES_ROOT="${input:-${DOTFILES_ROOT:-}}"
+
+  if [[ -z "$DOTFILES_ROOT" ]]; then
+    echo "[error] please provide a path"
+    exit 1
+  fi
+
+  # Resolve to absolute path
+  DOTFILES_ROOT="$(cd "$DOTFILES_ROOT" && pwd)"
+
+  # Bootstrap files that need to exist before linking
+  local dotfiles_local_path="${DOTFILES_ROOT}/environment/dotfiles_local"
+  if [[ ! -e "$dotfiles_local_path" ]]; then
+    echo "#!/bin/bash" > "$dotfiles_local_path"
+    echo "export DOTFILES_ROOT=\"${DOTFILES_ROOT}\"" >> "$dotfiles_local_path"
+    echo "Created ${dotfiles_local_path}"
+  fi
+
+  touch "${DOTFILES_ROOT}/environment/gitconfig_local"
+  touch "${DOTFILES_ROOT}/mise/config.local.toml"
+  touch "${DOTFILES_ROOT}/setup/Brewfile_local"
+
+  # Build link list and apply
+  declare_links "$DOTFILES_ROOT"
+
+  local errors=0
+
+  for i in "${!LINKS_SRC[@]}"; do
+    local src="${LINKS_SRC[$i]}"
+    local dst="${LINKS_DST[$i]}"
+
+    # Ensure parent directory exists
+    mkdir -p "$(dirname "$dst")"
+
+    if [[ -L "$dst" ]]; then
+      local current_target
+      current_target="$(readlink "$dst")"
+      if [[ "$current_target" == "$src" ]]; then
+        echo "$(color_green ok)      ${dst}"
+      else
+        echo "$(color_yellow skip)    ${dst} -> already points to ${current_target}"
+      fi
+    elif [[ -e "$dst" ]]; then
+      echo "$(color_red error)   ${dst} -> exists as a real file/dir, skipping (move it manually)"
+      (( errors++ )) || true
+    else
+      ln -s "$src" "$dst"
+      echo "$(color_green linked)  ${dst} -> ${src}"
+    fi
+  done
+
+  if (( errors > 0 )); then
+    echo ""
+    echo "$(color_yellow "Warning:")" "${errors} target(s) were skipped. Resolve manually then re-run."
+  else
+    echo ""
+    echo "Done."
+  fi
+}
+
+# ---------------------------------------------------------
+# Verify mode
+# ---------------------------------------------------------
+
+do_verify() {
+  # Try to discover DOTFILES_ROOT from the existing .dotfiles_local
+  local dotfiles_local="${HOME}/.dotfiles_local"
+  if [[ ! -e "$dotfiles_local" ]]; then
+    echo "[error] ~/.dotfiles_local not found — run install first or set DOTFILES_ROOT manually"
+    exit 1
+  fi
+  # shellcheck source=/dev/null
+  source "$dotfiles_local"
+
+  declare_links "$DOTFILES_ROOT"
+
+  local broken=0
+  for i in "${!LINKS_SRC[@]}"; do
+    local src="${LINKS_SRC[$i]}"
+    local dst="${LINKS_DST[$i]}"
+
+    if [[ -L "$dst" && -e "$dst" ]]; then
+      echo "$(color_green ok)      ${dst}"
+    elif [[ -L "$dst" && ! -e "$dst" ]]; then
+      echo "$(color_red broken)  ${dst} -> $(readlink "$dst") (target missing)"
+      (( broken++ )) || true
+    else
+      echo "$(color_yellow missing) ${dst}"
+      (( broken++ )) || true
+    fi
+  done
+
+  echo ""
+  if (( broken > 0 )); then
+    color_red "${broken} issue(s) found."
+    echo ""
+    exit 1
+  else
+    color_green "All symlinks OK."
+  fi
+}
+
+# ---------------------------------------------------------
+# Cleanup mode
+# ---------------------------------------------------------
+
+do_cleanup() {
+  local dotfiles_local="${HOME}/.dotfiles_local"
+  if [[ ! -e "$dotfiles_local" ]]; then
+    echo "[error] ~/.dotfiles_local not found — run install first or set DOTFILES_ROOT manually"
+    exit 1
+  fi
+  # shellcheck source=/dev/null
+  source "$dotfiles_local"
+
+  declare_links "$DOTFILES_ROOT"
+
+  local removed=0
+  for i in "${!LINKS_SRC[@]}"; do
+    local dst="${LINKS_DST[$i]}"
+
+    if [[ -L "$dst" && ! -e "$dst" ]]; then
+      rm "$dst"
+      echo "$(color_yellow removed) ${dst} (was pointing to missing target)"
+      (( removed++ )) || true
+    fi
+  done
+
+  echo ""
+  if (( removed > 0 )); then
+    echo "Removed ${removed} orphaned symlink(s)."
+  else
+    color_green "Nothing to clean up."
+  fi
+}
+
+# ---------------------------------------------------------
+# Dispatch
+# ---------------------------------------------------------
+
+case "$MODE" in
+  install|--install) do_install ;;
+  --verify)          do_verify  ;;
+  --cleanup)         do_cleanup ;;
+  *)
+    echo "Usage: $0 [--verify | --cleanup]"
+    echo "  (no args)   Install symlinks interactively"
+    echo "  --verify    Check all symlinks are valid"
+    echo "  --cleanup   Remove orphaned symlinks"
+    exit 1
+    ;;
+esac

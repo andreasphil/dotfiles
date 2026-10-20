@@ -1,0 +1,40 @@
+[
+  {
+    "bindings": {
+      "&": "editor::AlignSelections",
+      "_": "vim::HelixTrimSelections",
+      "alt-s": "editor::SplitSelectionIntoLines",
+      "g F": "editor::OpenSelectedFilename",
+      "g r t": "editor::GoToTypeDefinition",
+      "g w": "vim::HelixJumpToWord"
+    },
+    "context": "VimControl && !menu"
+  },
+  {
+    "bindings": {
+      "g '": "workspace::ReopenLastPicker",
+      "g /": "text_finder::Toggle",
+      "g ?": "command_palette::Toggle",
+      "g f": "file_finder::Toggle"
+    },
+    "context": "(VimControl && !menu) || EmptyPane"
+  },
+  {
+    "bindings": {
+      "shift-s": "vim::PushAddSurrounds"
+    },
+    "context": "vim_mode == visual"
+  },
+  {
+    "bindings": {
+      "cmd-!": "pane::SplitAndMoveLeft",
+      "cmd-@": "pane::SplitAndMoveRight",
+      "cmd-r": "text_finder::Toggle",
+      "ctrl-shift-z": "workspace::NewCenterTerminal"
+    },
+    "unbind": {
+      "alt-cmd-i": "dev::ToggleInspector",
+      "cmd-n": "workspace::NewTerminal"
+    }
+  }
+]

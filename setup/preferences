@@ -1,0 +1,101 @@
+#!/bin/bash
+
+set -uEo pipefail
+IFS=$'\n\t'
+
+# Ask for the administrator password upfront + keep until script end
+# sudo -v
+# while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+# General -------------------------------------------------
+
+# Trackpad: enable tap to click for this user and for the login screen
+defaults -currentHost write -globalDomain com.apple.mouse.tapBehavior -int 1
+defaults write -globalDomain com.apple.mouse.tapBehavior -int 1
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+
+# Disable press-and-hold for keys in favor of key repeat
+defaults write -globalDomain ApplePressAndHoldEnabled -bool false
+
+# Prefer tabs over windows
+defaults write -globalDomain AppleWindowTabbingMode -string always
+
+# Stage manager
+defaults write com.apple.WindowManager GloballyEnabled -bool true
+defaults write com.apple.WindowManager AppWindowGroupingBehavior -int 0
+
+# Disable macOS window tiling in favor of Magnet/Rectangle
+defaults write com.apple.WindowManager EnableTiledWindowMargins -int 0;
+defaults write com.apple.WindowManager EnableTilingByEdgeDrag -int 0;
+defaults write com.apple.WindowManager EnableTilingOptionAccelerator -int 0;
+defaults write com.apple.WindowManager EnableTopTilingByEdgeDrag -int 0;
+
+# Finder --------------------------------------------------
+
+# Default location for Finder windows
+defaults write com.apple.finder NewWindowTarget -string "PfDe"
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
+
+# Search current folder by default
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
+# Sort folders at the start of the list
+defaults write com.apple.finder "_FXSortFoldersFirst" -bool "true"
+
+# View options
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy name" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:gridSpacing 54" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 64" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy name" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:gridSpacing 54" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:iconSize 64" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set DesktopViewSettings:IconViewSettings:labelOnBottom true" ~/Library/Preferences/com.apple.finder.plist
+
+# Use icon view by default
+defaults write com.apple.finder FXPreferredViewStyle -string "icnv"
+
+# Show file extensions
+defaults write -globalDomain AppleShowAllExtensions -bool true
+
+# Dock & desktop, mission control, ... --------------------
+
+# Dock icon size
+defaults write com.apple.dock "tilesize" -int "64"
+
+# Hide recent apps
+defaults write com.apple.dock show-recents -bool false
+
+# Don't rearrange fullscreen spaces
+defaults write com.apple.dock "mru-spaces" -bool "false"
+
+# Show menu bar background
+defaults write -globalDomain SLSMenuBarUseBlurredAppearance -int "1"
+
+# Safari --------------------------------------------------
+
+defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
+defaults write com.apple.Safari IncludeDevelopMenu -bool true
+defaults write com.apple.Safari ShowStandaloneTabBar -bool false
+
+# Textedit ------------------------------------------------
+
+defaults write com.apple.TextEdit NSFixedPitchFont 'GeistMonoNF';
+defaults write com.apple.TextEdit PlainTextEncoding -int 4
+defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
+defaults write com.apple.TextEdit RichText -bool false
+defaults write com.apple.TextEdit TabWidth -int 2
+
+# Shortcuts -----------------------------------------------
+
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "Fenster aus Satz entfernen" "^\\U238b"
+defaults write -globalDomain NSUserKeyEquivalents -dict-add "Remove Window from Set" "^\\U238b"
+
+# Rectangle -----------------------------------------------
+
+defaults write com.knollsoft.Rectangle almostMaximizeHeight -float 0.9
+defaults write com.knollsoft.Rectangle almostMaximizeWidth -float 0.8
+
+echo "Done. Note that some of these changes require a logout/restart of your OS to take effect."

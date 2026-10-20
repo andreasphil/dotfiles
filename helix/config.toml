@@ -1,0 +1,30 @@
+theme = "tokyonight"
+
+[editor]
+color-modes = true
+text-width = 100
+
+[editor.file-picker]
+hidden = false
+
+[editor.soft-wrap]
+enable = true
+wrap-at-text-width = true
+wrap-indicator = ""
+
+[keys.normal]
+"$" = "@gl"
+"0" = "@gh"
+"^" = "@gs"
+
+[keys.normal."+"]
+"C-z" = ":toggle soft-wrap.wrap-at-text-width"
+"C-i" = ":toggle auto-format"
+"I" = ":fmt"
+"h" = ":insert-output date \"+%%d.%%m.%%Y\""
+"r" = ":reload-all"
+
+[keys.normal.g]
+o = ":! open -R %{buffer_name}"
+q = ":reflow"
+z = "@<space>f<C-r>."

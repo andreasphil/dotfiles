@@ -1,0 +1,14 @@
+{
+  "Handle err": {
+    "prefix": "err",
+    "body": ["if err != nil {", "$0", "}"]
+  },
+  "Return err": {
+    "prefix": "err",
+    "body": ["if err != nil {", "return ${1}, err", "}"]
+  },
+  "Section": {
+    "body": ["// $1--------------------------------------------------------"],
+    "description": "Divider"
+  }
+}

@@ -1,0 +1,190 @@
+{
+  "auto_update": false,
+  "auto_install_extensions": {
+    "emmet": true,
+    "html": true,
+    "oxc": true,
+    "tokyo-night": true,
+    "toml": true,
+    "tsgo": true
+  },
+  "buffer_font_family": "Dank Mono",
+  "buffer_line_height": {
+    "custom": 1.7
+  },
+  "cli_default_open_behavior": "new_window",
+  "collaboration_panel": {
+    "button": false
+  },
+  "disable_ai": true,
+  "experimental.theme_overrides": {
+    "editor.document_highlight.read_background": "#41486850",
+    "element.active": "#1a1b26",
+    "element.hover": "#1a1b26",
+    "element.selected": "#1e202e",
+    "ghost_element.active": "#1a1b26",
+    "ghost_element.background": "#00000000",
+    "ghost_element.hover": "#1a1b26",
+    "ghost_element.selected": "#1a1b26",
+    "syntax": {
+      "comment": {
+        "font_style": "italic"
+      }
+    },
+    "tab.active_background": "#1a1b26",
+    "toolbar.background": "#1a1b26"
+  },
+  "git": {
+    "inline_blame": {
+      "enabled": false
+    }
+  },
+  "git_panel": {
+    "default_width": 320,
+    "dock": "left",
+    "group_by": "staging",
+    "tree_view": true
+  },
+  "indent_guides": {
+    "enabled": false
+  },
+  "languages": {
+    "CSS": {
+      "formatter": {
+        "language_server": {
+          "name": "oxfmt"
+        }
+      },
+      "language_servers": ["!tailwindcss-language-server", "..."]
+    },
+    "HTML": {
+      "formatter": {
+        "language_server": {
+          "name": "oxfmt"
+        }
+      },
+      "language_servers": ["!tailwindcss-language-server", "..."]
+    },
+    "JSON": {
+      "formatter": {
+        "language_server": {
+          "name": "oxfmt"
+        }
+      }
+    },
+    "JSONC": {
+      "formatter": {
+        "language_server": {
+          "name": "oxfmt"
+        }
+      }
+    },
+    "JavaScript": {
+      "formatter": {
+        "language_server": {
+          "name": "oxfmt"
+        }
+      },
+      "language_servers": [
+        "!eslint",
+        "!tailwindcss-language-server",
+        "!typescript-language-server",
+        "!vtsls",
+        "..."
+      ]
+    },
+    "Markdown": {
+      "formatter": {
+        "language_server": {
+          "name": "oxfmt"
+        }
+      },
+      "preferred_line_length": 100,
+      "show_completions_on_input": false,
+      "show_wrap_guides": false,
+      "soft_wrap": "bounded"
+    },
+    "TypeScript": {
+      "formatter": {
+        "language_server": {
+          "name": "oxfmt"
+        }
+      },
+      "language_servers": [
+        "!eslint",
+        "!tailwindcss-language-server",
+        "!typescript-language-server",
+        "!vtsls",
+        "..."
+      ]
+    },
+    "YAML": {
+      "formatter": {
+        "language_server": {
+          "name": "oxfmt"
+        }
+      }
+    }
+  },
+  "lsp": {
+    "oxfmt": {
+      "binary": {
+        "arguments": ["--lsp"],
+        "path": "oxfmt"
+      }
+    },
+    "oxlint": {
+      "binary": {
+        "arguments": ["--lsp"],
+        "path": "oxlint"
+      }
+    }
+  },
+  "outline_panel": {
+    "default_width": 320,
+    "dock": "left",
+    "indent_guides": {
+      "show": "never"
+    }
+  },
+  "prettier": {
+    "allowed": false
+  },
+  "project_panel": {
+    "default_width": 320,
+    "dock": "left",
+    "indent_guides": {
+      "show": "never"
+    },
+    "sticky_scroll": false
+  },
+  "restore_on_startup": "launchpad",
+  "tab_size": 2,
+  "tabs": {
+    "file_icons": true,
+    "git_status": true,
+    "show_diagnostics": "all"
+  },
+  "telemetry": {
+    "metrics": false
+  },
+  "terminal": {
+    "default_height": 420,
+    "font_family": "GeistMono Nerd Font",
+    "font_size": 14.0
+  },
+  "theme": {
+    "dark": "Tokyo Night",
+    "light": "Tokyo Night Light",
+    "mode": "dark"
+  },
+  "use_smartcase_search": true,
+  "use_system_path_prompts": false,
+  "use_system_prompts": false,
+  "vim_mode": true,
+  "which_key": {
+    "delay_ms": 0,
+    "enabled": true
+  },
+  "wrap_guides": [100]
+}
