@@ -6,7 +6,10 @@
       "alt-s": "editor::SplitSelectionIntoLines",
       "g F": "editor::OpenSelectedFilename",
       "g r t": "editor::GoToTypeDefinition",
-      "g w": "vim::HelixJumpToWord"
+      "g w": "vim::HelixJumpToWord",
+      "space G O": "git::ToggleStaged",
+      "space G o": "editor::ToggleSelectedDiffHunks",
+      "space G u": "git::Restore"
     },
     "context": "VimControl && !menu"
   },
