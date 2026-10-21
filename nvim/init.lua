@@ -2,6 +2,7 @@
 --
 -- [ ] Formatter: conform.nvim + oxfmt + go fmt
 -- [ ] Pick telescope or mini.pick
+-- [ ] Picker should include hidden files
 
 -- general configuration ----------------------------------
 
@@ -104,7 +105,7 @@ require("tokyonight").setup({
 		hl.BlinkCmpMenuBorder = { fg = c.bg_visual, bg = c.bg_float }
 		hl.BlinkCmpSignatureHelpBorder = { fg = c.bg_visual, bg = c.bg_float }
 		hl.Boolean = { fg = c.blue1 }
-		hl.CurSearch = { bg = c.bg_visual }
+		hl.CurSearch = { fg = c.yellow, bg = colors.blend_bg(c.yellow, 0.15, c.bg) }
 		hl.CursorLineNr = { fg = c.fg, bold = true }
 		hl.FloatBorder = { fg = c.bg_visual, bg = c.bg_float }
 		hl.FloatTitle = { fg = c.fg, bg = c.bg_float }
@@ -118,8 +119,8 @@ require("tokyonight").setup({
 		hl.MiniPickPrompt = { fg = c.blue1, bg = c.bg }
 		hl.MiniStatuslineFilename = { fg = c.fg_dark, bg = c.black }
 		hl.Search = { bg = c.bg_visual }
-		hl.Sneak = { fg = c.purple, bg = colors.blend_bg(c.purple, 0.15, c.bg) }
-		hl.SneakCurrent = { fg = c.purple, bg = colors.blend_bg(c.purple, 0.15, c.bg) }
+		hl.Sneak = { fg = c.yellow, bg = colors.blend_bg(c.yellow, 0.15, c.bg) }
+		hl.SneakCurrent = { fg = c.yellow, bg = colors.blend_bg(c.yellow, 0.15, c.bg) }
 		hl.TabLineSel = { fg = c.blue, bg = c.bg }
 		hl.WhichKeyBorder = { fg = c.border_highlight }
 		hl.WhichKeyDesc = { link = "Normal" }
