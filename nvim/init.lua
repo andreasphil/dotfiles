@@ -445,5 +445,5 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 vim.keymap.set("x", "<leader>y", '"+y', { desc = "yank selection to clipboard" })
 vim.keymap.set("x", "<leader>d", '"+d', { desc = "delete selection to clipboard" })
-vim.keymap.set("n", "<leader>p", '"+p', { desc = "paste from clipboard after cursor" })
-vim.keymap.set("n", "<leader>P", '"+P', { desc = "paste from clipboard before cursor" })
+vim.keymap.set({ "n", "x" }, "<leader>p", '"+p', { desc = "paste from clipboard after cursor" })
+vim.keymap.set({ "n", "x" }, "<leader>P", '"+P', { desc = "paste from clipboard before cursor" })
