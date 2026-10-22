@@ -3,8 +3,6 @@
 	batch-status = !git-batch-status
 [core]
 	pager = delta
-[delta]
-	navigate = true
 [diff]
 	algorithm = histogram
 [fetch]
@@ -28,3 +26,23 @@
 	autoSetupRemote = true
 [submodule]
 	recurse = true
+[delta]
+	navigate = true
+	# tokyonight night, from tokyonight.nvim/extras/delta
+	line-numbers-minus-style = "#914c54"
+	line-numbers-plus-style = "#449dab"
+	line-numbers-zero-style = "#3b4261"
+	minus-emph-style = syntax "#713137"
+	minus-empty-line-marker-style = syntax "#4a272f"
+	minus-non-emph-style = syntax "#4a272f"
+	minus-style = syntax "#4a272f"
+	plus-emph-style = syntax "#2c5a66"
+	plus-empty-line-marker-style = syntax "#243e4a"
+	plus-non-emph-style = syntax "#243e4a"
+	plus-style = syntax "#243e4a"
+	# headers, toned down to match lazygit
+	file-decoration-style = "#545c7e ul"
+	file-style = "#c0caf5"
+	hunk-header-decoration-style = "#3b4261 box"
+	hunk-header-file-style = "#737aa2"
+	hunk-header-line-number-style = "#737aa2"

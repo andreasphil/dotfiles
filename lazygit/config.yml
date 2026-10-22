@@ -3,3 +3,31 @@ git:
   diffRenderers:
     - colorArg: always
       command: delta --dark --paging=never
+gui:
+  border: single
+  theme:
+    # tokyonight night, toned down
+    activeBorderColor:
+      - "#bb9af7" # magenta
+    inactiveBorderColor:
+      - "#545c7e" # dark3
+    searchingActiveBorderColor:
+      - "#e0af68" # yellow
+    optionsTextColor:
+      - "#565f89" # comment
+    selectedLineBgColor:
+      - "#283457" # bg_visual
+    inactiveViewSelectedLineBgColor:
+      - "#292e42" # bg_highlight
+    cherryPickedCommitFgColor:
+      - "#bb9af7" # magenta
+    cherryPickedCommitBgColor:
+      - "#322e45" # magenta blended 15% into bg
+    markedBaseCommitFgColor:
+      - "#e0af68" # yellow
+    markedBaseCommitBgColor:
+      - "#383130" # yellow blended 15% into bg
+    unstagedChangesColor:
+      - "#f7768e" # red
+    defaultFgColor:
+      - "#c0caf5" # fg
