@@ -1,5 +1,4 @@
 {
-  "auto_update": false,
   "auto_install_extensions": {
     "emmet": true,
     "html": true,
@@ -8,6 +7,7 @@
     "toml": true,
     "tsgo": true
   },
+  "auto_update": false,
   "buffer_font_family": "Dank Mono",
   "buffer_line_height": {
     "custom": 1.7
