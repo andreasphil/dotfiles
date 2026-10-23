@@ -36,6 +36,8 @@ vim.opt.shortmess:append("I")
 
 -- filetype extras ----------------------------------------
 
+vim.g.markdown_recommended_style = 0
+
 vim.api.nvim_create_autocmd("FileType", {
 	desc = "markdown: no indentation on wrapped lines",
 	group = vim.api.nvim_create_augroup("markdown-options", { clear = true }),
