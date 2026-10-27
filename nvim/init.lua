@@ -345,7 +345,7 @@ vim.keymap.set("n", "<leader>GO", gitsigns.stage_hunk, { desc = "toggle git chan
 
 -- treesitter ---------------------------------------------
 
-local ts_languages = { "css", "go", "gomod", "html", "javascript", "json", "tsx", "typescript", "vue" }
+local ts_languages = { "css", "go", "gomod", "html", "java", "javascript", "json", "tsx", "typescript", "vue" }
 
 require("nvim-treesitter").install(ts_languages)
 
@@ -422,7 +422,9 @@ local diagnostic_icons = {
 
 vim.diagnostic.config({
 	virtual_text = {
-		prefix = function(diagnostic) return diagnostic_icons[diagnostic.severity] end,
+		prefix = function(diagnostic)
+			return diagnostic_icons[diagnostic.severity]
+		end,
 	},
 	signs = { text = diagnostic_icons },
 })
