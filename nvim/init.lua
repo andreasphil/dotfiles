@@ -431,6 +431,10 @@ require("blink.cmp").setup({
 
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
+-- move by display line, unless a count is given so relative jumps like 5j still work
+vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, desc = "down (display line)" })
+vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, desc = "up (display line)" })
+
 vim.keymap.set("x", "<leader>y", '"+y', { desc = "yank selection to clipboard" })
 vim.keymap.set("x", "<leader>d", '"+d', { desc = "delete selection to clipboard" })
 vim.keymap.set({ "n", "x" }, "<leader>p", '"+p', { desc = "paste from clipboard after cursor" })
