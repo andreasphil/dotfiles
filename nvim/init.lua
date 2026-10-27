@@ -1,8 +1,3 @@
--- TODO: Remaining setup:
---
--- [ ] Formatter: conform.nvim + oxfmt + go fmt
--- [ ] Pick telescope or mini.pick
-
 -- general configuration ----------------------------------
 
 vim.g.mapleader = " "
@@ -82,6 +77,7 @@ vim.pack.add({
 	"https://github.com/nvim-lua/plenary.nvim",
 	"https://github.com/nvim-telescope/telescope-ui-select.nvim",
 	"https://github.com/nvim-telescope/telescope.nvim",
+	"https://github.com/stevearc/conform.nvim",
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects", version = "main" },
 	{ src = "https://github.com/saghen/blink.cmp", version = vim.version.range("1.*") },
@@ -296,7 +292,10 @@ vim.keymap.set("n", "<leader>GO", gitsigns.stage_hunk, { desc = "toggle git chan
 
 -- treesitter ---------------------------------------------
 
-local ts_languages = { "css", "go", "gomod", "html", "java", "javascript", "json", "tsx", "typescript", "vue" }
+local ts_languages = {
+  "css", "go", "gomod", "html", "java", "javascript", "json", "toml", "tsx",
+  "typescript", "vue", "yaml",
+}
 
 require("nvim-treesitter").install(ts_languages)
 
@@ -379,6 +378,40 @@ vim.diagnostic.config({
 	},
 	signs = { text = diagnostic_icons },
 })
+
+-- formatting ---------------------------------------------
+
+require("conform").setup({
+	formatters_by_ft = {
+		css = { "oxfmt" },
+		go = { "gofmt" },
+		graphql = { "oxfmt" },
+		handlebars = { "oxfmt" },
+		html = { "oxfmt" },
+		javascript = { "oxfmt" },
+		javascriptreact = { "oxfmt" },
+		json = { "oxfmt" },
+		jsonc = { "oxfmt" },
+		markdown = { "oxfmt" },
+		toml = { "oxfmt" },
+		typescript = { "oxfmt" },
+		typescriptreact = { "oxfmt" },
+		vue = { "oxfmt" },
+		yaml = { "oxfmt" },
+	},
+	format_on_save = { timeout_ms = 1000 },
+})
+
+vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+
+vim.api.nvim_create_user_command("Format", function(args)
+	local range = nil
+	if args.count ~= -1 then
+		local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
+		range = { start = { args.line1, 0 }, ["end"] = { args.line2, end_line:len() } }
+	end
+	require("conform").format({ async = true, range = range })
+end, { range = true, desc = "format buffer or range" })
 
 -- completion ---------------------------------------------
 
