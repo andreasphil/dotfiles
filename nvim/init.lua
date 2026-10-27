@@ -2,7 +2,6 @@
 --
 -- [ ] Formatter: conform.nvim + oxfmt + go fmt
 -- [ ] Pick telescope or mini.pick
--- [ ] Picker should include hidden files
 
 -- general configuration ----------------------------------
 
@@ -74,17 +73,15 @@ vim.pack.add({
 	"https://github.com/neovim/nvim-lspconfig",
 	"https://github.com/nvim-mini/mini.ai",
 	"https://github.com/nvim-mini/mini.align",
-	"https://github.com/nvim-mini/mini.extra",
 	"https://github.com/nvim-mini/mini.hipatterns",
 	"https://github.com/nvim-mini/mini.indentscope",
 	"https://github.com/nvim-mini/mini.pairs",
-	"https://github.com/nvim-mini/mini.pick",
 	"https://github.com/nvim-mini/mini.statusline",
 	"https://github.com/nvim-mini/mini.surround",
 	"https://github.com/nvim-mini/mini.trailspace",
-	-- "https://github.com/nvim-lua/plenary.nvim",
-	-- "https://github.com/nvim-telescope/telescope-ui-select.nvim",
-	-- "https://github.com/nvim-telescope/telescope.nvim",
+	"https://github.com/nvim-lua/plenary.nvim",
+	"https://github.com/nvim-telescope/telescope-ui-select.nvim",
+	"https://github.com/nvim-telescope/telescope.nvim",
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects", version = "main" },
 	{ src = "https://github.com/saghen/blink.cmp", version = vim.version.range("1.*") },
@@ -97,12 +94,12 @@ local colors = require("tokyonight.util")
 require("tokyonight").setup({
 	style = "night",
 	on_highlights = function(hl, c)
-		-- hl.TelescopeBorder = { fg = c.fg, bg = c.bg }
-		-- hl.TelescopeNormal = { fg = c.fg, bg = c.bg }
-		-- hl.TelescopePromptBorder = { fg = c.fg, bg = c.bg }
-		-- hl.TelescopePromptTitle = { fg = c.fg, bg = c.bg }
-		-- hl.TelescopeSelection = { bg = colors.blend_fg(c.bg_visual, 0.7, c.bg) }
-		-- hl.TelescopeTitle = { fg = c.fg, bg = c.bg }
+		hl.TelescopeBorder = { fg = c.fg, bg = c.bg }
+		hl.TelescopeNormal = { fg = c.fg, bg = c.bg }
+		hl.TelescopePromptBorder = { fg = c.fg, bg = c.bg }
+		hl.TelescopePromptTitle = { fg = c.fg, bg = c.bg }
+		hl.TelescopeSelection = { bg = colors.blend_fg(c.bg_visual, 0.7, c.bg) }
+		hl.TelescopeTitle = { fg = c.fg, bg = c.bg }
 		hl.BlinkCmpDocBorder = { fg = c.bg_visual, bg = c.bg_float }
 		hl.BlinkCmpMenuBorder = { fg = c.bg_visual, bg = c.bg_float }
 		hl.BlinkCmpSignatureHelpBorder = { fg = c.bg_visual, bg = c.bg_float }
@@ -114,11 +111,6 @@ require("tokyonight").setup({
 		hl.GitSignsChange = { fg = c.yellow }
 		hl.IncSearch = { bg = c.bg_visual }
 		hl.MiniHipatternsTodo = { fg = c.blue1, bg = colors.blend_bg(c.blue1, 0.15, c.bg) }
-		hl.MiniPickBorder = { fg = c.fg, bg = c.bg }
-		hl.MiniPickBorderText = { fg = c.fg, bg = c.bg }
-		hl.MiniPickMatchCurrent = { bg = colors.blend_fg(c.bg_visual, 0.4, c.black) }
-		hl.MiniPickMatchRanges = { fg = c.blue1 }
-		hl.MiniPickPrompt = { fg = c.blue1, bg = c.bg }
 		hl.MiniStatuslineFilename = { fg = c.fg_dark, bg = c.black }
 		hl.Search = { bg = c.bg_visual }
 		hl.Sneak = { fg = c.yellow, bg = colors.blend_bg(c.yellow, 0.15, c.bg) }
@@ -251,75 +243,34 @@ statusline.setup({
 	},
 })
 
--- picker -------------------------------------------------
+-- telescope ----------------------------------------------
 
-local pick = require("mini.pick")
-local extra = require("mini.extra")
-
-pick.setup({
-	window = {
-		config = function()
-			local width = math.min(90, vim.o.columns - 4)
-			local row = math.floor(0.1 * vim.o.lines)
-			local height = math.min(math.floor(0.6 * vim.o.lines), vim.o.lines - row - 4)
-			return {
-				anchor = "NW",
-				height = height,
-				width = width,
-				row = row,
-				col = math.floor(0.5 * (vim.o.columns - width)),
-			}
-		end,
-		prompt_prefix = " $ ",
+require("telescope").setup({
+	defaults = {
+		borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+		mappings = { i = { ["<Esc>"] = require("telescope.actions").close } },
+	},
+	pickers = {
+		-- all files including hidden ones, but still respecting .gitignore
+		find_files = { find_command = { "rg", "--files", "--hidden", "--glob=!.git", "--color=never" } },
+		live_grep = { additional_args = { "--hidden", "--glob=!.git" } },
 	},
 })
 
-extra.setup()
+require("telescope").load_extension("ui-select")
 
-vim.ui.select = pick.ui_select
-
--- changed files (staged, unstaged and untracked) like telescope's git_status
-local function git_changes()
-	local cmd = "git diff --name-only --relative HEAD; git ls-files --others --exclude-standard"
-	pick.builtin.cli({ command = { "sh", "-c", cmd } }, { source = { name = "Git changes" } })
-end
-
-vim.keymap.set("n", "<leader>'", pick.builtin.resume, { desc = "open last picker" })
-vim.keymap.set("n", "<leader>/", pick.builtin.grep_live, { desc = "global search in workspace" })
-vim.keymap.set("n", "<leader>?", extra.pickers.commands, { desc = "open command palette" })
-vim.keymap.set("n", "<leader>D", function() extra.pickers.diagnostic({ scope = "all" }) end, { desc = "open workspace diagnostic picker" })
-vim.keymap.set("n", "<leader>S", function() extra.pickers.lsp({ scope = "workspace_symbol" }) end, { desc = "open workspace symbol picker" })
-vim.keymap.set("n", "<leader>b", pick.builtin.buffers, { desc = "open buffer picker" })
-vim.keymap.set("n", "<leader>d", function() extra.pickers.diagnostic({ scope = "current" }) end, { desc = "open diagnostic picker" })
-vim.keymap.set("n", "<leader>f", pick.builtin.files, { desc = "open file picker" })
-vim.keymap.set("n", "<leader>g", git_changes, { desc = "open changed file picker" })
-vim.keymap.set("n", "<leader>h", function() extra.pickers.lsp({ scope = "references" }) end, { desc = "select symbol references" })
-vim.keymap.set("n", "<leader>j", function() extra.pickers.list({ scope = "jump" }) end, { desc = "open jumplist picker" })
-vim.keymap.set("n", "<leader>s", function() extra.pickers.lsp({ scope = "document_symbol" }) end, { desc = "open symbol picker" })
-
--- telescope ----------------------------------------------
---
--- require("telescope").setup({
--- 	defaults = {
--- 		borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
--- 		mappings = { i = { ["<Esc>"] = require("telescope.actions").close } },
--- 	},
--- })
---
--- require("telescope").load_extension("ui-select")
---
--- vim.keymap.set("n", "<leader>'", "<cmd>Telescope resume<CR>", { desc = "open last picker" })
--- vim.keymap.set("n", "<leader>/", "<cmd>Telescope live_grep<CR>", { desc = "global search in workspace" })
--- vim.keymap.set("n", "<leader>?", "<cmd>Telescope commands<CR>", { desc = "open command palette" })
--- vim.keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics<CR>", { desc = "open workspace diagnostic picker" })
--- vim.keymap.set("n", "<leader>S", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>", { desc = "open workspace symbol picker" })
--- vim.keymap.set("n", "<leader>b", "<cmd>Telescope buffers<CR>", { desc = "open buffer picker" })
--- vim.keymap.set("n", "<leader>d", "<cmd>Telescope diagnostics bufnr=0<CR>", { desc = "open diagnostic picker" })
--- vim.keymap.set("n", "<leader>f", "<cmd>Telescope find_files<CR>", { desc = "open file picker" })
--- vim.keymap.set("n", "<leader>g", "<cmd>Telescope git_status<CR>", { desc = "open changed file picker" })
--- vim.keymap.set("n", "<leader>h", "<cmd>Telescope lsp_references<CR>", { desc = "select symbol references" })
--- vim.keymap.set("n", "<leader>j", "<cmd>Telescope jumplist<CR>", { desc = "open jumplist picker" })
--- vim.keymap.set("n", "<leader>s", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "open symbol picker" })
+vim.keymap.set("n", "<leader>'", "<cmd>Telescope resume<CR>", { desc = "open last picker" })
+vim.keymap.set("n", "<leader>/", "<cmd>Telescope live_grep<CR>", { desc = "global search in workspace" })
+vim.keymap.set("n", "<leader>?", "<cmd>Telescope commands<CR>", { desc = "open command palette" })
+vim.keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics<CR>", { desc = "open workspace diagnostic picker" })
+vim.keymap.set("n", "<leader>S", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>", { desc = "open workspace symbol picker" })
+vim.keymap.set("n", "<leader>b", "<cmd>Telescope buffers<CR>", { desc = "open buffer picker" })
+vim.keymap.set("n", "<leader>d", "<cmd>Telescope diagnostics bufnr=0<CR>", { desc = "open diagnostic picker" })
+vim.keymap.set("n", "<leader>f", "<cmd>Telescope find_files<CR>", { desc = "open file picker" })
+vim.keymap.set("n", "<leader>g", "<cmd>Telescope git_status<CR>", { desc = "open changed file picker" })
+vim.keymap.set("n", "<leader>h", "<cmd>Telescope lsp_references<CR>", { desc = "select symbol references" })
+vim.keymap.set("n", "<leader>j", "<cmd>Telescope jumplist<CR>", { desc = "open jumplist picker" })
+vim.keymap.set("n", "<leader>s", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "open symbol picker" })
 
 -- gitsigns -----------------------------------------------
 
