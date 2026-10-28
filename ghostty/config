@@ -3,5 +3,5 @@ background-opacity = 0.9
 background-blur = macos-glass-regular
 keybind = shift+enter=text:\x1b\r
 macos-option-as-alt = left
-# macos-titlebar-style = tabs
+macos-titlebar-style = tabs
 theme = TokyoNight
