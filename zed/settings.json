@@ -1,4 +1,6 @@
 {
+  "preferred_line_length": 100,
+  "soft_wrap": "editor_width",
   "auto_install_extensions": {
     "emmet": true,
     "html": true,
@@ -101,8 +103,7 @@
       },
       "preferred_line_length": 100,
       "show_completions_on_input": false,
-      "show_wrap_guides": false,
-      "soft_wrap": "bounded"
+      "soft_wrap": "bounded",
     },
     "TypeScript": {
       "formatter": {
