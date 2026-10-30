@@ -24,6 +24,13 @@
   },
   {
     "bindings": {
+      "j": ["vim::Down", { "display_lines": true }],
+      "k": ["vim::Up", { "display_lines": true }]
+    },
+    "context": "VimControl && !menu && !VimCount && vim_operator == none"
+  },
+  {
+    "bindings": {
       "shift-s": "vim::PushAddSurrounds"
     },
     "context": "vim_mode == visual"
