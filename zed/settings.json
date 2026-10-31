@@ -103,7 +103,7 @@
       },
       "preferred_line_length": 100,
       "show_completions_on_input": false,
-      "soft_wrap": "bounded",
+      "soft_wrap": "bounded"
     },
     "TypeScript": {
       "formatter": {
@@ -171,8 +171,9 @@
   },
   "terminal": {
     "default_height": 420,
-    "font_family": "GeistMono Nerd Font",
-    "font_size": 14.0
+    "font_family": "JetBrainsMono Nerd Font",
+    "font_size": 13.0,
+    "line_height": { "custom": 1.5 },
   },
   "theme": {
     "dark": "Tokyo Night",
