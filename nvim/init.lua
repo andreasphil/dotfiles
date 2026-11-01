@@ -96,9 +96,9 @@ require("tokyonight").setup({
 		hl.TelescopePromptTitle = { fg = c.fg, bg = c.bg }
 		hl.TelescopeSelection = { bg = colors.blend_fg(c.bg_visual, 0.7, c.bg) }
 		hl.TelescopeTitle = { fg = c.fg, bg = c.bg }
-		hl.BlinkCmpDocBorder = { fg = c.bg_visual, bg = c.bg_float }
-		hl.BlinkCmpMenuBorder = { fg = c.bg_visual, bg = c.bg_float }
-		hl.BlinkCmpSignatureHelpBorder = { fg = c.bg_visual, bg = c.bg_float }
+		hl.BlinkCmpDocBorder = { fg = c.fg, bg = c.bg_float }
+		hl.BlinkCmpMenuBorder = { fg = c.fg, bg = c.bg_float }
+		hl.BlinkCmpSignatureHelpBorder = { fg = c.fg, bg = c.bg_float }
 		hl.Boolean = { fg = c.blue1 }
 		hl.CurSearch = { fg = c.yellow, bg = colors.blend_bg(c.yellow, 0.15, c.bg) }
 		hl.CursorLineNr = { fg = c.fg, bold = true }
