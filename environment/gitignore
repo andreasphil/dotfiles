@@ -2,7 +2,6 @@
 .agents
 .claude
 .claude/settings.local.json
-.helix
 .ignore
 .justfile
 .playwright-cli

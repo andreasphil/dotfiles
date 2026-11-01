@@ -43,10 +43,6 @@ declare_links() {
   link "${root}/environment/gitconfig_local"  "${HOME}/.gitconfig_local"
   link "${root}/environment/gitignore"        "${HOME}/.config/git/ignore"
 
-  # helix
-  link "${root}/helix/config.toml"            "${HOME}/.config/helix/config.toml"
-  link "${root}/helix/languages.toml"         "${HOME}/.config/helix/languages.toml"
-
   # lazygit
   link "${root}/lazygit/config.yml"           "${HOME}/.config/lazygit/config.yml"
 
