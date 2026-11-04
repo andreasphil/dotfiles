@@ -33,11 +33,11 @@ vim.opt.shortmess:append("I")
 vim.g.markdown_recommended_style = 0
 
 vim.api.nvim_create_autocmd("FileType", {
-	desc = "markdown: no indentation on wrapped lines",
+	desc = "markdown: optimized formatting",
 	group = vim.api.nvim_create_augroup("markdown-options", { clear = true }),
 	pattern = "markdown",
 	callback = function()
-		vim.opt_local.breakindent = false
+		vim.opt_local.breakindentopt = "shift:0,list:2,min:20"
 	end,
 })
 
@@ -418,6 +418,12 @@ end, { range = true, desc = "format buffer or range" })
 require("blink.cmp").setup({
 	completion = {
 		documentation = { auto_show = true },
+		-- markdown: only show the menu on demand (<C-Space>)
+		menu = {
+			auto_show = function()
+				return vim.bo.filetype ~= "markdown"
+			end,
+		},
 		list = { selection = { preselect = false, auto_insert = true } },
 	},
 	keymap = {
