@@ -41,6 +41,13 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+	desc = "help: open in vertical split",
+	group = vim.api.nvim_create_augroup("help-vertical", { clear = true }),
+	pattern = "help",
+	command = "wincmd L",
+})
+
 -- plugins ------------------------------------------------
 
 -- installed parsers must match nvim-treesitter's version, so update them
