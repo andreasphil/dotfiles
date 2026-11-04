@@ -66,6 +66,7 @@ vim.pack.add({
 	"https://github.com/justinmk/vim-sneak",
 	"https://github.com/lewis6991/gitsigns.nvim",
 	"https://github.com/neovim/nvim-lspconfig",
+	"https://github.com/nvim-lua/plenary.nvim",
 	"https://github.com/nvim-mini/mini.ai",
 	"https://github.com/nvim-mini/mini.align",
 	"https://github.com/nvim-mini/mini.hipatterns",
@@ -74,9 +75,9 @@ vim.pack.add({
 	"https://github.com/nvim-mini/mini.statusline",
 	"https://github.com/nvim-mini/mini.surround",
 	"https://github.com/nvim-mini/mini.trailspace",
-	"https://github.com/nvim-lua/plenary.nvim",
 	"https://github.com/nvim-telescope/telescope-ui-select.nvim",
 	"https://github.com/nvim-telescope/telescope.nvim",
+	"https://github.com/shortcuts/no-neck-pain.nvim",
 	"https://github.com/stevearc/conform.nvim",
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects", version = "main" },
@@ -201,6 +202,9 @@ require("mini.surround").setup({
 
 vim.keymap.del("x", "gz")
 vim.keymap.set("x", "S", [[:<C-u>lua MiniSurround.add("visual")<CR>]], { silent = true, desc = "surround selection" })
+
+-- no neck pain
+vim.keymap.set("n", "<leader>z", "<cmd>NoNeckPain<CR>", { desc = "toggle no neck pain" })
 
 -- which-key ----------------------------------------------
 
