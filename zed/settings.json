@@ -1,6 +1,4 @@
 {
-  "preferred_line_length": 100,
-  "soft_wrap": "editor_width",
   "auto_install_extensions": {
     "emmet": true,
     "html": true,
@@ -10,9 +8,11 @@
     "tsgo": true
   },
   "auto_update": false,
-  "buffer_font_family": "Dank Mono",
+  "buffer_font_family": "JetBrains Mono",
+  "buffer_font_size": 13,
+  "buffer_font_weight": 300,
   "buffer_line_height": {
-    "custom": 1.7
+    "custom": 1.8
   },
   "cli_default_open_behavior": "new_window",
   "collaboration_panel": {
@@ -118,7 +118,7 @@
         "!vtsls",
         "..."
       ]
-    },
+   },
     "YAML": {
       "formatter": {
         "language_server": {
@@ -148,6 +148,7 @@
       "show": "never"
     }
   },
+  "preferred_line_length": 100,
   "prettier": {
     "allowed": false
   },
@@ -160,6 +161,7 @@
     "sticky_scroll": false
   },
   "restore_on_startup": "launchpad",
+  "soft_wrap": "editor_width",
   "tab_size": 2,
   "tabs": {
     "file_icons": true,
@@ -172,8 +174,10 @@
   "terminal": {
     "default_height": 420,
     "font_family": "JetBrainsMono Nerd Font",
-    "font_size": 13.0,
-    "line_height": { "custom": 1.5 },
+    "font_weight": 300,
+    "line_height": {
+      "custom": 1.5
+    }
   },
   "theme": {
     "dark": "Tokyo Night",
