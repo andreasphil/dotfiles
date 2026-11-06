@@ -118,7 +118,7 @@
         "!vtsls",
         "..."
       ]
-   },
+    },
     "YAML": {
       "formatter": {
         "language_server": {
