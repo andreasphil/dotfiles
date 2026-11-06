@@ -31,6 +31,7 @@ declare_links() {
 
   # claude
   link "${root}/claude/settings.json"         "${HOME}/.claude/settings.json"
+  link "${root}/claude/CLAUDE.md"             "${HOME}/.claude/CLAUDE.md"
   link "${root}/claude/skills/proofread-edit" "${HOME}/.claude/skills/proofread-edit"
   link "${root}/claude/skills/simple-english" "${HOME}/.claude/skills/simple-english"
   link "${root}/claude/skills/unslop"         "${HOME}/.claude/skills/unslop"
