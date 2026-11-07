@@ -32,7 +32,7 @@
       "int" : 0
     },
     "autoMaximize" : {
-      "int" : 0
+      "int" : 1
     },
     "blurAppearance" : {
       "int" : 0
@@ -41,7 +41,7 @@
       "float" : 30
     },
     "centerAcrossDisplays" : {
-      "int" : 0
+      "int" : 2
     },
     "centerHalfCycles" : {
       "int" : 0
@@ -143,7 +143,7 @@
       "int" : 0
     },
     "landscapeSnapAreas" : {
-      "string" : "[2,{\"action\":2},1,{\"action\":0},3,{\"action\":1}]"
+      "string" : "[2,{\"action\":2}]"
     },
     "launchOnLogin" : {
       "bool" : true
@@ -163,11 +163,14 @@
     "missionControlDraggingDisallowedDuration" : {
       "int" : 250
     },
+    "mouseButtonShortcutsUseWindowUnderCursor" : {
+      "bool" : false
+    },
     "moveCursor" : {
       "int" : 0
     },
     "moveCursorAcrossDisplays" : {
-      "int" : 0
+      "int" : 2
     },
     "moveFixedSizeToEdge" : {
       "int" : 1
@@ -203,7 +206,7 @@
       "float" : 0
     },
     "screenEdgeGapTopNotch" : {
-      "float" : 0
+      "double" : -1
     },
     "screenEdgeGapsOnMainScreenOnly" : {
       "bool" : false
@@ -235,6 +238,9 @@
     "smallerShrinksMaximizedHeight" : {
       "bool" : false
     },
+    "snapBeforeReachingEdges" : {
+      "double" : 0
+    },
     "snapEdgeMarginBottom" : {
       "float" : 5
     },
@@ -257,10 +263,10 @@
       "float" : 1680
     },
     "stackBadge" : {
-      "int" : 0
+      "int" : 2
     },
     "stackSameSizeOnly" : {
-      "int" : 0
+      "int" : 2
     },
     "stageSize" : {
       "float" : -1
@@ -293,7 +299,7 @@
       "int" : 1
     },
     "todoSidebarWidth" : {
-      "float" : 400
+      "float" : 5880
     },
     "todoSidebarWidthUnit" : {
       "int" : 1
@@ -372,5 +378,5 @@
       "modifierFlags" : 786432
     }
   },
-  "version" : "110"
+  "version" : "111"
 }
