@@ -10,8 +10,6 @@
 [user]
 	email = 18646892+andreasphil@users.noreply.github.com
 	name = Andreas Philippi
-[include]
-	path = ~/.gitconfig_local
 [init]
 	defaultBranch = main
 [interactive]
@@ -46,3 +44,5 @@
 	hunk-header-decoration-style = "#3b4261 box"
 	hunk-header-file-style = "#737aa2"
 	hunk-header-line-number-style = "#737aa2"
+[include]
+	path = ~/.gitconfig_local
