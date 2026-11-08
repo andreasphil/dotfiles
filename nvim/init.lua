@@ -295,8 +295,16 @@ local function unless_diff(keys, action)
 	end
 end
 
-vim.keymap.set( "n", "]c", unless_diff("]c", function() gitsigns.nav_hunk("next") end), { desc = "next git change" })
-vim.keymap.set( "n", "[c", unless_diff("[c", function() gitsigns.nav_hunk("prev") end), { desc = "previous git change" })
+local function nextHunk()
+	gitsigns.nav_hunk("next")
+end
+
+local function prevHunk()
+	gitsigns.nav_hunk("prev")
+end
+
+vim.keymap.set("n", "]c", unless_diff("]c", nextHunk), { desc = "next git change" })
+vim.keymap.set("n", "[c", unless_diff("[c", prevHunk), { desc = "previous git change" })
 vim.keymap.set("n", "<leader>Go", gitsigns.preview_hunk_inline, { desc = "expand git change" })
 vim.keymap.set("n", "<leader>Gu", gitsigns.reset_hunk, { desc = "restore git change" })
 vim.keymap.set("n", "<leader>GO", gitsigns.stage_hunk, { desc = "toggle git change staged" })
@@ -304,8 +312,18 @@ vim.keymap.set("n", "<leader>GO", gitsigns.stage_hunk, { desc = "toggle git chan
 -- treesitter ---------------------------------------------
 
 local ts_languages = {
-  "css", "go", "gomod", "html", "java", "javascript", "json", "toml", "tsx",
-  "typescript", "vue", "yaml",
+	"css",
+	"go",
+	"gomod",
+	"html",
+	"java",
+	"javascript",
+	"json",
+	"toml",
+	"tsx",
+	"typescript",
+	"vue",
+	"yaml",
 }
 
 require("nvim-treesitter").install(ts_languages)
