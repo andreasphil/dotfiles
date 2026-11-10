@@ -30,8 +30,9 @@ declare_links() {
   link "${root}/environment/zshrc"            "${HOME}/.zshrc"
 
   # claude
-  link "${root}/claude/settings.json"         "${HOME}/.claude/settings.json"
   link "${root}/claude/CLAUDE.md"             "${HOME}/.claude/CLAUDE.md"
+  link "${root}/claude/settings.json"         "${HOME}/.claude/settings.json"
+  link "${root}/claude/skills/html-report"    "${HOME}/.claude/skills/html-report"
   link "${root}/claude/skills/proofread-edit" "${HOME}/.claude/skills/proofread-edit"
   link "${root}/claude/skills/simple-english" "${HOME}/.claude/skills/simple-english"
   link "${root}/claude/skills/unslop"         "${HOME}/.claude/skills/unslop"

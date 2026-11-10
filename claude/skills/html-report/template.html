@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Report Title</title>
+<style>
+/* Layout: a single reading column; an overview grid of topic cards, then one section per topic with expandable layers (summary → findings → code). */
+:root {
+  --bg: #f7f8fa;
+  --surface: #ffffff;
+  --sunken: #eef1f5;
+  --fg: #17202b;
+  --muted: #566273;
+  --rule: #d9dee6;
+  --accent: #0b4f9c;
+  --accent-soft: #e3edf9;
+  --good: #1d6b3d;
+  --good-soft: #e2f2e8;
+  --warn: #8a5a00;
+  --warn-soft: #fbf0d9;
+  --bad: #a1261d;
+  --bad-soft: #fbe5e2;
+  --code-bg: #f1f3f7;
+  --font-display: ui-serif, "New York", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --font-body: system-ui, ui-sans-serif, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --step--1: 0.8125rem;
+  --step-0: 0.9375rem;
+  --step-1: 1.0625rem;
+  --step-2: 1.375rem;
+  --step-3: 1.875rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11161d;
+    --surface: #171e27;
+    --sunken: #1d2631;
+    --fg: #e4e9f0;
+    --muted: #9aa6b6;
+    --rule: #2c3644;
+    --accent: #7fb0ec;
+    --accent-soft: #1b2d45;
+    --good: #7fd19c;
+    --good-soft: #17301f;
+    --warn: #e9bd62;
+    --warn-soft: #342812;
+    --bad: #f0958c;
+    --bad-soft: #3a1c19;
+    --code-bg: #0d1218;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11161d;
+  --surface: #171e27;
+  --sunken: #1d2631;
+  --fg: #e4e9f0;
+  --muted: #9aa6b6;
+  --rule: #2c3644;
+  --accent: #7fb0ec;
+  --accent-soft: #1b2d45;
+  --good: #7fd19c;
+  --good-soft: #17301f;
+  --warn: #e9bd62;
+  --warn-soft: #342812;
+  --bad: #f0958c;
+  --bad-soft: #3a1c19;
+  --code-bg: #0d1218;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 40px 80px;
+}
+.page { max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; gap: 48px; }
+
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.25; text-wrap: balance; margin: 0; }
+h1 { font-size: var(--step-3); }
+h2 { font-size: var(--step-2); }
+h3 { font-size: var(--step-1); font-family: var(--font-body); }
+p { margin: 0; max-width: 68ch; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+code { font-family: var(--font-mono); font-size: 0.86em; background: var(--code-bg); padding: 0.1em 0.35em; border-radius: 4px; overflow-wrap: anywhere; }
+ul, ol { margin: 0; padding-left: 1.3em; display: flex; flex-direction: column; gap: 6px; max-width: 70ch; }
+.muted { color: var(--muted); }
+.stack { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+
+/* Header */
+header.intro { display: flex; flex-direction: column; gap: 14px; }
+.eyebrow { font-size: var(--step--1); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+.lede { font-size: var(--step-1); max-width: 64ch; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: var(--step--1); color: var(--muted); }
+.controls { display: flex; flex-wrap: wrap; gap: 8px; }
+button {
+  font: inherit; font-size: var(--step--1); font-weight: 500;
+  color: var(--accent); background: var(--surface);
+  border: 1px solid var(--rule); border-radius: 6px; padding: 6px 12px; cursor: pointer;
+}
+button:hover { background: var(--accent-soft); }
+
+/* Overview cards */
+.overview { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; }
+.card {
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 8px;
+  padding: 16px; display: flex; flex-direction: column; gap: 8px; min-width: 0;
+  text-decoration: none; color: inherit;
+}
+.card:hover { border-color: var(--accent); }
+.card .num { font-family: var(--font-mono); font-size: var(--step--1); color: var(--muted); }
+.card h3 { font-family: var(--font-display); font-size: var(--step-1); }
+.card p { font-size: var(--step--1); color: var(--muted); }
+.card .chip { align-self: flex-start; margin-top: auto; }
+
+.chip { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.02em; border-radius: 999px; padding: 2px 10px; white-space: nowrap; }
+.chip.good { background: var(--good-soft); color: var(--good); }
+.chip.warn { background: var(--warn-soft); color: var(--warn); }
+.chip.bad { background: var(--bad-soft); color: var(--bad); }
+.chip.info { background: var(--accent-soft); color: var(--accent); }
+
+/* Sections */
+section.topic { display: flex; flex-direction: column; gap: 16px; padding-top: 32px; border-top: 1px solid var(--rule); scroll-margin-top: 16px; }
+.topic-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 14px; }
+.topic-head .num { font-family: var(--font-mono); color: var(--muted); font-size: var(--step-0); }
+
+/* Disclosure */
+details { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; min-width: 0; }
+details > summary {
+  cursor: pointer; list-style: none; padding: 12px 16px; font-weight: 600;
+  display: flex; align-items: baseline; gap: 10px;
+}
+details > summary::-webkit-details-marker { display: none; }
+details > summary::before {
+  content: ""; flex: none; width: 0.5em; height: 0.5em; margin-right: 2px;
+  border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted);
+  transform: rotate(-45deg) translateY(-1px); transition: transform 0.15s ease;
+}
+details[open] > summary::before { transform: rotate(45deg) translateY(-3px); }
+details > summary .hint { font-weight: 400; color: var(--muted); font-size: var(--step--1); }
+details > .body { padding: 0 16px 16px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+details details { background: var(--sunken); border-color: transparent; }
+.disclosures { display: flex; flex-direction: column; gap: 8px; }
+
+/* Code */
+pre.code {
+  margin: 0; background: var(--code-bg); border: 1px solid var(--rule); border-radius: 6px;
+  padding: 12px 14px; overflow-x: auto; font-family: var(--font-mono); font-size: 0.8125rem; line-height: 1.55;
+}
+pre.code code { background: none; padding: 0; font-size: inherit; overflow-wrap: normal; }
+.file { font-family: var(--font-mono); font-size: var(--step--1); color: var(--muted); margin-bottom: -8px; overflow-wrap: anywhere; }
+
+/* Tables */
+.table-wrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: var(--step--1); }
+th, td { text-align: left; vertical-align: top; padding: 8px 12px; border-bottom: 1px solid var(--rule); }
+th { font-weight: 600; background: var(--sunken); white-space: nowrap; }
+tr:last-child td { border-bottom: none; }
+td.num { font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+
+/* Callouts and definitions */
+.callout { background: var(--accent-soft); border-radius: 8px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; }
+.callout strong { font-weight: 600; }
+dl.terms { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 8px 18px; }
+dl.terms dt { font-weight: 600; }
+dl.terms dd { margin: 0; min-width: 0; }
+@media (max-width: 560px) { dl.terms { grid-template-columns: 1fr; } dl.terms dd { margin-bottom: 6px; } }
+
+ol.stages { counter-reset: stage; list-style: none; padding: 0; gap: 8px; }
+ol.stages li { counter-increment: stage; display: grid; grid-template-columns: 2em 1fr; gap: 8px; }
+ol.stages li::before { content: counter(stage); font-family: var(--font-mono); font-weight: 500; color: var(--accent); }
+
+.diagram { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 16px; overflow-x: auto; }
+.diagram pre.mermaid { margin: 0; background: none; text-align: center; }
+.caption { font-size: var(--step--1); color: var(--muted); }
+
+@media (prefers-reduced-motion: reduce) { details > summary::before { transition: none; } }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+<header class="intro">
+  <div class="eyebrow">project-name · kind of report</div>
+  <h1>Report Title</h1>
+  <p class="lede">One or two sentences: what this report covers, and the main conclusion.</p>
+  <div class="meta">
+    <span>As of 10 November 2026</span>
+    <span>Scope: what is in and out</span>
+    <span>Branch: <code>main</code></span>
+  </div>
+  <div class="controls">
+    <button type="button" id="expand-all">Expand all</button>
+    <button type="button" id="collapse-all">Collapse all</button>
+  </div>
+</header>
+
+<nav class="overview" aria-label="Overview">
+  <a class="card" href="#first">
+    <span class="num">1</span>
+    <h3>First topic</h3>
+    <p>One or two sentences that summarize the finding of this section.</p>
+    <span class="chip good">Done</span>
+  </a>
+  <a class="card" href="#second">
+    <span class="num">2</span>
+    <h3>Second topic</h3>
+    <p>Summary of the second section.</p>
+    <span class="chip info">Proposal</span>
+  </a>
+  <a class="card" href="#questions">
+    <span class="num">3</span>
+    <h3>Open questions</h3>
+    <p>Decisions the team needs to make.</p>
+    <span class="chip warn">For the team</span>
+  </a>
+</nav>
+
+<!-- 1 -->
+<section class="topic" id="first">
+  <div class="topic-head"><span class="num">1</span><h2>First topic</h2><span class="chip good">Done</span></div>
+  <p>The finding in a short paragraph. A reader who reads only this knows what matters.</p>
+  <ul>
+    <li><strong>Where:</strong> <code>path/to/file.ts</code> does the work.</li>
+    <li><strong>Verified:</strong> what was checked and how.</li>
+  </ul>
+
+  <div class="disclosures">
+    <details>
+      <summary>Evidence <span class="hint">sample of 30 items</span></summary>
+      <div class="body">
+        <p>What I measured and how.</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Shape</th><th>Count</th><th>Comes from</th></tr></thead>
+          <tbody>
+            <tr><td><code>example/a</code></td><td class="num">478</td><td>source A</td></tr>
+            <tr><td><code>example/b</code></td><td class="num">14</td><td>source B</td></tr>
+          </tbody>
+        </table></div>
+        <div class="file">src/path/to/file.ts</div>
+<pre class="code"><code>export function example(value: string): string {
+  if (!value) return "";
+  …
+}</code></pre>
+      </div>
+    </details>
+
+    <details>
+      <summary>Approaches considered</summary>
+      <div class="body">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Approach</th><th>Verdict</th><th>Reason</th></tr></thead>
+          <tbody>
+            <tr><td>Option A</td><td><span class="chip good">Chosen</span></td><td>Why it wins.</td></tr>
+            <tr><td>Option B</td><td><span class="chip bad">Rejected</span></td><td>Why not.</td></tr>
+            <tr><td>Option C</td><td><span class="chip warn">Later</span></td><td>What would have to change first.</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="topic" id="second">
+  <div class="topic-head"><span class="num">2</span><h2>Second topic</h2><span class="chip info">Proposal</span></div>
+  <p>Short summary of the proposal.</p>
+
+  <ol class="stages">
+    <li><span><strong>Parse</strong> the input once.</span></li>
+    <li><span><strong>Transform</strong> it with the specific steps.</span></li>
+    <li><span><strong>Return</strong> plain data.</span></li>
+  </ol>
+
+  <div class="callout">
+    <strong>Terms used here</strong>
+    <dl class="terms">
+      <dt>Term</dt><dd>Definition in plain words.</dd>
+      <dt>Another term</dt><dd>Its definition.</dd>
+    </dl>
+  </div>
+
+  <!-- Optional. Delete this block and the Mermaid scripts below if there is no diagram. -->
+  <div class="diagram">
+<pre class="mermaid">
+flowchart LR
+    a["Input"] --> b["Step"] --> c["Output"]
+</pre>
+  </div>
+  <p class="caption">What the arrows mean, and how other cases differ.</p>
+
+  <div class="disclosures">
+    <details>
+      <summary>Consequences</summary>
+      <div class="body">
+        <h3>Benefits</h3>
+        <ul><li>Benefit.</li></ul>
+        <h3>Costs and risks</h3>
+        <ul><li>Risk.</li></ul>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="topic" id="questions">
+  <div class="topic-head"><span class="num">3</span><h2>Open questions</h2></div>
+  <ul>
+    <li>A decision the team needs to make?</li>
+  </ul>
+</section>
+
+</div>
+
+<script>
+  const allDetails = () => document.querySelectorAll("details");
+  document.getElementById("expand-all")?.addEventListener("click", () => {
+    allDetails().forEach((element) => { element.open = true; });
+  });
+  document.getElementById("collapse-all")?.addEventListener("click", () => {
+    allDetails().forEach((element) => { element.open = false; });
+  });
+</script>
+<!-- Only when the report has a diagram -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script>
+<script>
+  const forced = document.documentElement.dataset.theme;
+  const isDark = forced ? forced === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+  mermaid.initialize({ startOnLoad: true, theme: isDark ? "dark" : "default" });
+</script>
+</body>
+</html>
