@@ -1,6 +1,6 @@
 {
   "permissions": {
-    "deny": ["Bash(acli *)", "Bash(git push *)", "Bash(git pull *)"]
+    "deny": ["Bash(acli *)", "Bash(git push *)", "Bash(git pull *)", "Bash(gh *)"]
   },
   "outputStyle": "Concise",
   "tui": "fullscreen",
