@@ -41,7 +41,7 @@ defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 
 # Sort folders at the start of the list
-defaults write com.apple.finder "_FXSortFoldersFirst" -bool "true"
+defaults write com.apple.finder "_FXSortFoldersFirst" -bool true
 
 # View options
 /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy name" ~/Library/Preferences/com.apple.finder.plist
@@ -69,7 +69,7 @@ defaults write com.apple.dock "tilesize" -int "64"
 defaults write com.apple.dock show-recents -bool false
 
 # Don't rearrange fullscreen spaces
-defaults write com.apple.dock "mru-spaces" -bool "false"
+defaults write com.apple.dock "mru-spaces" -bool false
 
 # Show menu bar background
 defaults write -globalDomain SLSMenuBarUseBlurredAppearance -int "1"
@@ -82,7 +82,8 @@ defaults write com.apple.Safari ShowStandaloneTabBar -bool false
 
 # Textedit ------------------------------------------------
 
-defaults write com.apple.TextEdit NSFixedPitchFont 'GeistMonoNF';
+defaults write com.apple.TextEdit NSFixedPitchFont "JetBrainsMono-Regular";
+defaults write com.apple.TextEdit NSFixedPitchFontSize -int 13;
 defaults write com.apple.TextEdit PlainTextEncoding -int 4
 defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
 defaults write com.apple.TextEdit RichText -bool false
@@ -97,5 +98,17 @@ defaults write -globalDomain NSUserKeyEquivalents -dict-add "Remove Window from 
 
 defaults write com.knollsoft.Rectangle almostMaximizeHeight -float 0.9
 defaults write com.knollsoft.Rectangle almostMaximizeWidth -float 0.8
+
+# Rex -----------------------------------------------------
+
+defaults write com.superlogical.rex "Workspace.appearance" dark
+defaults write com.superlogical.rex "Workspace.darkThemeID" "ink-meridian";
+defaults write com.superlogical.rex "Workspace.inactivePaneFadeMode" none;
+defaults write com.superlogical.rex "Workspace.interfaceStyle" blendTheme;
+defaults write com.superlogical.rex "Workspace.showsActivePaneBorder" -int 1;
+defaults write com.superlogical.rex "Workspace.terminalCellHeightPercent" -int 15;
+defaults write com.superlogical.rex "Workspace.terminalFontName" "JetBrains Mono";
+defaults write com.superlogical.rex "Workspace.terminalFontPointSize" -int 13;
+defaults write com.superlogical.rex "Workspace.terminalImproveTextContrast" -int 0;
 
 echo "Done. Note that some of these changes require a logout/restart of your OS to take effect."
