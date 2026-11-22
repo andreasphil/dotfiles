@@ -163,6 +163,7 @@ require("mini.ai").setup({
 require("mini.hipatterns").setup({
 	highlighters = {
 		todo = { pattern = "%f[%w]()TODO:()", group = "MiniHipatternsTodo" },
+		fixme = { pattern = "%f[%w]()FIXME:()", group = "MiniHipatternsTodo" },
 	},
 })
 
