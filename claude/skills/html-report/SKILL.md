@@ -64,7 +64,7 @@ Comparison tables of alternatives usually have the columns _Approach · Verdict 
 - Mark uncertainty plainly ("may never happen in practice, but nothing guarantees the order").
 - Show code as short, real excerpts. Use `…` for elisions and HTML-escape everything (`&lt;`, `&gt;`, `&amp;`). Label proposals as such in the summary hint ("proposal, not implemented").
 - Bold lead-ins in list items (`<strong>Where:</strong> …`) for scannable bullets.
-- Apply the `unslop` skill to the prose if it's available.
+- Apply the `rewrite` skill to the prose if it's available. The bold lead-ins above are an intended exception to its no-bold rule.
 
 ## Mechanics checklist
 
