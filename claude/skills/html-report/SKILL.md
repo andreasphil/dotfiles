@@ -1,6 +1,6 @@
 ---
 name: html-report
-description: Write a self-contained HTML report (research findings, investigations, proposals, audits, triage results, code walkthroughs) in the user's preferred style. A quiet single reading column, numbered overview cards, sections with status chips, and collapsible detail layers. Light and dark mode, system fonts only. Use whenever the user asks for an HTML report, an HTML write-up or summary, or "put this into a report", unless another skill prescribes its own format.
+description: Write a self-contained HTML report (research findings, investigations, proposals, audits, triage results, code walkthroughs) in the user's preferred style. A quiet single reading column with a sticky contents sidebar, numbered overview cards, sections with status chips, and collapsible detail layers. Light and dark mode, system fonts only. Use whenever the user asks for an HTML report, an HTML write-up or summary, or "put this into a report", unless another skill prescribes its own format.
 ---
 
 # HTML report
@@ -21,7 +21,7 @@ The reference implementation is `template.html` next to this file. Read it first
 
 ## Information architecture
 
-Three layers. Each layer must make sense without opening the next one.
+Three layers. Each layer must make sense without opening the next one. A sticky **contents sidebar** on the left lists every section (number and `h2` title) and highlights the one in view.
 
 1. **Header and overview.** An eyebrow (`project · kind of report`), an `h1` title, a one- or two-sentence lede saying what the report covers and what it concludes, a meta row (as-of date, scope, branch or data source), and "Expand all" / "Collapse all" buttons. Below that comes a grid of **numbered cards**, one per section. Each card has a number, a title, a 1–2 sentence summary and a status chip. The cards are links to their sections.
 2. **Section summary (always visible).** Each section starts with a head row (mono number, `h2`, optional status chip), then a short paragraph with the finding, then at most one short list or one table. A reader who only skims these should know everything that matters.
@@ -29,11 +29,11 @@ Three layers. Each layer must make sense without opening the next one.
 
 Typical section order for a technical investigation: what was done or found → current state (inventory) → problems → proposal → migration steps → open questions. The last section is usually **Open questions**: a plain list of decisions for the team.
 
-Short reports (one topic, a few findings) can skip the overview grid and the expand/collapse buttons. Keep the header, the section structure and the visual language.
+Short reports (one topic, a few findings) can skip the overview grid, the sidebar and the expand/collapse buttons. Keep the header, the section structure and the visual language.
 
 ## Visual language
 
-- **Layout:** one reading column, `max-width: 880px`, 48px between major blocks, a 16px side gutter (with safe-area insets), 40px top and 80px bottom padding. Paragraphs are capped around 68ch. No sidebars, no sticky header, no hero.
+- **Layout:** one reading column, `max-width: 880px`, 48px between major blocks, a 16px side gutter (with safe-area insets), 40px top and 80px bottom padding. Paragraphs are capped around 68ch. From 1200px wide, a 208px contents sidebar sits left of the column and stays sticky. Below that it's hidden, and the overview cards do the navigation. No sticky header, no hero.
 - **Palette:** cool blue-grey neutrals (`--bg`, `--surface`, `--sunken`, `--rule`, `--fg`, `--muted`), one navy accent (`--accent`, `--accent-soft`), and three semantic pairs: `good`, `warn`, `bad`, each a strong color with a `-soft` background. Dark mode uses deep slate surfaces and lighter, desaturated versions of the same hues. Don't invent new hues. Reuse the tokens.
 - **Type:** a serif display face for `h1`, `h2` and card titles. A sans face for the body and for `h3` inside sections. Mono for section numbers, file paths, inline code and code blocks. Use a small modular scale (`--step--1` … `--step-3`, body 15px, line-height 1.6). Headings use `text-wrap: balance`. The eyebrow is small, uppercase, letter-spaced and muted.
 - **Surfaces:** white or surface cards with a 1px `--rule` border and an 8px radius (6px for code and tables). No shadows, no gradients. Hover just turns the border or background accent-colored.
@@ -45,6 +45,7 @@ Short reports (one topic, a few findings) can skip the overview grid and the exp
 
 | Component                                        | Use for                                                                |
 | ------------------------------------------------ | ---------------------------------------------------------------------- |
+| `.toc` > `nav` > `ol`                            | sticky contents sidebar, one link per section                          |
 | `.overview` grid of `a.card`                     | section index with status at a glance                                  |
 | `section.topic` + `.topic-head`                  | numbered section with an optional chip                                 |
 | `.disclosures` > `details` > `summary` + `.body` | drill-down layers; `.hint` for muted context                           |
@@ -71,7 +72,7 @@ Comparison tables of alternatives usually have the columns _Approach · Verdict 
 - `<!doctype html>`, `lang`, charset, a viewport with `viewport-fit=cover`, a short `<title>` (2–4 words).
 - A one-line CSS comment at the top describing the layout.
 - Tokens on `:root`. Dark values under `@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {…} }` and again under `:root[data-theme="dark"]`, with `color-scheme: dark`.
-- Visible `:focus-visible` outlines on links, buttons and summaries. `aria-label` on the overview `nav`.
+- Visible `:focus-visible` outlines on links, buttons and summaries. `aria-label` on the overview and contents `nav`s. The current sidebar link gets `aria-current` from the template script.
 - Works at 320px width: no horizontal page scroll, tables and code scroll inside their wrappers, and `dl.terms` collapses to one column.
 - If you use Mermaid, initialize its theme from the effective color scheme (see the template script).
 - Open the file in a browser (e.g. with `playwright-cli`) in light and dark mode at desktop and phone width if a browser is available. Fix overflow and contrast problems before reporting the path.

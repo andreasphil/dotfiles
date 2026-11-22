@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Report Title</title>
 <style>
-/* Layout: a single reading column; an overview grid of topic cards, then one section per topic with expandable layers (summary → findings → code). */
+/* Layout: a single reading column with a sticky contents sidebar on wide screens; an overview grid of topic cards, then one section per topic with expandable layers (summary → findings → code). */
 :root {
   --bg: #f7f8fa;
   --surface: #ffffff;
@@ -82,7 +82,24 @@ body {
   padding-right: max(16px, env(safe-area-inset-right, 0px));
   padding-block: 40px 80px;
 }
-.page { max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; gap: 48px; }
+.layout { max-width: 880px; margin: 0 auto; }
+.page { display: flex; flex-direction: column; gap: 48px; min-width: 0; }
+
+/* Contents sidebar: wide screens only; the overview cards cover navigation on narrow ones */
+.toc { display: none; }
+@media (min-width: 1200px) {
+  .layout { max-width: calc(208px + 48px + 880px); display: grid; grid-template-columns: 208px minmax(0, 880px); gap: 48px; }
+  .toc { display: block; }
+}
+.toc nav { position: sticky; top: 40px; max-height: calc(100vh - 80px); overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+.toc ol { list-style: none; padding: 0; gap: 2px; }
+.toc a {
+  display: grid; grid-template-columns: 1.6em 1fr; padding: 4px 10px; border-left: 2px solid var(--rule);
+  font-size: var(--step--1); line-height: 1.4; color: var(--muted); text-decoration: none;
+}
+.toc a .num { font-family: var(--font-mono); }
+.toc a:hover { color: var(--accent); }
+.toc a[aria-current] { color: var(--fg); border-left-color: var(--accent); font-weight: 500; }
 
 h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.25; text-wrap: balance; margin: 0; }
 h1 { font-size: var(--step-3); }
@@ -187,6 +204,19 @@ ol.stages li::before { content: counter(stage); font-family: var(--font-mono); f
 </style>
 </head>
 <body>
+
+<div class="layout">
+
+<aside class="toc">
+  <nav aria-label="Contents">
+    <div class="eyebrow">Contents</div>
+    <ol>
+      <li><a href="#first"><span class="num">1</span><span>First topic</span></a></li>
+      <li><a href="#second"><span class="num">2</span><span>Second topic</span></a></li>
+      <li><a href="#questions"><span class="num">3</span><span>Open questions</span></a></li>
+    </ol>
+  </nav>
+</aside>
 
 <div class="page">
 
@@ -321,6 +351,7 @@ flowchart LR
 </section>
 
 </div>
+</div>
 
 <script>
   const allDetails = () => document.querySelectorAll("details");
@@ -330,6 +361,16 @@ flowchart LR
   document.getElementById("collapse-all")?.addEventListener("click", () => {
     allDetails().forEach((element) => { element.open = false; });
   });
+
+  const tocLinks = new Map([...document.querySelectorAll(".toc a")].map((link) => [link.hash.slice(1), link]));
+  const markCurrent = (entries) => {
+    entries.filter((entry) => entry.isIntersecting).forEach((entry) => {
+      tocLinks.forEach((link) => link.removeAttribute("aria-current"));
+      tocLinks.get(entry.target.id)?.setAttribute("aria-current", "location");
+    });
+  };
+  const observer = new IntersectionObserver(markCurrent, { rootMargin: "0px 0px -75% 0px" });
+  document.querySelectorAll("section.topic[id]").forEach((section) => observer.observe(section));
 </script>
 <!-- Only when the report has a diagram -->
 <script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script>
