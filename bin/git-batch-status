@@ -47,12 +47,11 @@ if git status &>/dev/null; then
   _fatal "Current folder is a git repository"
 fi
 
-output="Name,Branch,Has changes,Has stash\n"
+output="Name,Branch,Has changes,Has stash,Unpublished\n"
 
 for i in */; do
   # Check if it is a repository
   if ! git -C "$i" status &>/dev/null; then
-    output+="$i (not a repository),-,-,-\n"
     continue
   fi
 
@@ -73,7 +72,14 @@ for i in */; do
     has_stash="❗ yes"
   fi
 
-  output+="$i,$branch ($branch_count),$has_changes,$has_stash\n"
+  # Unpublished commits
+  has_unpublished="✅ no"
+  unpublished_count=$(git -C "$i" rev-list --count --branches --not --remotes)
+  if [[ "$unpublished_count" -gt 0 ]]; then
+    has_unpublished="❗ yes ($unpublished_count)"
+  fi
+
+  output+="$i,$branch ($branch_count),$has_changes,$has_stash,$has_unpublished\n"
 done
 
 # NOTE: `gum table` is not used for the interactive picker. Its interactive mode
@@ -82,7 +88,7 @@ done
 # gives the same aligned, selectable table without that regression.
 table=$(printf "%b" "$output" | column -t -s ",")
 
-result=$(tail -n +2 <<<"$table" | gum choose --header "$(head -n 1 <<<"$table")")
+result=$(tail -n +2 <<<"$table" | gum choose --header "  $(head -n 1 <<<"$table")")
 
 # Rows are padded with spaces, so the name is everything up to the first one.
 echo "${result%% *}"
