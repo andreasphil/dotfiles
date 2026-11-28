@@ -1,0 +1,4 @@
+{
+  "ignorePatterns": ["setup/rectangle-config.json"],
+  "proseWrap": "always"
+}
