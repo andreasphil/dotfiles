@@ -8,7 +8,7 @@ IFS=$'\n\t'
 #
 # Modes:
 #   (no args)   Interactive install — prompts for dotfiles path, then links
-#   --verify    Check all symlinks are valid; report broken/missing ones
+#   --check     Check all symlinks are valid; report broken/missing ones
 #   --cleanup   Remove orphaned symlinks (links that point to missing targets)
 # ---------------------------------------------------------
 
@@ -154,10 +154,10 @@ do_install() {
 }
 
 # ---------------------------------------------------------
-# Verify mode
+# Check mode
 # ---------------------------------------------------------
 
-do_verify() {
+do_check() {
   # Try to discover DOTFILES_ROOT from the existing .dotfiles_local
   local dotfiles_local="${HOME}/.dotfiles_local"
   if [[ ! -e "$dotfiles_local" ]]; then
@@ -235,12 +235,12 @@ do_cleanup() {
 
 case "$MODE" in
   install|--install) do_install ;;
-  --verify)          do_verify  ;;
+  --check)           do_check  ;;
   --cleanup)         do_cleanup ;;
   *)
-    echo "Usage: $0 [--verify | --cleanup]"
+    echo "Usage: $0 [--check | --cleanup]"
     echo "  (no args)   Install symlinks interactively"
-    echo "  --verify    Check all symlinks are valid"
+    echo "  --check     Check all symlinks are valid"
     echo "  --cleanup   Remove orphaned symlinks"
     exit 1
     ;;
