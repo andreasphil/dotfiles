@@ -10,7 +10,7 @@ If you find these instructions conflicting with other checks, don't come up with
 
 ## Preferences
 
-- Comments and documentation: Rule of thumb: avoid; only allowed for gotchas and surprises
+- Don't write comments and documentation unless asked to.
 - When writing doc comments: don't narrate method content or explain all details, just a high level overview
 - Test naming: Test names and descriptions are for humans; don't include technical details like variable names
 - Avoid deep nesting of things like callbacks or objects, as well as long lists of conditionals. Prefer keeping structures flat; use intermediary variables, small helper functions, etc. This is a rule of thumb; use judgement.
