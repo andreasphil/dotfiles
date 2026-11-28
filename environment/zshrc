@@ -88,14 +88,8 @@ alias ls="ls -1 --color=auto"
 
 alias -g C="| pbcopy"
 
-alias -s md=mdp
-
 function gcd() {
   cd "$(git batch-status)"
-}
-
-function mdp() {
-  cat "$@" | gum format -t markdown | gum pager
 }
 
 bindkey -s '^B' 'zi\n'          # Zoxide

@@ -12,6 +12,9 @@ setup/init
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew bundle install --file setup/Brewfile
 
+# Install dependencies of the scripts in bin/:
+pnpm install --dir bin
+
 # Install global packages managed by mise:
 mise install
 

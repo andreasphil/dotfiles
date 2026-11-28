@@ -1,94 +1,93 @@
-#!/bin/bash
+#!/usr/bin/env node
 
-# Strict mode ---------------------------------------------
+import { execFileSync } from "node:child_process";
+import { readdirSync } from "node:fs";
+import * as p from "@clack/prompts";
 
-set -ueEo pipefail
-IFS=$'\n\t'
+const ui = { output: process.stderr };
 
-# Utilities -----------------------------------------------
-
-# Log an error message and exit the script.
-#
-# Usage:
-#   _fatal <message>
-_fatal() {
-  _log error "$@"
-  exit 1
+function git(cwd, ...args) {
+  return execFileSync("git", ["-C", cwd, ...args], {
+    encoding: "utf8",
+    stdio: ["ignore", "pipe", "ignore"],
+  }).trim();
 }
 
-# Log a message with the specified level. Allowed levels are "none", "debug",
-# "info", "warn", and "error".
-#
-# Usage:
-#   _log <level> <message>
-_log() {
-  level="$1"
-  shift
-
-  gum log --level="$level" "$@"
+function gitSucceeds(cwd, ...args) {
+  try {
+    git(cwd, ...args);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
-# Exit if the specified command does not exist.
-#
-# Usage:
-#   _require <command>
-_require() {
-  if ! type "$1" &>/dev/null; then
-    printf "\033[0;31m\033[1mERROR\033[0m required dependency %s is missing\n" "$1"
-    exit 1
-  fi
+function countLines(text) {
+  return text ? text.split("\n").length : 0;
 }
 
-# Init ----------------------------------------------------
+function flag(isSet, detail = "") {
+  return isSet ? `❗ yes${detail}` : "✅ no";
+}
 
-_require "gum"
+function repoStatus(dir) {
+  const branch = git(dir, "branch", "--show-current");
+  const branchCount = countLines(git(dir, "branch"));
+  const hasChanges =
+    !gitSucceeds(dir, "diff", "--quiet") ||
+    !gitSucceeds(dir, "diff", "--cached", "--quiet");
+  const stashCount = countLines(git(dir, "stash", "list"));
+  const unpublished = Number(
+    git(dir, "rev-list", "--count", "--branches", "--not", "--remotes"),
+  );
 
-if git status &>/dev/null; then
-  _fatal "Current folder is a git repository"
-fi
+  return [
+    `${dir}/`,
+    `${branch} (${branchCount})`,
+    flag(hasChanges),
+    flag(stashCount > 0),
+    flag(unpublished > 0, ` (${unpublished})`),
+  ];
+}
 
-output="Name,Branch,Has changes,Has stash,Unpublished\n"
+function alignColumns(rows) {
+  const widths = rows[0].map((_, i) =>
+    Math.max(...rows.map((row) => row[i].length)),
+  );
+  return rows.map((row) =>
+    row.map((cell, i) => cell.padEnd(widths[i])).join("  ").trimEnd(),
+  );
+}
 
-for i in */; do
-  # Check if it is a repository
-  if ! git -C "$i" status &>/dev/null; then
-    continue
-  fi
+if (gitSucceeds(".", "status")) {
+  p.log.error("Current folder is a git repository", ui);
+  process.exit(1);
+}
 
-  # Branches
-  branch=$(git -C "$i" branch --show-current)
-  branch_count=$(git -C "$i" branch | wc -l | tr -d " ")
+const repos = readdirSync(".", { withFileTypes: true })
+  .filter((entry) => entry.isDirectory())
+  .map((entry) => entry.name)
+  .filter((dir) => gitSucceeds(dir, "status"))
+  .sort();
 
-  # Uncommitted changes
-  has_changes="✅ no"
-  if ! git -C "$i" diff --quiet || ! git -C "$i" diff --cached --quiet; then
-    has_changes="❗ yes"
-  fi
+if (repos.length === 0) {
+  p.log.warn("No repositories found", ui);
+  process.exit(0);
+}
 
-  # Stash
-  has_stash="✅ no"
-  stash_count=$(git -C "$i" stash list | wc -l | tr -d " ")
-  if [[ "$stash_count" -gt 0 ]]; then
-    has_stash="❗ yes"
-  fi
+const header = ["Name", "Branch", "Has changes", "Has stash", "Unpublished"];
+const [headerLine, ...lines] = alignColumns([header, ...repos.map(repoStatus)]);
 
-  # Unpublished commits
-  has_unpublished="✅ no"
-  unpublished_count=$(git -C "$i" rev-list --count --branches --not --remotes)
-  if [[ "$unpublished_count" -gt 0 ]]; then
-    has_unpublished="❗ yes ($unpublished_count)"
-  fi
+const selected = await p.select({
+  ...ui,
+  message: `  ${headerLine}`,
+  options: lines.map((label, i) => ({ value: repos[i], label })),
+  maxItems: 20,
+});
 
-  output+="$i,$branch ($branch_count),$has_changes,$has_stash,$has_unpublished\n"
-done
+if (p.isCancel(selected)) {
+  p.cancel("Cancelled", ui);
+  process.exit(1);
+}
 
-# NOTE: `gum table` is not used for the interactive picker. Its interactive mode
-# renders header and footer but no rows in gum 2.0.0
-# (https://github.com/charmbracelet/gum/issues/1126). `column` + `gum choose`
-# gives the same aligned, selectable table without that regression.
-table=$(printf "%b" "$output" | column -t -s ",")
-
-result=$(tail -n +2 <<<"$table" | gum choose --header "  $(head -n 1 <<<"$table")")
-
-# Rows are padded with spaces, so the name is everything up to the first one.
-echo "${result%% *}"
+console.log(`${selected}/`);
