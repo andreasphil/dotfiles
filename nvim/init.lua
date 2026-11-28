@@ -429,7 +429,12 @@ require("conform").setup({
 		vue = { "oxfmt" },
 		yaml = { "oxfmt" },
 	},
-	format_on_save = { timeout_ms = 1000 },
+	format_on_save = function(bufnr)
+		if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+			return
+		end
+		return { timeout_ms = 1000 }
+	end,
 })
 
 vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
@@ -442,6 +447,19 @@ vim.api.nvim_create_user_command("Format", function(args)
 	end
 	require("conform").format({ async = true, range = range })
 end, { range = true, desc = "format buffer or range" })
+
+vim.api.nvim_create_user_command("FormatDisable", function(args)
+	if args.bang then
+		vim.b.disable_autoformat = true
+	else
+		vim.g.disable_autoformat = true
+	end
+end, { bang = true, desc = "disable format on save (! for buffer only)" })
+
+vim.api.nvim_create_user_command("FormatEnable", function()
+	vim.b.disable_autoformat = false
+	vim.g.disable_autoformat = false
+end, { desc = "enable format on save" })
 
 -- completion ---------------------------------------------
 
